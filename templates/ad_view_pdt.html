@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <title>Document</title>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBDKQW4TCQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DBDKQW4TCQ');
+</script>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .main {
+      display: flex;
+      width: 98vw;
+      height: 93vh;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 20%;
+      height: 100%;
+      border-right: 2px solid #d6336c;
+      background-color: #fce8ef;
+      /* Soft background to match pink theme */
+      padding: 20px 0px;
+      position: fixed;
+      overflow: hidden;
+      overflow-y: scroll;
+      overflow-y: scroll;
+      scrollbar-width: none;
+      /* For Firefox */
+      -ms-overflow-style: none;
+      /* For Internet Explorer and Edge */
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+      /* For Chrome, Safari, and Opera */
+    }
+
+    .left a:nth-last-child(1) {
+      margin-bottom: 50px;
+    }
+
+    .left p {
+      font-size: 20px;
+      font-weight: bold;
+      color: #d6336c;
+      margin-bottom: 10px;
+    }
+
+    .left hr {
+      width: 80%;
+      border: 1px solid #d6336c;
+      margin-bottom: 20px;
+    }
+
+    .left i {
+      margin-right: 8px;
+      /* space between icon and text */
+      color: #444;
+      /* dark gray icon color */
+      font-size: 16px;
+      /* adjust icon size */
+      vertical-align: middle;
+      /* align icon with text */
+      transition: color 0.3s;
+      /* smooth hover effect */
+    }
+
+    .left a.active i {
+      color: #ffffff;
+      /* icon color on hover */
+    }
+
+    .left a {
+      text-decoration: none;
+      color: #333;
+      margin: 7px 0;
+      font-weight: 500;
+      padding: 12px 15px;
+      width: 80%;
+      text-align: left;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .left a:hover {
+      background-color: #d6336c;
+      color: white;
+      text-decoration: none;
+    }
+
+    .left a.active {
+      background-color: #d6336c;
+      color: white;
+      font-weight: bold;
+      border: 2px solid #d6336c;
+      box-shadow: 0 4px 10px rgba(214, 51, 108, 0.2);
+    }
+
+    .right {
+      margin-left: 20%;
+      width: 80%;
+      height: 100%;
+      padding: 20px;
+      overflow-y: auto;
+      /* overflow-x: scroll; */
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #d6336c;
+      margin-bottom: 10px;
+    }
+
+    .product-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+    }
+
+    .product-container,
+    .sub-product-container {
+      background: #fff;
+      border-radius: 10px;
+      padding: 25px 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      flex: 1 1 48%;
+      box-sizing: border-box;
+    }
+
+    h2,
+    h3 {
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      color: #333;
+    }
+
+    .product-detail p,
+    .sub-product-detail p {
+      margin: 12px 0;
+      font-size: 15px;
+      color: #555;
+    }
+
+    .product-detail strong,
+    .sub-product-detail strong {
+      color: #222;
+      display: inline-block;
+      width: 140px;
+    }
+
+    .product-detail input,
+    .sub-product-detail input {
+      border: 1px solid #ccc;
+      padding: 6px 10px;
+      border-radius: 5px;
+      width: 50%;
+      background-color: #f9f9f9;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .product-images,
+    .sub-product-images {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .product-images img,
+    .sub-product-images img {
+      max-width: 180px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
+    }
+
+    .sub-product-video {
+      margin-top: 20px;
+    }
+
+    .sub-product-video video {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin: 8px 0;
+      padding-left: 15px;
+      position: relative;
+      color: #444;
+    }
+
+    ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #007bff;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 20px 0;
+      background-color: #d6336c;
+      /* Bootstrap blue */
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .back-btn:hover {
+      background-color: #b12a59;
+      /* Darker blue */
+      /* transform: translateY(-2px); */
+    }
+
+    @media (max-width: 768px) {
+      .product-images img,
+      .sub-product-images img {
+        max-width: 100%;
+      }
+
+      .right {
+        padding: 20px;
+      }
+
+      .product-container,
+      .sub-product-container {
+        padding: 15px;
+      }
+    }
+  </style>
+
+  <body>
+    {% set current_path = request.path %}
+
+    <div class="main">
+      <div class="left">
+        <p>DASHBOARD</p>
+        <hr />
+
+        <a
+          href="{{ url_for('admin_dashboard') }}"
+          class="{% if current_path == url_for('admin_dashboard') %}active{% endif %}"
+        >
+          <i class="fas fa-plus-square"></i> Add Product
+        </a>
+
+        <a
+          href="{{ url_for('admin_view_product') }}"
+          class="{% if current_path == url_for('admin_view_product') %}active{% endif %}"
+        >
+          <i class="fas fa-eye"></i> View Product
+        </a>
+
+        <a
+          href="{{ url_for('add_categories') }}"
+          class="{% if current_path == url_for('add_categories') %}active{% endif %}"
+        >
+          <i class="fas fa-tags"></i> Add Category
+        </a>
+
+        <a
+          href="{{ url_for('add_flavour') }}"
+          class="{% if current_path == url_for('add_flavour') %}active{% endif %}"
+        >
+          <i class="fas fa-apple-alt"></i> Add Flavour
+        </a>
+        <a
+          href="{{ url_for('add_variant') }}"
+          class="{% if current_path == url_for('add_variant') %}active{% endif %}"
+        >
+          <i class="fas fa-weight-hanging"></i> Add Variant
+        </a>
+        <a
+          href="{{ url_for('add_accessory') }}"
+          class="{% if current_path == url_for('add_accessory') %}active{% endif %}"
+        >
+          <i class="fas fa-magic"></i> Add Accessories
+        </a>
+
+        <a
+          href="{{ url_for('master_location') }}"
+          class="{% if current_path == url_for('master_location') %}active{% endif %}"
+        >
+          <i class="fas fa-map-marker-alt"></i> Add Master Location
+        </a>
+
+        <a
+          href="{{ url_for('order_history') }}"
+          class="{% if current_path == url_for('order_history') %}active{% endif %}"
+        >
+          <i class="fas fa-box"></i> View Order History
+        </a>
+
+        <a
+          href="{{ url_for('custom_cake_order_history') }}"
+          class="{% if current_path == url_for('custom_cake_order_history') %}active{% endif %}"
+        >
+          <i class="fas fa-clipboard-list"></i> View Custom Orders
+        </a>
+
+        <a
+          href="{{ url_for('update_password') }}"
+          class="{% if current_path == url_for('update_password') %}active{% endif %}"
+        >
+          <i class="fas fa-key"></i> Update Password
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+      </div>
+      <div class="right">
+        <div class="product-section">
+          <!-- <div class="product-container">
+            <h2>Product Details</h2>
+            <div class="product-detail">
+              <p><strong>Category:</strong> {{ product.product_category }}</p>
+              <p><strong>Type:</strong> {{ product.product_type }}</p>
+              <p><strong>Offer:</strong> {{ product.product_offer }}</p>
+              <p>
+                <strong>Description:</strong> {{ product.product_description }}
+              </p>
+              <p>
+                <strong>YouTube:</strong>
+                <input
+                  type="text"
+                  value="{{ product.product_youtube }}"
+                  readonly
+                />
+              </p>
+            </div>
+
+          </div> -->
+
+          <!-- Sub-Product Details -->
+          <div class="sub-product-container">
+            <h2 style="color: #b12a59">Sub-Product Details</h2>
+            <div class="sub-product-detail">
+              <p><strong>Name:</strong> {{ sub_product.sub_product_name }}</p>
+              <!-- <p>
+                <strong>Category:</strong> {{ sub_product.sub_product_category
+                }}
+              </p> -->
+              <!-- <p><strong>Type:</strong> {{ sub_product.sub_product_type }}</p> -->
+              <p><strong>Offer:</strong> {{ sub_product.sub_product_offer }}</p>
+              <p>
+                <strong>Description:</strong> {{
+                sub_product.sub_product_description }}
+              </p>
+              <p>
+                <strong>YouTube:</strong>
+                <input
+                  type="text"
+                  value="{{ sub_product.sub_product_youtube }}"
+                  readonly
+                />
+              </p>
+
+              <!-- Variants -->
+              <h3>Variants</h3>
+              {% if selected_variants %}
+              <p>
+                {{ selected_variants | map(attribute='name') | join(', ') }}
+              </p>
+              {% else %}
+              <p>No variants selected.</p>
+              {% endif %}
+
+              <!-- Flavours -->
+              <h3>Flavours</h3>
+              {% if selected_flavours %}
+              <p>
+                {{ selected_flavours | map(attribute='name') | join(', ') }}
+              </p>
+              {% else %}
+              <p>No flavours selected.</p>
+              {% endif %}
+
+              <!-- Combination Prices -->
+              <h3>Variant + Flavour Prices</h3>
+              {% if combo_prices %}
+              <table border="1" cellpadding="6" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <th>Variant</th>
+                    {% for combo in combo_prices %}
+                    <td>{{ combo.variant_name }}</td>
+                    {% endfor %}
+                  </tr>
+                  <tr>
+                    <th>Flavour</th>
+                    {% for combo in combo_prices %}
+                    <td>{{ combo.flavour_name }}</td>
+                    {% endfor %}
+                  </tr>
+                  <tr>
+                    <th>Price (₹)</th>
+                    {% for combo in combo_prices %}
+                    <td>{{ combo.price }}</td>
+                    {% endfor %}
+                  </tr>
+                </tbody>
+              </table>
+              {% else %}
+              <p>No combination pricing available.</p>
+              {% endif %}
+
+              <!-- Delivery Cost -->
+              {% if sub_product.delivery_cost %}
+              <p>
+                <strong>Delivery Cost:</strong> ₹{{ sub_product.delivery_cost }}
+              </p>
+              {% else %}
+              <p><strong>Delivery Cost:</strong> Free or not specified</p>
+              {% endif %}
+
+              <!-- Delivery Cost -->
+              {% if sub_product.packaging_cost %}
+              <p>
+                <strong>Packaging Cost:</strong> ₹{{ sub_product.packaging_cost
+                }}
+              </p>
+              {% else %}
+              <p><strong>Packaging Cost:</strong> Free or not specified</p>
+              {% endif %}
+            </div>
+
+            <!-- Sub-Product Images -->
+            <div class="sub-product-images">
+              {% for i in range(1, 6) %} {% set sub_img =
+              sub_product['sub_product_image' + i|string] %} {% if sub_img %}
+              <img
+                src="{{ url_for('static', filename='uploads/' + sub_img) }}"
+                alt="{{ sub_product.sub_product_name }}"
+              />
+
+              {% endif %} {% endfor %}
+            </div>
+            <p><strong>{{ sub_product.sub_product_name }}</strong></p>
+
+            <!-- Sub-Product Video -->
+            {% if sub_product.sub_product_video %}
+            <div class="sub-product-video">
+              <video controls>
+                <source
+                  src="{{ url_for('static', filename='uploads/' + sub_product.sub_product_video) }}"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <a href="{{ url_for('admin_view_product') }}" class="back-btn"
+          >Back to View Product</a
+        >
+      </div>
+    </div>
+  </body>
+</html>

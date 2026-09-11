@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>SM BAKERS</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+  <!-- Add this in your checkout.html template (in the head or body) -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBDKQW4TCQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DBDKQW4TCQ');
+</script>
+  <!-- Favicon -->
+  <link href="img/favicon.ico" rel="icon">
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet">
+  <!-- Montserrat Font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Libraries Stylesheet -->
+  <link href="static/lib/animate/animate.min.css" rel="stylesheet">
+  <link href="static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Template Stylesheet -->
+  <link href="static/css/style.css" rel="stylesheet">
+  
+</head>
+<style>
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    /* Width of the scrollbar */
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    /* Light gray background */
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #ffd1df;
+    /* Gradient color */
+    border-radius: 10px;
+
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ffd1df;
+  }
+  .user-icon-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+.side-modal .close-btn {
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+</style>
+
+<body>
+
+   <!-- Topbar Start -->
+  <div class="container-fluid top-bar bg-primary  px-0" style="height: 35px;">
+    <div class="row gx-0 align-items-center" style="height: 100%;">
+      <div class="col-12 text-center">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+       <marquee behavior="scroll" direction="left" scrollamount="5"
+          style="font-size: 16px;font-family:'Great Vibes', cursive;  font-style: italic; color: black; font-weight: 500; padding-top: 5px">
+          <i class="fas fa-birthday-cake" style="color:#B32071"></i>
+          Try Our New 70+ Flavours |
+          <i class="fas fa-store" style="color:#B32071"></i>
+          Offer Available In All Our 45+ Stores. |
+          <i class="fas fa-gift" style="color:#B32071"></i>
+          Everyday Buy 1 Cake Get 1 Free 70+ Premium |
+          <i class="fas fa-phone" style="color:#B32071"></i>
+          For Order Connect With Us: <a href="tel:+918655481522" style="color:black">+91 8655481522</a>
+        </marquee>
+      </div>
+    </div>
+  </div>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-0 px-lg-5" style="background-color: white;">
+  <!-- Logo -->
+  <a href="{{ url_for('home') }}" class="navbar-brand ms-4 ms-lg-0">
+    <img src="static/img/SS_logo.png" style="height:80px;width: 80px;">
+  </a>
+  <!-- Toggler for mobile view -->
+  <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <!-- Desktop and Mobile Menu Links -->
+    <div class="navbar-nav ms-auto p-4 p-lg-0 w-100 d-flex justify-content-center">
+      <a class="btn btn-link" href="{{ url_for('home') }}">Home</a>
+      <a class="btn btn-link" href="{{ url_for('about') }}">About Us</a>
+      <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Cake Variety</a>
+      <!-- <a class="btn btn-link" href="{{ url_for('gallery') }}">Gallery</a> -->
+      <a class="btn btn-link" href="{{ url_for('our_outlet') }}">Our Outlet</a>
+      <a class="btn btn-link" href="{{ url_for('contact') }}">Contact Us</a>
+    </div>
+   <!-- Franchise Button (Visible in Desktop) -->
+    <a class="btn-about py-2 px-3 me-3  d-none d-lg-block " href="{{ url_for('franchise') }}" style="font-family: 'montserrat'; font-weight: 500">
+      FRANCHISE
+    </a>
+    <!-- Desktop Icons -->
+    <div class="d-none d-lg-flex ms-4 align-items-center">
+      <!-- Cart Icon -->
+      <a href="{{ url_for('cart') }}" class="position-relative me-3">
+        <div class="flex-shrink-0 btn-lg-square rounded-circle hover-icon">
+          <i class="fa fa-shopping-cart"></i>
+          <!-- <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{ cartitems|length }}
+          </span> -->
+        </div>
+      </a>
+      {% if not session.get('user_id') %}
+        <div class="d-inline-flex align-items-center me-3">
+          <div class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon">
+            <a href="{{ url_for('login') }}">
+              <i class="fas fa-sign-in-alt" style="margin-top: 5px"></i>
+            </a>
+          </div>
+        </div>
+      {% else %}
+        <div class="d-inline-flex align-items-center me-3">
+          <button class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon" id="openUserModal" style="background: none; border: none">
+            <i class="fa fa-user"></i>
+          </button>
+        </div>
+  <!-- Side Modal -->
+          <div id="modalOverlay" class="modal-overlay"></div>
+          <div id="userSideModal" class="side-modal">
+            <div class="side-modal-content">
+              <span class="close-btn" id="closeUserModal">&times;</span>
+              <!-- User Info Header -->
+              <div class="user-header">
+                <div class="user-avatar">
+                  <i class="fa fa-user-circle"></i>
+                </div>
+                <div class="user-details">
+                  {% for user in users%}
+                  <div class="user-name">{{user.name}}</div>
+                  <div class="user-email">{{user.email}}</div>
+                  {% endfor %}
+                </div>
+              </div>
+              <!-- User Menu Links -->
+              <div class="user-menu">
+                <a href="{{ url_for('personal_info') }}">
+                  <i class="fa fa-user"></i> Personal Information
+                </a>
+                <a href="{{ url_for('user_order_history') }}">
+                  <i class="fa fa-shopping-bag"></i> My Orders
+                </a>
+                <a href="{{url_for('manage_user_address')}}">
+                  <i class="fa fa-map-marker"></i> Manage Addresses
+                </a>
+              </div>
+              <!-- Footer -->
+              <div class="user-footer">
+                <a href="{{ url_for('logout') }}" class="logout-link"
+                  ><i class="fa fa-sign-out-alt"></i> Logout</a
+                >
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              const openBtn = document.getElementById("openUserModal");
+              const modal = document.getElementById("userSideModal");
+              const closeBtn = document.getElementById("closeUserModal");
+              const overlay = document.getElementById("modalOverlay");
+              function openModal() {
+                modal.classList.add("open");
+                overlay.classList.add("active");
+              }
+              function closeModal() {
+                modal.classList.remove("open");
+                overlay.classList.remove("active");
+              }
+              openBtn.addEventListener("click", openModal);
+              closeBtn.addEventListener("click", closeModal);
+              // Close modal when clicking outside (on overlay)
+              overlay.addEventListener("click", closeModal);
+            });
+          </script>
+      <!-- Instagram Icon -->
+      <a href="#" target="_blank" class="me-3 hover-icon" style="padding:15px">
+        <i class="fab fa-instagram "></i>
+      </a>
+    </div>
+    <!-- Mobile Franchise Button + Icons -->
+    <div class="d-flex d-lg-none flex-column align-items-center w-100  px-3" style="margin-top:-20px">
+      <!-- Franchise Button for Mobile -->
+      <a class="btn-about py-2 px-3 mt-3 w-80 text-center" href="{{ url_for('franchise') }}" style="font-family: 'montserrat'; font-weight: 500; background-color: #FFD1DF; color: #B32071;">
+        FRANCHISE <i class="fa fa-store"></i>
+      </a>
+      <br>
+      <div class="d-flex justify-content-center gap-3">
+        <!-- Cart Icon -->
+        <a href="{{ url_for('cart') }}" class="position-relative">
+          <div class="flex-shrink-0 btn-lg-square rounded-circle hover-icon" style="margin-right: 10px">
+            <i class="fa fa-shopping-cart"></i>
+            <!-- <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              {{ cartitems|length }}
+            </span> -->
+          </div>
+        </a>
+      {% if not session.get('user_id') %}
+  <div class="d-inline-flex align-items-center me-3">
+    <div class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon">
+      <a href="{{ url_for('login') }}">
+        <i class="fas fa-sign-in-alt" style="margin-top: 5px"></i>
+      </a>
+    </div>
+  </div>
+{% else %}
+  <!-- Mobile User Icon -->
+  <div class="d-inline-flex align-items-center me-3">
+    <button id="openUserModalMobile" class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon" style="background: none; border: none;">
+      <i class="fa fa-user"></i>
+    </button>
+  </div>
+  <!-- Side Modal -->
+  <div id="modalOverlayMobile" class="modal-overlay"></div>
+  <div id="userSideModalMobile" class="side-modal">
+    <div class="side-modal-content">
+      <span class="close-btn" id="closeUserModalMobile">&times;</span>
+      <!-- User Info Header -->
+      <div class="user-header">
+        <div class="user-avatar">
+          <i class="fa fa-user-circle"></i>
+        </div>
+        <div class="user-details">
+          {% for user in users %}
+            <div class="user-name">{{ user.name }}</div>
+            <div class="user-email">{{ user.email }}</div>
+          {% endfor %}
+        </div>
+      </div>
+      <!-- User Menu Links -->
+      <div class="user-menu">
+        <a href="{{ url_for('personal_info') }}">
+          <i class="fa fa-user"></i> Personal Information
+        </a>
+        <a href="{{ url_for('user_order_history') }}">
+          <i class="fa fa-shopping-bag"></i> My Orders
+        </a>
+        <a href="{{ url_for('manage_user_address') }}">
+          <i class="fa fa-map-marker"></i> Manage Addresses
+        </a>
+      </div>
+      <!-- Footer -->
+      <div class="user-footer">
+        <a href="{{ url_for('logout') }}" class="logout-link">
+          <i class="fa fa-sign-out-alt"></i> Logout
+        </a>
+      </div>
+    </div>
+  </div>
+{% endif %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Mobile modal logic
+    const openMobile = document.getElementById("openUserModalMobile");
+    const modalMobile = document.getElementById("userSideModalMobile");
+    const closeMobile = document.getElementById("closeUserModalMobile");
+    const overlayMobile = document.getElementById("modalOverlayMobile");
+    openMobile?.addEventListener("click", () => {
+      modalMobile.classList.add("open");
+      overlayMobile.classList.add("active");
+    });
+    closeMobile?.addEventListener("click", () => {
+      modalMobile.classList.remove("open");
+      overlayMobile.classList.remove("active");
+    });
+    overlayMobile?.addEventListener("click", () => {
+      modalMobile.classList.remove("open");
+      overlayMobile.classList.remove("active");
+    });
+  });
+</script>
+        <!-- Instagram Icon -->
+        <a href="#" target="_blank">
+          <i class="fab fa-instagram hover-icon" style=" font-size: 20px;"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+<style>
+  /* Navbar background color */
+  .navbar-light {
+    background-color: white !important;
+  }
+  /* Change the menu link color to dark */
+  .navbar-nav .nav-link {
+    color: #333 !important;
+  }
+  /* Change the color of the active link */
+  .navbar-nav .nav-link.active {
+    color: #FFD1DF !important;
+  }
+  /* Add hover effect on menu links */
+  .navbar-nav .nav-link:hover {
+    color: #FFD1DF !important;
+  }
+  /* Center the Navbar Links and Icons in Mobile View */
+  @media (max-width: 991px) {
+    .navbar-nav {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+    .navbar-nav .btn-link {
+      margin: 0 10px; /* Adds space between links */
+    }
+    .d-flex.justify-content-center {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .d-flex.justify-content-center a {
+      font-size: 18px;
+    }
+    .d-none.d-lg-flex {
+      display: none !important;
+    }
+    /* Franchise Button in Mobile View */
+    .btn-about {
+      font-size: 16px;
+      background-color: #FFD1DF;
+      color: #B32071;
+      text-align: center;
+    }
+    .btn-about:hover {
+      background-color: #B32071;
+      color: white;
+    }
+  }
+</style>
+
+  <br><br><Br><br>
+  <style>
+    .product-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 20px;
+      font-family: 'montserrat', sans-serif;
+    }
+
+    .product-card {
+      display: flex;
+      gap: 15px;
+      padding: 15px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      align-items: flex-start;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .product-image {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 120px;
+    }
+
+    .product-image img {
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .product-title {
+      margin-top: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #b32071;
+
+    }
+
+    .variant-box,
+    .accessory-box {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 8px;
+      flex: 1;
+      font-size: 14px;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 8px 0;
+    }
+
+    .quantity button {
+      padding: 4px 10px;
+      background-color: #eee;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .highlight {
+      color: #b32071;
+      font-weight: 600;
+    }
+
+    .grand-total {
+      color: #b32071;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    .accessory-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .accessory-footer .subtotal {
+      margin: 0;
+      font-weight: bold;
+      color: black;
+      font-size: 18px;
+    }
+    .add-panel{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 16px;
+    }
+  </style>
+
+  <body>
+    <div class="checkout-wrapper"
+      style="display: flex; flex-wrap: wrap; gap: 20px; font-family: 'Montserrat', sans-serif;">
+      <!-- Left: Address Section -->
+      <div class="left-section" style="flex: 1 1 60%; min-width: 300px;">
+        <div class="store-header" style="display: flex; align-items: center; gap: 10px;">
+          <a href="{{url_for('cart')}}" style="font-size: 20px; text-decoration: none;">&#8592;</a>
+          <h2 style="margin: 0; color:#b32071;font-family:'montserrat'">SM Bakers</h2>
+        </div>
+
+        <div class="toggle-method" style="margin: 20px 0; display: flex; gap: 10px;">
+          <button class="active"
+            style="flex: 1; background: #ffd1df; color: #b32071; padding: 10px; border: 1px solid #b32071; border-radius: 10px;">Delivery
+            <span>(60 Mins)</span></button>
+          <button
+            style="flex: 1; background: #eee; color: #b32071; padding: 10px; border: none; border-radius: 10px;">Pickup</button>
+        </div>
+
+        <button onclick="toggleAddressForm()" class="add-address-btn" style="margin-bottom: 10px;background-color:#ffd1df;color:'#b32071';border:1px solid #b32071">+ Add New Address</button>
+
+        <div class="address-form" id="addressForm"
+          style="display: {{ 'block' if edit_address else 'none' }}; background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+          <form method="POST" action="{{ url_for('add_address') }}">
+            {% if edit_address %}
+            <input type="hidden" name="address_id" value="{{ edit_address.id }}">
+            {% endif %}
+            <div class="form-row"><input type="text" name="name" placeholder="Name"
+                value="{{ edit_address.name if edit_address else '' }}"> <input type="text" name="mobile"
+                placeholder="10-digit mobile" value="{{ edit_address.mobile if edit_address else '' }}"></div>
+            <div class="form-row"><input type="text" name="pincode" placeholder="Pincode"
+                value="{{ edit_address.pincode if edit_address else '' }}"> <input type="text" name="locality"
+                placeholder="Locality" value="{{ edit_address.locality if edit_address else '' }}"></div>
+            <div class="form-row"><textarea name="address"
+                placeholder="Area & Street">{{ edit_address.address if edit_address else '' }}</textarea></div>
+           
+            <div class="form-row">
+              <input type="text" name="city_district_town" placeholder="City/District/Town"
+                value="{{ edit_address.city_district_town if edit_address else '' }}">
+              
+              <select name="state">
+                <option value="">--Select State--</option>
+                {% for st in ['Maharashtra', 'Delhi', 'Gujarat', 'Karnataka'] %}
+                  <option value="{{ st }}"
+                    {% if (edit_address and edit_address.state == st) or (not edit_address and st == 'Maharashtra') %}
+                      selected
+                    {% endif %}>
+                    {{ st }}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="form-row"><input type="text" name="landmark" placeholder="Landmark (optional)"
+                value="{{ edit_address.landmark if edit_address else '' }}"> <input type="text" name="alternate_mobile"
+                placeholder="Alternate Phone (optional)"
+                value="{{ edit_address.alternate_mobile if edit_address else '' }}"></div>
+
+            <div class="form-radio-group">
+              <label>Address Type:</label>
+              {% for atype in ['Home', 'Work', 'Shipping', 'Billing'] %}
+              <label><input type="radio" name="address_type" value="{{ atype }}" {% if edit_address and
+                  edit_address.address_type==atype %}checked{% endif %}> {{ atype }}</label>
+              {% endfor %}
+            </div>
+
+            <div class="button-row">
+              <button type="submit" class="save-btn">SAVE</button>
+              <button type="button" onclick="hideAddressForm()" class="cancel-btn">CANCEL</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="add-panel">
+          {% for addr in addresses %}
+        <div class="address-box" data-address-id="{{ addr.id }}"
+          style="background: #fff; margin:  0; padding: 15px; border-radius: 8px; text-align: left; position: relative;">
+
+          <!-- Radio Button for Selecting This Address -->
+          <input type="radio" name="selected_address" value="{{ addr.id }}"
+            style="position: absolute; top: 15px; right: 15px; width: 10px; transform: scale(1.5);" required>
+
+          <div class="label">
+            {% if addr.address_type == 'Home' %}🏠 HOME
+            {% elif addr.address_type == 'Work' %}🏢 WORK
+            {% elif addr.address_type == 'Shipping' %}📦 SHIPPING
+            {% elif addr.address_type == 'Billing' %}💳 BILLING
+            {% else %}📍 OTHER
+            {% endif %}
+          </div>
+
+          <div class="name">{{ addr.name }} &nbsp;&nbsp; <strong>{{ addr.mobile }}</strong></div>
+          <div>{{ addr.address }}</div>
+          <div>{{ addr.city_district_town }}, {{ addr.state }} - {{ addr.pincode }}</div>
+          {% if addr.landmark %}<div>Landmark: {{ addr.landmark }}</div>{% endif %}
+          {% if addr.alternate_mobile %}<div>Alternate No: {{ addr.alternate_mobile }}</div>{% endif %}
+
+          <div class="button-row">
+            <form method="GET" action="{{ url_for('checkout') }}" style="display:inline;">
+              <input type="hidden" name="edit" value="{{ addr.id }}">
+              <button type="submit"><i class="fas fa-edit"></i>Edit</button>
+            </form>
+            <form method="POST" action="{{ url_for('delete_address', address_id=addr.id) }}"
+              onsubmit="return confirm('Are you sure?');" style="display:inline;">
+              <button type="submit"><i class="fas fa-trash-alt"></i>Delete</button>
+            </form>
+          </div>
+        </div>
+        {% endfor %}
+        </div>
+        <!-- CART ITEMS -->
+        <div class="product-section" style="margin-top: 30px;">
+          {% set totalAmount = 0 %}
+          {% for item in cart_items %}
+          <div class="product-card" style="background: #fff; margin-bottom: 20px; padding: 15px; border-radius: 10px;">
+            <div style="display:flex;gap:20px;">
+              <img src="{{ item.image }}" alt="" style="width:100px;height:100px;border-radius:8px;object-fit:cover;">
+              <div style="flex:1;">
+                <strong>{{ item.sub_productname }}</strong>
+                <p>Variant: {{ item.variant }} ₹{{ item.v_cost }} × {{ item.quantity }} = ₹{{ item.v_cost *
+                  item.quantity }}</p>
+                <p style="display: none;">Delivery: ₹<span class="delivery-cost">{{ item.delivery_cost }}</span></p>
+                <p style="display: none;">Packaging: ₹<span class="packaging-cost">{{ item.packaging_cost }}</span></p>
+                <strong>Accessories:</strong>
+                {% for i in range(1, 6) %}
+                {% set acc = item['acc_' ~ i] %}
+                {% set cost = item['a_cost' ~ i]|float %}
+                {% set qty = item['a_quantity' ~ i]|int %}
+                {% if acc and cost > 0 and qty != 0 %}
+                <p>{{ acc }}: ₹{{ '%.2f'|format(cost) }} × {{ qty }} = ₹{{ '%.2f'|format(cost * qty) }}</p>
+                {% endif %}
+                {% endfor %}
+                <p>Flavour: {{item.flavour}}</p>
+                <div class="grand-total">₹{{ item.total_price }}</div>
+              </div>
+            </div>
+          </div>
+          {% set totalAmount = totalAmount + item.total_price %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- RIGHT: BILL -->
+      <div class="bill-details" style="flex: 1 1 30%; background: white; padding: 20px; border-radius: 10px;font-family:'montserrat';">
+        <!-- JS fills this -->
+      </div>
+    </div>
+
+    <!-- Address Error Modal -->
+    <div class="modal fade" id="addressModal" tabindex="-1" aria-hidden="true" role="dialog"
+      aria-labelledby="addressModalLabel">
+      <div class="modal-dialog modal-dialog-centered modal-sm modal-dialog-scrollable">
+        <div class="modal-content rounded-3 shadow-sm">
+          <div class="modal-header border-0 pb-0">
+            <h6 class="modal-title text-danger" id="addressModalLabel" style="font-family: 'Montserrat';">Missing
+              Delivery Address</h6>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center"
+            style="color: #b32071; font-weight: 500; font-family: 'Montserrat'; font-size: 14px;">
+            Please select a delivery address before proceeding if address not available Add New Address.
+          </div>
+        </div>
+      </div>
+    </div>
+   
+
+
+
+
+    <script>
+  // ✅ Default "Maharashtra" preselected on form load
+  document.addEventListener("DOMContentLoaded", function () {
+    const stateSelect = document.querySelector('select[name="state"]');
+    if (stateSelect && !stateSelect.value) {
+      stateSelect.value = "Maharashtra";
+    }
+  });
+
+  // ✅ Show Address Form
+  function toggleAddressForm() {
+    const formContainer = document.getElementById('addressForm');
+    const form = formContainer.querySelector("form");
+
+    formContainer.style.display = 'block';
+    form.reset();
+
+    const idInput = form.querySelector('input[name="address_id"]');
+    if (idInput) idInput.remove();
+
+    // Keep default Maharashtra selected even after reset
+    const stateSelect = form.querySelector('select[name="state"]');
+    if (stateSelect) stateSelect.value = "Maharashtra";
+  }
+
+  // ✅ Hide Address Form
+  function hideAddressForm() {
+    const formContainer = document.getElementById('addressForm');
+    const form = formContainer.querySelector("form");
+
+    form.reset();
+    const idInput = form.querySelector('input[name="address_id"]');
+    if (idInput) idInput.remove();
+    formContainer.style.display = 'none';
+  }
+
+  // ✅ Handle Address Form Submit + Validation
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("#addressForm form");
+    if (!form) return;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // 1️⃣ Basic Validation
+      const requiredFields = {
+        name: "Name",
+        mobile: "Mobile Number",
+        pincode: "Pincode",
+        locality: "Locality",
+        address: "Address",
+        city_district_town: "City/District/Town",
+        state: "State"
+      };
+
+      let missingFields = [];
+
+      for (let [field, label] of Object.entries(requiredFields)) {
+        const value = form.querySelector(`[name="${field}"]`)?.value.trim();
+        if (!value) missingFields.push(label);
+      }
+
+      if (missingFields.length > 0) {
+        showPopup(
+          `Please fill the following required field(s):<br><b>${missingFields.join(", ")}</b>`
+        );
+        return;
+      }
+
+      // 2️⃣ Proceed to Save
+      const formData = new FormData(form);
+      const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+
+      fetch("{{ url_for('add_address') }}", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
+          ...(csrfToken && { 'X-CSRFToken': csrfToken })
+        },
+        body: formData
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            hideAddressForm();
+            appendAddressBox(data.address, data.is_edit);
+            window.location.href = "{{ url_for('checkout') }}";
+          } else {
+            showPopup("There was an error saving your address. Please try again.");
+          }
+        })
+        .catch(err => {
+          console.error("Failed:", err);
+          showPopup("Something went wrong while saving your address. Please try again.");
+        });
+    });
+  });
+
+  // ✅ Popup Function
+  function showPopup(message) {
+    const popup = document.createElement("div");
+    popup.innerHTML = `
+      <div style="
+        position: fixed;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        background: white;
+        color: #b32071;
+        border: 2px solid #b32071;
+        border-radius: 10px;
+        padding: 20px 25px;
+        z-index: 2000;
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        min-width: 320px;
+        animation: fadeInPopup 0.3s ease;
+      ">
+        <p style="margin-bottom: 15px; font-weight: 600;">${message}</p>
+        <button style="
+          background: #ffd1df;
+          border: none;
+          color: #b32071;
+          font-weight: bold;
+          border-radius: 6px;
+          padding: 8px 20px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        " onclick="this.parentElement.parentElement.remove()">OK</button>
+      </div>
+    `;
+    document.body.appendChild(popup);
+  }
+
+  // ✅ Add fade-in animation
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes fadeInPopup {
+      from { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+  `;
+  document.head.appendChild(style);
+
+  // ✅ Append Address Box (unchanged)
+  function appendAddressBox(addr, isEdit = false) {
+    const box = document.createElement("div");
+    box.className = "address-box";
+    box.setAttribute("data-address-id", addr.id);
+    box.style = "background: #fff; margin: 10px 0; padding: 15px; border-radius: 8px; position: relative;";
+
+    box.innerHTML = `
+      <input type="radio" name="selected_address" value="${addr.id}" style="position: absolute; top: 15px; right: 15px; transform: scale(1.4);width: 50px;">
+      <div class="label">${addr.address_type === "Home" ? "🏠 HOME" :
+        addr.address_type === "Work" ? "🏢 WORK" :
+        addr.address_type === "Shipping" ? "📦 SHIPPING" :
+        addr.address_type === "Billing" ? "💳 BILLING" : "📍 OTHER"}</div>
+      <div class="name">${addr.name} &nbsp;&nbsp; <strong>${addr.mobile}</strong></div>
+      <div>${addr.address}</div>
+      <div>${addr.city_district_town}, ${addr.state} - ${addr.pincode}</div>
+      ${addr.landmark ? `<div>Landmark: ${addr.landmark}</div>` : ''}
+      ${addr.alternate_mobile ? `<div>Alternate No: ${addr.alternate_mobile}</div>` : ''}
+      <div class="button-row" style="margin-top: 10px;">
+        <form method="GET" action="/checkout" style="display:inline;">
+          <input type="hidden" name="edit" value="${addr.id}">
+          <button type="submit">✏️ Edit</button>
+        </form>
+        <form method="POST" action="/delete_address/${addr.id}" onsubmit="return confirm('Are you sure?');" style="display:inline;">
+          <button type="submit">🗑️ Delete</button>
+        </form>
+      </div>
+    `;
+
+    const section = document.querySelector(".left-section");
+    const productSection = document.querySelector(".product-section");
+
+    if (isEdit) {
+      const oldBox = document.querySelector(`.address-box[data-address-id="${addr.id}"]`);
+      if (oldBox) oldBox.replaceWith(box);
+    } else {
+      if (productSection) {
+        section.insertBefore(box, productSection);
+      } else {
+        section.appendChild(box);
+      }
+    }
+  }
+
+  // ✅ Checkout Calculations (same as before)
+  window.addEventListener("DOMContentLoaded", () => {
+    let totalAmount = 0;
+    document.querySelectorAll(".grand-total").forEach(el => {
+      totalAmount += parseFloat(el.textContent.replace("₹", ""));
+    });
+
+    let deliveryCost = 0;
+    document.querySelectorAll(".delivery-cost").forEach(el => {
+      deliveryCost += parseFloat(el.textContent);
+    });
+
+    let packagingCost = 0;
+    document.querySelectorAll(".packaging-cost").forEach(el => {
+      packagingCost += parseFloat(el.textContent);
+    });
+
+    const packaging = packagingCost;
+    const subtotal = totalAmount + deliveryCost + packaging;
+    const gst = subtotal * 0.18;
+    const grandTotal = subtotal + gst;
+
+    // In your checkout.html, find the JavaScript section that builds the bill-details
+// Replace the bill-details innerHTML generation in your checkout.html with this:
+
+document.querySelector(".bill-details").innerHTML = `
+  <h3 style="color:#b32071;font-family:'montserrat';">Bill Details</h3>
+  <p>Subtotal <span style="float:right">₹${totalAmount.toFixed(2)}</span></p>
+  <p>Delivery Charges <span style="float:right">₹${deliveryCost.toFixed(2)}</span></p>
+  <p>Packaging Charges <span style="float:right">₹${packagingCost.toFixed(2)}</span></p>
+  <p>GST <span style="float:right">₹${gst.toFixed(2)}</span></p>
+  <hr />
+  <h4 style="color:#b32071; font-size:25px;">Grand Total <span style="float:right">₹${grandTotal.toFixed(2)}</span></h4>
+  
+  <form action="{{ url_for('place_order') }}" method="POST" onsubmit="return validateAddressSelection()">
+    <input type="hidden" name="subtotal" value="${totalAmount.toFixed(2)}">
+    <input type="hidden" name="grand_total" value="${grandTotal.toFixed(2)}">
+    <input type="hidden" name="packaging" value="${packaging.toFixed(2)}">
+    <input type="hidden" name="gst" value="${gst.toFixed(2)}">
+    <input type="hidden" name="selected_address_id" id="selected_address_id">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    
+    <button type="submit" style="width: 100%; background: #ffd1df; color: #b32071; padding: 10px; border: 1px solid #b32071; border-radius: 8px; font-weight: bold; margin-top: 10px;">
+      Place Order ₹${grandTotal.toFixed(2)}
+    </button>
+  </form>
+`;                                                                                                                                                                                                                                                           
+  });
+
+  // <button type="submit" style="width: 100%; background: #ffd1df; color: #b32071; padding: 10px; border: 1px solid #b32071; border-radius: 8px; font-weight: bold; margin-top: 10px;">
+  //   Pay Securely ₹${grandTotal.toFixed(2)}
+  // </button>
+
+  // ✅ Address Selection Validation
+  function validateAddressSelection() {
+    const selected = document.querySelector('input[name="selected_address"]:checked');
+    if (!selected) {
+      showPopup("Please select an address before placing your order.");
+      return false;
+    }
+    document.getElementById("selected_address_id").value = selected.value;
+    return true;
+  }
+</script>
+
+
+    <!-- Button to trigger modal -->
+    <style>
+      /* Style the span inside label */
+      .tags label span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background: #f5f5f5;
+        font-size: 14px;
+        transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+      }
+
+      /* Hover effect */
+      .tags label span:hover {
+        background-color: #c2185b;
+        color: white;
+        border-color: #a3154a;
+      }
+
+      /* Checked effect */
+      .tags input[type="radio"]:checked+span {
+        background-color: #c2185b;
+        color: white;
+        border-color: #a3154a;
+      }
+
+      .address-box input[type="radio"]:checked+label {
+        border: 2px solid #b32071;
+        background-color: #fff0f5;
+      }
+
+
+      .form-section input {
+        width: 100%;
+        margin-bottom: 8px;
+        padding: 6px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .save-btn {
+        padding: 8px 16px;
+        background-color: #b32071;
+        color: white;
+        font-size: 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .save-btn:hover {
+        background-color: #a31c63;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .popup-content {
+          flex-direction: column;
+        }
+        .add-panel{
+          display: flex;
+          flex-direction: column;
+        }
+        .address-box{
+          width: 100%;
+        }
+      }
+    </style>
+    <style>
+      button.trigger-btn {
+        padding: 10px 15px;
+        margin: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      /* Popup Background */
+      .popup-overlay {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.4);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      /* Smaller Form Container */
+      .form-container {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        width: 90%;
+        max-width: 500px;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+      }
+
+      .form-container input,
+      .form-container select,
+      .form-container textarea {
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      textarea {
+        resize: vertical;
+        height: 60px;
+      }
+
+      .form-row {
+        display: flex;
+        gap: 10px;
+      }
+
+      .form-row>* {
+        flex: 1;
+      }
+
+      .radio-group {
+        margin: 10px 0;
+        display: flex;
+      }
+
+      .radio-group label {
+        margin-right: 10px;
+        font-size: 14px;
+      }
+
+      .btn-group {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+      }
+
+      .btn-group button {
+        padding: 8px 16px;
+        border: none;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .btn-save {
+        background-color: #b32071;
+      }
+
+      .btn-cancel {
+        background-color: #b32071;
+      }
+
+      /* Close Button */
+      .close-btn {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        font-size: 20px;
+        cursor: pointer;
+        color: #888;
+      }
+    </style>
+
+    <style>
+      /* Basic layout */
+      .address-form {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 12px;
+        max-width: 600px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Form rows */
+      .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+
+      /* Input fields */
+      input[type="text"],
+      textarea,
+      select {
+        flex: 1;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      textarea.form-textarea {
+        width: 100%;
+        height: 80px;
+        resize: vertical;
+      }
+
+      /* Radio button group */
+      .form-radio-group {
+        margin-bottom: 15px;
+        font-size: 14px;
+      }
+
+      .form-radio-group label {
+        margin-right: 15px;
+      }
+
+      /* Buttons */
+      .button-row {
+        display: flex;
+        gap: 10px;
+      }
+
+      .save-btn,
+      .cancel-btn,
+      .add-address-btn {
+        padding: 10px 18px;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+
+      .save-btn {
+        background-color: #28a745;
+        color: white;
+      }
+
+      .save-btn:hover {
+        background-color: #218838;
+      }
+
+      .cancel-btn {
+        background-color: #dc3545;
+        color: white;
+      }
+
+      .cancel-btn:hover {
+        background-color: #c82333;
+      }
+
+      .add-address-btn {
+        background-color: #ffd1df;
+        color: #b32071;
+        border: 2px solid #b32071;
+        margin-top: 15px;
+        border-radius: 6px;
+      }
+
+      .add-address-btn:hover {
+        background-color: #a3154a;
+        color: #ffffff;
+      }
+
+      /* Existing address box */
+      .address-box {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 25px;
+        max-width: 600px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .address-box .label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #555;
+      }
+
+      .address-box .name {
+        font-size: 15px;
+        margin-bottom: 4px;
+      }
+
+      .button-row button {
+        background-color: #ffd1df;
+        color: #b32071;
+        border: 1px solid #b32071;
+        padding: 6px 12px;
+        margin: 2px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .button-row button:hover {
+        background-color: white;
+        color: #a3154a;
+        border: 1px solid #a3154a;
+      }
+
+      .button-row button i {
+        margin-right: 6px;
+      }
+    </style>
+
+
+
+
+
+    <style>
+      body {
+        background: #f3f1f7;
+      }
+
+      .checkout-wrapper {
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+
+        font-family: Arial, sans-serif;
+      }
+
+      /* Left Side */
+      .left-section {
+        flex: 2;
+        background: #fff;
+        padding: 20px;
+        border-radius: 20px;
+      }
+
+      .store-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .back-btn {
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        font-size: 20px;
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+      }
+
+      .toggle-method {
+        display: flex;
+        background: #f7f7f7;
+        margin: 20px 0;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .toggle-method button {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        background: transparent;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .toggle-method .active {
+        background: black;
+        color: white;
+      }
+
+      .address-box {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      .add-address {
+        border: 2px dotted #000;
+        padding: 15px;
+        border-radius: 12px;
+        background: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .no-address {
+        margin-top: 10px;
+        color: #777;
+      }
+
+      .offer-banner {
+        background: #fff6e5;
+        padding: 12px;
+        margin: 20px 0;
+        border-radius: 12px;
+        font-weight: bold;
+      }
+
+      .gift-section {
+        background: #fff;
+        border-radius: 12px;
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 6px solid #ff6e6e;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .gift-icon {
+        font-size: 22px;
+      }
+
+      .add-details {
+        color: #000;
+        font-weight: bold;
+        text-decoration: underline;
+      }
+
+      /* Right Side */
+      .right-section {
+        flex: 1;
+        background: #fff;
+        padding: 20px;
+        border-radius: 20px;
+        min-width: 300px;
+      }
+
+      .offers-btn {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #000;
+        cursor: pointer;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      .bill-details h3 {
+        margin-bottom: 10px;
+      }
+
+      .bill-details p,
+      .bill-details h4 {
+        display: flex;
+        justify-content: space-between;
+        margin: 8px 0;
+      }
+
+      .confirm-btn {
+        width: 100%;
+        padding: 12px;
+        background: #efa1cc;
+        border: none;
+        color: white;
+        border-radius: 12px;
+        font-weight: bold;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+
+      .checkbox-label {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        margin-top: 12px;
+        gap: 8px;
+      }
+
+      .delivery-popup-wrapper,
+      .pickup-popup-wrapper {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      .delivery-popup,
+      .pickup-popup {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 400px;
+        text-align: center;
+        position: relative;
+      }
+
+      .delivery-popup-close,
+      .pickup-popup-close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 22px;
+        cursor: pointer;
+      }
+
+      .delivery-popup-img,
+      .pickup-popup-img {
+        width: 100px;
+        margin: 20px 0;
+      }
+
+      .delivery-popup-btn,
+      .pickup-popup-btn {
+        padding: 10px 20px;
+        margin: 10px 10px 0;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .delivery-popup-btn.cancel,
+      .pickup-popup-btn.cancel {
+        background: #eee;
+      }
+
+      .delivery-popup-btn.confirm,
+      .pickup-popup-btn.confirm {
+        background: #ffd1df;
+        border:1px solid #b32071;
+        color: #b32071;
+      }
+
+      .toggle-method button.active {
+        background-color: #b32071;
+        color: white;
+        border-radius: 10px;
+      }
+
+      @media (max-width: 576px) {
+        #addressModal .modal-content {
+          padding: 10px;
+          font-size: 13px;
+        }
+      }
+      /* ── Blink animation for address boxes ───────────────────────── */
+      @keyframes blink-border {
+        0%,100% { box-shadow: 0 0 0 3px #b32071; }   /* pink halo */
+        50%      { box-shadow: 0 0 0 3px transparent; }
+      }
+
+      .address-box.blink {
+        animation: blink-border 0.4s ease-in-out 0s 5;   /* 5 cycles ≈ 2 s */
+      }
+    </style>
+    <!-- Delivery Confirm Popup -->
+    <div id="deliveryConfirmPopup" class="delivery-popup-wrapper">
+      <div class="delivery-popup">
+        <span class="delivery-popup-close" onclick="closeDeliveryPopup()">×</span>
+        <h2 class="delivery-popup-title" style="font-family:'montserrat';color:#a3154a;">Delivery Order</h2>
+        <i class="fa fa-basket-shopping" style="color:#a3154a;font-size:30px"></i>
+        <p class="delivery-popup-text" style="font-family:'montserrat';color:black;">Your order will be delivered to
+          your respective address</p>
+        <div class="delivery-popup-actions">
+          <button class="delivery-popup-btn cancel" onclick="closeDeliveryPopup()">Cancel</button>
+          <button class="delivery-popup-btn confirm" onclick="confirmDelivery()">Confirm Delivery</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pickup Confirm Popup -->
+    <div id="pickupConfirmPopup" class="pickup-popup-wrapper">
+      <div class="pickup-popup">
+        <span class="pickup-popup-close" onclick="closePickupPopup()">×</span>
+        <h2 class="pickup-popup-title" style="font-family:'montserrat';color:#a3154a;">Pickup Order</h2>
+        <i class="fa fa-bag-shopping" style="color:#a3154a;font-size:30px"></i>
+        <p class="pickup-popup-text" style="font-family:'montserrat';color:black;">You have to collect the order from
+          <strong>Dombivli Thane</strong>
+        </p>
+        <div class="pickup-popup-actions">
+          <button class="pickup-popup-btn cancel" onclick="closePickupPopup()">Cancel</button>
+          <button class="pickup-popup-btn confirm" onclick="confirmPickup()">Confirm Pickup</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const deliveryBtn = document.querySelector('.toggle-method button:nth-child(1)');
+      const pickupBtn = document.querySelector('.toggle-method button:nth-child(2)');
+
+      // Open Delivery Popup
+      deliveryBtn.addEventListener('click', function () {
+        document.getElementById('deliveryConfirmPopup').style.display = 'flex';
+      });
+
+      // Open Pickup Popup
+      pickupBtn.addEventListener('click', function () {
+        document.getElementById('pickupConfirmPopup').style.display = 'flex';
+      });
+
+      // Close Delivery Popup
+      function closeDeliveryPopup() {
+        document.getElementById('deliveryConfirmPopup').style.display = 'none';
+      }
+
+      // Close Pickup Popup
+      function closePickupPopup() {
+        document.getElementById('pickupConfirmPopup').style.display = 'none';
+      }
+
+      // Confirm Delivery
+      function confirmDelivery() {
+        alert("Delivery Confirmed!");
+        closeDeliveryPopup();
+
+        // Update button styles
+        deliveryBtn.classList.add('active');
+        pickupBtn.classList.remove('active');
+      }
+
+      // Confirm Pickup
+      function confirmPickup() {
+        alert("Pickup Confirmed!");
+        closePickupPopup();
+
+        // Update button styles
+        pickupBtn.classList.add('active');
+        deliveryBtn.classList.remove('active');
+      }
+
+      function openAddressPopup() {
+        document.getElementById('addressPopup').style.display = 'flex';
+      }
+
+      function closeAddressPopup() {
+        document.getElementById('addressPopup').style.display = 'none';
+      }
+  // Grab the Bootstrap modal element
+  const addrModalEl = document.getElementById('addressModal');
+
+  // When the modal is completely hidden…
+  addrModalEl.addEventListener('hidden.bs.modal', () => {
+    const boxes = document.querySelectorAll('.address-box');
+
+    // add the blink class
+    boxes.forEach(b => b.classList.add('blink'));
+
+    // remove it again after 2 seconds
+    setTimeout(() =>
+      boxes.forEach(b => b.classList.remove('blink')),
+      2000);
+  });
+</script>
+    <!-- Footer Start -->
+<div class="container-fluid text-light footer my-4 mb-0 py-2 wow fadeIn" data-wow-delay="0.1s" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.78)), url('static/img/footer.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <div class="container py-3">
+        <div class="row g-3">
+            <!-- About SM Bakers -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">About SM Bakers</h4>
+                <p style="color: white; text-align: justify; letter-spacing: normal; word-spacing: normal; text-justify: inter-word; hyphens: auto;font-family: 'Montserrat'">At <b>SM Bakers,</b> we create delightful cakes and confections for every occasion. With our passion for baking, we ensure each creation is as memorable as your special moments.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">Quick Links</h4>
+                <a class="btn btn-link" href="{{ url_for('home') }}">Home</a>
+                <a class="btn btn-link" href="{{ url_for('about') }}">About Us</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Cake Variety</a>
+                <!-- <a class="btn btn-link" href="{{ url_for('gallery') }}">Gallery</a> -->
+                <a class="btn btn-link" href="{{ url_for('our_outlet') }}">Our Outlet</a>
+                <a class="btn btn-link" href="{{ url_for('contact') }}">Contact Us</a>
+                 <a class="btn btn-link" href="{{ url_for('franchise') }}">Franchise </a>
+            </div>
+
+            <!-- Services Links -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">Our Services</h4>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Chocolate Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Wedding Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Custom Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Anniversary Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Corporate Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety', category='baby_shower_cake') }}">Baby Shower Cakes</a>
+
+            </div>
+
+            <!-- Address -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">Office Address</h4>rashtra
+                    <i class="fa fa-map-marker-alt me-2" style="color:white;"></i>
+                    <a href="#" target="_blank" style="color: white; text-decoration: none;font-family: 'Montserrat'">
+                        Plot-100 Thane, Mumbai, Maharashtra.
+                    </a>
+                </p>
+
+                <p class="mb-2" style="color: white;">
+                    <i class="fa fa-phone me-2" style="color:white;"></i>
+                  <a
+                href="tel:+917474747474"
+                style="
+                  color: white;
+                  text-decoration: none;
+                  font-family: 'Montserrat';
+                "
+                >+91 7474747474</a
+              >
+                </p>
+
+                <p class="mb-2" style="color:white;">
+                    <i class="fa fa-envelope me-2" style="color: white;"></i>
+                    <a href="mailto:sanket.mahalee@gmail.com" style="color: white; text-decoration: none;font-family: 'Montserrat'">sanket.mahalee@gmail.com</a>
+                </p>
+
+                <div class="d-flex pt-2">
+                    <a class="btn btn-square btn-outline-light rounded-circle me-1" href="#" target="_blank"><i class="fab fa-instagram" style="color: white;"></i></a>
+                    <a class="btn btn-square btn-outline-light rounded-circle me-0" href="#" target="_blank"><i class="fab fa-facebook-f" style="color:white;"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+<!-- Copyright Start -->
+<div class="container-fluid copyright text-light py-2 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center mb-2 mb-md-0" style="font-family: 'Montserrat'; font-size: 14px;">
+                &copy; SM Bakers. All Rights Reserved. Powered By <a href="#" target="_blank" style="font-weight:600; color: white;">Sanket.</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Copyright End -->
+
+<script>
+  // ✅ Default "Maharashtra" preselected on form load
+  document.addEventListener("DOMContentLoaded", function () {
+    const stateSelect = document.querySelector('select[name="state"]');
+    if (stateSelect && !stateSelect.value) {
+      stateSelect.value = "Maharashtra";
+    }
+
+    // Add real-time validation listeners
+    setupFieldValidation();
+  });
+
+  // ✅ Real-time Field Validation Setup
+  function setupFieldValidation() {
+    const form = document.querySelector("#addressForm form");
+    if (!form) return;
+
+    // Name - Only letters and spaces
+    const nameInput = form.querySelector('input[name="name"]');
+    nameInput?.addEventListener('input', function(e) {
+      this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+    });
+
+    // Mobile - Only 10 digits
+    const mobileInput = form.querySelector('input[name="mobile"]');
+    mobileInput?.addEventListener('input', function(e) {
+      this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+    });
+
+    // Alternate Mobile - Only 10 digits
+    const altMobileInput = form.querySelector('input[name="alternate_mobile"]');
+    altMobileInput?.addEventListener('input', function(e) {
+      this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+    });
+
+    // Pincode - Only 6 digits
+    const pincodeInput = form.querySelector('input[name="pincode"]');
+    pincodeInput?.addEventListener('input', function(e) {
+      this.value = this.value.replace(/[^0-9]/g, '').slice(0, 6);
+    });
+
+    // City/District/Town - Only letters, spaces, and hyphens
+    const cityInput = form.querySelector('input[name="city_district_town"]');
+    cityInput?.addEventListener('input', function(e) {
+      this.value = this.value.replace(/[^a-zA-Z\s-]/g, '');
+    });
+
+    // Locality - Allow letters, numbers, spaces, and common symbols
+    const localityInput = form.querySelector('input[name="locality"]');
+    localityInput?.addEventListener('input', function(e) {
+      this.value = this.value.replace(/[^a-zA-Z0-9\s,.-]/g, '');
+    });
+  }
+
+  // ✅ Show Address Form
+  function toggleAddressForm() {
+    const formContainer = document.getElementById('addressForm');
+    const form = formContainer.querySelector("form");
+
+    formContainer.style.display = 'block';
+    form.reset();
+
+    const idInput = form.querySelector('input[name="address_id"]');
+    if (idInput) idInput.remove();
+
+    // Keep default Maharashtra selected even after reset
+    const stateSelect = form.querySelector('select[name="state"]');
+    if (stateSelect) stateSelect.value = "Maharashtra";
+  }
+
+  // ✅ Hide Address Form
+  function hideAddressForm() {
+    const formContainer = document.getElementById('addressForm');
+    const form = formContainer.querySelector("form");
+
+    form.reset();
+    const idInput = form.querySelector('input[name="address_id"]');
+    if (idInput) idInput.remove();
+    formContainer.style.display = 'none';
+  }
+
+  // ✅ Enhanced Form Validation
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("#addressForm form");
+    if (!form) return;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Validation Rules
+      const validations = {
+        name: {
+          label: "Name",
+          pattern: /^[a-zA-Z\s]{2,50}$/,
+          message: "Name should contain only letters (2-50 characters)"
+        },
+        mobile: {
+          label: "Mobile Number",
+          pattern: /^[6-9]\d{9}$/,
+          message: "Mobile number must be 10 digits and start with 6-9"
+        },
+        pincode: {
+          label: "Pincode",
+          pattern: /^\d{6}$/,
+          message: "Pincode must be exactly 6 digits"
+        },
+        locality: {
+          label: "Locality",
+          pattern: /^[a-zA-Z0-9\s,.-]{2,100}$/,
+          message: "Locality is required (2-100 characters)"
+        },
+        address: {
+          label: "Address",
+          pattern: /^.{5,200}$/,
+          message: "Address must be between 5-200 characters"
+        },
+        city_district_town: {
+          label: "City/District/Town",
+          pattern: /^[a-zA-Z\s-]{2,50}$/,
+          message: "City should contain only letters, spaces, or hyphens (2-50 characters)"
+        },
+        state: {
+          label: "State",
+          custom: (val) => val && val !== "",
+          message: "Please select a state"
+        }
+      };
+
+      let errors = [];
+
+      // Validate each field
+      for (let [field, rules] of Object.entries(validations)) {
+        const input = form.querySelector(`[name="${field}"]`);
+        if (!input) continue;
+
+        const value = input.value.trim();
+
+        // Check if field is empty
+        if (!value) {
+          errors.push(`${rules.label} is required`);
+          highlightField(input, false);
+          continue;
+        }
+
+        // Custom validation
+        if (rules.custom) {
+          if (!rules.custom(value)) {
+            errors.push(rules.message);
+            highlightField(input, false);
+          } else {
+            highlightField(input, true);
+          }
+          continue;
+        }
+
+        // Pattern validation
+        if (rules.pattern && !rules.pattern.test(value)) {
+          errors.push(rules.message);
+          highlightField(input, false);
+        } else {
+          highlightField(input, true);
+        }
+      }
+
+      // Validate alternate mobile (optional but must be valid if provided)
+      const altMobile = form.querySelector('input[name="alternate_mobile"]');
+      if (altMobile && altMobile.value.trim()) {
+        if (!/^[6-9]\d{9}$/.test(altMobile.value.trim())) {
+          errors.push("Alternate mobile must be a valid 10-digit number starting with 6-9");
+          highlightField(altMobile, false);
+        } else {
+          highlightField(altMobile, true);
+        }
+      }
+
+      // Validate address type selection
+      const addressTypeChecked = form.querySelector('input[name="address_type"]:checked');
+      if (!addressTypeChecked) {
+        errors.push("Please select an address type (Home/Work/Shipping/Billing)");
+      }
+
+      // Show errors or submit
+      if (errors.length > 0) {
+        showValidationPopup(errors);
+        return;
+      }
+
+      // All validations passed - proceed to save
+      const formData = new FormData(form);
+      const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+
+      fetch("{{ url_for('add_address') }}", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
+          ...(csrfToken && { 'X-CSRFToken': csrfToken })
+        },
+        body: formData
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            hideAddressForm();
+            showSuccessPopup("Address saved successfully!");
+            setTimeout(() => {
+              window.location.href = "{{ url_for('checkout') }}";
+            }, 1500);
+          } else {
+            showPopup("There was an error saving your address. Please try again.");
+          }
+        })
+        .catch(err => {
+          console.error("Failed:", err);
+          showPopup("Something went wrong while saving your address. Please try again.");
+        });
+    });
+  });
+
+  // ✅ Highlight Field (Green for valid, Red for invalid)
+  function highlightField(input, isValid) {
+    if (isValid) {
+      input.style.borderColor = '#28a745';
+      input.style.backgroundColor = '#f0fff4';
+    } else {
+      input.style.borderColor = '#dc3545';
+      input.style.backgroundColor = '#fff5f5';
+    }
+    
+    // Reset after 2 seconds
+    setTimeout(() => {
+      input.style.borderColor = '#ccc';
+      input.style.backgroundColor = 'white';
+    }, 2000);
+  }
+
+  // ✅ Validation Error Popup
+  function showValidationPopup(errors) {
+    const errorList = errors.map(err => `<li style="text-align: left; margin: 5px 0;">${err}</li>`).join('');
+    
+    const popup = document.createElement("div");
+    popup.innerHTML = `
+      <div style="
+        position: fixed;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        background: white;
+        color: #b32071;
+        border: 2px solid #b32071;
+        border-radius: 12px;
+        padding: 25px;
+        z-index: 2000;
+        font-family: 'Montserrat', sans-serif;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        max-width: 450px;
+        max-height: 80vh;
+        overflow-y: auto;
+        animation: fadeInPopup 0.3s ease;
+      ">
+        <h3 style="margin: 0 0 15px 0; color: #dc3545; font-size: 18px;">
+          ⚠️ Validation Errors
+        </h3>
+        <ul style="margin: 0; padding-left: 20px; line-height: 1.6;">
+          ${errorList}
+        </ul>
+        <button style="
+          background: #ffd1df;
+          border: 1px solid #b32071;
+          color: #b32071;
+          font-weight: bold;
+          border-radius: 8px;
+          padding: 10px 25px;
+          cursor: pointer;
+          margin-top: 20px;
+          width: 100%;
+          transition: all 0.2s ease;
+        " onclick="this.parentElement.parentElement.remove()">
+          OK, I'll Fix It
+        </button>
+      </div>
+    `;
+    document.body.appendChild(popup);
+  }
+
+  // ✅ Success Popup
+  function showSuccessPopup(message) {
+    const popup = document.createElement("div");
+    popup.innerHTML = `
+      <div style="
+        position: fixed;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        background: white;
+        color: #28a745;
+        border: 2px solid #28a745;
+        border-radius: 12px;
+        padding: 25px;
+        z-index: 2000;
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        min-width: 320px;
+        animation: fadeInPopup 0.3s ease;
+      ">
+        <div style="font-size: 48px; margin-bottom: 15px;">✓</div>
+        <p style="margin: 0; font-weight: 600; font-size: 16px;">${message}</p>
+      </div>
+    `;
+    document.body.appendChild(popup);
+  }
+
+  // ✅ Generic Popup Function
+  function showPopup(message) {
+    const popup = document.createElement("div");
+    popup.innerHTML = `
+      <div style="
+        position: fixed;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        background: white;
+        color: #b32071;
+        border: 2px solid #b32071;
+        border-radius: 10px;
+        padding: 20px 25px;
+        z-index: 2000;
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        min-width: 320px;
+        animation: fadeInPopup 0.3s ease;
+      ">
+        <p style="margin-bottom: 15px; font-weight: 600;">${message}</p>
+        <button style="
+          background: #ffd1df;
+          border: none;
+          color: #b32071;
+          font-weight: bold;
+          border-radius: 6px;
+          padding: 8px 20px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        " onclick="this.parentElement.parentElement.remove()">OK</button>
+      </div>
+    `;
+    document.body.appendChild(popup);
+  }
+
+  // Rest of your existing code (checkout calculations, address selection, etc.)
+  // ... keep all the existing code below this point
+</script>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn-about btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="static/lib/wow/wow.min.js"></script>
+    <script src="static/lib/easing/easing.min.js"></script>
+    <script src="static/lib/waypoints/waypoints.min.js"></script>
+    <script src="static/lib/counterup/counterup.min.js"></script>
+    <script src="static/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="static/js/main.js"></script>
+  </body>
+
+</html>

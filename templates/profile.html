@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SM BAKERS</title>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBDKQW4TCQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DBDKQW4TCQ');
+</script>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+    <!-- Favicon -->
+    <link href="static/img/favicon.ico" rel="icon" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icon Font Stylesheet -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Libraries Stylesheet -->
+    <link href="static/lib/animate/animate.min.css" rel="stylesheet" />
+    <link
+      href="static/lib/owlcarousel/assets/owl.carousel.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="static/css/style.css" rel="stylesheet" />
+  </head>
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px; /* Width of the scrollbar */
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: transparent; /* Light gray background */
+      border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #ffd1df; /* Gradient color */
+      border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ffd1df;
+    }
+  </style>
+  <body>
+
+   <!-- Topbar Start -->
+  <div class="container-fluid top-bar bg-primary  px-0" style="height: 35px;">
+    <div class="row gx-0 align-items-center" style="height: 100%;">
+      <div class="col-12 text-center">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <marquee behavior="scroll" direction="left" scrollamount="5"
+          style="font-size: 16px;font-family:'Great Vibes', cursive;  font-style: italic; color: black; font-weight: 500; padding-top: 5px">
+          <i class="fas fa-birthday-cake" style="color:#B32071"></i>
+          Try Our New 70+ Flavours |
+          <i class="fas fa-store" style="color:#B32071"></i>
+          Offer Available In All Our 45+ Stores. |
+          <i class="fas fa-gift" style="color:#B32071"></i>
+          Everyday Buy 1 Cake Get 1 Free 70+ Premium |
+          <i class="fas fa-phone" style="color:#B32071"></i>
+          For Order Connect With Us: <a href="tel:+918655481522" style="color:black">+91 8655481522</a>
+        </marquee>
+      </div>
+    </div>
+  </div>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-0 px-lg-5" style="background-color: white;">
+  <!-- Logo -->
+  <a href="{{ url_for('home') }}" class="navbar-brand ms-4 ms-lg-0">
+    <img src="static/img/SS_logo.png" style="height:80px;width: 80px;">
+  </a>
+  <!-- Toggler for mobile view -->
+  <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <!-- Desktop and Mobile Menu Links -->
+    <div class="navbar-nav ms-auto p-4 p-lg-0 w-100 d-flex justify-content-center">
+      <a class="btn btn-link" href="{{ url_for('home') }}">Home</a>
+      <a class="btn btn-link" href="{{ url_for('about') }}">About Us</a>
+      <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Cake Variety</a>
+      <!-- <a class="btn btn-link" href="{{ url_for('gallery') }}">Gallery</a> -->
+      <a class="btn btn-link" href="{{ url_for('our_outlet') }}">Our Outlet</a>
+      <a class="btn btn-link" href="{{ url_for('contact') }}">Contact Us</a>
+    </div>
+   <!-- Franchise Button (Visible in Desktop) -->
+    <a class="btn-about py-2 px-3 me-3  d-none d-lg-block " href="{{ url_for('franchise') }}" style="font-family: 'montserrat'; font-weight: 500">
+      FRANCHISE
+    </a>
+    <!-- Desktop Icons -->
+    <div class="d-none d-lg-flex ms-4 align-items-center">
+      <!-- Cart Icon -->
+      <a href="{{ url_for('cart') }}" class="position-relative me-3">
+        <div class="flex-shrink-0 btn-lg-square rounded-circle hover-icon">
+          <i class="fa fa-shopping-cart"></i>
+          <!-- <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{ cartitems|length }}
+          </span> -->
+        </div>
+      </a>
+      {% if not session.get('user_id') %}
+        <div class="d-inline-flex align-items-center me-3">
+          <div class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon">
+            <a href="{{ url_for('login') }}">
+              <i class="fas fa-sign-in-alt" style="margin-top: 5px"></i>
+            </a>
+          </div>
+        </div>
+      {% else %}
+        <div class="d-inline-flex align-items-center me-3">
+          <button class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon" id="openUserModal" style="background: none; border: none">
+            <i class="fa fa-user"></i>
+          </button>
+        </div>
+  <!-- Side Modal -->
+          <div id="modalOverlay" class="modal-overlay"></div>
+          <div id="userSideModal" class="side-modal">
+            <div class="side-modal-content">
+              <span class="close-btn" id="closeUserModal">&times;</span>
+              <!-- User Info Header -->
+              <div class="user-header">
+                <div class="user-avatar">
+                  <i class="fa fa-user-circle"></i>
+                </div>
+                <div class="user-details">
+                  {% for user in users%}
+                  <div class="user-name">{{user.name}}</div>
+                  <div class="user-email">{{user.email}}</div>
+                  {% endfor %}
+                </div>
+              </div>
+              <!-- User Menu Links -->
+              <div class="user-menu">
+                <a href="{{ url_for('personal_info') }}">
+                  <i class="fa fa-user"></i> Personal Information
+                </a>
+                <a href="{{ url_for('user_order_history') }}">
+                  <i class="fa fa-shopping-bag"></i> My Orders
+                </a>
+                <a href="{{url_for('manage_user_address')}}">
+                  <i class="fa fa-map-marker"></i> Manage Addresses
+                </a>
+              </div>
+              <!-- Footer -->
+              <div class="user-footer">
+                <a href="{{ url_for('logout') }}" class="logout-link"
+                  ><i class="fa fa-sign-out-alt"></i> Logout</a
+                >
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              const openBtn = document.getElementById("openUserModal");
+              const modal = document.getElementById("userSideModal");
+              const closeBtn = document.getElementById("closeUserModal");
+              const overlay = document.getElementById("modalOverlay");
+              function openModal() {
+                modal.classList.add("open");
+                overlay.classList.add("active");
+              }
+              function closeModal() {
+                modal.classList.remove("open");
+                overlay.classList.remove("active");
+              }
+              openBtn.addEventListener("click", openModal);
+              closeBtn.addEventListener("click", closeModal);
+              // Close modal when clicking outside (on overlay)
+              overlay.addEventListener("click", closeModal);
+            });
+          </script>
+      <!-- Instagram Icon -->
+      <a href="#" target="_blank" class="me-3 hover-icon" style="padding:15px">
+        <i class="fab fa-instagram "></i>
+      </a>
+    </div>
+    <!-- Mobile Franchise Button + Icons -->
+    <div class="d-flex d-lg-none flex-column align-items-center w-100  px-3" style="margin-top:-20px">
+      <!-- Franchise Button for Mobile -->
+      <a class="btn-about py-2 px-3 mt-3 w-80 text-center" href="{{ url_for('franchise') }}" style="font-family: 'montserrat'; font-weight: 500; background-color: #FFD1DF; color: #B32071;">
+        FRANCHISE <i class="fa fa-store"></i>
+      </a>
+      <br>
+      <div class="d-flex justify-content-center gap-3">
+        <!-- Cart Icon -->
+        <a href="{{ url_for('cart') }}" class="position-relative">
+          <div class="flex-shrink-0 btn-lg-square rounded-circle hover-icon" style="margin-right: 10px">
+            <i class="fa fa-shopping-cart"></i>
+            <!-- <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              {{ cartitems|length }}
+            </span> -->
+          </div>
+        </a>
+      {% if not session.get('user_id') %}
+  <div class="d-inline-flex align-items-center me-3">
+    <div class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon">
+      <a href="{{ url_for('login') }}">
+        <i class="fas fa-sign-in-alt" style="margin-top: 5px"></i>
+      </a>
+    </div>
+  </div>
+{% else %}
+  <!-- Mobile User Icon -->
+  <div class="d-inline-flex align-items-center me-3">
+    <button id="openUserModalMobile" class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon" style="background: none; border: none;">
+      <i class="fa fa-user"></i>
+    </button>
+  </div>
+  <!-- Side Modal -->
+  <div id="modalOverlayMobile" class="modal-overlay"></div>
+  <div id="userSideModalMobile" class="side-modal">
+    <div class="side-modal-content">
+      <span class="close-btn" id="closeUserModalMobile">&times;</span>
+      <!-- User Info Header -->
+      <div class="user-header">
+        <div class="user-avatar">
+          <i class="fa fa-user-circle"></i>
+        </div>
+        <div class="user-details">
+          {% for user in users %}
+            <div class="user-name">{{user.name}}</div>
+            <div class="user-email">{{ user.email }}</div>
+          {% endfor %}
+        </div>
+      </div>
+      <!-- User Menu Links -->
+      <div class="user-menu">
+        <a href="{{ url_for('personal_info') }}">
+          <i class="fa fa-user"></i> Personal Information
+        </a>
+        <a href="{{ url_for('user_order_history') }}">
+          <i class="fa fa-shopping-bag"></i> My Orders
+        </a>
+        <a href="{{ url_for('manage_user_address') }}">
+          <i class="fa fa-map-marker"></i> Manage Addresses
+        </a>
+      </div>
+      <!-- Footer -->
+      <div class="user-footer">
+        <a href="{{ url_for('logout') }}" class="logout-link">
+          <i class="fa fa-sign-out-alt"></i> Logout
+        </a>
+      </div>
+    </div>
+  </div>
+{% endif %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Mobile modal logic
+    const openMobile = document.getElementById("openUserModalMobile");
+    const modalMobile = document.getElementById("userSideModalMobile");
+    const closeMobile = document.getElementById("closeUserModalMobile");
+    const overlayMobile = document.getElementById("modalOverlayMobile");
+    openMobile?.addEventListener("click", () => {
+      modalMobile.classList.add("open");
+      overlayMobile.classList.add("active");
+    });
+    closeMobile?.addEventListener("click", () => {
+      modalMobile.classList.remove("open");
+      overlayMobile.classList.remove("active");
+    });
+    overlayMobile?.addEventListener("click", () => {
+      modalMobile.classList.remove("open");
+      overlayMobile.classList.remove("active");
+    });
+  });
+</script>
+        <!-- Instagram Icon -->
+        <a href="#" target="_blank">
+          <i class="fab fa-instagram hover-icon" style=" font-size: 20px;"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+<style>
+  /* Navbar background color */
+  .navbar-light {
+    background-color: white !important;
+  }
+  /* Change the menu link color to dark */
+  .navbar-nav .nav-link {
+    color: #333 !important;
+  }
+  /* Change the color of the active link */
+  .navbar-nav .nav-link.active {
+    color: #FFD1DF !important;
+  }
+  /* Add hover effect on menu links */
+  .navbar-nav .nav-link:hover {
+    color: #FFD1DF !important;
+  }
+  /* Center the Navbar Links and Icons in Mobile View */
+  @media (max-width: 991px) {
+    .navbar-nav {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+    .navbar-nav .btn-link {
+      margin: 0 10px; /* Adds space between links */
+    }
+    .d-flex.justify-content-center {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .d-flex.justify-content-center a {
+      font-size: 18px;
+    }
+    .d-none.d-lg-flex {
+      display: none !important;
+    }
+    /* Franchise Button in Mobile View */
+    .btn-about {
+      font-size: 16px;
+      background-color: #FFD1DF;
+      color: #B32071;
+      text-align: center;
+    }
+    .btn-about:hover {
+      background-color: #B32071;
+      color: white;
+    }
+  }
+</style>
+
+    <!-- Navbar End -->
+    <br><br><br>
+  <style>
+    .edit-profile-card {
+      max-width: 450px;
+      background-color: #fff;
+      margin: 20px auto;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    .edit-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .edit-header i {
+      font-size: 20px;
+      color: black;
+      cursor: pointer;
+    }
+
+    .user-name {
+      margin-top: 15px;
+      font-size: 20px;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .user-phone {
+      text-align: center;
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    form label {
+      display: block;
+      margin-top: 15px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 95%;
+      padding: 10px 14px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      margin-top: 6px;
+      background-color: #f7f7f7;
+    }
+
+    .gender-options {
+      display: flex;
+      gap: 20px;
+      margin-top: 8px;
+    }
+
+    .gender-options label {
+      font-weight: 400;
+      font-size: 14px;
+    }
+
+    .gender-options input {
+      margin-right: 6px;
+    }
+
+    .update-btn {
+      width: 100%;
+      margin-top: 25px;
+      background-color: #ff9999;
+      color: #000;
+      font-weight: 600;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .update-btn:hover {
+      background-color: #fe8888;
+    }
+  </style>
+  <body>
+<style>
+  /* Parallax Background */
+  body {
+    margin: 0;
+    background: linear-gradient(rgba(233, 78, 119, 0.6), rgba(0, 0, 0, 0.4)),
+          url('static/img/image_bg2.png') no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: fixed;
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .edit-profile-card {
+    max-width: 500px;
+    margin: 80px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .edit-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .edit-header i {
+    color: #b32071;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  hr {
+    border: none;
+    border-top: 2px solid #b32071;
+    margin: 20px 0;
+  }
+
+  .edit-profile-body form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  label {
+    font-weight: 500;
+    color: #b32071;
+     font-family:'montserrat';
+    margin-bottom: 4px;
+  }
+
+  .form-control {
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family:'montserrat';
+    font-size: 15px;
+    background: #fff;
+    transition: border 0.3s;
+  }
+
+  .form-control:focus {
+    border-color: #b32071;
+    outline: none;
+  }
+
+  .gender-options {
+    display: flex;
+    gap: 15px;
+  }
+
+  .gender-options label {
+    font-weight: normal;
+    color: #333;
+    display: flex;
+     font-family:'montserrat';
+    align-items: center;
+    gap: 5px;
+  }
+
+  .update-btn {
+    padding: 12px;
+    background-color: white;
+    border: 1px solid #b32071;
+    color: #b32071;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family:'montserrat';
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .update-btn:hover {
+    background-color: #ffd1df;
+    border: 1px solid #b32071;
+    color: #b32071;
+  }
+
+  @media (max-width: 600px) {
+    .edit-profile-card {
+      margin: 40px 20px;
+      padding: 20px;
+    }
+
+    .edit-header {
+      font-size: 18px;
+    }
+  }
+</style>
+
+<div class="edit-profile-card">
+  <div class="edit-header">
+    <a href="{{ url_for('home') }}">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <span>Edit Profile</span>
+  </div>
+
+  <hr />
+
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  <div style="max-width: 500px; margin: 10px auto;">
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}" role="alert" style="font-weight:600;">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% endwith %}
+  <style>
+  .alert-success {
+      background: #d4edda;
+      color: #155724;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #c3e6cb;
+  }
+  </style>
+  <script>
+setTimeout(function(){
+    document.querySelectorAll('.alert').forEach(e => e.style.display = 'none');
+}, 3000);
+</script>
+
+
+
+
+  <div class="edit-profile-body">
+    <form method="POST">
+      <label>Full Name</label>
+      <input type="text" name="name" class="form-control" value="{{ user.name }}" required />
+
+      <label>Email Address (Optional)</label>
+      <input type="email" name="email" class="form-control" value="{{ user.email or '' }}" />
+
+      <label>Phone Number</label>
+      <input type="text" name="mobile_no" class="form-control" value="{{ user.mobile_no }}" required />
+
+     
+      <div class="gender-options">
+         <label style="color:#b32071; font-weight: 500;">Gender</label>
+        <label><input type="radio" name="gender" value="male" {% if user.gender == 'male' %}checked{% endif %} /> Male</label>
+        <label><input type="radio" name="gender" value="female" {% if user.gender == 'female' %}checked{% endif %} /> Female</label>
+      </div>
+
+      <label>Date of Birth (Optional)</label>
+      <input type="date" name="dob" class="form-control" value="{{ user.birthday|default('', true) }}" />
+
+      <label>Anniversary (Optional)</label>
+      <input type="date" name="anniversary" class="form-control" value="{{ user.anniversary|default('', true) }}" />
+
+      <button type="submit" class="update-btn">Update Changes</button>
+    </form>
+  </div>
+</div>
+
+    
+<!-- Footer Start -->
+<div class="container-fluid text-light footer my-4 mb-0 py-2 wow fadeIn" data-wow-delay="0.1s" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.78)), url('static/img/footer.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <div class="container py-3">
+        <div class="row g-3">
+            <!-- About SM Bakers -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">About SM Bakers</h4>
+                <p style="color: white; text-align: justify; letter-spacing: normal; word-spacing: normal; text-justify: inter-word; hyphens: auto;font-family: 'Montserrat'">At <b>SM Bakers,</b> we create delightful cakes and confections for every occasion. With our passion for baking, we ensure each creation is as memorable as your special moments.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">Quick Links</h4>
+                <a class="btn btn-link" href="{{ url_for('home') }}">Home</a>
+                <a class="btn btn-link" href="{{ url_for('about') }}">About Us</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Cake Variety</a>
+                <!-- <a class="btn btn-link" href="{{ url_for('gallery') }}">Gallery</a> -->
+                <a class="btn btn-link" href="{{ url_for('our_outlet') }}">Our Outlet</a>
+                <a class="btn btn-link" href="{{ url_for('contact') }}">Contact Us</a>
+                      <a class="btn btn-link" href="{{ url_for('franchise') }}">Franchise </a>
+                
+            </div>
+
+            <!-- Services Links -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">Our Services</h4>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Chocolate Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Wedding Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Custom Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Anniversary Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Corporate Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety', category='baby_shower_cake') }}">Baby Shower Cakes</a>
+
+            </div>
+
+            <!-- Address -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">Office Address</h4>
+                <p class="mb-2" style="color: white; text-align: justify;">
+                    <i class="fa fa-map-marker-alt me-2" style="color:white;"></i>
+                    <a href="#" target="_blank" style="color: white; text-decoration: none;font-family: 'Montserrat'">
+                        Plot No A-1, Thane, Mumbai, Maharashtra.
+                    </a>
+                </p>
+
+                <p class="mb-2" style="color: white;">
+                    <i class="fa fa-phone me-2" style="color:white;"></i>
+                      <a
+                href="tel:+918655481522"
+                style="
+                  color: white;
+                  text-decoration: none;
+                  font-family: 'Montserrat';
+                "
+                >+91 8655481522</a
+              >
+                </p>
+
+                <p class="mb-2" style="color:white;">
+                    <i class="fa fa-envelope me-2" style="color: white;"></i>
+                    <a href="mailto:sanket.mahalee@gmail.com" style="color: white; text-decoration: none;font-family: 'Montserrat'">sanket.mahalee@gmail.com</a>
+                </p>
+
+                <div class="d-flex pt-2">
+                    <a class="btn btn-square btn-outline-light rounded-circle me-1" href="#" target="_blank"><i class="fab fa-instagram" style="color: white;"></i></a>
+                    <a class="btn btn-square btn-outline-light rounded-circle me-0" href="#" target="_blank"><i class="fab fa-facebook-f" style="color:white;"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+<!-- Copyright Start -->
+<div class="container-fluid copyright text-light py-2 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center mb-2 mb-md-0" style="font-family: 'Montserrat'; font-size: 14px;">
+                &copy; SM Bakers. All Rights Reserved. Powered By <a href="#" target="_blank" style="font-weight:600; color: white;">Sanket.</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Copyright End -->
+
+
+
+      <!-- Back to Top -->
+      <a href="#" class="btn-about btn-lg-square rounded-circle back-to-top"
+        ><i class="bi bi-arrow-up"></i
+      ></a>
+
+      <!-- JavaScript Libraries -->
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="static/lib/wow/wow.min.js"></script>
+      <script src="static/lib/easing/easing.min.js"></script>
+      <script src="static/lib/waypoints/waypoints.min.js"></script>
+      <script src="static/lib/counterup/counterup.min.js"></script>
+      <script src="static/lib/owlcarousel/owl.carousel.min.js"></script>
+
+      <!-- Template Javascript -->
+      <script src="static/js/main.js"></script>
+    </section>
+  </body>
+</html>

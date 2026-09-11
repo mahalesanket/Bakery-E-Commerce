@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <title>Document</title>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBDKQW4TCQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DBDKQW4TCQ');
+</script>
+  </head>
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .main {
+      display: flex;
+      width: 98vw;
+      height: 93vh;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 20%;
+      height: 100%;
+      border-right: 2px solid #d6336c;
+      background-color: #fce8ef; /* Soft background to match pink theme */
+      padding: 20px 0px;
+      position: fixed;
+      overflow: hidden;
+      overflow-y: scroll;
+      overflow-y: scroll;
+      scrollbar-width: none; /* For Firefox */
+      -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    }
+    &::-webkit-scrollbar {
+      display: none; /* For Chrome, Safari, and Opera */
+    }
+    .left a:nth-last-child(1) {
+      margin-bottom: 50px;
+    }
+
+    .left p {
+      font-size: 20px;
+      font-weight: bold;
+      color: #d6336c;
+      margin-bottom: 10px;
+    }
+
+    .left hr {
+      width: 80%;
+      border: 1px solid #d6336c;
+      margin-bottom: 20px;
+    }
+
+    .left i {
+      margin-right: 8px; /* space between icon and text */
+      color: #444; /* dark gray icon color */
+      font-size: 16px; /* adjust icon size */
+      vertical-align: middle; /* align icon with text */
+      transition: color 0.3s; /* smooth hover effect */
+    }
+
+    .left a.active i {
+      color: #ffffff; /* icon color on hover */
+    }
+
+    .left a {
+      text-decoration: none;
+      color: #333;
+      margin: 7px 0;
+      font-weight: 500;
+      padding: 12px 15px;
+      width: 80%;
+      text-align: left;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .left a:hover {
+      background-color: #d6336c;
+      color: white;
+      text-decoration: none;
+    }
+
+    .left a.active {
+      background-color: #d6336c;
+      color: white;
+      font-weight: bold;
+      border: 2px solid #d6336c;
+      box-shadow: 0 4px 10px rgba(214, 51, 108, 0.2);
+    }
+
+    .right {
+      margin-left: 22%;
+      width: 100%;
+      height: 94%;
+      padding: 30px 5px;
+      /* background-color: #fafafa; */
+      overflow-y: auto;
+    }
+
+    h3 {
+      color: #d6336c;
+      margin-bottom: 25px;
+      font-size: 26px;
+      font-weight: 600;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 8px;
+      position: relative;
+    }
+
+    /* h3::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background-color: #eaa636;
+    } */
+
+    h2 {
+      color: #d6336c;
+      margin-bottom: 15px;
+      margin-left: 35px;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    form {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      margin-bottom: 30px;
+      border: 1px solid #f0f0f0;
+    }
+
+    .inputs {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      padding: 12px 16px;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 16px;
+      width: 38%;
+      transition: border-color 0.2s ease;
+      background-color: #fafafa;
+      font-family: inherit;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #d6336c;
+      background-color: #fff;
+    }
+
+    input[type="text"]:hover,
+    input[type="number"]:hover {
+      border-color: #ccc;
+    }
+
+    input[type="submit"] {
+      background-color: #d6336c;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 500;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #b52a5c;
+    }
+
+    .display-location {
+      background-color: #ffffff;
+      padding: 28px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      border: 1px solid #f0f0f0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 15px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    th {
+      background-color: #f8f9fa;
+      color: #333;
+      font-weight: 600;
+      padding: 16px 18px;
+      border-bottom: 2px solid #e9ecef;
+      font-size: 14px;
+    }
+
+    th:first-child {
+      color: #d6336c;
+    }
+
+    td {
+      padding: 14px 18px;
+      border-bottom: 1px solid #f5f5f5;
+      transition: background-color 0.2s ease;
+    }
+
+    tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+
+    tr:hover {
+      background-color: #f0f8ff;
+    }
+
+    tr:hover td:first-child {
+      color: #d6336c;
+    }
+
+    a {
+      color: #333;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: #d6336c;
+      text-decoration: none;
+    }
+
+    /* Subtle accent elements */
+    .form-section {
+      position: relative;
+    }
+
+    .form-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -30px;
+      width: 3px;
+      height: 100%;
+      background-color: #eaa636;
+      opacity: 0.3;
+    }
+
+    /* Clean responsive design */
+    @media (max-width: 768px) {
+      .inputs {
+        flex-direction: column;
+      }
+
+      input[type="text"] {
+        width: 100%;
+      }
+
+      .right {
+        padding: 20px;
+      }
+
+      form {
+        padding: 20px;
+      }
+    }
+
+    /* Subtle focus indicators */
+    input[type="text"]:focus {
+      box-shadow: 0 0 0 2px rgba(214, 51, 108, 0.1);
+    }
+
+    /* Clean table styling */
+    table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Subtle button active state */
+    input[type="submit"]:active {
+      background-color: #a02653;
+    }
+  </style>
+  <body>
+    {% set current_path = request.path %}
+
+    <div class="main">
+      <div class="left">
+        <p>DASHBOARD</p>
+        <hr />
+
+        <a
+          href="{{ url_for('admin_dashboard') }}"
+          class="{% if current_path == url_for('admin_dashboard') %}active{% endif %}"
+        >
+          <i class="fas fa-plus-square"></i> Add Product
+        </a>
+
+        <a
+          href="{{ url_for('admin_view_product') }}"
+          class="{% if current_path == url_for('admin_view_product') %}active{% endif %}"
+        >
+          <i class="fas fa-eye"></i> View Product
+        </a>
+
+        <a
+          href="{{ url_for('add_categories') }}"
+          class="{% if current_path == url_for('add_categories') %}active{% endif %}"
+        >
+          <i class="fas fa-tags"></i> Add Category
+        </a>
+
+        <a
+          href="{{ url_for('add_flavour') }}"
+          class="{% if current_path == url_for('add_flavour') %}active{% endif %}"
+        >
+          <i class="fas fa-apple-alt"></i> Add Flavour
+        </a>
+
+        <a
+          href="{{ url_for('add_variant') }}"
+          class="{% if current_path == url_for('add_variant') %}active{% endif %}"
+        >
+          <i class="fas fa-weight-hanging"></i> Add Variant
+        </a>
+
+        <a
+          href="{{ url_for('add_accessory') }}"
+          class="{% if current_path == url_for('add_accessory') %}active{% endif %}"
+        >
+          <i class="fas fa-magic"></i> Add Accessories
+        </a>
+
+        <a
+          href="{{ url_for('master_location') }}"
+          class="{% if current_path == url_for('master_location') %}active{% endif %}"
+        >
+          <i class="fas fa-map-marker-alt"></i> Add Master Location
+        </a>
+
+        <a
+          href="{{ url_for('order_history') }}"
+          class="{% if current_path == url_for('order_history') %}active{% endif %}"
+        >
+          <i class="fas fa-box"></i> View Order History
+        </a>
+
+        <a
+          href="{{ url_for('custom_cake_order_history') }}"
+          class="{% if current_path == url_for('custom_cake_order_history') %}active{% endif %}"
+        >
+          <i class="fas fa-clipboard-list"></i> View Custom Orders
+        </a>
+        
+
+      <a href="{{ url_for('report_page') }}"
+        class="{% if current_path == url_for('report_page') %}active{% endif %}">
+        <i class="fas fa-chart-line"></i> Reports
+      </a>
+
+        <a
+          href="{{ url_for('update_password') }}"
+          class="{% if current_path == url_for('update_password') %}active{% endif %}"
+        >
+          <i class="fas fa-key"></i> Update Password
+        </a>
+        
+        <a href="{{ url_for('logout') }}">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+      </div>
+      <div class="right">
+        <h2>{% if edit_accessory %}Edit{% else %}Add{% endif %} Accessories</h2>
+
+        {% if edit_accessory %}
+        <div
+          style="
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border: 1px solid #7fed99;
+            border-radius: 5px;
+            margin-bottom: 15px;
+          "
+        >
+          Please edit the Accessories here and click "Update".
+        </div>
+        {% endif %}
+
+
+
+        <form action="{{ url_for('add_accessory') }}" method="POST">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <div class="inputs">
+            {% if edit_accessory %}
+            <input type="hidden" name="id" value="{{ edit_accessory.id }}" />
+            {% endif %}
+            <input
+              type="text"
+              name="accessory"
+              placeholder="Enter Accessories (e.g, Snow Spray)"
+              value="{{ edit_accessory.name if edit_accessory else '' }}"
+              style="{% if edit_accessory %} border: 2px solid #b52a5c; {% endif %}"
+              required
+            />
+            <input
+              type="number"
+              name="price"
+              step="0.01"
+              placeholder="Enter Price"
+              value="{{ edit_accessory.price if edit_accessory else '' }}"
+              style="{% if edit_accessory %} border: 2px solid #b52a5c; {% endif %}"
+              required
+            />
+            <input
+              type="submit"
+              value="{% if edit_accessory %}Update{% else %}Add{% endif %}"
+            />
+          </div>
+          {% with messages = get_flashed_messages(category_filter=["error"]) %}
+          {% if messages %}
+          <div style="color: red">
+            {% for msg in messages %}
+            <p>{{ msg }}</p>
+            {% endfor %}
+          </div>
+          {% endif %} {% endwith %}
+        </form>
+
+        <!-- Display Locations in Table -->
+        <div class="display-location">
+          <h3>Existing Flavours</h3>
+          <table border="1" cellpadding="10">
+            <thead>
+              <tr>
+                <th>Accessories</th>
+                <th>Price (₹)</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for accessory in accessories %}
+              <tr>
+                <td>{{ accessory.name }}</td>
+                <td>{{ accessory.price }}</td>
+                <td>
+                  <a
+                    href="{{ url_for('add_accessory', edit_id=accessory.id) }}"
+                  >
+                    <i class="fas fa-edit"></i>
+                  </a>
+                </td>
+                <td>
+                  <a
+                    href="{{ url_for('delete_accessory', accessory_id=accessory.id) }}"
+                    onclick="return confirm('Are you sure you want to delete this accessories?');"
+                  >
+                    <i class="fas fa-trash-alt"></i>
+                  </a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

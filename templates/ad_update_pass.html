@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <title>Document</title>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBDKQW4TCQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DBDKQW4TCQ');
+</script>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .main {
+      display: flex;
+      width: 98vw;
+      height: 93vh;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 20%;
+      height: 100%;
+      border-right: 2px solid #d6336c;
+      background-color: #fce8ef; /* Soft background to match pink theme */
+      padding: 20px 0px;
+      position: fixed;
+      overflow: hidden;
+      overflow-y: scroll;
+      overflow-y: scroll;
+      scrollbar-width: none; /* For Firefox */
+      -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    }
+    &::-webkit-scrollbar {
+      display: none; /* For Chrome, Safari, and Opera */
+    }
+    .left a:nth-last-child(1) {
+      margin-bottom: 50px;
+    }
+
+    .left p {
+      font-size: 20px;
+      font-weight: bold;
+      color: #d6336c;
+      margin-bottom: 10px;
+    }
+
+    .left hr {
+      width: 80%;
+      border: 1px solid #d6336c;
+      margin-bottom: 20px;
+    }
+    .left i {
+      margin-right: 8px; /* space between icon and text */
+      color: #444; /* dark gray icon color */
+      font-size: 16px; /* adjust icon size */
+      vertical-align: middle; /* align icon with text */
+      transition: color 0.3s; /* smooth hover effect */
+    }
+
+    .left a.active i {
+      color: #ffffff; /* icon color on hover */
+    }
+
+    .left a {
+      text-decoration: none;
+      color: #333;
+      margin: 7px 0;
+      font-weight: 500;
+      padding: 12px 15px;
+      width: 80%;
+      text-align: left;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .left a:hover {
+      background-color: #d6336c;
+      color: white;
+      text-decoration: none;
+    }
+
+    .left a.active {
+      background-color: #d6336c;
+      color: white;
+      font-weight: bold;
+      border: 2px solid #d6336c;
+      box-shadow: 0 4px 10px rgba(214, 51, 108, 0.2);
+    }
+
+    .right {
+      margin-left: 20%;
+      width: 80%;
+      height: 100%;
+      padding: 20px;
+    }
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(214, 51, 108, 0.1);
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .container p {
+      font-size: 24px;
+      font-weight: bold;
+      color: #d6336c;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .container form {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .container input[type="email"],
+    .container input[type="password"],
+    .container input[type="text"] {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border 0.3s ease;
+    }
+
+    .container input[type="email"]:focus,
+    .container input[type="password"]:focus,
+    .container input[type="text"]:focus {
+      border-color: #d6336c;
+      outline: none;
+    }
+
+    .container button {
+      background-color: #d6336c;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .container button:hover {
+      background-color: #b72b5c;
+    }
+
+    .container p[style="color: red"],
+    .container p[style="color: green"] {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+    .password-wrapper {
+      position: relative;
+    }
+
+    .password-wrapper input[type="password"],
+    .password-wrapper input[type="text"] {
+      width: 90%;
+      padding-right: 40px;
+    }
+
+    .password-wrapper .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #888;
+      font-size: 16px;
+    }
+  </style>
+  <body>
+    {% set current_path = request.path %}
+
+    <div class="main">
+      <div class="left">
+        <p>DASHBOARD</p>
+        <hr />
+
+        <a
+          href="{{ url_for('admin_dashboard') }}"
+          class="{% if current_path == url_for('admin_dashboard') %}active{% endif %}"
+        >
+          <i class="fas fa-plus-square"></i> Add Product
+        </a>
+
+        <a
+          href="{{ url_for('admin_view_product') }}"
+          class="{% if current_path == url_for('admin_view_product') %}active{% endif %}"
+        >
+          <i class="fas fa-eye"></i> View Product
+        </a>
+
+        <a
+          href="{{ url_for('add_categories') }}"
+          class="{% if current_path == url_for('add_categories') %}active{% endif %}"
+        >
+          <i class="fas fa-tags"></i> Add Category
+        </a>
+
+        <a
+          href="{{ url_for('add_flavour') }}"
+          class="{% if current_path == url_for('add_flavour') %}active{% endif %}"
+        >
+          <i class="fas fa-apple-alt"></i> Add Flavour
+        </a>
+
+        <a
+          href="{{ url_for('add_variant') }}"
+          class="{% if current_path == url_for('add_variant') %}active{% endif %}"
+        >
+          <i class="fas fa-weight-hanging"></i> Add Variant
+        </a>
+
+        <a
+          href="{{ url_for('add_accessory') }}"
+          class="{% if current_path == url_for('add_accessory') %}active{% endif %}"
+        >
+          <i class="fas fa-magic"></i> Add Accessories
+        </a>
+        <a
+          href="{{ url_for('master_location') }}"
+          class="{% if current_path == url_for('master_location') %}active{% endif %}"
+        >
+          <i class="fas fa-map-marker-alt"></i> Add Master Location
+        </a>
+
+        <a
+          href="{{ url_for('order_history') }}"
+          class="{% if current_path == url_for('order_history') %}active{% endif %}"
+        >
+          <i class="fas fa-box"></i> View Order History
+        </a>
+
+        <a
+          href="{{ url_for('custom_cake_order_history') }}"
+          class="{% if current_path == url_for('custom_cake_order_history') %}active{% endif %}"
+        >
+          <i class="fas fa-clipboard-list"></i> View Custom Orders
+        </a>
+       
+      <a href="{{ url_for('report_page') }}"
+        class="{% if current_path == url_for('report_page') %}active{% endif %}">
+        <i class="fas fa-chart-line"></i> Reports
+      </a>
+
+
+
+        <a
+          href="{{ url_for('update_password') }}"
+          class="{% if current_path == url_for('update_password') %}active{% endif %}"
+        >
+          <i class="fas fa-key"></i> Update Password
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+      </div>
+      <div class="right">
+        <div class="container">
+          <p>Update Password</p>
+          <form method="POST">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+            /><br />
+            <div class="password-wrapper">
+              <input
+                type="password"
+                name="old_password"
+                placeholder="Old Password"
+                required
+              />
+              <i class="fas fa-eye toggle-password"></i>
+            </div>
+            <br />
+
+            <div class="password-wrapper">
+              <input
+                type="password"
+                name="new_password"
+                placeholder="New Password"
+                required
+              />
+              <i class="fas fa-eye toggle-password"></i>
+            </div>
+            <br />
+
+            <div class="password-wrapper">
+              <input
+                type="password"
+                name="confirm_new_password"
+                placeholder="Confirm New Password"
+                required
+              />
+              <i class="fas fa-eye toggle-password"></i>
+            </div>
+            <br />
+            <button type="submit">Update</button>
+          </form>
+
+          {% if error %}
+          <p style="color: red">{{ error }}</p>
+          {% endif %} {% if success %}
+          <p style="color: green">{{ success }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <script>
+      document.querySelectorAll(".toggle-password").forEach((icon) => {
+        icon.addEventListener("click", function () {
+          const input = this.previousElementSibling;
+          const type =
+            input.getAttribute("type") === "password" ? "text" : "password";
+          input.setAttribute("type", type);
+        });
+      });
+    </script>
+  </body>
+</html>

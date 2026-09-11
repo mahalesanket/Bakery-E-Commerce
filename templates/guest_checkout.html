@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Guest Checkout - SM BAKERS</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DBDKQW4TCQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DBDKQW4TCQ');
+  </script>
+
+  <!-- Favicon -->
+  <link href="static/img/favicon.ico" rel="icon">
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet">
+  <!-- Montserrat Font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* Topbar Styles */
+    .container-fluid.top-bar.bg-primary.px-0 {
+      height: 35px;
+      background: #ffd1df !important;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1040;
+    }
+
+    .top-bar marquee {
+      font-size: 16px;
+      font-family: 'Great Vibes', cursive;
+      font-style: italic;
+      color: black;
+      font-weight: 500;
+      padding-top: 5px;
+    }
+
+    .top-bar i {
+      color: #b32071;
+      margin: 0 5px;
+    }
+
+    .top-bar a {
+      color: black;
+      text-decoration: none;
+    }
+
+    /* Navbar Styles */
+    .navbar.navbar-expand-lg.navbar-light.fixed-top {
+      background-color: white !important;
+      padding: 0;
+      top: 35px;
+      z-index: 1030;
+    }
+
+    .navbar-brand img {
+      height: 80px;
+      width: 80px;
+    }
+
+    /* Navigation Links */
+    .navbar-nav .btn-link {
+      color: #333 !important;
+      font-weight: 500;
+      font-family: 'Montserrat', sans-serif;
+      text-decoration: none;
+      padding: 10px 15px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-nav .btn-link:hover {
+      color: #ffd1df !important;
+    }
+
+    /* Franchise Button */
+    .btn-about {
+      background-color: transparent;
+      color: #b32071;
+      border-radius: 5px;
+      border: 1px solid #b32071;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .btn-about:hover {
+      background-color: #ffd1df;
+      color: #b32071;
+    }
+
+    /* Icons */
+    .hover-icon {
+      transition: all 0.3s ease;
+      color: #b32071;
+      border: 1px solid #b32071;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      text-decoration: none;
+    }
+
+    .hover-icon:hover {
+      background-color: #ffd1df;
+      transform: scale(1.1);
+      color: #b32071;
+    }
+
+    .btn-lg-square {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .flex-shrink-0.btn-lg-square.rounded-circle.hover-icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .flex-shrink-0.btn-lg-square.border.border-primary.rounded-circle.hover-icon {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #b32071 !important;
+    }
+
+    /* Main Content Styles */
+    body { 
+      background: #f3f1f7; 
+      font-family: 'Montserrat', sans-serif; 
+      margin: 0;
+      padding: 0;
+      padding-top: 125px; /* Account for topbar (35px) + navbar (80px) */
+    }
+    
+    .checkout-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 20px;
+      max-width: 1390px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .left-section {
+      flex: 2;
+      background: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      min-width: 300px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .right-section {
+      flex: 1;
+      background: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      min-width: 300px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .store-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .store-header a {
+      font-size: 20px;
+      text-decoration: none;
+      color: #b32071;
+    }
+
+    .store-header h2 {
+      font-size: 2rem;
+      margin: 0;
+      color: #b32071;
+      font-family: 'Montserrat';
+    }
+
+    .account-option {
+      background: #fff6e5;
+      padding: 11px;
+      border-radius: 10px;
+      margin: 15px 0;
+      text-align: center;
+    }
+
+    .account-option a {
+      color: #b32071;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .account-option p {
+    margin-bottom: 2px;
+    }
+
+    .toggle-method {
+      display: flex;
+      background: #f7f7f7;
+      margin: 20px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #eee;
+    }
+
+    .toggle-method button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      background: transparent;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .toggle-method .active {
+      background: #ffd1df;
+      color: #b32071;
+      border: 1px solid #b32071;
+      border-radius: 10px;
+    }
+
+    .info-section {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 12px;
+    }
+
+    .info-section h3 {
+      color: #b32071;
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      min-width: 200px;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .product-card {
+      display: flex;
+      gap: 15px;
+      padding: 15px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .product-image img {
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .product-title {
+      font-weight: 600;
+      font-size: 16px;
+      color: #b32071;
+      margin-bottom: 8px;
+    }
+
+    .bill-details h3 {
+      margin-top: -1px;
+      font-size: 1.75rem;
+      color: #b32071;
+      margin-bottom: 15px;
+      font-family: 'montserrat';
+    }
+
+    .bill-details p {
+      display: flex;
+      justify-content: space-between;
+      margin: 8px 0;
+      font-size: 14px;
+    }
+
+    .bill-details h4 {
+      display: flex;
+      justify-content: space-between;
+      color: #b32071;
+      font-size: 25px;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 2px solid #ddd;
+    }
+
+    .place-order-btn {
+      width: 100%;
+      background: #ffd1df;
+      color: #b32071;
+      padding: 15px;
+      border: 1px solid #b32071;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .place-order-btn:hover {
+      background: #b32071;
+      color: white;
+    }
+
+    .place-order-btn:disabled {
+      background: #cccccc;
+      color: #666666;
+      cursor: not-allowed;
+      border-color: #cccccc;
+    }
+
+    .section-title {
+      color: #b32071;
+      font-size: 18px;
+      margin: 25px 0 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .error-message {
+      color: #dc3545;
+      font-size: 12px;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .form-group {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    /* Loading Spinner */
+    .loading-spinner {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #b32071;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 2s linear infinite;
+      margin: 0 auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 991.98px) {
+      .navbar-nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+      
+      .navbar-nav .btn-link {
+        margin: 0 10px;
+        font-size: 18px;
+      }
+      
+      .d-flex.justify-content-center {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .d-none.d-lg-flex {
+        display: none !important;
+      }
+      
+      .btn-about {
+        font-size: 16px;
+        background-color: #FFD1DF;
+        color: #B32071;
+        text-align: center;
+      }
+      
+      .btn-about:hover {
+        background-color: #B32071;
+        color: white;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding-top: 140px;
+      }
+      
+      .checkout-wrapper {
+        padding: 10px;
+      }
+      
+      .form-row {
+        flex-direction: column;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      select {
+        min-width: 100%;
+      }
+      
+      .product-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .form-group {
+        min-width: 100%;
+      }
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #ffd1df;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ffd1df;
+    }
+
+    /* Popup Styles */
+    .delivery-popup-wrapper,
+    .pickup-popup-wrapper {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .delivery-popup,
+    .pickup-popup {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+    }
+
+    .delivery-popup-close,
+    .pickup-popup-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .delivery-popup-btn,
+    .pickup-popup-btn {
+      padding: 10px 20px;
+      margin: 10px 10px 0;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+
+    .delivery-popup-btn.cancel,
+    .pickup-popup-btn.cancel {
+      background: #eee;
+      color: #333;
+    }
+
+    .delivery-popup-btn.confirm,
+    .pickup-popup-btn.confirm {
+      background: #ffd1df;
+      border: 1px solid #b32071;
+      color: #b32071;
+    }
+
+    /* Footer Styles */
+    .container-fluid.text-light.footer {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.78)), url('static/img/footer.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .footer .btn.btn-link {
+      display: block;
+      margin-bottom: 5px;
+      padding: 0;
+      text-align: left;
+      color: white;
+      font-weight: normal;
+      text-transform: capitalize;
+      transition: .3s;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .footer .btn.btn-link::before {
+      position: relative;
+      content: "\f105";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      color: white;
+      margin-right: 10px;
+    }
+
+    .footer .btn.btn-link:hover {
+      color: #ffd1df;
+      letter-spacing: 1px;
+      box-shadow: none;
+    }
+
+    .copyright {
+      background: #111111;
+    }
+
+    .copyright a {
+      color: #ffd1df;
+      text-decoration: none;
+    }
+
+    .copyright a:hover {
+      color: white;
+    }
+
+    .back-to-top {
+      position: fixed;
+      display: none;
+      right: 30px;
+      bottom: 30px;
+      z-index: 99;
+      background: #ffd1df;
+      color: #b32071;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Topbar Start -->
+  <div class="container-fluid top-bar bg-primary px-0" style="height: 35px;">
+    <div class="row gx-0 align-items-center" style="height: 100%;">
+      <div class="col-12 text-center">
+        <marquee behavior="scroll" direction="left" scrollamount="5">
+          <i class="fas fa-birthday-cake" style="color:#B32071"></i>
+          Try Our New 70+ Flavours |
+          <i class="fas fa-store" style="color:#B32071"></i>
+          Offer Available In All Our 45+ Stores. |
+          <i class="fas fa-gift" style="color:#B32071"></i>
+          Everyday Buy 1 Cake Get 1 Free 70+ Premium |
+          <i class="fas fa-phone" style="color:#B32071"></i>
+          For Order Connect With Us: <a href="tel:+918655481522" style="color:black">+91 8655481522</a>
+        </marquee>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-0 px-lg-5" style="background-color: white;">
+    <!-- Logo -->
+    <a href="{{ url_for('home') }}" class="navbar-brand ms-4 ms-lg-0">
+      <img src="static/img/SS_logo.png" style="height:80px;width: 80px;">
+    </a>
+    <!-- Toggler for mobile view -->
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <!-- Desktop and Mobile Menu Links -->
+      <div class="navbar-nav ms-auto p-4 p-lg-0 w-100 d-flex justify-content-center">
+        <a class="btn btn-link" href="{{ url_for('home') }}">Home</a>
+        <a class="btn btn-link" href="{{ url_for('about') }}">About Us</a>
+        <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Cake Variety</a>
+        <a class="btn btn-link" href="{{ url_for('gallery') }}">Gallery</a>
+        <a class="btn btn-link" href="{{ url_for('our_outlet') }}">Our Outlet</a>
+        <a class="btn btn-link" href="{{ url_for('contact') }}">Contact Us</a>
+      </div>
+      <!-- Franchise Button (Visible in Desktop) -->
+      <a class="btn-about py-2 px-3 me-3 d-none d-lg-block" href="{{ url_for('franchise') }}">
+        FRANCHISE
+      </a>
+      <!-- Desktop Icons -->
+      <div class="d-none d-lg-flex ms-4 align-items-center">
+        <!-- Cart Icon -->
+        <a href="{{ url_for('cart') }}" class="position-relative me-3">
+          <div class="flex-shrink-0 btn-lg-square rounded-circle hover-icon">
+            <i class="fa fa-shopping-cart"></i>
+          </div>
+        </a>
+        {% if not session.get('user_id') %}
+          <div class="d-inline-flex align-items-center me-3">
+            <div class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon">
+              <a href="{{ url_for('login') }}">
+                <i class="fas fa-sign-in-alt" style="margin-top: 5px; color: #B32071;"></i>
+              </a>
+            </div>
+          </div>
+        {% else %}
+          <div class="d-inline-flex align-items-center me-3">
+            <a href="{{ url_for('personal_info') }}" class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon">
+              <i class="fa fa-user"></i>
+            </a>
+          </div>
+        {% endif %}
+        <!-- Instagram Icon -->
+        <a href="#" target="_blank" class="me-3 hover-icon" style="padding:15px">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+    <!-- Mobile Franchise Button + Icons -->
+    <div class="d-flex d-lg-none flex-column align-items-center w-100 px-3" style="margin-top:-20px">
+      <!-- Franchise Button for Mobile -->
+      <a class="btn-about py-2 px-3 mt-3 w-80 text-center" href="{{ url_for('franchise') }}">
+        FRANCHISE <i class="fa fa-store"></i>
+      </a>
+      <br>
+      <div class="d-flex justify-content-center gap-3">
+        <!-- Cart Icon -->
+        <a href="{{ url_for('cart') }}" class="position-relative">
+          <div class="flex-shrink-0 btn-lg-square rounded-circle hover-icon" style="margin-right: 10px">
+            <i class="fa fa-shopping-cart"></i>
+          </div>
+        </a>
+        {% if not session.get('user_id') %}
+          <div class="d-inline-flex align-items-center me-3">
+            <div class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon">
+              <a href="{{ url_for('login') }}">
+                <i class="fas fa-sign-in-alt" style="margin-top: 5px"></i>
+              </a>
+            </div>
+          </div>
+        {% else %}
+          <!-- Mobile User Icon -->
+          <div class="d-inline-flex align-items-center me-3">
+            <a href="{{ url_for('personal_info') }}" class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon">
+              <i class="fa fa-user"></i>
+            </a>
+          </div>
+        {% endif %}
+        <!-- Instagram Icon -->
+        <a href="#" target="_blank">
+          <i class="fab fa-instagram hover-icon" style="font-size: 20px;"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="checkout-wrapper">
+    <!-- Left Section -->
+    <div class="left-section">
+      <div class="store-header">
+        <a href="{{ url_for('cart') }}">&#8592;</a>
+        <h2>Guest Checkout</h2>
+      </div>
+
+      <!-- Account Creation Option -->
+      <div class="account-option">
+        <p>Already have an account? <a href="{{ url_for('login', next=url_for('checkout')) }}">Login here</a></p>
+        <p>Want faster checkout next time? <a href="{{ url_for('register') }}">Create an account</a></p>
+      </div>
+
+      <!-- Delivery Method Toggle -->
+      <div class="toggle-method">
+        <button class="active" id="deliveryBtn" type="button">Delivery <span>(60 Mins)</span></button>
+        <button id="pickupBtn" type="button">Pickup</button>
+      </div>
+
+      <!-- Open form, send to place_guest_order -->
+<form id="guestCheckoutForm" method="POST" action="{{ url_for('place_guest_order') }}">
+  <!-- CSRF Token -->
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  <!-- Hidden fields for order details -->
+  <input type="hidden" name="subtotal" id="subtotal_input" value="{{ "%.2f"|format(subtotal) }}">
+  <input type="hidden" name="delivery_charges" id="delivery_charges_input" value="{{ "%.2f"|format(delivery_cost) }}">
+  <input type="hidden" name="packaging_charges" id="packaging_charges_input" value="{{ "%.2f"|format(packaging_cost) }}">
+  <input type="hidden" name="gst" id="gst_input" value="{{ "%.2f"|format(gst) }}">
+  <input type="hidden" name="grand_total" id="grand_total_input" value="{{ "%.2f"|format(grand_total) }}">
+  <input type="hidden" name="order_type" id="order_type_input" value="delivery">
+
+        <div class="info-section">
+          <h3><i class="fa fa-user"></i> Your Information</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" name="guest_name" id="guest_name" placeholder="Full Name *" required 
+                     pattern="[A-Za-z\s]{2,50}" title="Please enter a valid name (2-50 characters)">
+              <div class="error-message" id="nameError">Name should contain only letters and spaces (2-50 characters)</div>
+            </div>
+            <div class="form-group">
+              <input type="email" name="guest_email" id="guest_email" placeholder="Email Address *" required>
+              <div class="error-message" id="emailError">Please enter a valid email address</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <input type="tel" name="guest_mobile" id="guest_mobile" placeholder="Mobile Number (10 digits) *" 
+                     pattern="[0-9]{10}" maxlength="10" required>
+              <div class="error-message" id="mobileError">Mobile must be 10 digits starting with 6-9</div>
+            </div>
+            <div class="form-group">
+              <input type="tel" name="guest_alternate_mobile" id="guest_alternate_mobile" placeholder="Alternate Mobile (Optional)" 
+                     pattern="[0-9]{10}" maxlength="10">
+              <div class="error-message" id="altMobileError">Alternate mobile must be 10 digits starting with 6-9</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <h3><i class="fa fa-map-marker-alt"></i> Delivery Address</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" name="guest_pincode" id="guest_pincode" placeholder="Pincode *" 
+                     pattern="[0-9]{6}" maxlength="6" required>
+              <div class="error-message" id="pincodeError">Pincode must be exactly 6 digits</div>
+            </div>
+            <div class="form-group">
+              <input type="text" name="guest_locality" id="guest_locality" placeholder="Locality *" required>
+              <div class="error-message" id="localityError">Please enter your locality</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group" style="flex: 100%;">
+              <textarea name="guest_address" id="guest_address" placeholder="Flat, House No., Building, Area, Street *" required></textarea>
+              <div class="error-message" id="addressError">Please enter your complete address</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" name="guest_city" id="guest_city" placeholder="City/District/Town *" required>
+              <div class="error-message" id="cityError">City should contain only letters, spaces, and hyphens</div>
+            </div>
+            <div class="form-group">
+              <select name="guest_state" id="guest_state" required>
+                <option value="">--Select State--</option>
+                <option value="Maharashtra" selected>Maharashtra</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Kerala">Kerala</option>
+                <option value="West Bengal">West Bengal</option>
+              </select>
+              <div class="error-message" id="stateError">Please select your state</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group" style="flex: 100%;">
+              <input type="text" name="guest_landmark" id="guest_landmark" placeholder="Landmark (Optional)">
+            </div>
+          </div>
+        </div>
+
+        <!-- Cart Items Display -->
+        <h3 class="section-title"><i class="fa fa-shopping-bag"></i> Order Summary</h3>
+        {% for item in cart_items %}
+        <div class="product-card">
+          <div class="product-image">
+            <img src="{{ item.image }}" alt="{{ item.sub_productname }}" onerror="this.src='https://via.placeholder.com/100?text=No+Image'">
+          </div>
+          <div style="flex:1;">
+            <div class="product-title">{{ item.sub_productname }}</div>
+            <p style="margin:5px 0; font-size:14px;">
+              <strong>Variant:</strong> {{ item.variant }} - ₹{{ item.v_cost }} × {{ item.quantity }}
+            </p>
+            {% if item.flavour %}
+            <p style="margin:5px 0; font-size:14px;">
+              <strong>Flavour:</strong> {{ item.flavour }}
+            </p>
+            {% endif %}
+            {% for i in range(1, 6) %}
+              {% set acc = item['acc_' ~ i] %}
+              {% set cost = item['a_cost' ~ i]|float %}
+              {% set qty = item['a_quantity' ~ i]|int %}
+              {% if acc and cost > 0 and qty != 0 %}
+              <p style="margin:5px 0; font-size:13px;">{{ acc }}: ₹{{ '%.2f'|format(cost) }} × {{ qty }}</p>
+              {% endif %}
+            {% endfor %}
+            {% if item.message %}
+            <p style="margin:5px 0; font-size:13px; color: #666;">
+              <strong>Message:</strong> {{ item.message }}
+            </p>
+            {% endif %}
+            <p style="margin:10px 0 0 0; font-weight:bold; color:#b32071;">
+              Subtotal: ₹{{ item.total_price }}
+            </p>
+          </div>
+        </div>
+        {% endfor %}
+
+        <!-- Loading Spinner and everything that should be part of the form -->
+      <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+        <p>Processing your order...</p>
+      </div>
+    </form>
+    </div>
+
+
+    
+    <!-- Right Section - Bill Details -->
+    <div class="right-section">
+      <div class="bill-details" id="billDetails">
+        <h3 style="color:#b32071;font-family:'montserrat';">Bill Details</h3>
+        <p>Subtotal <span style="float:right">₹{{ "%.2f"|format(subtotal) }}</span></p>
+        <p>Delivery Charges <span style="float:right">₹{{ "%.2f"|format(delivery_cost) }}</span></p>
+        <p>Packaging Charges <span style="float:right">₹{{ "%.2f"|format(packaging_cost) }}</span></p>
+        <p>GST <span style="float:right">₹{{ "%.2f"|format(gst) }}</span></p>
+        <hr />
+        <h4 style="color:#b32071; font-size:25px;">Grand Total <span style="float:right">₹{{ "%.2f"|format(grand_total) }}</span></h4>
+        
+        <!-- Place Order Button - Moved to right section like checkout.html -->
+        <button type="submit" form="guestCheckoutForm" class="place-order-btn" id="placeOrderBtn">
+          Pay Securely ₹{{ "%.2f"|format(grand_total) }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delivery Confirm Popup -->
+  <div id="deliveryConfirmPopup" class="delivery-popup-wrapper">
+    <div class="delivery-popup">
+      <span class="delivery-popup-close" onclick="closeDeliveryPopup()">×</span>
+      <h2 class="delivery-popup-title" style="font-family:'montserrat';color:#a3154a;">Delivery Order</h2>
+      <i class="fa fa-basket-shopping" style="color:#a3154a;font-size:30px"></i>
+      <p class="delivery-popup-text" style="font-family:'montserrat';color:black;">Your order will be delivered to your respective address</p>
+      <div class="delivery-popup-actions">
+        <button class="delivery-popup-btn cancel" onclick="closeDeliveryPopup()">Cancel</button>
+        <button class="delivery-popup-btn confirm" onclick="confirmDelivery()">Confirm Delivery</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pickup Confirm Popup -->
+  <div id="pickupConfirmPopup" class="pickup-popup-wrapper">
+    <div class="pickup-popup">
+      <span class="pickup-popup-close" onclick="closePickupPopup()">×</span>
+      <h2 class="pickup-popup-title" style="font-family:'montserrat';color:#a3154a;">Pickup Order</h2>
+      <i class="fa fa-bag-shopping" style="color:#a3154a;font-size:30px"></i>
+      <p class="pickup-popup-text" style="font-family:'montserrat';color:black;">You have to collect the order from <strong>Dombivli Thane</strong></p>
+      <div class="pickup-popup-actions">
+        <button class="pickup-popup-btn cancel" onclick="closePickupPopup()">Cancel</button>
+        <button class="pickup-popup-btn confirm" onclick="confirmPickup()">Confirm Pickup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Start -->
+  <div class="container-fluid text-light footer my-4 mb-0 py-2 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-3">
+        <div class="row g-3">
+            <!-- About SM Bakers -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">About SM Bakers</h4>
+                <p style="color: white; text-align: justify; letter-spacing: normal; word-spacing: normal; text-justify: inter-word; hyphens: auto;font-family: 'Montserrat'">At <b>SM Bakers,</b> we create delightful cakes and confections for every occasion. With our passion for baking, we ensure each creation is as memorable as your special moments.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">Quick Links</h4>
+                <a class="btn btn-link" href="{{ url_for('home') }}">Home</a>
+                <a class="btn btn-link" href="{{ url_for('about') }}">About Us</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Cake Variety</a>
+                <a class="btn btn-link" href="{{ url_for('gallery') }}">Gallery</a>
+                <a class="btn btn-link" href="{{ url_for('our_outlet') }}">Our Outlet</a>
+                <a class="btn btn-link" href="{{ url_for('contact') }}">Contact Us</a>
+                <a class="btn btn-link" href="{{ url_for('franchise') }}">Franchise </a>
+            </div>
+
+            <!-- Services Links -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">Our Services</h4>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Chocolate Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Wedding Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Custom Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Anniversary Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Corporate Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety', category='baby_shower_cake') }}">Baby Shower Cakes</a>
+            </div>
+
+            <!-- Address -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">Office Address</h4>
+                <p class="mb-2" style="color: white; text-align: justify">
+                    <i class="fa fa-map-marker-alt me-2" style="color:white;"></i>
+                    <a href="#" target="_blank" style="color: white; text-decoration: none;font-family: 'Montserrat'">
+                        Plot No A-1, Thane, Mumbai, Maharashtra.
+                    </a>
+                </p>
+
+                <p class="mb-2" style="color: white;">
+                    <i class="fa fa-phone me-2" style="color:white;"></i>
+                  <a
+                href="tel:+918655481522"
+                style="
+                  color: white;
+                  text-decoration: none;
+                  font-family: 'Montserrat';
+                "
+                >+91 8655481522</a
+              >
+                </p>
+
+                <p class="mb-2" style="color:white;">
+                    <i class="fa fa-envelope me-2" style="color: white;"></i>
+                    <a href="mailto:sanket.mahalee@gmail.com" style="color: white; text-decoration: none;font-family: 'Montserrat'">sanket.mahalee@gmail.com</a>
+                </p>
+
+                <div class="d-flex pt-2">
+                    <a class="btn btn-square btn-outline-light rounded-circle me-1" href="#" target="_blank"><i class="fab fa-instagram" style="color: white;"></i></a>
+                    <a class="btn btn-square btn-outline-light rounded-circle me-0" href="#" target="_blank"><i class="fab fa-facebook-f" style="color:white;"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- Footer End -->
+
+  <!-- Copyright Start -->
+  <div class="container-fluid copyright text-light py-2 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center mb-2 mb-md-0" style="font-family: 'Montserrat'; font-size: 14px;">
+                &copy; SM Bakers. All Rights Reserved. Powered By <a href="#" target="_blank" style="font-weight:600; color: white;">Sanket.</a>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- Copyright End -->
+
+  <!-- Back to Top -->
+  <a href="#" class="btn-about btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+  // Form validation and submission
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('guestCheckoutForm');
+    const placeOrderBtn = document.getElementById('placeOrderBtn');
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    
+    // Validation Patterns
+    const patterns = {
+      name: /^[a-zA-Z\s]{2,50}$/,
+      mobile: /^[6-9]\d{9}$/,
+      pincode: /^\d{6}$/,
+      city: /^[a-zA-Z\s-]{2,50}$/,
+      email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    };
+    
+    // Field validation functions
+    function validateName(name) {
+      return patterns.name.test(name.trim());
+    }
+    
+    function validateEmail(email) {
+      return patterns.email.test(email.trim());
+    }
+    
+    function validateMobile(mobile) {
+      return patterns.mobile.test(mobile.trim());
+    }
+    
+    function validatePincode(pincode) {
+      return patterns.pincode.test(pincode.trim());
+    }
+    
+    function validateCity(city) {
+      return patterns.city.test(city.trim());
+    }
+    
+    function validateField(field, validator, errorElement) {
+      const value = field.value.trim();
+      if (!value || !validator(value)) {
+        errorElement.style.display = 'block';
+        field.style.borderColor = '#dc3545';
+        field.style.backgroundColor = '#fff5f5';
+        return false;
+      } else {
+        errorElement.style.display = 'none';
+        field.style.borderColor = '#28a745';
+        field.style.backgroundColor = '#f0fff4';
+        return true;
+      }
+    }
+    
+    // Real-time validation
+    const fields = {
+      guest_name: { validator: validateName, error: 'nameError' },
+      guest_email: { validator: validateEmail, error: 'emailError' },
+      guest_mobile: { validator: validateMobile, error: 'mobileError' },
+      guest_pincode: { validator: validatePincode, error: 'pincodeError' },
+      guest_city: { validator: validateCity, error: 'cityError' }
+    };
+    
+    Object.keys(fields).forEach(fieldName => {
+      const field = document.getElementById(fieldName);
+      const errorElement = document.getElementById(fields[fieldName].error);
+      
+      if (field && errorElement) {
+        // Input restrictions based on field type
+        if (fieldName === 'guest_name' || fieldName === 'guest_city') {
+          field.addEventListener('input', function() {
+            this.value = this.value.replace(/[^a-zA-Z\s-]/g, '');
+          });
+        }
+        
+        if (fieldName === 'guest_mobile' || fieldName === 'guest_pincode' || fieldName === 'guest_alternate_mobile') {
+          field.addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '').slice(0, fieldName === 'guest_pincode' ? 6 : 10);
+          });
+        }
+        
+        field.addEventListener('blur', () => {
+          validateField(field, fields[fieldName].validator, errorElement);
+        });
+        
+        field.addEventListener('input', () => {
+          errorElement.style.display = 'none';
+          field.style.borderColor = '#ccc';
+          field.style.backgroundColor = 'white';
+        });
+      }
+    });
+    
+    // Alternate mobile validation
+    const altMobileField = document.getElementById('guest_alternate_mobile');
+    const altMobileError = document.getElementById('altMobileError');
+    
+    if (altMobileField && altMobileError) {
+      altMobileField.addEventListener('input', function() {
+        this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+      });
+      
+      altMobileField.addEventListener('blur', function() {
+        const value = this.value.trim();
+        if (value && !validateMobile(value)) {
+          altMobileError.style.display = 'block';
+          this.style.borderColor = '#dc3545';
+          this.style.backgroundColor = '#fff5f5';
+        } else {
+          altMobileError.style.display = 'none';
+          this.style.borderColor = value ? '#28a745' : '#ccc';
+          this.style.backgroundColor = value ? '#f0fff4' : 'white';
+        }
+      });
+    }
+    
+    // Required fields validation
+    function validateRequiredField(field, errorElement) {
+      const value = field.value.trim();
+      if (!value) {
+        errorElement.style.display = 'block';
+        field.style.borderColor = '#dc3545';
+        field.style.backgroundColor = '#fff5f5';
+        return false;
+      } else {
+        errorElement.style.display = 'none';
+        field.style.borderColor = '#28a745';
+        field.style.backgroundColor = '#f0fff4';
+        return true;
+      }
+    }
+    
+    const requiredFields = [
+      { name: 'guest_locality', error: 'localityError' },
+      { name: 'guest_address', error: 'addressError' },
+      { name: 'guest_state', error: 'stateError' }
+    ];
+    
+    requiredFields.forEach(fieldInfo => {
+      const field = document.getElementById(fieldInfo.name);
+      const errorElement = document.getElementById(fieldInfo.error);
+      
+      if (field && errorElement) {
+        field.addEventListener('blur', () => {
+          validateRequiredField(field, errorElement);
+        });
+        
+        field.addEventListener('input', () => {
+          errorElement.style.display = 'none';
+          field.style.borderColor = '#ccc';
+          field.style.backgroundColor = 'white';
+        });
+      }
+    });
+    
+    // Form submission handler - UPDATED VERSION
+    if (form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        console.log('✅ Form submission started');
+
+        // Validate all fields
+        let isValid = true;
+        let errors = [];
+        
+        // Validate name
+        const nameField = document.getElementById('guest_name');
+        const nameError = document.getElementById('nameError');
+        if (!validateField(nameField, validateName, nameError)) {
+          isValid = false;
+          errors.push('Name should contain only letters and spaces (2-50 characters)');
+        }
+        
+        // Validate email
+        const emailField = document.getElementById('guest_email');
+        const emailError = document.getElementById('emailError');
+        if (!validateField(emailField, validateEmail, emailError)) {
+          isValid = false;
+          errors.push('Please enter a valid email address');
+        }
+        
+        // Validate mobile
+        const mobileField = document.getElementById('guest_mobile');
+        const mobileError = document.getElementById('mobileError');
+        if (!validateField(mobileField, validateMobile, mobileError)) {
+          isValid = false;
+          errors.push('Mobile must be 10 digits starting with 6-9');
+        }
+        
+        // Validate pincode
+        const pincodeField = document.getElementById('guest_pincode');
+        const pincodeError = document.getElementById('pincodeError');
+        if (!validateField(pincodeField, validatePincode, pincodeError)) {
+          isValid = false;
+          errors.push('Pincode must be exactly 6 digits');
+        }
+        
+        // Validate city
+        const cityField = document.getElementById('guest_city');
+        const cityError = document.getElementById('cityError');
+        if (cityField.value.trim() && !validateField(cityField, validateCity, cityError)) {
+          isValid = false;
+          errors.push('City should contain only letters, spaces, and hyphens');
+        }
+        
+        // Validate alternate mobile (if provided)
+        if (altMobileField && altMobileField.value.trim() && !validateMobile(altMobileField.value.trim())) {
+          isValid = false;
+          altMobileError.style.display = 'block';
+          altMobileField.style.borderColor = '#dc3545';
+          altMobileField.style.backgroundColor = '#fff5f5';
+          errors.push('Alternate mobile must be 10 digits starting with 6-9');
+        }
+        
+        // Validate required fields
+        requiredFields.forEach(fieldInfo => {
+          const field = document.getElementById(fieldInfo.name);
+          const errorElement = document.getElementById(fieldInfo.error);
+          if (!validateRequiredField(field, errorElement)) {
+            isValid = false;
+            const fieldName = fieldInfo.name.replace('guest_', '').replace('_', ' ');
+            errors.push(`${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} is required`);
+          }
+        });
+        
+        if (!isValid) {
+          showValidationPopup(errors);
+          return;
+        }
+        
+        console.log('✅ Validation passed');
+        
+        if (loadingSpinner) loadingSpinner.style.display = 'block';
+        if(placeOrderBtn) {
+          placeOrderBtn.disabled = true;
+          placeOrderBtn.textContent = 'Processing...';
+        }
+
+        
+  try {
+    const formData = new FormData(form);
+
+    // Send form as multipart/form-data (Flask will accept this as normal form POST)
+    const response = await fetch(form.action || "{{ url_for('place_guest_order') }}", {
+      method: 'POST',
+      body: formData,
+      credentials: 'same-origin',
+      redirect: 'follow'
+    });
+
+    console.log('Response status:', response.status, 'redirected:', response.redirected, 'url:', response.url);
+
+    // If server redirected (302 -> browser followed), response.redirected will be true and response.url is final.
+    if (response.redirected) {
+      window.location.href = response.url;
+      return;
+    }
+
+    // Otherwise inspect JSON
+    const ct = response.headers.get('content-type') || '';
+    if (ct.includes('application/json')) {
+      const result = await response.json();
+      console.log('JSON result:', result);
+      if (result.redirect_url) {
+        window.location.href = result.redirect_url;
+        return;
+      }
+      if (!result.success) {
+        throw new Error(result.error || 'Server returned failure');
+      }
+    } else {
+      // Received HTML — show it or reload
+      const text = await response.text();
+      console.log('Received HTML (first 200 chars):', text.substring(0,200));
+      // fallback: reload so user sees error flash messages
+      window.location.reload();
+    }
+  } catch(err) {
+    console.error('Order placement failed:', err);
+    showValidationPopup(['Failed to process order. Please try again.']);
+    // Reset UI
+    if (loadingSpinner) loadingSpinner.style.display = 'none';
+    if (placeOrderBtn) {
+      placeOrderBtn.disabled = false;
+      placeOrderBtn.textContent = `Pay Securely ₹{{ "%.2f"|format(grand_total) }}`;
+    }
+  }
+});
+    }
+
+    // Delivery/Pickup toggle functionality
+    const deliveryBtn = document.getElementById('deliveryBtn');
+    const pickupBtn = document.getElementById('pickupBtn');
+    const orderTypeInput = document.getElementById('order_type_input');
+    
+    if (deliveryBtn) {
+      deliveryBtn.addEventListener('click', function() {
+        document.getElementById('deliveryConfirmPopup').style.display = 'flex';
+      });
+    }
+    
+    if (pickupBtn) {
+      pickupBtn.addEventListener('click', function() {
+        document.getElementById('pickupConfirmPopup').style.display = 'flex';
+      });
+    }
+  });
+  
+  // Delivery/Pickup Popup Functions
+  function closeDeliveryPopup() {
+    document.getElementById('deliveryConfirmPopup').style.display = 'none';
+  }
+  
+  function closePickupPopup() {
+    document.getElementById('pickupConfirmPopup').style.display = 'none';
+  }
+  
+  function confirmDelivery() {
+    closeDeliveryPopup();
+    const deliveryBtn = document.getElementById('deliveryBtn');
+    const pickupBtn = document.getElementById('pickupBtn');
+    const orderTypeInput = document.getElementById('order_type_input');
+    
+    deliveryBtn.classList.add('active');
+    pickupBtn.classList.remove('active');
+    orderTypeInput.value = 'delivery';
+  }
+  
+  function confirmPickup() {
+    closePickupPopup();
+    const deliveryBtn = document.getElementById('deliveryBtn');
+    const pickupBtn = document.getElementById('pickupBtn');
+    const orderTypeInput = document.getElementById('order_type_input');
+    
+    pickupBtn.classList.add('active');
+    deliveryBtn.classList.remove('active');
+    orderTypeInput.value = 'pickup';
+  }
+  
+  // Validation Error Popup
+  function showValidationPopup(errors) {
+    const errorList = errors.map(err => `<li style="text-align: left; margin: 5px 0;">${err}</li>`).join('');
+    
+    const popup = document.createElement("div");
+    popup.innerHTML = `
+      <div style="
+        position: fixed;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        background: white;
+        color: #b32071;
+        border: 2px solid #b32071;
+        border-radius: 12px;
+        padding: 25px;
+        z-index: 2000;
+        font-family: 'Montserrat', sans-serif;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        max-width: 450px;
+        max-height: 80vh;
+        overflow-y: auto;
+        animation: fadeInPopup 0.3s ease;
+      ">
+        <h3 style="margin: 0 0 15px 0; color: #dc3545; font-size: 18px;">
+          ⚠️ Validation Errors
+        </h3>
+        <ul style="margin: 0; padding-left: 20px; line-height: 1.6;">
+          ${errorList}
+        </ul>
+        <button style="
+          background: #ffd1df;
+          border: 1px solid #b32071;
+          color: #b32071;
+          font-weight: bold;
+          border-radius: 8px;
+          padding: 10px 25px;
+          cursor: pointer;
+          margin-top: 20px;
+          width: 100%;
+          transition: all 0.2s ease;
+        " onclick="this.parentElement.parentElement.remove()">
+          OK, I'll Fix It
+        </button>
+      </div>
+    `;
+    document.body.appendChild(popup);
+  }
+  
+  // Add fade-in animation
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes fadeInPopup {
+      from { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+  `;
+  document.head.appendChild(style);
+</script>
+
+</body>
+</html>

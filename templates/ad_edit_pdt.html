@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <title>Document</title>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBDKQW4TCQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DBDKQW4TCQ');
+</script>
+</head>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .main {
+    display: flex;
+    width: 98vw;
+    height: 93vh;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+    border-right: 2px solid #d6336c;
+    background-color: #fce8ef;
+    /* Soft background to match pink theme */
+    padding: 20px 0px;
+    position: fixed;
+    overflow: hidden;
+    overflow-y: scroll;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    /* For Firefox */
+    -ms-overflow-style: none;
+    /* For Internet Explorer and Edge */
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+    /* For Chrome, Safari, and Opera */
+  }
+
+  .left a:nth-last-child(1) {
+    margin-bottom: 50px;
+  }
+
+  .left p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d6336c;
+    margin-bottom: 10px;
+  }
+
+  .left hr {
+    width: 80%;
+    border: 1px solid #d6336c;
+    margin-bottom: 20px;
+  }
+
+  .left i {
+    margin-right: 8px;
+    /* space between icon and text */
+    color: #444;
+    /* dark gray icon color */
+    font-size: 16px;
+    /* adjust icon size */
+    vertical-align: middle;
+    /* align icon with text */
+    transition: color 0.3s;
+    /* smooth hover effect */
+  }
+
+  .left a.active i {
+    color: #ffffff;
+    /* icon color on hover */
+  }
+
+  .left a {
+    text-decoration: none;
+    color: #333;
+    margin: 7px 0;
+    font-weight: 500;
+    padding: 12px 15px;
+    width: 80%;
+    text-align: left;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .left a:hover {
+    background-color: #d6336c;
+    color: white;
+    text-decoration: none;
+  }
+
+  .left a.active {
+    background-color: #d6336c;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #d6336c;
+    box-shadow: 0 4px 10px rgba(214, 51, 108, 0.2);
+  }
+
+  .right {
+    margin-left: 20%;
+    width: 80%;
+    height: 100%;
+    padding: 20px;
+  }
+
+  .product-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .product-container h2,
+  .product-container h3 {
+    color: #d6336c;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+
+  .product-detail,
+  .sub-product-detail,
+  .image-block {
+    margin-bottom: 20px;
+  }
+
+  .product-detail strong,
+  .sub-product-detail strong,
+  .image-block strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+  }
+
+  input[type="text"],
+  select,
+  input[type="number"],
+  input[type="file"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .product-img {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  video {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+
+  button[type="submit"] {
+    background-color: #d6336c;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #b0275a;
+  }
+
+  .back-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+  }
+
+  .back-btn:hover {
+    background-color: #343a40;
+  }
+
+  #available_variants option,
+  #available_flavours option {
+    line-height: 1.8;
+    /* slightly increases space between lines */
+    padding: 4px 0;
+    /* sometimes works on some browsers */
+  }
+</style>
+
+<body>
+  {% set current_path = request.path %}
+
+  <div class="main">
+    <div class="left">
+      <p>DASHBOARD</p>
+      <hr />
+
+      <a href="{{ url_for('admin_dashboard') }}"
+        class="{% if current_path == url_for('admin_dashboard') %}active{% endif %}">
+        <i class="fas fa-plus-square"></i> Add Product
+      </a>
+
+      <a href="{{ url_for('admin_view_product') }}" class="active">
+        <i class="fas fa-eye"></i> View Product
+      </a>
+
+      <a href="{{ url_for('add_categories') }}"
+        class="{% if current_path == url_for('add_categories') %}active{% endif %}">
+        <i class="fas fa-tags"></i> Add Category
+      </a>
+
+      <a href="{{ url_for('add_flavour') }}" class="{% if current_path == url_for('add_flavour') %}active{% endif %}">
+        <i class="fas fa-apple-alt"></i> Add Flavour
+      </a>
+
+      <a href="{{ url_for('add_variant') }}" class="{% if current_path == url_for('add_variant') %}active{% endif %}">
+        <i class="fas fa-weight-hanging"></i> Add Variant
+      </a>
+
+      <a
+          href="{{ url_for('add_accessory') }}"
+          class="{% if current_path == url_for('add_accessory') %}active{% endif %}"
+        >
+          <i class="fas fa-magic"></i> Add Accessories
+        </a>
+        
+      <a href="{{ url_for('master_location') }}"
+        class="{% if current_path == url_for('master_location') %}active{% endif %}">
+        <i class="fas fa-map-marker-alt"></i> Add Master Location
+      </a>
+
+      <a href="{{ url_for('order_history') }}"
+        class="{% if current_path == url_for('order_history') %}active{% endif %}">
+        <i class="fas fa-box"></i> View Order History
+      </a>
+
+      <a href="{{ url_for('custom_cake_order_history') }}"
+        class="{% if current_path == url_for('custom_cake_order_history') %}active{% endif %}">
+        <i class="fas fa-clipboard-list"></i> View Custom Orders
+      </a>
+      
+      <a href="{{ url_for('report_page') }}"
+        class="{% if current_path == url_for('report_page') %}active{% endif %}">
+        <i class="fas fa-chart-line"></i> Reports
+      </a>
+
+      <a href="{{ url_for('update_password') }}"
+        class="{% if current_path == url_for('update_password') %}active{% endif %}">
+        <i class="fas fa-key"></i> Update Password
+      </a>
+
+      <a href="{{ url_for('logout') }}">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </div>
+    <div class="right">
+      <div class="product-container">
+        <h2>Edit Product</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+          <!-- Product Details -->
+          <div class="product-detail">
+            <strong>Product Name:</strong>
+            <select name="product_name" id="product_name" required>
+              <option value="" disabled>Select a product</option>
+              {% for p in product_list %}
+              <option value="{{ p.id }}" {% if p.name==product.product_name %}selected{% endif %}>{{ p.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="product-detail">
+            <strong>Category:</strong>
+            <input type="text" name="category" value="{{ product.product_category }}" />
+          </div>
+
+          <div class="product-detail">
+            <strong>Type:</strong>
+            <input type="text" name="type" value="{{ product.product_type }}" />
+          </div>
+
+          <div class="product-detail">
+            <strong>Offer:</strong>
+            <input type="number" name="offer" value="{{ product.product_offer }}" />
+          </div>
+
+          <div class="product-detail">
+            <strong>Description:</strong>
+            <textarea name="description" rows="4">{{ product.product_description }}</textarea>
+          </div>
+
+          <div class="product-detail">
+            <strong>YouTube Video URL:</strong>
+            <input type="text" name="youtube" value="{{ product.product_youtube }}" />
+          </div>
+
+          <div class="image-block">
+            <strong>Product Image:</strong><br />
+            {% if product.product_image1 %}
+            <img src="{{ url_for('static', filename='uploads/' ~ product.product_image1) }}"
+              class="product-img" /><br />
+            {% endif %}
+            <input type="file" name="image1" />
+          </div>
+
+          <hr />
+
+          <!-- Sub-Product Details -->
+          <h3 style="text-align: center">Sub-Product Details</h3>
+
+          <div class="sub-product-detail">
+            <strong>Sub-Product Name:</strong>
+            <input type="text" name="sub_product_name" value="{{ sub_product.sub_product_name }}" required />
+          </div>
+
+          <div class="sub-product-detail">
+            <strong>Category:</strong>
+            <input type="text" name="sub_product_category" value="{{ sub_product.sub_product_category }}" />
+          </div>
+
+          <div class="sub-product-detail">
+            <strong>Type:</strong>
+            <input type="text" name="sub_product_type" value="{{ sub_product.sub_product_type }}" />
+          </div>
+
+          <div class="sub-product-detail">
+            <strong>Offer:</strong>
+            <input type="number" name="sub_product_offer" value="{{ sub_product.sub_product_offer }}" />
+          </div>
+
+          <div class="sub-product-detail">
+            <strong>Description:</strong>
+            <textarea name="sub_product_description" rows="4">{{ sub_product.sub_product_description }}</textarea>
+          </div>
+
+          <div class="sub-product-detail">
+            <strong>YouTube Video URL:</strong>
+            <input type="text" name="sub_product_youtube" value="{{ sub_product.sub_product_youtube }}" />
+          </div>
+
+          <!-- Sub-Product Variants -->
+          <div class="form-group mb-4">
+            <label for="available_variants" style="font-weight: bold;">Available Variants:</label>
+            <select id="available_variants" name="available_variants" multiple size="5" required>
+              {% for variant in variants %}
+              <option value="{{ variant.id }}" {% if variant.id in selected_variant_ids %}selected{% endif %}>{{
+                variant.name }}</option>
+              {% endfor %}
+            </select>
+            <small style="display:block; margin-top: 6px;">Hold Ctrl (Windows) or Cmd (Mac) to select multiple
+              variants</small>
+          </div>
+          <br>
+
+          <div class="form-group mb-4">
+            <label for="available_flavours" style="font-weight: bold;">Available Flavours:</label>
+            <select id="available_flavours" name="available_flavours" multiple size="5" required>
+              {% for flavour in flavours %}
+              <option value="{{ flavour.id }}" {% if flavour.id in selected_flavour_ids %}selected{% endif %}>{{
+                flavour.name }}</option>
+              {% endfor %}
+            </select>
+            <small style="display:block; margin-top: 6px;">Hold Ctrl (Windows) or Cmd (Mac) to select multiple
+              flavours</small>
+          </div>
+          <br>
+
+          <div id="combination-price-section" class="form-group mt-6">
+            <label style="margin-bottom: 10px; font-weight: bold;">Set Price for Variant + Flavour
+              Combinations:</label>
+            <div style="margin-top: 10px;" id="combination-price-grid"></div>
+          </div>
+          <br>
+
+          <!-- Sub-Product Images -->
+          {% for i in range(1, 6) %}
+          <div class="image-block">
+            <strong>Sub-Product Image {{ i }}:</strong><br />
+            {% set sub_img = sub_product['sub_product_image' + i|string] %}
+            {% if sub_img %}
+            <img src="{{ url_for('static', filename='uploads/' ~ sub_img) }}" class="product-img" /><br />
+            {% endif %}
+            <input type="file" name="sub_product_image{{ i }}" />
+          </div>
+          {% endfor %}
+
+          <div class="sub-product-detail">
+            <strong>Sub-Product Video:</strong><br />
+            {% if sub_product.sub_product_video %}
+            <video controls>
+              <source src="{{ url_for('static', filename='uploads/' ~ sub_product.sub_product_video) }}"
+                type="video/mp4" />
+              Your browser does not support the video tag.
+            </video><br />
+            {% else %}
+            <p>No video uploaded.</p>
+            {% endif %}
+            <input type="file" name="sub_product_video" accept="video/*" />
+          </div>
+         <div class="form-group">
+            <label for="delivery_cost">Delivery Cost:</label>
+            <input type="number" id="delivery_cost" name="delivery_cost" step="0.01" value="{{ sub_product.delivery_cost }}" />
+          </div><br>
+          <div class="form-group">
+            <label for="packaging_cost">Packaging Cost:</label>
+            <input type="number" id="packaging_cost" name="packaging_cost" step="0.01" value="{{ sub_product.packaging_cost }}" />
+          </div>
+          <!-- Submit Button -->
+          <div style="text-align: center; margin-top: 20px">
+            <button type="submit">Update Product</button>
+          </div>
+        </form>
+
+        <a href="{{ url_for('admin_view_product') }}" class="back-btn">Back to View Products</a>
+      </div>
+    </div>
+
+    <script>
+      function updateCombinationPriceGrid() {
+        const variantSelect = document.getElementById("available_variants");
+        const flavourSelect = document.getElementById("available_flavours");
+        const gridContainer = document.getElementById("combination-price-grid");
+
+        const selectedVariants = Array.from(variantSelect.selectedOptions).map(opt => ({
+          id: opt.value,
+          name: opt.text
+        }));
+
+        const selectedFlavours = Array.from(flavourSelect.selectedOptions).map(opt => ({
+          id: opt.value,
+          name: opt.text
+        }));
+
+        gridContainer.innerHTML = "";
+
+        if (selectedVariants.length === 0 || selectedFlavours.length === 0) {
+          gridContainer.innerHTML = "<p style='color:red'>Please select at least one variant and one flavour.</p>";
+          return;
+        }
+
+        const table = document.createElement("table");
+        table.style.borderCollapse = "collapse";
+        table.innerHTML = `
+      <tr>
+        <th style="border: 1px solid #ccc; padding: 5px;">Variant</th>
+        <th style="border: 1px solid #ccc; padding: 5px;">Flavour</th>
+        <th style="border: 1px solid #ccc; padding: 5px;">Price</th>
+      </tr>
+    `;
+
+        selectedVariants.forEach(variant => {
+          selectedFlavours.forEach(flavour => {
+            const comboKey = `${variant.id}_${flavour.id}`;
+            const defaultPrice = comboPrices[comboKey] || "";
+
+            const row = document.createElement("tr");
+            row.innerHTML = `
+          <td style="border: 1px solid #ccc; padding: 5px;">${variant.name}</td>
+          <td style="border: 1px solid #ccc; padding: 5px;">${flavour.name}</td>
+          <td style="border: 1px solid #ccc; padding: 5px;">
+            <input type="number" step="0.01" name="combo_price_${variant.id}_${flavour.id}" value="${defaultPrice}" required placeholder="₹" />
+            <input type="hidden" name="combo_variant_ids[]" value="${variant.id}">
+            <input type="hidden" name="combo_flavour_ids[]" value="${flavour.id}">
+          </td>
+        `;
+            table.appendChild(row);
+          });
+        });
+
+        gridContainer.appendChild(table);
+      }
+
+      // Populate comboPrices from Flask
+      const comboPrices = {
+  {% for key, price in combo_prices.items() %}
+      "{{ key[0] }}_{{ key[1] }}": "{{ price }}"{% if not loop.last %}, {% endif %}
+      {% endfor %}
+};
+
+
+      document.getElementById("available_variants").addEventListener("change", updateCombinationPriceGrid);
+      document.getElementById("available_flavours").addEventListener("change", updateCombinationPriceGrid);
+
+      // Call on page load
+      window.onload = updateCombinationPriceGrid;
+    </script>
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Payment - SM Bakers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .payment-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffd1df, #b32071);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(179, 32, 113, 0.3);
+        }
+
+        h1 {
+            color: #b32071;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .order-summary {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .order-summary h3 {
+            color: #b32071;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e9ecef;
+            color: #555;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .total {
+            font-weight: bold;
+            font-size: 20px;
+            color: #b32071;
+            margin-top: 10px;
+            padding-top: 15px;
+            border-top: 2px solid #b32071;
+        }
+
+        .pay-button {
+            background: linear-gradient(135deg, #ffd1df, #b32071);
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(179, 32, 113, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .pay-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(179, 32, 113, 0.4);
+        }
+
+        .pay-button:active {
+            transform: translateY(0);
+        }
+
+        .pay-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .info-message {
+            background: #d1ecf1;
+            color: #0c5460;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #17a2b8;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .security-notice {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .loading {
+            display: none;
+            margin: 20px 0;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #b32071;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #dc3545;
+            text-align: left;
+            font-size: 14px;
+            display: none;
+        }
+
+        @media (max-width: 480px) {
+            .payment-container {
+                padding: 25px 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+
+            .pay-button {
+                font-size: 16px;
+                padding: 15px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <div class="logo">🎂</div>
+        <h1>Secure Payment</h1>
+        <p class="subtitle">Complete your order with safe & secure payment</p>
+        
+        <div class="order-summary">
+            <h3>Order Summary</h3>
+            <div class="summary-item">
+                <span>Order ID:</span>
+                <span><strong>#{{ order_id }}</strong></span>
+            </div>
+            <div class="summary-item total">
+                <span>Total Amount:</span>
+                <span>₹{{ "%.2f"|format(amount) }}</span>
+            </div>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+
+        <button class="pay-button" id="payButton" onclick="processPayment()">
+            💳 Pay Securely - ₹{{ "%.2f"|format(amount) }}
+        </button>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p style="color: #666;">Processing payment...</p>
+        </div>
+
+        <div class="info-message">
+            <strong>📋 Payment Information:</strong><br><br>
+            • Secure payment powered by Razorpay<br>
+            • Multiple payment options available<br>
+            • Your data is encrypted and secure<br>
+            • For queries: +91-8655481522
+        </div>
+
+        <div class="security-notice">
+            <span>🔒</span>
+            <span>Secure Payment Gateway</span>
+        </div>
+    </div>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    
+    <script>
+        const orderId = {{ order_id }};
+        const amount = {{ amount }};
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            console.error('Error:', message);
+        }
+
+        function hideError() {
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+
+        function resetButton() {
+            const payButton = document.getElementById('payButton');
+            const loading = document.getElementById('loading');
+            
+            payButton.disabled = false;
+            payButton.textContent = `💳 Pay Securely - ₹${amount.toFixed(2)}`;
+            loading.style.display = 'none';
+        }
+
+        async function processPayment() {
+            const payButton = document.getElementById('payButton');
+            const loading = document.getElementById('loading');
+            
+            hideError();
+            payButton.disabled = true;
+            payButton.textContent = '⏳ Creating Order...';
+            loading.style.display = 'block';
+
+            console.log('🚀 Starting payment process for order:', orderId);
+
+            try {
+                // ✅ Get CSRF token from meta tag
+                const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+                
+                const response = await fetch(`/create_razorpay_order/${orderId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...(csrfToken && { 'X-CSRFToken': csrfToken })
+                    },
+                    credentials: 'same-origin'
+                });
+
+                console.log('📡 Response status:', response.status);
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`HTTP ${response.status}: ${errorText}`);
+                }
+
+                const data = await response.json();
+                console.log('✅ Response data:', data);
+                
+                if (!data.success) {
+                    throw new Error(data.error || 'Failed to create payment order');
+                }
+
+                loading.style.display = 'none';
+                payButton.textContent = '💳 Opening Payment...';
+                
+                // Initialize Razorpay
+                const options = {
+                    "key": data.key_id,
+                    "amount": data.amount,
+                    "currency": data.currency,
+                    "name": data.name,
+                    "description": data.description,
+                    "order_id": data.razorpay_order_id,
+                    "handler": async function (response) {
+                        loading.style.display = 'block';
+                        payButton.textContent = '✓ Verifying...';
+                        
+                        console.log('💰 Payment successful, verifying:', response);
+                        
+                        try {
+                            const verifyResponse = await fetch('/payment_success', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    razorpay_payment_id: response.razorpay_payment_id,
+                                    razorpay_order_id: response.razorpay_order_id,
+                                    razorpay_signature: response.razorpay_signature
+                                })
+                            });
+
+                            const result = await verifyResponse.json();
+                            console.log('✅ Verification result:', result);
+                            
+                            if (result.success) {
+                                window.location.href = result.redirect_url;
+                            } else {
+                                showError('⚠️ ' + (result.error || 'Payment verification failed'));
+                                resetButton();
+                            }
+                        } catch (error) {
+                            console.error('Verification Error:', error);
+                            showError('❌ Verification failed: ' + error.message);
+                            resetButton();
+                        }
+                    },
+                    "prefill": {
+                        "name": data.prefill_name,
+                        "email": data.prefill_email
+                    },
+                    "theme": {
+                        "color": "#b32071"
+                    },
+                    "modal": {
+                        "ondismiss": function() {
+                            console.log('Payment modal dismissed');
+                            resetButton();
+                        }
+                    }
+                };
+                
+                const rzp = new Razorpay(options);
+                
+                rzp.on('payment.failed', function (response){
+                    console.error('💥 Payment failed:', response.error);
+                    showError('❌ Payment Failed: ' + (response.error.description || 'Please try again'));
+                    resetButton();
+                });
+                
+                rzp.open();
+                
+            } catch (error) {
+                console.error('💥 Error:', error);
+                showError('❌ Error: ' + error.message);
+                resetButton();
+            }
+        }
+    </script>
+</body>
+</html>

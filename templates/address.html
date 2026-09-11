@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SM BAKERS</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBDKQW4TCQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DBDKQW4TCQ');
+</script>
+    <!-- Favicon -->
+    <link href="static/img/favicon.ico" rel="icon" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icon Font Stylesheet -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Libraries Stylesheet -->
+    <link href="static/lib/animate/animate.min.css" rel="stylesheet" />
+    <link
+      href="static/lib/owlcarousel/assets/owl.carousel.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="static/css/style.css" rel="stylesheet" />
+  </head>
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px; /* Width of the scrollbar */
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: transparent; /* Light gray background */
+      border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #ffd1df; /* Gradient color */
+      border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ffd1df;
+    }
+  </style>
+  <body>
+      <!-- Topbar Start -->
+  <div class="container-fluid top-bar bg-primary  px-0" style="height: 35px;">
+    <div class="row gx-0 align-items-center" style="height: 100%;">
+      <div class="col-12 text-center">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+       <marquee behavior="scroll" direction="left" scrollamount="5"
+          style="font-size: 16px;font-family:'Great Vibes', cursive;  font-style: italic; color: black; font-weight: 500; padding-top: 5px">
+          <i class="fas fa-birthday-cake" style="color:#B32071"></i>
+          Try Our New 70+ Flavours |
+          <i class="fas fa-store" style="color:#B32071"></i>
+          Offer Available In All Our 45+ Stores. |
+          <i class="fas fa-gift" style="color:#B32071"></i>
+          Everyday Buy 1 Cake Get 1 Free 70+ Premium |
+          <i class="fas fa-phone" style="color:#B32071"></i>
+          For Order Connect With Us: <a href="tel:+918655481522" style="color:black">+91 8655481522</a>
+        </marquee>
+      </div>
+    </div>
+  </div>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-0 px-lg-5" style="background-color: white;">
+  <!-- Logo -->
+  <a href="{{ url_for('home') }}" class="navbar-brand ms-4 ms-lg-0">
+    <img src="static/img/SS_logo.png" style="height:80px;width: 80px;">
+  </a>
+  <!-- Toggler for mobile view -->
+  <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <!-- Desktop and Mobile Menu Links -->
+    <div class="navbar-nav ms-auto p-4 p-lg-0 w-100 d-flex justify-content-center">
+      <a class="btn btn-link" href="{{ url_for('home') }}">Home</a>
+      <a class="btn btn-link" href="{{ url_for('about') }}">About Us</a>
+      <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Cake Variety</a>
+      <!-- <a class="btn btn-link" href="{{ url_for('gallery') }}">Gallery</a> -->
+      <a class="btn btn-link" href="{{ url_for('our_outlet') }}">Our Outlet</a>
+      <a class="btn btn-link" href="{{ url_for('contact') }}">Contact Us</a>
+    </div>
+   <!-- Franchise Button (Visible in Desktop) -->
+    <a class="btn-about py-2 px-3 me-3  d-none d-lg-block " href="{{ url_for('franchise') }}" style="font-family: 'montserrat'; font-weight: 500">
+      FRANCHISE
+    </a>
+    <!-- Desktop Icons -->
+    <div class="d-none d-lg-flex ms-4 align-items-center">
+      <!-- Cart Icon -->
+      <a href="{{ url_for('cart') }}" class="position-relative me-3">
+        <div class="flex-shrink-0 btn-lg-square rounded-circle hover-icon">
+          <i class="fa fa-shopping-cart"></i>
+          <!-- <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{ cartitems|length }}
+          </span> -->
+        </div>
+      </a>
+      {% if not session.get('user_id') %}
+        <div class="d-inline-flex align-items-center me-3">
+          <div class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon">
+            <a href="{{ url_for('login') }}">
+              <i class="fas fa-sign-in-alt" style="margin-top: 5px"></i>
+            </a>
+          </div>
+        </div>
+      {% else %}
+        <div class="d-inline-flex align-items-center me-3">
+          <button class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon" id="openUserModal" style="background: none; border: none">
+            <i class="fa fa-user"></i>
+          </button>
+        </div>
+  <!-- Side Modal -->
+          <div id="modalOverlay" class="modal-overlay"></div>
+          <div id="userSideModal" class="side-modal">
+            <div class="side-modal-content">
+              <span class="close-btn" id="closeUserModal">&times;</span>
+              <!-- User Info Header -->
+              <div class="user-header">
+                <div class="user-avatar">
+                  <i class="fa fa-user-circle"></i>
+                </div>
+                <div class="user-details">
+                  {% for user in users%}
+                  <div class="user-name">{{user.name}}</div>  
+                  <div class="user-email">{{user.email}}</div>
+                  {% endfor %}
+                </div>
+              </div>
+              <!-- User Menu Links -->
+              <div class="user-menu">
+                <a href="{{ url_for('personal_info') }}">
+                  <i class="fa fa-user"></i> Personal Information
+                </a>
+                <a href="{{ url_for('user_order_history') }}">
+                  <i class="fa fa-shopping-bag"></i> My Orders
+                </a>
+                <a href="{{url_for('manage_user_address')}}">
+                  <i class="fa fa-map-marker"></i> Manage Addresses
+                </a>
+              </div>
+              <!-- Footer -->
+              <div class="user-footer">
+                <a href="{{ url_for('logout') }}" class="logout-link"
+                  ><i class="fa fa-sign-out-alt"></i> Logout</a
+                >
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              const openBtn = document.getElementById("openUserModal");
+              const modal = document.getElementById("userSideModal");
+              const closeBtn = document.getElementById("closeUserModal");
+              const overlay = document.getElementById("modalOverlay");
+              function openModal() {
+                modal.classList.add("open");
+                overlay.classList.add("active");
+              }
+              function closeModal() {
+                modal.classList.remove("open");
+                overlay.classList.remove("active");
+              }
+              openBtn.addEventListener("click", openModal);
+              closeBtn.addEventListener("click", closeModal);
+              // Close modal when clicking outside (on overlay)
+              overlay.addEventListener("click", closeModal);
+            });
+          </script>
+      <!-- Instagram Icon -->
+      <a href="#" target="_blank" class="me-3 hover-icon" style="padding:15px">
+        <i class="fab fa-instagram "></i>
+      </a>
+    </div>
+    <!-- Mobile Franchise Button + Icons -->
+    <div class="d-flex d-lg-none flex-column align-items-center w-100  px-3" style="margin-top:-20px">
+      <!-- Franchise Button for Mobile -->
+      <a class="btn-about py-2 px-3 mt-3 w-80 text-center" href="{{ url_for('franchise') }}" style="font-family: 'montserrat'; font-weight: 500; background-color: #FFD1DF; color: #B32071;">
+        FRANCHISE <i class="fa fa-store"></i>
+      </a>
+      <br>
+      <div class="d-flex justify-content-center gap-3">
+        <!-- Cart Icon -->
+        <a href="{{ url_for('cart') }}" class="position-relative">
+          <div class="flex-shrink-0 btn-lg-square rounded-circle hover-icon" style="margin-right: 10px">
+            <i class="fa fa-shopping-cart"></i>
+            <!-- <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              {{ cartitems|length }}
+            </span> -->
+          </div>
+        </a>
+      {% if not session.get('user_id') %}
+  <div class="d-inline-flex align-items-center me-3">
+    <div class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon">
+      <a href="{{ url_for('login') }}">
+        <i class="fas fa-sign-in-alt" style="margin-top: 5px"></i>
+      </a>
+    </div>
+  </div>
+{% else %}
+  <!-- Mobile User Icon -->
+  <div class="d-inline-flex align-items-center me-3">
+    <button id="openUserModalMobile" class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon" style="background: none; border: none;">
+      <i class="fa fa-user"></i>
+    </button>
+  </div>
+  <!-- Side Modal -->
+  <div id="modalOverlayMobile" class="modal-overlay"></div>
+  <div id="userSideModalMobile" class="side-modal">
+    <div class="side-modal-content">
+      <span class="close-btn" id="closeUserModalMobile">&times;</span>
+      <!-- User Info Header -->
+      <div class="user-header">
+        <div class="user-avatar">
+          <i class="fa fa-user-circle"></i>
+        </div>
+        <div class="user-details">
+          {% for user in users %}
+            <div class="user-name">{{ user.name }}</div>
+            <div class="user-email">{{ user.email }}</div>
+          {% endfor %}
+        </div>
+      </div>
+      <!-- User Menu Links -->
+      <div class="user-menu">
+        <a href="{{ url_for('personal_info') }}">
+          <i class="fa fa-user"></i> Personal Information
+        </a>
+        <a href="{{ url_for('user_order_history') }}">
+          <i class="fa fa-shopping-bag"></i> My Orders
+        </a>
+        <a href="{{ url_for('manage_user_address') }}">
+          <i class="fa fa-map-marker"></i> Manage Addresses
+        </a>
+      </div>
+      <!-- Footer -->
+      <div class="user-footer">
+        <a href="{{ url_for('logout') }}" class="logout-link">
+          <i class="fa fa-sign-out-alt"></i> Logout
+        </a>
+      </div>
+    </div>
+  </div>
+{% endif %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Mobile modal logic
+    const openMobile = document.getElementById("openUserModalMobile");
+    const modalMobile = document.getElementById("userSideModalMobile");
+    const closeMobile = document.getElementById("closeUserModalMobile");
+    const overlayMobile = document.getElementById("modalOverlayMobile");
+    openMobile?.addEventListener("click", () => {
+      modalMobile.classList.add("open");
+      overlayMobile.classList.add("active");
+    });
+    closeMobile?.addEventListener("click", () => {
+      modalMobile.classList.remove("open");
+      overlayMobile.classList.remove("active");
+    });
+    overlayMobile?.addEventListener("click", () => {
+      modalMobile.classList.remove("open");
+      overlayMobile.classList.remove("active");
+    });
+  });
+</script>
+        <!-- Instagram Icon -->
+        <a href="#" target="_blank">
+          <i class="fab fa-instagram hover-icon" style=" font-size: 20px;"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+<style>
+  /* Navbar background color */
+  .navbar-light {
+    background-color: white !important;
+  }
+  /* Change the menu link color to dark */
+  .navbar-nav .nav-link {
+    color: #333 !important;
+  }
+  /* Change the color of the active link */
+  .navbar-nav .nav-link.active {
+    color: #FFD1DF !important;
+  }
+  /* Add hover effect on menu links */
+  .navbar-nav .nav-link:hover {
+    color: #FFD1DF !important;
+  }
+  /* Center the Navbar Links and Icons in Mobile View */
+  @media (max-width: 991px) {
+    .navbar-nav {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+    .navbar-nav .btn-link {
+      margin: 0 10px; /* Adds space between links */
+    }
+    .d-flex.justify-content-center {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .d-flex.justify-content-center a {
+      font-size: 18px;
+    }
+    .d-none.d-lg-flex {
+      display: none !important;
+    }
+    /* Franchise Button in Mobile View */
+    .btn-about {
+      font-size: 16px;
+      background-color: #FFD1DF;
+      color: #B32071;
+      text-align: center;
+    }
+    .btn-about:hover {
+      background-color: #B32071;
+      color: white;
+    }
+  }
+</style>
+
+    <br><Br><br><br>
+  <style>
+  
+    .card-box {
+      border-radius: 15px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      position: relative;
+      transition: all 0.3s ease-in-out;
+    }
+    .card-box:hover {
+      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    }
+    .address-type-badge {
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      font-size: 14px;
+      padding: 2px 10px;
+      border-radius: 50px;
+      background-color: #e9ecef;
+      font-weight: 500;
+    }
+    .action-btn {
+      border: 1px solid #b32071;
+      border-radius: 8px;
+      padding: 5px 15px;
+      background-color: white;
+      font-size: 14px;
+      color:#b32071;
+      margin-right: 10px;
+      transition: 0.2s;
+    }
+    .action-btn:hover {
+      background-color: #ffd1df;
+    }
+    .form-container {
+      display: {{ 'block' if edit_address else 'none' }};
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
+    }
+
+   .header {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  align-items: center;     /* centers vertically */
+  color: black;
+  height: 100px;           /* set a height if vertical centering is needed */
+  text-align: center;
+}
+
+    .header i{
+      color: black;
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+  </style>
+  <div class="header">
+    <a href="{{ url_for('home') }}" style="margin-top: -25px">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <h3 class="mb-4" style="font-family:'montserrat';color:#b32071">Manage Addresses</h3>
+  </div>
+  <center><button onclick="toggleAddressForm()" class="btn btn-outline-primary mb-3">+ Add New Address</button></center>
+  <div id="successMsg" class="alert alert-success d-none"></div>
+
+<!-- Address Form -->
+<div id="addressForm" class="container">
+  <form method="POST" action="{{ url_for('add_address') }}?next=manage_user_address" id="addressFormElement">
+    
+    {% if edit_address %}
+    <input type="hidden" name="address_id" value="{{ edit_address.id }}">
+    {% endif %}
+
+    <div class="row">
+      <div class="col-12 col-lg-4 mb-3">
+        <input 
+          class="form-control" 
+          name="name" 
+          id="name"
+          placeholder="Name" 
+          required 
+          value="{{ edit_address.username if edit_address else '' }}"
+        >
+        <p id="nameError" class="validation-error" style="display: none; color: #ff6b6b; font-size: 12px; margin-top: 2px;">
+          Name should contain only letters and spaces
+        </p>
+      </div>
+      <div class="col-12 col-lg-4 mb-3">
+        <input 
+          class="form-control" 
+          name="mobile" 
+          id="mobile"
+          placeholder="Mobile" 
+          maxlength="10"
+          required 
+          value="{{ edit_address.mobile if edit_address else '' }}"
+        >
+        <p id="mobileError" class="validation-error" style="display: none; color: #ff6b6b; font-size: 12px; margin-top: 2px;">
+          Mobile must be 10 digits starting with 6-9
+        </p>
+      </div>
+      <div class="col-12 col-lg-4 mb-3">
+        <input 
+          class="form-control" 
+          name="pincode" 
+          id="pincode"
+          placeholder="Pincode" 
+          maxlength="6"
+          value="{{ edit_address.pincode if edit_address else '' }}"
+        >
+        <p id="pincodeError" class="validation-error" style="display: none; color: #ff6b6b; font-size: 12px; margin-top: 2px;">
+          Pincode must be exactly 6 digits
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-4 mb-3">
+        <input 
+          class="form-control" 
+          name="locality" 
+          id="locality"
+          placeholder="Locality" 
+          value="{{ edit_address.locality if edit_address else '' }}"
+        >
+      </div>
+      <div class="col-12 col-lg-4 mb-3">
+        <input 
+          class="form-control" 
+          name="city_district_town" 
+          id="city"
+          placeholder="City/District/Town" 
+          value="{{ edit_address.city_district_town if edit_address else '' }}"
+        >
+        <p id="cityError" class="validation-error" style="display: none; color: #ff6b6b; font-size: 12px; margin-top: 2px;">
+          City should contain only letters, spaces, and hyphens
+        </p>
+      </div>
+      <div class="col-12 col-lg-4 mb-3">
+        <select class="form-select" name="state" id="state">
+          <option value="">-- Select State --</option>
+          {% for st in ['Maharashtra', 'Delhi', 'Gujarat', 'Karnataka'] %}
+          <option value="{{ st }}" {% if edit_address and edit_address.state == st %}selected{% elif not edit_address and st == 'Maharashtra' %}selected{% endif %}>{{ st }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-4 mb-3">
+        <input 
+          class="form-control" 
+          name="landmark" 
+          id="landmark"
+          placeholder="Landmark (Optional)" 
+          value="{{ edit_address.landmark if edit_address else '' }}"
+        >
+      </div>
+      <div class="col-12 col-lg-4 mb-3">
+        <input 
+          class="form-control" 
+          name="alternate_mobile" 
+          id="altMobile"
+          placeholder="Alternate Mobile (Optional)" 
+          maxlength="10"
+          value="{{ edit_address.alternate_mobile if edit_address else '' }}"
+        >
+        <p id="altMobileError" class="validation-error" style="display: none; color: #ff6b6b; font-size: 12px; margin-top: 2px;">
+          Alternate mobile must be 10 digits starting with 6-9
+        </p>
+      </div>
+      <div class="col-12 col-lg-4 mb-3">
+        <textarea 
+          class="form-control" 
+          name="address" 
+          id="address"
+          placeholder="Area & Street"
+          rows="1"
+        >{{ edit_address.address if edit_address else '' }}</textarea>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label w-100">Address Type</label>
+      {% for atype in ['Home', 'Work', 'Shipping', 'Billing'] %}
+      <div class="form-check form-check-inline">
+        <input 
+          class="form-check-input" 
+          type="radio" 
+          name="address_type" 
+          id="addrType{{ loop.index }}"
+          value="{{ atype }}" 
+          {% if edit_address and edit_address.address_type == atype %}checked
+          {% elif not edit_address and atype == 'Home' %}checked{% endif %}
+        >
+        <label class="form-check-label" for="addrType{{ loop.index }}">{{ atype }}</label>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="mt-3">
+      <button type="submit" class="btn-about">Save</button>
+      <button type="button" onclick="hideAddressForm()" class="btn-about">Cancel</button>
+    </div>
+  </form>
+</div>
+
+
+ <!-- Centered Wrapper for Address Cards -->
+<div class="address-card-wrapper d-flex justify-content-center">
+  <div class="row justify-content-center w-100" style="max-width: 960px;">
+    {% for addr in addresses %}
+    <div class="col-md-6 col-lg-4 mb-4 d-flex justify-content-center">
+      <div class="card-box w-100">
+        <div class="address-type-badge">
+          {% if addr.address_type == 'Home' %}🏠 Home
+          {% elif addr.address_type == 'Work' %}🏢 Work
+          {% elif addr.address_type == 'Shipping' %}📦 Shipping
+          {% elif addr.address_type == 'Billing' %}💳 Billing
+          {% else %}📍 Other
+          {% endif %}
+        </div>
+
+        <div class="mb-2 mt-4"><strong>{{ addr.name }}</strong> | {{ addr.mobile }}</div>
+        <div class="mb-1">{{ addr.address }}, {{ addr.locality }}</div>
+        <div>{{ addr.city_district_town }}, {{ addr.state }} - {{ addr.pincode }}</div>
+        {% if addr.landmark %}<div>Landmark: {{ addr.landmark }}</div>{% endif %}
+        {% if addr.alternate_mobile %}<div>Alt: {{ addr.alternate_mobile }}</div>{% endif %}
+
+        <div class="mt-3">
+          <form method="GET" action="{{ url_for('manage_user_address') }}" class="d-inline">
+            <input type="hidden" name="edit" value="{{ addr.id }}">
+            <button type="submit" class="action-btn">✏️ Edit</button>
+          </form>
+          <form method="POST" action="{{ url_for('delete_address', address_id=addr.id) }}?next=manage_user_address" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this address?');">
+            <button type="submit" class="action-btn">🗑️ Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<style>
+.address-card-wrapper {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.card-box {
+  width: 100%;
+  border:3px double #b32071;
+  max-width: 300px; /* To keep cards consistent in width */
+}
+
+</style>
+
+  </div>
+
+  
+  <script>
+  // ================================
+  // ADDRESS FORM VALIDATION SCRIPT
+  // ================================
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const nameInput = document.getElementById('name');
+    const mobileInput = document.getElementById('mobile');
+    const pincodeInput = document.getElementById('pincode');
+    const cityInput = document.getElementById('city');
+    const altMobileInput = document.getElementById('altMobile');
+    const stateSelect = document.getElementById('state');
+    const form = document.getElementById('addressFormElement');
+
+    // Validation Patterns
+    const patterns = {
+      name: /^[a-zA-Z\s]{2,50}$/,
+      mobile: /^[6-9]\d{9}$/,
+      pincode: /^\d{6}$/,
+      city: /^[a-zA-Z\s-]{2,50}$/
+    };
+
+    // ✅ Name Validation (Only Letters and Spaces)
+    nameInput?.addEventListener('input', function() {
+      this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+      validateField('name', patterns.name, 'nameError');
+    });
+
+    // ✅ Mobile Validation (Only Numbers, 10 digits, starts with 6-9)
+    mobileInput?.addEventListener('input', function() {
+      this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+      validateField('mobile', patterns.mobile, 'mobileError');
+    });
+
+    // ✅ Pincode Validation (Only Numbers, 6 digits)
+    pincodeInput?.addEventListener('input', function() {
+      this.value = this.value.replace(/[^0-9]/g, '').slice(0, 6);
+      validateField('pincode', patterns.pincode, 'pincodeError');
+    });
+
+    // ✅ City Validation (Only Letters, Spaces, Hyphens)
+    cityInput?.addEventListener('input', function() {
+      this.value = this.value.replace(/[^a-zA-Z\s-]/g, '');
+      validateField('city', patterns.city, 'cityError');
+    });
+
+    // ✅ Alternate Mobile Validation (Optional but if entered must be valid)
+    altMobileInput?.addEventListener('input', function() {
+      this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+      if (this.value.length > 0) {
+        validateField('altMobile', patterns.mobile, 'altMobileError');
+      }
+    });
+
+    // ✅ Generic Field Validation Function
+    function validateField(fieldId, pattern, errorId) {
+      const field = document.getElementById(fieldId);
+      const error = document.getElementById(errorId);
+      const value = field.value.trim();
+
+      if (value === '') {
+        error.style.display = 'none';
+        field.style.borderColor = '#ced4da';
+        return false;
+      }
+
+      if (!pattern.test(value)) {
+        error.style.display = 'block';
+        field.style.borderColor = '#ff6b6b';
+        field.style.backgroundColor = '#fff5f5';
+        return false;
+      } else {
+        error.style.display = 'none';
+        field.style.borderColor = '#28a745';
+        field.style.backgroundColor = '#f0fff4';
+        return true;
+      }
+    }
+
+    // ✅ Form Submit Validation
+    form?.addEventListener("submit", function (e) {
+      e.preventDefault();
+      let isValid = true;
+      let errors = [];
+
+      // Validate Name
+      if (!nameInput.value.trim()) {
+        errors.push('Name is required');
+        isValid = false;
+      } else if (!patterns.name.test(nameInput.value.trim())) {
+        errors.push('Name should contain only letters and spaces (2-50 characters)');
+        isValid = false;
+      }
+
+      // Validate Mobile
+      if (!mobileInput.value.trim()) {
+        errors.push('Mobile number is required');
+        isValid = false;
+      } else if (!patterns.mobile.test(mobileInput.value.trim())) {
+        errors.push('Mobile must be 10 digits starting with 6-9');
+        isValid = false;
+      }
+
+      // Validate Pincode (if provided)
+      if (pincodeInput.value.trim() && !patterns.pincode.test(pincodeInput.value.trim())) {
+        errors.push('Pincode must be exactly 6 digits');
+        isValid = false;
+      }
+
+      // Validate City (if provided)
+      if (cityInput.value.trim() && !patterns.city.test(cityInput.value.trim())) {
+        errors.push('City should contain only letters, spaces, and hyphens');
+        isValid = false;
+      }
+
+      // Validate Alternate Mobile (if provided)
+      if (altMobileInput.value.trim() && !patterns.mobile.test(altMobileInput.value.trim())) {
+        errors.push('Alternate mobile must be 10 digits starting with 6-9');
+        isValid = false;
+      }
+
+      if (!isValid) {
+        showValidationPopup(errors);
+        return false;
+      }
+
+      // If valid, proceed with AJAX submission
+      const formData = new FormData(form);
+
+      fetch("{{ url_for('add_address') }}?next=manage_user_address", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
+        },
+        body: formData
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            form.reset();
+            hideAddressForm();
+            showSuccess(data.is_edit ? "Address updated successfully!" : "Address added successfully!");
+            setTimeout(() => {
+              window.location.href = "{{ url_for('manage_user_address') }}";
+            }, 1500);
+          } else {
+            alert("Error saving address.");
+          }
+        })
+        .catch(err => {
+          console.error("Error:", err);
+          alert("Something went wrong.");
+        });
+    });
+
+    // ✅ Show Validation Popup
+    function showValidationPopup(errors) {
+      const errorList = errors.map(err => `<li style="text-align: left; margin: 5px 0;">${err}</li>`).join('');
+      
+      const popup = document.createElement("div");
+      popup.innerHTML = `
+        <div style="
+          position: fixed;
+          top: 50%; left: 50%;
+          transform: translate(-50%, -50%);
+          background: white;
+          color: #b32071;
+          border: 2px solid #b32071;
+          border-radius: 12px;
+          padding: 25px;
+          z-index: 10000;
+          font-family: 'Montserrat', sans-serif;
+          box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+          max-width: 450px;
+          animation: fadeIn 0.3s ease;
+        ">
+          <h3 style="margin: 0 0 15px 0; color: #dc3545; font-size: 18px;">⚠️ Validation Errors</h3>
+          <ul style="margin: 0; padding-left: 20px; line-height: 1.6;">${errorList}</ul>
+          <button style="
+            background: #ffd1df;
+            border: 1px solid #b32071;
+            color: #b32071;
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 10px 25px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+          " onclick="this.parentElement.parentElement.remove()">
+            OK, I'll Fix It
+          </button>
+        </div>
+      `;
+      document.body.appendChild(popup);
+    }
+  });
+
+  // ✅ Show Success Message
+  function showSuccess(msg) {
+    const box = document.getElementById('successMsg');
+    if (box) {
+      box.textContent = msg;
+      box.classList.remove('d-none');
+      setTimeout(() => box.classList.add('d-none'), 3000);
+    }
+  }
+
+  // ✅ Toggle and Hide Address Form
+  function toggleAddressForm() {
+    const form = document.getElementById('addressFormElement');
+    const formContainer = document.getElementById('addressForm');
+    
+    formContainer.style.display = 'block';
+    form.reset();
+    
+    // Set Maharashtra as default
+    const stateSelect = document.getElementById('state');
+    if (stateSelect) stateSelect.value = 'Maharashtra';
+    
+    // Set Home as default address type
+    const homeRadio = document.getElementById('addrType1');
+    if (homeRadio) homeRadio.checked = true;
+  }
+
+  function hideAddressForm() {
+    const form = document.getElementById('addressFormElement');
+    const formContainer = document.getElementById('addressForm');
+    
+    form.reset();
+    formContainer.style.display = 'none';
+    
+    // Reset all validation indicators
+    const inputs = form.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+      input.style.borderColor = '#ced4da';
+      input.style.backgroundColor = 'white';
+    });
+    
+    const errors = form.querySelectorAll('.validation-error');
+    errors.forEach(error => error.style.display = 'none');
+  }
+</script>
+
+<!-- <style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  }
+
+  .validation-error {
+    animation: shake 0.3s ease;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+</style> -->
+
+   <!-- Footer Start -->
+<div class="container-fluid text-light footer my-4 mb-0 py-2 wow fadeIn" data-wow-delay="0.1s" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.78)), url('static/img/footer.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <div class="container py-3">
+        <div class="row g-3">
+            <!-- About SM Bakers -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">About SM Bakers</h4>
+                <p style="color: white; text-align: justify; letter-spacing: normal; word-spacing: normal; text-justify: inter-word; hyphens: auto;font-family: 'Montserrat'">At <b>SM Bakers,</b> we create delightful cakes and confections for every occasion. With our passion for baking, we ensure each creation is as memorable as your special moments.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">Quick Links</h4>
+                <a class="btn btn-link" href="{{ url_for('home') }}">Home</a>
+                <a class="btn btn-link" href="{{ url_for('about') }}">About Us</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Cake Variety</a>
+                <!-- <a class="btn btn-link" href="{{ url_for('gallery') }}">Gallery</a> -->
+                <a class="btn btn-link" href="{{ url_for('our_outlet') }}">Our Outlet</a>
+                <a class="btn btn-link" href="{{ url_for('contact') }}">Contact Us</a>
+                      <a class="btn btn-link" href="{{ url_for('franchise') }}">Franchise </a>
+                
+            </div>
+
+            <!-- Services Links -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">Our Services</h4>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Chocolate Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Wedding Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Custom Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Anniversary Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Corporate Cakes</a>
+                <a class="btn btn-link" href="{{ url_for('cake_variety', category='baby_shower_cake') }}">Baby Shower Cakes</a>
+
+            </div>
+
+            <!-- Address -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">Office Address</h4>
+                <p class="mb-2" style="color: white; text-align: justify;">
+                    <i class="fa fa-map-marker-alt me-2" style="color:white;"></i>
+                    <a href="#" target="_blank" style="color: white; text-decoration: none;font-family: 'Montserrat'">
+                        Plot No A-1, Thane, Mumbai, Maharashtra.
+                    </a>
+                </p>
+
+                <p class="mb-2" style="color: white;">
+                    <i class="fa fa-phone me-2" style="color:white;"></i>
+                       <a
+                href="tel:+918655481522"
+                style="
+                  color: white;
+                  text-decoration: none;
+                  font-family: 'Montserrat';
+                "
+                >+91 8655481522</a
+              >
+                </p>
+
+                <p class="mb-2" style="color:white;">
+                    <i class="fa fa-envelope me-2" style="color: white;"></i>
+                    <a href="mailto:info@ssbakers.com" style="color: white; text-decoration: none;font-family: 'Montserrat'">info@ssbakers.com</a>
+                </p>
+
+                <div class="d-flex pt-2">
+                    <a class="btn btn-square btn-outline-light rounded-circle me-1" href="#" target="_blank"><i class="fab fa-instagram" style="color: white;"></i></a>
+                    <a class="btn btn-square btn-outline-light rounded-circle me-0" href="#" target="_blank"><i class="fab fa-facebook-f" style="color:white;"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+<!-- Copyright Start -->
+<div class="container-fluid copyright text-light py-2 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center mb-2 mb-md-0" style="font-family: 'Montserrat'; font-size: 14px;">
+                &copy; SM Bakers. All Rights Reserved. Powered By <a href="#" target="_blank" style="font-weight:600; color: white;">Sanket.</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Copyright End -->
+
+
+
+      <!-- Back to Top -->
+      <a href="#" class="btn-about btn-lg-square rounded-circle back-to-top"
+        ><i class="bi bi-arrow-up"></i
+      ></a>
+
+      <!-- JavaScript Libraries -->
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="static/lib/wow/wow.min.js"></script>
+      <script src="static/lib/easing/easing.min.js"></script>
+      <script src="static/lib/waypoints/waypoints.min.js"></script>
+      <script src="static/lib/counterup/counterup.min.js"></script>
+      <script src="static/lib/owlcarousel/owl.carousel.min.js"></script>
+
+      <!-- Template Javascript -->
+      <script src="static/js/main.js"></script>
+    </section>
+  </body>
+</html>

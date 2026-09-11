@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SM Bakers - Invoice</title>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBDKQW4TCQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DBDKQW4TCQ');
+</script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 40px;
+      }
+
+      h2,
+      h4 {
+        margin: 0;
+      }
+
+      .header,
+      .footer {
+        text-align: center;
+      }
+
+      .section {
+        margin-top: 30px;
+      }
+
+      .invoice-info,
+      .customer-info {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      .table th,
+      .table td {
+        border: 1px solid #000;
+        padding: 8px;
+        text-align: center;
+      }
+
+      .totals {
+        width: 40%;
+        margin-left: auto;
+        /* aligns it to the right without float */
+        margin-top: 20px;
+      }
+
+      .totals table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .totals td {
+        padding: 5px;
+        text-align: right;
+      }
+
+      .declare {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top: 10px;
+        clear: both;
+        /* Just in case other floats exist */
+      }
+
+      .declaration {
+        margin-top: 40px;
+        flex: 1;
+        padding-right: 20px;
+      }
+
+      .signature {
+        text-align: right;
+        min-width: 200px;
+        /* or any fixed width */
+      }
+
+      @media print {
+        .no-print {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header" style="display: flex; align-items: center; gap: 20px">
+      <div> <img
+        src="{{ logo_path }}"
+        alt="SM Bakers Logo"
+        style="max-height: 80px; margin-left: 10px"
+      /></div>
+
+<div> <h2 style="margin: 0; margin-top: 5px; font-weight: bold;">SM BAKERS</h2>
+        <p style="margin-left: 40px; width: 80%;">
+          Plot No A-1, Thane,
+          Mumbai, Maharashtra<br />
+          Contact: 9307741048 | GSTIN: XXAB123456789
+        </p></div>
+
+
+    </div>
+    <hr />
+
+    <div class="invoice-info section">
+      <div>
+        <strong>Invoice No:</strong> #{{ order.id }}<br />
+        <strong>Date:</strong> {{ order.timestamp.strftime('%d-%m-%Y') if
+        order.timestamp else 'N/A' }}
+      </div>
+      <div>
+        <strong>Customer Name:</strong> {{order.user.name}}<br />
+        <strong>Order ID:</strong> {{ order.id }}
+      </div>
+    </div>
+
+    <div class="section">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Variant</th>
+            <th>Flavour</th>
+            <th>Cost (₹)</th>
+            <th>Qty</th>
+            <th>Accessories</th>
+            <th>Total (₹)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in items %}
+          <tr>
+            <td>{{ item.sub_productname }}</td>
+            <td>{{ item.variant }}</td>
+            <td>{{ item.flavour }}</td>
+            <td>{{ item.v_cost }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>
+              {% if item.accessories and item.accessories|length > 0 %}
+              <ul style="padding-left: 15px; text-align: left">
+                {% for acc in item.accessories %} {% if acc.qty != 0 %}
+                <li>{{ acc.name }} - ₹{{ acc.cost }} × {{ acc.qty }}</li>
+                {% endif %} {% endfor %}
+              </ul>
+              {% else %} None {% endif %}
+            </td>
+            <td>{{ item.total_price }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="totals section">
+      <table>
+        <tr>
+          <td><strong>Delivery Cost:</strong></td>
+          <td>₹{{ order.delivery_cost }}</td>
+        </tr>
+        <tr>
+          <td><strong>Packaging Charges:</strong></td>
+          <td>₹{{ order.packaging_charges }}</td>
+        </tr>
+        <tr>
+          <td><strong>GST:</strong></td>
+          <td>₹{{ order.gst }}</td>
+        </tr>
+        <tr>
+          <td><strong>Grand Total:</strong></td>
+          <td><strong>₹{{ order.grand_total }}</strong></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="declare">
+      <div class="declaration">
+        <p>
+          <strong>Declaration:</strong> We declare that this invoice shows the
+          actual price of the goods described and that all particulars are true
+          and correct.
+        </p>
+      </div>
+      <div class="signature">
+        <p>For SM BAKERS</p>
+        <br /><br />
+        <p>Authorised Signatory</p>
+      </div>
+    </div>
+
+    <div class="footer section">
+      <hr />
+      <p>
+        Thank you for your order! | www.smbakers.com | Instagram:
+        @am.sank
+      </p>
+    </div>
+  </body>
+</html>

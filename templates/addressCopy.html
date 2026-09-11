@@ -1,0 +1,219 @@
+
+<button onclick="toggleAddressForm()" class="add-address-btn" style="margin-bottom: 10px;">+ Add New
+          Address</button>
+        <div id="successMsg" class="alert alert-success d-none" role="alert"></div>
+
+        <div class="address-form" id="addressForm"
+          style="display: {{ 'block' if edit_address else 'none' }}; background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+         <form method="POST" action="{{ url_for('add_address') }}?next=manage_user_address">
+            {% if edit_address %}
+            <input type="hidden" name="address_id" value="{{ edit_address.id }}">
+            {% endif %}
+            <div class="form-row"><input type="text" name="name" placeholder="Name"
+                value="{{ edit_address.name if edit_address else '' }}"> <input type="text" name="mobile"
+                placeholder="10-digit mobile" value="{{ edit_address.mobile if edit_address else '' }}"></div>
+            <div class="form-row"><input type="text" name="pincode" placeholder="Pincode"
+                value="{{ edit_address.pincode if edit_address else '' }}"> <input type="text" name="locality"
+                placeholder="Locality" value="{{ edit_address.locality if edit_address else '' }}"></div>
+            <div class="form-row"><textarea name="address"
+                placeholder="Area & Street">{{ edit_address.address if edit_address else '' }}</textarea></div>
+            <div class="form-row"><input type="text" name="city_district_town" placeholder="City/District/Town"
+                value="{{ edit_address.city_district_town if edit_address else '' }}"> <select name="state">
+                <option value="">--Select State--</option>
+                {% for st in ['Maharashtra', 'Delhi', 'Gujarat', 'Karnataka'] %}
+                <option value="{{ st }}" {% if edit_address and edit_address.state==st %}selected{% endif %}>{{ st }}
+                </option>
+                {% endfor %}
+              </select></div>
+            <div class="form-row"><input type="text" name="landmark" placeholder="Landmark (optional)"
+                value="{{ edit_address.landmark if edit_address else '' }}"> <input type="text" name="alternate_mobile"
+                placeholder="Alternate Phone (optional)"
+                value="{{ edit_address.alternate_mobile if edit_address else '' }}"></div>
+
+            <div class="form-radio-group">
+              <label>Address Type:</label>
+              {% for atype in ['Home', 'Work', 'Shipping', 'Billing'] %}
+              <label><input type="radio" name="address_type" value="{{ atype }}" {% if edit_address and
+                  edit_address.address_type==atype %}checked{% endif %}> {{ atype }}</label>
+              {% endfor %}
+            </div>
+
+            <div class="button-row">
+              <button type="submit" class="save-btn">SAVE</button>
+              <button type="button" onclick="hideAddressForm()" class="cancel-btn">CANCEL</button>
+            </div>
+          </form>
+        </div>
+
+        {% for addr in addresses %}
+        <div class="address-box" data-address-id="{{ addr.id }}"
+          style="background: #fff; margin: 10px 0; padding: 15px; border-radius: 8px; position: relative;">
+
+          <!-- Radio Button for Selecting This Address -->
+          <input type="radio" name="selected_address" value="{{ addr.id }}"
+            style="position: absolute; top: 15px; right: 15px;width: 50px;" required>
+
+          <div class="label">
+            {% if addr.address_type == 'Home' %}🏠 HOME
+            {% elif addr.address_type == 'Work' %}🏢 WORK
+            {% elif addr.address_type == 'Shipping' %}📦 SHIPPING
+            {% elif addr.address_type == 'Billing' %}💳 BILLING
+            {% else %}📍 OTHER
+            {% endif %}
+          </div>
+
+          <div class="name">{{ addr.name }} &nbsp;&nbsp; <strong>{{ addr.mobile }}</strong></div>
+          <div>{{ addr.address }}</div>
+          <div>{{ addr.city_district_town }}, {{ addr.state }} - {{ addr.pincode }}</div>
+          {% if addr.landmark %}<div>Landmark: {{ addr.landmark }}</div>{% endif %}
+          {% if addr.alternate_mobile %}<div>Alternate No: {{ addr.alternate_mobile }}</div>{% endif %}
+
+          <div class="button-row">
+            <form method="GET" action="{{ url_for('manage_user_address') }}">
+              <input type="hidden" name="edit" value="{{ addr.id }}">
+              <button type="submit"><i class="fas fa-edit"></i>Edit</button>
+            </form>
+            <form method="POST" action="{{ url_for('delete_address', address_id=addr.id) }}"
+              onsubmit="return confirm('Are you sure?');" style="display:inline;">
+              <button type="submit"><i class="fas fa-trash-alt"></i>Delete</button>
+            </form>
+          </div>
+        </div>
+        {% endfor %}
+
+            <script>
+
+      function toggleAddressForm() {
+        const formContainer = document.getElementById('addressForm');
+        const form = formContainer.querySelector("form");
+
+        // Show the form
+        formContainer.style.display = 'block';
+
+        // Reset form fields
+        form.reset();
+
+        // Remove hidden address_id input if it exists (so it doesn't trigger edit)
+        const idInput = form.querySelector('input[name="address_id"]');
+        if (idInput) {
+          idInput.remove();
+        }
+      }
+
+      function hideAddressForm() {
+        const formContainer = document.getElementById('addressForm');
+        const form = formContainer.querySelector("form");
+
+        // Reset and hide
+        form.reset();
+        const idInput = form.querySelector('input[name="address_id"]');
+        if (idInput) {
+          idInput.remove();
+        }
+
+        formContainer.style.display = 'none';
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("#addressForm form");
+        if (!form) return;
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const formData = new FormData(form);
+          const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+
+  fetch("{{ url_for('add_address') }}?next=manage_user_address", {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'X-Requested-With': 'XMLHttpRequest',
+              ...(csrfToken && { 'X-CSRFToken': csrfToken })
+            },
+            body: formData
+          })
+            .then(res => res.json())
+            .then(data => {
+if (data.success) {
+  form.reset();
+  hideAddressForm();
+  appendAddressBox(data.address, data.is_edit);
+  showSuccess(data.is_edit ? "Address updated successfully!" : "Address added successfully!");
+}
+               else {
+                alert("Error saving address.");
+              }
+            })
+            .catch(err => {
+              console.error("Failed:", err);
+              alert("Something went wrong while saving the address.");
+            });
+        });
+      });
+
+      function appendAddressBox(addr, isEdit = false) {
+        const box = document.createElement("div");
+        box.className = "address-box";
+        box.setAttribute("data-address-id", addr.id);
+        box.style = "background: #fff; margin: 10px 0; padding: 15px; border-radius: 8px; position: relative;";
+
+        box.innerHTML = `
+    <!-- Radio Button for selecting this address -->
+    <input type="radio" name="selected_address" value="${addr.id}" style="position: absolute; top: 15px; right: 15px; transform: scale(1.4);width: 50px;">
+
+    <div class="label">${addr.address_type === "Home" ? "🏠 HOME" :
+            addr.address_type === "Work" ? "🏢 WORK" :
+              addr.address_type === "Shipping" ? "📦 SHIPPING" :
+                addr.address_type === "Billing" ? "💳 BILLING" : "📍 OTHER"}</div>
+
+    <div class="name">${addr.name} &nbsp;&nbsp; <strong>${addr.mobile}</strong></div>
+    <div>${addr.address}</div>
+    <div>${addr.city_district_town}, ${addr.state} - ${addr.pincode}</div>
+    ${addr.landmark ? `<div>Landmark: ${addr.landmark}</div>` : ''}
+    ${addr.alternate_mobile ? `<div>Alternate No: ${addr.alternate_mobile}</div>` : ''}
+
+    <div class="button-row" style="margin-top: 10px;">
+ <form method="GET" action="/manage_user_address" style="display:inline;">
+        <input type="hidden" name="edit" value="${addr.id}">
+        <button type="submit">✏️ Edit</button>
+      </form>
+      <form method="POST" action="/delete_address/${addr.id}" onsubmit="return confirm('Are you sure?');" style="display:inline;">
+        <button type="submit">🗑️ Delete</button>
+      </form>
+    </div>
+  `;
+
+        const section = document.querySelector(".left-section");
+        const productSection = document.querySelector(".product-section");
+
+        if (isEdit) {
+          const oldBox = document.querySelector(`.address-box[data-address-id="${addr.id}"]`);
+          if (oldBox) {
+            oldBox.replaceWith(box);
+          }
+        } else {
+          if (productSection) {
+            section.insertBefore(box, productSection);
+          } else {
+            section.appendChild(box);
+          }
+        }
+      }
+
+function showSuccess(message) {
+  const msgBox = document.getElementById('successMsg');
+  msgBox.textContent = message;
+  msgBox.classList.remove('d-none');
+  setTimeout(() => msgBox.classList.add('d-none'), 3000);
+}
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBDKQW4TCQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DBDKQW4TCQ');
+</script>

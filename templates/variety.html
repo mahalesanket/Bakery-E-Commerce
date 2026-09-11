@@ -1,0 +1,2846 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SM BAKERS</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DBDKQW4TCQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-DBDKQW4TCQ');
+    </script>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+    <!-- Favicon -->
+    <link href="static/img/favicon.ico" rel="icon" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Montserrat Font from Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icon Font Stylesheet -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Libraries Stylesheet -->
+    <link href="static/lib/animate/animate.min.css" rel="stylesheet" />
+    <link
+      href="static/lib/owlcarousel/assets/owl.carousel.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="static/css/style.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      /* Width of the scrollbar */
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: transparent;
+      /* Light gray background */
+      border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #b32071;
+      /* Gradient color */
+      border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #b32071;
+    }
+    /* === Wrapper for the icon === */
+    .user-icon-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+    .side-modal .close-btn {
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+  </style>
+
+  <body>
+    <!-- Topbar Start -->
+    <div class="container-fluid top-bar bg-primary px-0" style="height: 35px">
+      <div class="row gx-0 align-items-center" style="height: 100%">
+        <div class="col-12 text-center">
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+          />
+        <marquee behavior="scroll" direction="left" scrollamount="5"
+          style="font-size: 16px;font-family:'Great Vibes', cursive;  font-style: italic; color: black; font-weight: 500; padding-top: 5px">
+          <i class="fas fa-birthday-cake" style="color:#B32071"></i>
+          Try Our New 70+ Flavours |
+          <i class="fas fa-store" style="color:#B32071"></i>
+          Offer Available In All Our 45+ Stores. |
+          <i class="fas fa-gift" style="color:#B32071"></i>
+          Everyday Buy 1 Cake Get 1 Free 70+ Premium |
+          <i class="fas fa-phone" style="color:#B32071"></i>
+          For Order Connect With Us: <a href="tel:+918655481522" style="color:black">+91 8655481522</a>
+        </marquee>
+        </div>
+      </div>
+    </div>
+    <nav
+      class="navbar navbar-expand-lg navbar-light fixed-top py-0 px-lg-5"
+      style="background-color: white"
+    >
+      <!-- Logo -->
+      <a href="{{ url_for('home') }}" class="navbar-brand ms-4 ms-lg-0">
+        <img src="static/img/SS_logo.png" style="height: 80px; width: 80px" />
+      </a>
+      <!-- Toggler for mobile view -->
+      <button
+        type="button"
+        class="navbar-toggler me-4"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <!-- Desktop and Mobile Menu Links -->
+        <div
+          class="navbar-nav ms-auto p-4 p-lg-0 w-100 d-flex justify-content-center"
+        >
+          <a class="btn btn-link" href="{{ url_for('home') }}">Home</a>
+          <a class="btn btn-link" href="{{ url_for('about') }}">About Us</a>
+          <a class="btn btn-link" href="{{ url_for('cake_variety') }}"
+            >Cake Variety</a
+          >
+          <!-- <a class="btn btn-link" href="{{ url_for('gallery') }}">Gallery</a> -->
+          <a class="btn btn-link" href="{{ url_for('our_outlet') }}"
+            >Our Outlet</a
+          >
+          <a class="btn btn-link" href="{{ url_for('contact') }}">Contact Us</a>
+        </div>
+        <!-- Franchise Button (Visible in Desktop) -->
+        <a
+          class="btn-about py-2 px-3 me-3 d-none d-lg-block"
+          href="{{ url_for('franchise') }}"
+          style="font-family: 'montserrat'; font-weight: 500"
+        >
+          FRANCHISE
+        </a>
+        <!-- Desktop Icons -->
+        <div class="d-none d-lg-flex ms-4 align-items-center">
+          <!-- Cart Icon -->
+          <a href="{{ url_for('cart') }}" class="position-relative me-3">
+            <div class="flex-shrink-0 btn-lg-square rounded-circle hover-icon">
+              <i class="fa fa-shopping-cart"></i>
+              <span
+                id="cart-count"
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              >
+                {{ cartitems|length }}
+              </span>
+            </div>
+          </a>
+          {% if not session.get('user_id') %}
+          <div class="d-inline-flex align-items-center me-3">
+            <div
+              class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon"
+            >
+              <a href="{{ url_for('login') }}">
+                <i class="fas fa-sign-in-alt" style="margin-top: 5px"></i>
+              </a>
+            </div>
+          </div>
+          {% else %}
+          <div class="d-inline-flex align-items-center me-3">
+            <button
+              class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon"
+              id="openUserModal"
+              style="background: none; border: none"
+            >
+              <i class="fa fa-user"></i>
+            </button>
+          </div>
+          <!-- Side Modal -->
+          <div id="modalOverlay" class="modal-overlay"></div>
+          <div id="userSideModal" class="side-modal">
+            <div class="side-modal-content">
+              <span class="close-btn" id="closeUserModal">&times;</span>
+              <!-- User Info Header -->
+              <div class="user-header">
+                <div class="user-avatar">
+                  <i class="fa fa-user-circle"></i>
+                </div>
+                <div class="user-details">
+                  {% for user in users%}
+                  <div class="user-name">{{user.name}}</div>
+                  <div class="user-email">{{user.email}}</div>
+                  {% endfor %}
+                </div>
+              </div>
+              <!-- User Menu Links -->
+              <div class="user-menu">
+                <a href="{{ url_for('personal_info') }}">
+                  <i class="fa fa-user"></i> Personal Information
+                </a>
+                <a href="{{ url_for('user_order_history') }}">
+                  <i class="fa fa-shopping-bag"></i> My Orders
+                </a>
+                <a href="{{url_for('manage_user_address')}}">
+                  <i class="fa fa-map-marker"></i> Manage Addresses
+                </a>
+              </div>
+              <!-- Footer -->
+              <div class="user-footer">
+                <a href="{{ url_for('logout') }}" class="logout-link"
+                  ><i class="fa fa-sign-out-alt"></i> Logout</a
+                >
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              const openBtn = document.getElementById("openUserModal");
+              const modal = document.getElementById("userSideModal");
+              const closeBtn = document.getElementById("closeUserModal");
+              const overlay = document.getElementById("modalOverlay");
+              function openModal() {
+                modal.classList.add("open");
+                overlay.classList.add("active");
+              }
+              function closeModal() {
+                modal.classList.remove("open");
+                overlay.classList.remove("active");
+              }
+              openBtn.addEventListener("click", openModal);
+              closeBtn.addEventListener("click", closeModal);
+              // Close modal when clicking outside (on overlay)
+              overlay.addEventListener("click", closeModal);
+            });
+          </script>
+          <!-- Instagram Icon -->
+          <a
+            href="#"
+            target="_blank"
+            class="me-3 hover-icon"
+            style="padding: 15px"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+        <!-- Mobile Franchise Button + Icons -->
+        <div
+          class="d-flex d-lg-none flex-column align-items-center w-100 px-3"
+          style="margin-top: -20px"
+        >
+          <!-- Franchise Button for Mobile -->
+          <a
+            class="btn-about py-2 px-3 mt-3 w-80 text-center"
+            href="{{ url_for('franchise') }}"
+            style="
+              font-family: 'montserrat';
+              font-weight: 500;
+              background-color: #ffd1df;
+              color: #b32071;
+            "
+          >
+            FRANCHISE <i class="fa fa-store"></i>
+          </a>
+          <br />
+          <div class="d-flex justify-content-center gap-3">
+            <!-- Cart Icon -->
+            <a href="{{ url_for('cart') }}" class="position-relative">
+              <div
+                class="flex-shrink-0 btn-lg-square rounded-circle hover-icon"
+                style="margin-right: 10px"
+              >
+                <i class="fa fa-shopping-cart"></i>
+                <span
+                  id="cart-count-mobile"
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                >
+                  {{ cartitems|length }}
+                </span>
+              </div>
+            </a>
+            {% if not session.get('user_id') %}
+            <div class="d-inline-flex align-items-center me-3">
+              <div
+                class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon"
+              >
+                <a href="{{ url_for('login') }}">
+                  <i class="fas fa-sign-in-alt" style="margin-top: 5px"></i>
+                </a>
+              </div>
+            </div>
+            {% else %}
+            <!-- Mobile User Icon -->
+            <div class="d-inline-flex align-items-center me-3">
+              <button
+                id="openUserModalMobile"
+                class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon"
+                style="background: none; border: none"
+              >
+                <i class="fa fa-user"></i>
+              </button>
+            </div>
+            <!-- Side Modal -->
+            <div id="modalOverlayMobile" class="modal-overlay"></div>
+            <div id="userSideModalMobile" class="side-modal">
+              <div class="side-modal-content">
+                <span class="close-btn" id="closeUserModalMobile">&times;</span>
+                <!-- User Info Header -->
+                <div class="user-header">
+                  <div class="user-avatar">
+                    <i class="fa fa-user-circle"></i>
+                  </div>
+                  <div class="user-details">
+                    {% for user in users %}
+                    <div class="user-name">{{ user.name }}</div>
+                    <div class="user-email">{{ user.email }}</div>
+                    {% endfor %}
+                  </div>
+                </div>
+                <!-- User Menu Links -->
+                <div class="user-menu">
+                  <a href="{{ url_for('personal_info') }}">
+                    <i class="fa fa-user"></i> Personal Information
+                  </a>
+                  <a href="{{ url_for('user_order_history') }}">
+                    <i class="fa fa-shopping-bag"></i> My Orders
+                  </a>
+                  <a href="{{ url_for('manage_user_address') }}">
+                    <i class="fa fa-map-marker"></i> Manage Addresses
+                  </a>
+                </div>
+                <!-- Footer -->
+                <div class="user-footer">
+                  <a href="{{ url_for('logout') }}" class="logout-link">
+                    <i class="fa fa-sign-out-alt"></i> Logout
+                  </a>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                // Mobile modal logic
+                const openMobile = document.getElementById(
+                  "openUserModalMobile"
+                );
+                const modalMobile = document.getElementById(
+                  "userSideModalMobile"
+                );
+                const closeMobile = document.getElementById(
+                  "closeUserModalMobile"
+                );
+                const overlayMobile =
+                  document.getElementById("modalOverlayMobile");
+                openMobile?.addEventListener("click", () => {
+                  modalMobile.classList.add("open");
+                  overlayMobile.classList.add("active");
+                });
+                closeMobile?.addEventListener("click", () => {
+                  modalMobile.classList.remove("open");
+                  overlayMobile.classList.remove("active");
+                });
+                overlayMobile?.addEventListener("click", () => {
+                  modalMobile.classList.remove("open");
+                  overlayMobile.classList.remove("active");
+                });
+              });
+            </script>
+            <!-- Instagram Icon -->
+            <a
+              href="#"
+              target="_blank"
+            >
+              <i
+                class="fab fa-instagram hover-icon"
+                style="font-size: 20px"
+              ></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <style>
+      /* Navbar background color */
+      .navbar-light {
+        background-color: white !important;
+      }
+      /* Change the menu link color to dark */
+      .navbar-nav .nav-link {
+        color: #333 !important;
+      }
+      /* Change the color of the active link */
+      .navbar-nav .nav-link.active {
+        color: #ffd1df !important;
+      }
+      /* Add hover effect on menu links */
+      .navbar-nav .nav-link:hover {
+        color: #ffd1df !important;
+      }
+      /* Center the Navbar Links and Icons in Mobile View */
+      @media (max-width: 991px) {
+        .navbar-nav {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          text-align: center;
+        }
+        .navbar-nav .btn-link {
+          margin: 0 10px; /* Adds space between links */
+        }
+        .d-flex.justify-content-center {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+        .d-flex.justify-content-center a {
+          font-size: 18px;
+        }
+        .d-none.d-lg-flex {
+          display: none !important;
+        }
+        /* Franchise Button in Mobile View */
+        .btn-about {
+          font-size: 16px;
+          background-color: #ffd1df;
+          color: #b32071;
+          text-align: center;
+        }
+        .btn-about:hover {
+          background-color: #b32071;
+          color: white;
+        }
+      }
+    </style>
+
+    
+    <!-- Page Header Start -->
+<div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
+  <div class="container text-center page-header-inner">
+    <h1 class="page-title">Cake Variety</h1>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="{{ url_for('home') }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Cake Variety</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<!-- Page Header End -->
+
+<br><br>
+    <!-- gallery -->
+    <style>
+      /* Parallax Section */
+      .parallax {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url("static/img/ss_product_banner.jpg");
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-bottom: -100px;
+        height: auto;
+        margin-top: -95px;
+        /* or any desired height */
+      }
+
+      /* Filter Buttons */
+      .filter-btns button {
+        background-color: #ffd1df;
+        font-weight: 500;
+        color: #b32071;
+        padding: 10px 20px;
+        margin: 5px;
+        border: 1px solid #b32071;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .filter-btns button:hover {
+        background-color: transparent;
+        color: white;
+        border: 1px solid white;
+        font-weight: 600;
+      }
+
+      /* Cake Container */
+      .cake-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .cake-card img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        display: block;
+        border-radius: 10px 10px 0px 0px;
+      }
+
+      /* Cake Info (Price + Button) */
+      .cake-info {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        /* Stack items vertically */
+        align-items: center;
+        border-radius: 0px 0px 10px 10px;
+        background-color: white;
+      }
+
+      /* Cake Heading */
+      .cake-info h3 {
+        font-size: 15px;
+        font-family: "Montserrat";
+        margin: 0;
+        margin-bottom: 5px;
+        color: #b32071;
+      }
+
+      /* Cake Price and Button Wrapper */
+      .cake-price-btn {
+        display: flex;
+        flex-direction: column;
+        /* Stack price and button vertically */
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+        /* Space between heading and price */
+      }
+
+      .cake-price {
+        font-size: 18px;
+        font-weight: bold;
+        color: #b32071;
+        font-family: "Montserrat";
+        margin: 0;
+        margin-bottom: 10px;
+        /* Space between price and button */
+      }
+
+      .add-to-cart {
+        padding: 8px 15px;
+        font-size: 14px;
+        background-color: #ffd1df;
+        color: #b32071;
+        border: 1px solid #b32071;
+        font-weight: 500;
+        border-radius: 5px;
+        font-family: "Montserrat";
+        cursor: pointer;
+      }
+
+      .add-to-cart:hover {
+        background-color: white;
+        color: #b32071;
+        border: 1px solid #b32071;
+      }
+
+      /* Modal Background */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Modal Content */
+      .modal-content1 {
+        background-color: #fff;
+        padding: 15px;
+        width: 80%;
+        max-width: 600px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        margin: auto;
+      }
+
+      .modal-content {
+        background-color: #fff;
+        padding: 15px;
+        width: 100%;
+        max-width: 450px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        margin: auto;
+      }
+
+      /* Modal Header */
+      .modal-header h3 {
+        font-size: 18px;
+        margin: 0;
+        text-align: center;
+      }
+
+      /* Grid layout for modal */
+      .modal-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      /* Left section for cake image and name */
+      .modal-left {
+        flex: 1;
+        min-width: 150px;
+        text-align: center;
+      }
+
+      .modal-left img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .modal-left h3 {
+        font-size: 18px;
+        margin: 10px 0;
+      }
+
+      .modal-left .price {
+        font-size: 16px;
+        font-weight: bold;
+        color: #4c2f09;
+      }
+
+      /* Right section for weight and accessories */
+      .modal-right {
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .variant-options label,
+      .addons label {
+        display: block;
+        padding: 5px 0;
+        font-size: 14px;
+        margin: 5px 0;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      /* Confirm button */
+      .confirm-order {
+        margin-top: 15px;
+        background-color: #ffd1df;
+        color: #b32071;
+        padding: 10px;
+        border: 1px solid #b32071;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      /* Close button */
+      .close-btn,
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 22px;
+        cursor: pointer;
+        color: #b32071;
+      }
+
+      /* Location Modal */
+      .modal-location {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 70px;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Cake Customization Modal */
+      .modal-location .modal-content,
+      .modal-location .modal-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .modal-location .location-btn,
+      .modal-location .confirm-order {
+        background: #ffd1df;
+        color: #b32071;
+        padding: 10px 20px;
+        border: 1px solid #ffd1df;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      .location-btn {
+        background: #ffd1df;
+        color: #b32071;
+        padding: 10px 20px;
+        border: 1px solid #b32071;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      .proceed-btn {
+        background: #ffd1df;
+        color: #b32071;
+        padding: 10px 20px;
+        border: 1px solid #b32071;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      /* Modal Body */
+      .modal-location .modal-body {
+        padding: 10px;
+      }
+
+      /* Cake Container Styles */
+      .cake-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .cake-card {
+        width: 250px;
+
+        border-radius: 10px 10px 0px 0px;
+        padding: 10px;
+      }
+
+      .image-wrapper {
+        position: relative;
+      }
+
+      /* "OR" text style */
+      .or-text {
+        text-align: center;
+        margin: 10px 0;
+        font-style: italic;
+        color: #b32071;
+      }
+
+      /* === HEADING STYLE #4 === */
+      .four h4 {
+        margin-top: -35px;
+        text-align: center;
+        padding-bottom: 0.7em;
+        color: #603f08;
+        font-size: 28px;
+      }
+
+      .four h4 span {
+        font-weight: 500;
+        word-spacing: 3px;
+        line-height: 2em;
+        font-size: 20px;
+        padding-bottom: 0.35em;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      .four h4:before {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 60px;
+        height: 1px;
+        content: "";
+        left: 50%;
+        margin-left: -30px;
+        background-color: white;
+      }
+
+      .page-header1 {
+        margin-bottom: rem;
+        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+          url(static/img/ss_page_header.jpg) center center no-repeat;
+        background-size: cover;
+      }
+
+      #flavourSelect {
+        width: 100%;
+        padding: 8px 12px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        border: 1px solid #b32071;
+        border-radius: 6px;
+        color: #b32071;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      #custom-cake-form {
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        padding: 30px;
+        max-width: 600px;
+        margin: auto;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      #custom-cake-form h3 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333;
+        text-align: center;
+      }
+
+      #custom-cake-form label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 600;
+        color: #444;
+      }
+
+      #custom-cake-form input[type="text"],
+      #custom-cake-form input[type="email"],
+      #custom-cake-form input[type="tel"],
+      #custom-cake-form input[type="number"],
+      #custom-cake-form input[type="file"],
+      #custom-cake-form input[type="date"],
+      #custom-cake-form input[type="time"],
+      #custom-cake-form select,
+      #custom-cake-form textarea {
+        width: 100%;
+        padding: 10px 12px;
+        margin-bottom: 18px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+        transition: border-color 0.3s;
+      }
+
+      #custom-cake-form input[type="text"]:focus,
+      #custom-cake-form input[type="email"]:focus,
+      #custom-cake-form input[type="tel"]:focus,
+      #custom-cake-form input[type="number"]:focus,
+      #custom-cake-form input[type="file"]:focus,
+      #custom-cake-form input[type="date"]:focus,
+      #custom-cake-form input[type="time"]:focus,
+      #custom-cake-form select:focus,
+      #custom-cake-form textarea:focus {
+        border-color: #b32071;
+        outline: none;
+      }
+
+      #custom-cake-form textarea {
+        resize: vertical;
+      }
+
+      #custom-cake-form input[type="submit"] {
+        background-color: #ffd1df;
+        color: #b32071;
+        border: 1px solid #b32071;
+        padding: 12px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+      }
+
+      #custom-cake-form input[type="submit"]:hover {
+        background-color: #ffd1df;
+      }
+
+
+      /* Mobile View for Our Cakes Section - Add this to your existing <style> tag */
+
+@media (max-width: 768px) {
+  /* Parallax section mobile adjustments */
+  .parallax {
+    margin-top: -75px;
+    padding: 20px 15px;
+  }
+
+  /* Heading section */
+  .four h4 {
+    font-size: 22px;
+    margin-top: -20px;
+  }
+
+  .four h4 span {
+    font-size: 16px;
+    line-height: 1.5em;
+  }
+
+  /* Filter buttons - make them wrap nicely */
+  .filter-btns {
+    padding: 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .filter-btns button {
+    padding: 8px 15px;
+    margin: 0;
+    font-size: 13px;
+    flex: 0 1 auto;
+    min-width: 80px;
+  }
+
+  /* Cake Container - 2 Column Grid */
+  .cake-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 15px 10px;
+    max-width: 100%;
+  }
+
+  /* Cake Card Mobile Styling */
+  .cake-card {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: white;
+  }
+
+  .cake-card .image-wrapper {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* 1:1 Aspect Ratio */
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cake-card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+  }
+
+  /* Cake Info Section */
+  .cake-info {
+    padding: 10px 8px;
+    text-align: center;
+  }
+
+  .cake-info h3 {
+    font-size: 13px;
+    margin-bottom: -8px;
+    line-height: 1.3;
+    min-height: 32px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .cake-price-btn {
+    margin-top: 5px;
+  }
+
+  .cake-price {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  /* Add to Cart Button */
+  .add-to-cart {
+    padding: 8px 12px;
+    font-size: 12px;
+    width: 100%;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+
+  /* Custom Cake Form Mobile */
+  #custom-cake-form {
+    padding: 20px 15px;
+    margin: 15px 10px;
+  }
+
+  #custom-cake-form h3 {
+    font-size: 20px;
+  }
+
+  #custom-cake-form input[type="text"],
+  #custom-cake-form input[type="email"],
+  #custom-cake-form input[type="tel"],
+  #custom-cake-form input[type="number"],
+  #custom-cake-form input[type="file"],
+  #custom-cake-form input[type="date"],
+  #custom-cake-form input[type="time"],
+  #custom-cake-form select,
+  #custom-cake-form textarea {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  #custom-cake-form label {
+    font-size: 14px;
+  }
+
+  #custom-cake-form input[type="submit"] {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  /* Location Modal Mobile */
+  .modal-overlay {
+    padding: 10px;
+  }
+
+  .modal-content {
+    max-width: 95%;
+    padding: 15px;
+    margin: 20px auto;
+  }
+
+  .modal-header h3 {
+    font-size: 16px;
+  }
+
+  .select-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #citySelect,
+  #outletSelect {
+    width: 100% !important;
+    font-size: 14px;
+  }
+
+  .location-btn,
+  .proceed-btn {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  /* Weight Modal Mobile - Full Screen */
+  .modal-content1 {
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 15px;
+    margin: 20px auto;
+    width: 95%;
+  }
+
+  .modal-grid {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .modal-left,
+  .modal-right {
+    flex: 1 1 100%;
+  }
+
+  .modal-left img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Variant and Flavour Selection */
+  #flavourSelect,
+  #variantSelect,
+  #cakePriceInput {
+    width: 100% !important;
+    font-size: 14px;
+  }
+
+  /* Add-ons Grid - 2 Columns */
+  .addons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .addon-item {
+    width: 100%;
+    font-size: 12px;
+    padding-left: 5px;
+  }
+
+  .addon-item input[type="checkbox"] {
+    margin-right: 5px;
+  }
+
+  /* Message Input */
+  #cakeMessageInput {
+    width: 100% !important;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  /* Confirm Button */
+  .confirm-order {
+    width: 100%;
+    font-size: 15px;
+    padding: 12px;
+    margin-top: 15px;
+  }
+
+  /* Help Box */
+  .modal-right > div[style*="background: #fdf2f8"] {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  /* WhatsApp Button */
+  .modal-right a[href*="wa.me"] {
+    width: 100%;
+    justify-content: center;
+    font-size: 14px;
+  }
+}
+
+/* Extra Small Devices (320px - 480px) */
+@media (max-width: 480px) {
+  .four h4 {
+    font-size: 24px;
+  }
+
+  .four h4 span {
+    font-size: 14px;
+  }
+
+  .filter-btns button {
+    padding: 7px 12px;
+    font-size: 12px;
+    min-width: 70px;
+  }
+
+  .cake-container {
+    gap: 10px;
+    padding: 10px 8px;
+  }
+
+  .cake-info h3 {
+    font-size: 12px;
+    min-height: 30px;
+  }
+
+  .cake-price {
+    font-size: 14px;
+  }
+
+  .add-to-cart {
+    padding: 7px 10px;
+    font-size: 11px;
+  }
+}
+
+/* Landscape Mode for Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .cake-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .parallax {
+    padding: 15px 10px;
+  }
+}
+/* 🌸 Beautiful Mobile Dropdown UI */
+@media (max-width: 768px) {
+
+  .pretty-dropdowns {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .pretty-dropdowns .select-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .pretty-dropdowns select {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    border: 2px solid #b32071;
+    border-radius: 12px;
+    color: #b32071;
+    background: #fff;
+    appearance: none;
+    outline: none;
+    transition: 0.25s ease;
+  }
+
+  /* Placeholder Style */
+  .pretty-dropdowns select option:first-child {
+    color: #999;
+    font-weight: 500;
+  }
+
+  /* Focus Effect */
+  .pretty-dropdowns select:focus {
+    border-color: #ff8abb;
+    box-shadow: 0 0 10px rgba(179, 32, 113, 0.35);
+  }
+
+  /* Dropdown Arrow */
+  .pretty-dropdowns .select-wrapper:after {
+    content: "▼";
+    font-size: 14px;
+    color: #b32071;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+}
+
+
+    </style>
+    <section class="parallax">
+      <br /><br /><br />
+      <div class="four wow fadeInUp" data-wow-delay="0.1s">
+        <h4 style="color: white">
+          <span style="color: white">Our Cakes</span>Cakes For Every Celebration
+        </h4>
+      </div>
+      
+      <br>
+
+      <!-- Filter Buttons -->
+      <div class="filter-btns text-center">
+        {% for product in products %}
+        <button onclick="filterCakes('{{ product.name.lower().replace(' ', '_') }}')">
+          {{ product.name }}
+        </button>
+        {% endfor %}
+        <button onclick="filterCakes('all')">All</button>
+        <button id="toggle-custom-cake-btn" onclick="toggleCustomCakeForm()">
+          Custom
+        </button>
+      </div>
+
+      <br>
+
+      <!-- Cake Cards -->
+      <div class="cake-container" id="cakeContainer">
+        {% for category_name, subproducts in subproduct_categories.items() %} {%
+        for subproduct in subproducts %}
+        <div class="cake-card {{ category_name }} special">
+          <div class="image-wrapper">
+            <img
+              src="{{ url_for('static', filename='uploads/' + subproduct.image1) }}"
+              alt="{{ subproduct.name }}"
+            />
+          </div>
+          <div class="cake-info">
+            <h3>{{ subproduct.name }}</h3>
+            <!-- <p class="offer">Upto ₹{{ subproduct.offer }}% off</p> -->
+            <button class="add-to-cart" data-id="{{ subproduct.id }}">
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+        {% endfor %} {% endfor %}
+      </div>
+
+      <!-- Location Modal -->
+      <div id="locationModal" class="modal-overlay">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #fbdce2">
+            <h3 style="color: #b32071; font-family: 'montserrat'">
+              Select Location
+            </h3>
+            <span class="close-btn" onclick="closeLocationModal()"
+              >&#10005;</span
+            >
+          </div>
+          <hr />
+          <div class="modal-body">
+            <div class="select-row">
+              <select
+                id="citySelect"
+                onchange="updateOutletOptions()"
+                style="
+                  padding: 5px;
+                  border: 1px solid #b32071;
+                  border-radius: 10px;
+                "
+              >
+                <option value="">Select City</option>
+              </select>
+
+              <select
+                id="outletSelect"
+                onchange="showOutletAddress()"
+                style="
+                  padding: 5px;
+                  border: 1px solid #b32071;
+                  border-radius: 8px;
+                  width: 230px;
+                "
+              >
+                <option value="">Select Outlet</option>
+              </select>
+            </div>
+
+            <!-- <p class="or-text">OR</p>
+
+            <button class="location-btn" onclick="getCurrentLocation()">
+              <i class="fas fa-map-marker-alt"></i> Use Current Location
+            </button> -->
+
+            <div id="locationResult"></div>
+            <div id="outletAddress"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="custom-cake-form" style="display: none; margin-top: 20px">
+        <form
+          action="{{url_for('custom_order')}}"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
+          <h3>Customize Your Cake</h3>
+
+          <label>Name: <span style="color: red">*</span></label>
+          <input type="text" name="name" id="name" required /><br />
+
+          <label>Phone: <span style="color: red">*</span></label>
+          <input type="tel" name="phone" id="phone" required /><br />
+
+          <label>Email: <span style="color: red">*</span></label>
+          <input type="email" name="email" id="email" required /><br />
+
+          <label>Select City: <span style="color: red">*</span></label>
+          <select
+            id="customCitySelect"
+            name="city"
+            required
+            onchange="updateCustomOutletOptions()"
+          >
+            <option value="">--Select City--</option>
+          </select>
+
+          <label>Select Outlet: <span style="color: red">*</span></label>
+          <select id="customOutletSelect" name="outlet" required>
+            <option value="">--Select Outlet--</option>
+          </select>
+
+          <label>Variant: <span style="color: red">*</span></label>
+          <select id="variantDropdown" name="variant" required>
+            <option value="">-- Select Variant --</option>
+          </select>
+
+          <label>Flavour: <span style="color: red">*</span></label>
+          <select id="flavourDropdown" name="flavour" required>
+            <option value="">-- Select Flavour --</option>
+          </select>
+
+          <label>Message on Cake:</label>
+          <input type="text" name="msg" /><br />
+
+          <label>Upload Design Image:</label>
+          <!-- No asterisk here as requested -->
+          <input type="file" name="image" /><br />
+
+          <label>Delivery Date: <span style="color: red">*</span></label>
+          <input type="date" name="date" id="date" required /><br />
+
+          <label
+            >Delivery Time: <span style="color: red">*</span> (Delivery
+            Available Between 3pm to 11pm)</label
+          >
+          <input
+            type="time"
+            name="time"
+            id="time"
+            required
+            min="15:00"
+            max="22:00"
+          /><br />
+          <!-- <small style="color: gray;">Select between 3:00 PM and 10:00 PM</small> -->
+
+          <label>Address: <span style="color: red">*</span></label>
+          <textarea name="address" id="address" rows="3" required></textarea
+          ><br />
+
+          <label>Special Instructions:</label>
+          <textarea name="instructions" rows="3"></textarea><br />
+          <div style="margin-top: 15px; display: flex; align-items: flex-start">
+            <input
+              type="checkbox"
+              id="orderConfirmCheckbox"
+              style="margin-top: 4px; margin-right: 10px"
+            />
+            <label
+              for="orderConfirmCheckbox"
+              style="font-size: 14px; line-height: 1.4"
+            >
+              The order placed by you will be confirmed by SM Bakers. After
+              confirmation only, SM Bakers will deliver the order. You will get
+              a call from SM Bakers within an hour. Kindly be with us!
+              <span style="color: red">*</span>
+            </label>
+          </div>
+          <br />
+
+          <input type="submit" value="Submit Custom Order" />
+        </form>
+      </div>
+      <style>
+        /* Modal full screen and scrollable on small devices */
+        @media (max-width: 768px) {
+          .modal-content1 {
+            max-height: 90vh; /* Use most of the screen height */
+            overflow-y: auto; /* Enables vertical scrolling */
+            padding: 15px;
+            margin: 20px auto;
+            width: 95%;
+          }
+
+          .modal-grid {
+            flex-direction: column;
+            gap: 15px;
+          }
+
+          .modal-left,
+          .modal-right {
+            flex: 1 1 100%;
+          }
+
+          .modal-left img {
+            max-width: 100%;
+            height: auto;
+          }
+
+          .addon-item {
+            width: 100%;
+          }
+
+          #cakeMessageInput {
+            width: 100% !important;
+            margin-top: 10px;
+          }
+
+          .confirm-order {
+            width: 100%;
+            font-size: 16px;
+            padding: 10px;
+          }
+        }
+
+        /* Optional: Smooth scroll for better UX */
+        .modal-content1 {
+          scroll-behavior: smooth;
+        }
+      </style>
+
+      <!-- Cake Customization Modal -->
+      <div
+        id="weightModal"
+        class="modal"
+        style="display: none; overflow-y: auto"
+      >
+        <div
+          class="modal-content1"
+          style="padding: 20px; max-width: 900px; margin: auto"
+        >
+          <span
+            class="close"
+            onclick="document.getElementById('weightModal').style.display='none'"
+            >&times;</span
+          >
+          <div
+            class="modal-grid"
+            style="display: flex; flex-wrap: wrap; gap: 20px"
+          >
+            <!-- Left section -->
+            <div class="modal-left" style="flex: 1 1 300px; text-align: center">
+              <img
+                id="modalCakeImg"
+                src=""
+                alt="Cake Image"
+                style="
+                  width: 100%;
+                  max-width: 250px;
+                  height: auto;
+                  border-radius: 10px;
+                "
+              />
+              <h3
+                id="modalCakeTitle"
+                style="
+                  font-family: 'montserrat';
+                  color: #b32071;
+                  margin-top: 10px;
+                "
+              >
+                Cake Name
+              </h3>
+
+              <!-- Delivery Info -->
+              <p
+                style="
+                  font-size: 14px;
+                  color: #b32071;
+                  font-family: 'montserrat';
+                  margin-bottom: 5px;
+                  font-weight: 600;
+                  text-align: justify;
+                "
+              >
+                Same day delivery is not available. Delivery timing - 12:00pm to
+                06:00pm only.
+              </p>
+
+              <!-- Offer -->
+              <p
+                class="offer"
+                id="modalCakeBasePrice"
+                style="
+                  font-family: 'montserrat';
+                  display: none;
+                  margin-top: 10px;
+                "
+              >
+                Upto ₹0.00 % off
+              </p>
+            </div>
+
+            <!-- Right section -->
+            <div class="modal-right" style="flex: 41 1 300px">
+              <!-- Flavour, Variant, Price in one row -->
+              <div
+                style="
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 10px;
+                  margin-bottom: 15px;
+                "
+              >
+                <div style="flex: 1 1 100px">
+                  <h4
+                    style="
+                      font-size: 14px;
+                      color: #b32071;
+                      font-family: 'montserrat';
+                      font-weight: 600;
+                      margin-bottom: 5px;
+                    "
+                  >
+                    Select Flavour
+                  </h4>
+                  <select
+                    id="flavourSelect"
+                    class="form-select"
+                    style="width: 100%; display: none"
+                  >
+                    <option value="">Loading flavours...</option>
+                  </select>
+                </div>
+                <div style="flex: 1 1 100px">
+                  <h4
+                    style="
+                      font-size: 14px;
+                      color: #b32071;
+                      font-family: 'montserrat';
+                      font-weight: 600;
+                      margin-bottom: 5px;
+                    "
+                  >
+                    Select Variant
+                  </h4>
+                  <select
+                    id="variantSelect"
+                    class="form-select"
+                    style="border: 1px solid #b32071"
+                  >
+                    <option value="">Loading variants...</option>
+                  </select>
+                </div>
+                <div style="flex: 1 1 100px">
+                  <h4
+                    style="
+                      font-size: 14px;
+                      color: #b32071;
+                      font-family: 'montserrat';
+                      font-weight: 600;
+                      margin-bottom: 5px;
+                    "
+                  >
+                    Price
+                  </h4>
+                  <input
+                    type="text"
+                    id="cakePriceInput"
+                    class="form-control"
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <h4 style="font-size: 16px; color: #b32071; margin-bottom: 5px">
+                Add On Accessories
+              </h4>
+
+              <!-- Container with Flexbox for 2 columns -->
+              <div
+                class="addons"
+                id="addons"
+                style="
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 10px;
+                  margin-bottom: 15px;
+                "
+              ></div>
+
+              <style>
+                .addons {
+                  display: flex;
+                  flex-wrap: wrap;
+                }
+
+                .addon-item {
+                  width: 48%; /* Half width for 2 columns with some gap */
+                  margin-bottom: 10px;
+                  border-left: 2px solid #ccc; /* Optional vertical line */
+                  padding-left: 10px;
+                }
+              </style>
+
+              <!-- Message on Cake -->
+              <div
+                style="
+                  margin-top: 10px;
+                  font-family: 'montserrat';
+                  color: #b32071;
+                  font-weight: 600;
+                  display: flex;
+                  align-items: center;
+                "
+              >
+                <label style="margin-right: 10px">Message on Cake:</label>
+
+                <label style="margin-right: 10px; font-weight: normal">
+                  <input
+                    type="radio"
+                    name="messageOption"
+                    value="yes"
+                    onchange="toggleMessageInput(true)"
+                  />
+                  Yes
+                </label>
+
+                <label style="margin-right: 10px; font-weight: normal">
+                  <input
+                    type="radio"
+                    name="messageOption"
+                    value="no"
+                    onchange="toggleMessageInput(false)"
+                    checked
+                  />
+                  No
+                </label>
+
+                <input
+                  type="text"
+                  id="cakeMessageInput"
+                  placeholder="Enter your message"
+                  class="form-control"
+                  style="display: none; width: 250px"
+                />
+              </div>
+
+              <script>
+                function toggleMessageInput(show) {
+                  const input = document.getElementById("cakeMessageInput");
+                  input.style.display = show ? "inline-block" : "none";
+                }
+              </script>
+
+               <!-- Confirm button -->
+              <button class="confirm-order" style="margin-top: 15px">
+                <i class="fas fa-cart-plus"></i> ADD TO CART
+              </button>
+
+              <div
+                style="
+                  background: #fdf2f8;
+                  border-left: 4px solid #b32071;
+                  padding: 10px 15px;
+                  border-radius: 8px;
+                  font-family: 'montserrat';
+                  margin-top: 10px;
+                "
+              >
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 14px;
+                    color: #4c2f09;
+                    font-weight: 600;
+                  "
+                >
+                  <strong>Need help instantly?</strong>
+                  Call us at
+                  <a
+                    href="tel:+918655481522"
+                    style="
+                      color: #b32071;
+                      text-decoration: none;
+                      font-weight: bold;
+                    "
+                  >
+                    +91 86554 81522
+                  </a>
+                </p>
+
+                <p style="margin: 5px 0 0 0; font-size: 13px; color: #555">
+                  🕒 Available: 10:30am – 6:30pm, Monday to Saturday
+                </p>
+              </div>
+
+             
+
+              <a
+                href="https://wa.me/918655481522?text=Hi, I want to customize a cake."
+                target="_blank"
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;
+                  background-color: #ff69b4; /* pink */
+                  color: white;
+                  padding: 10px 15px;
+                  border-radius: 8px;
+                  text-decoration: none;
+                  font-family: 'montserrat';
+                  font-weight: 600;
+                  margin-top: 15px;
+                "
+              ><i class="fab fa-whatsapp" style="font-size: 20px"></i> WhatsApp Us</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <br><br>
+
+      <!-- Toggle Input Field Script -->
+      <script>
+        function toggleMessageInput(show) {
+          const input = document.getElementById("cakeMessageInput");
+          input.style.display = show ? "block" : "none";
+        }
+      </script>
+      <script>
+        document.getElementById("time").addEventListener("input", function () {
+          const time = this.value;
+          if (time < "15:00" || time > "22:00") {
+            alert(
+              "Please select a delivery time between 3:00 PM and 10:00 PM."
+            );
+            this.value = "";
+          }
+        });
+      </script>
+
+      <script>
+                            let selectedCake = null;
+
+                            function openLocationModal() {
+                              document.getElementById("locationModal").style.display = "flex";
+                            }
+
+                            function closeLocationModal() {
+                              document.getElementById("locationModal").style.display = "none";
+                            }
+
+                            function clearWeightModal() {
+                              const variantSelect = document.getElementById("variantSelect");
+                              if (variantSelect) {
+                                variantSelect.innerHTML =
+                                  '<option value="">-- Select Variant --</option>';
+                              }
+                              document.getElementById("addons").innerHTML = "";
+                              document.getElementById("flavourSelect").innerHTML =
+                                '<option value="">Loading flavours...</option>';
+                            }
+
+        document.querySelectorAll(".add-to-cart").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const card = this.closest(".cake-card");
+            const imgSrc = card.querySelector("img").src;
+            const title = card.querySelector("img").alt;
+            const subProductId = this.dataset.id;
+
+            selectedCake = { imgSrc, title, subProductId };
+
+            const savedCity = sessionStorage.getItem("selectedCity");
+            const savedOutlet = sessionStorage.getItem("selectedOutlet");
+
+            if (savedCity && savedOutlet) {
+              document.getElementById("modalCakeImg").src = selectedCake.imgSrc;
+              document.getElementById("modalCakeTitle").textContent = selectedCake.title;
+              openWeightModal(selectedCake.subProductId);  // ✅ show weight modal directly
+            } else {
+              openLocationModal(); // ✅ only ask for location if not set
+            }
+          });
+        });
+
+                            function updateOutletOptions(callback) {
+                              const city = document.getElementById("citySelect").value;
+                              const outletSelect = document.getElementById("outletSelect");
+                              outletSelect.innerHTML = "<option>Select Outlet</option>";
+
+                              if (city && city !== "Select City") {
+                                fetch(`/get_outlets/${city}`)
+                                  .then((res) => res.json())
+                                  .then((data) => {
+                                    if (data.error) {
+                                      alert(data.error);
+                                      return;
+                                    }
+                                    data.forEach((outlet) => {
+                                      outletSelect.innerHTML += `<option value="${outlet}">${outlet}</option>`;
+                                    });
+                                    if (callback) callback();
+                                  })
+                                  .catch((err) => console.error("Error fetching outlets:", err));
+                              }
+                            }
+
+                            document.addEventListener("DOMContentLoaded", function () {
+                              fetch("/get_cities")
+                                .then((res) => res.json())
+                                .then((data) => {
+                                  const citySelect = document.getElementById("citySelect");
+                                  citySelect.innerHTML = '<option value="">Select City</option>';
+                                  data.forEach((city) => {
+                                    const option = document.createElement("option");
+                                    option.value = city;
+                                    option.textContent = city;
+                                    citySelect.appendChild(option);
+                                  });
+
+                                  const savedCity = sessionStorage.getItem("selectedCity");
+                                  if (savedCity) {
+                                    citySelect.value = savedCity;
+                                    updateOutletOptions(() => {
+                                      const savedOutlet = sessionStorage.getItem("selectedOutlet");
+                                      if (savedOutlet) {
+                                        const outletSelect =
+                                          document.getElementById("outletSelect");
+                                        outletSelect.value = savedOutlet;
+                                        document.getElementById(
+                                          "outletAddress"
+                                        ).innerHTML = `<button class="proceed-btn" onclick="proceedToNext('${savedOutlet}')">PROCEED</button>`;
+                                      }
+                                    });
+                                  }
+                                })
+                                .catch((err) => console.error("Error loading cities:", err));
+                            });
+
+                            function showOutletAddress() {
+                              const outlet = document.getElementById("outletSelect").value;
+                              const addressBox = document.getElementById("outletAddress");
+
+                              if (outlet && outlet !== "Select Outlet") {
+                                addressBox.innerHTML = `<button class="proceed-btn" onclick="proceedToNext('${outlet}')">PROCEED</button>`;
+                              } else {
+                                addressBox.innerHTML = "";
+                              }
+                            }
+
+                            function proceedToNext(outlet) {
+                              if (!selectedCake) return;
+
+                              const city = document.getElementById("citySelect").value;
+                              sessionStorage.setItem("selectedCity", city);
+                              sessionStorage.setItem("selectedOutlet", outlet);
+
+                              document.getElementById("modalCakeImg").src = selectedCake.imgSrc;
+                              document.getElementById("modalCakeTitle").textContent =
+                                selectedCake.title;
+
+                              closeLocationModal();
+                              openWeightModal(selectedCake.subProductId);
+                            }
+
+                            function openWeightModal(subProductId) {
+                              clearWeightModal(); // clears old data
+
+                              fetch(`/get_cake_data/${subProductId}`)
+                                .then((response) => response.json())
+                                .then((data) => {
+                                  if (data.error) {
+                                    console.error(data.error);
+                                    return;
+                                  }
+
+                                  const { sub_product, accessories, variants, flavours, prices } =
+                                    data;
+
+                                  document.getElementById(
+                                    "modalCakeImg"
+                                  ).src = `/static/uploads/${sub_product.image}`;
+
+                                  document.getElementById("modalCakeTitle").textContent =
+                                    sub_product.name;
+
+                                  const whatsappLink = `https://wa.me/919763074943?text=Hi, I'm interested in the ${sub_product.name} cake. Please share more details.`;
+const whatsappBtn = document.getElementById("whatsappBtn");
+if (whatsappBtn) {
+  whatsappBtn.href = whatsappLink;
+}
+
+                                  document.getElementById(
+                                    "modalCakeBasePrice"
+                                  ).textContent = `Upto ₹${sub_product.offer} % off`;
+                                  document.getElementById("modalCakeBasePrice").dataset.price = "";
+
+                                  // ✅ Load Accessories
+                                  const addonContainer = document.getElementById("addons");
+                                  accessories.forEach((acc) => {
+                                    const label = document.createElement("label");
+                                    label.innerHTML = `
+                              <input type="checkbox" name="accessory" data-name="${acc.name}" data-price="${acc.price}">
+                              ${acc.name} - ₹${acc.price}`;
+                                    addonContainer.appendChild(label);
+                                  });
+
+                                  const variantSelect = document.getElementById("variantSelect");
+                                  variantSelect.innerHTML =
+                                    '<option value="">-- Select Variant --</option>';
+                                  variants.forEach((v) => {
+                                    const option = document.createElement("option");
+                                    option.value = v.id;
+                                    option.textContent = v.name;
+                                    variantSelect.appendChild(option);
+                                  });
+
+                                  const flavourSelect = document.getElementById("flavourSelect");
+                                  flavourSelect.style.display = "block";
+                                  flavourSelect.innerHTML =
+                                    '<option value="">-- Select Flavour --</option>';
+                                  flavours.forEach((f) => {
+                                    const option = document.createElement("option");
+                                    option.value = f.id;
+                                    option.textContent = f.name;
+                                    flavourSelect.appendChild(option);
+                                  });
+
+                                  const updatePrice = () => {
+                                    const variantId =
+                                      document.getElementById("variantSelect").value;
+                                    const flavourId =
+                                      document.getElementById("flavourSelect").value;
+
+                                    console.log("Variant ID:", variantId);
+                                    console.log("Flavour ID:", flavourId);
+                                    console.log("Prices Array:", prices);
+
+                                    if (variantId && flavourId) {
+                                      const combo = prices.find(
+                                        (p) =>
+                                          p.variant_id == variantId && p.flavour_id == flavourId
+                                      );
+                                      if (combo) {
+                                        // Update dataset and old text display (if you still use it)
+                                        document.getElementById(
+                                          "modalCakeBasePrice"
+                                        ).textContent = `₹${combo.price}`;
+                                        document.getElementById(
+                                          "modalCakeBasePrice"
+                                        ).dataset.price = combo.price;
+
+                                        document.getElementById(
+                                          "cakePriceInput"
+                                        ).value = `₹${combo.price}`;
+                                      } else {
+                                        // In case combination is not found
+                                        document.getElementById("cakePriceInput").value = "N/A";
+                                      }
+                                    }
+                                  };
+
+                                  // ✅ Attach listeners
+                                  flavourSelect.addEventListener("change", updatePrice);
+                                  variantSelect.addEventListener("change", updatePrice);
+
+                                  // ✅ Show Modal
+                                  document.getElementById("weightModal").style.display = "flex";
+                                })
+                                .catch((error) => console.error("Error fetching data:", error));
+                            }
+
+                            function filterCakes(category) {
+                              const cards = document.querySelectorAll(".cake-card");
+                              cards.forEach((card) => {
+                                card.style.display =
+                                  category === "all" || card.classList.contains(category)
+                                    ? "block"
+                                    : "none";
+                              });
+                            }
+                            const isUserLoggedIn = {{ user_logged_in | tojson | safe }};
+                            function toggleCustomCakeForm() {
+
+                              if (!isUserLoggedIn) {
+                  alert("Please login first to place a custom cake order.");
+                  window.location.href = "/login?next=" + encodeURIComponent(window.location.pathname);
+                  return;
+                }
+                              const cards = document.querySelectorAll(".cake-card");
+                              const form = document.getElementById("custom-cake-form");
+
+                              const isFormVisible = form.style.display === "block";
+
+                              if (isFormVisible) {
+                                form.style.display = "none";
+                                cards.forEach((card) => {
+                                  card.style.display = "block";
+                                });
+                              } else {
+                                form.style.display = "block";
+                                cards.forEach((card) => {
+                                  card.style.display = "none";
+                                });
+                              }
+                            }
+
+                            // Hide form when clicking outside
+                            document.addEventListener("click", function (event) {
+                              const form = document.getElementById("custom-cake-form");
+                              const toggleButton = document.getElementById(
+                                "toggle-custom-cake-btn"
+                              ); // Set correct ID
+
+                              const isClickInsideForm = form.contains(event.target);
+                              const isClickOnToggleButton =
+                                toggleButton && toggleButton.contains(event.target);
+
+                              if (
+                                form.style.display === "block" &&
+                                !isClickInsideForm &&
+                                !isClickOnToggleButton
+                              ) {
+                                form.style.display = "none";
+
+                                const cards = document.querySelectorAll(".cake-card");
+                                cards.forEach((card) => {
+                                  card.style.display = "block";
+                                });
+                              }
+                            });
+////
+                           // ✅ FIXED: Add CSRF token helper function
+function getCsrfToken() {
+  const metaTag = document.querySelector('meta[name="csrf-token"]');
+  if (metaTag) {
+    return metaTag.getAttribute('content');
+  }
+  
+  // Fallback: try to get from cookie
+  const cookies = document.cookie.split(';');
+  for (let cookie of cookies) {
+    const [name, value] = cookie.trim().split('=');
+    if (name === 'csrf_token') {
+      return decodeURIComponent(value);
+    }
+  }
+  
+  return null;
+}
+
+document.querySelector(".confirm-order").addEventListener("click", async () => 
+{
+  const flavourSelect = document.getElementById("flavourSelect");
+  const variantSelect = document.getElementById("variantSelect");
+
+  const selectedFlavourValue = flavourSelect.value;
+  const selectedFlavourText = flavourSelect.options[flavourSelect.selectedIndex].text;
+
+  const selectedVariantValue = variantSelect.value;
+  const selectedVariantText = variantSelect.options[variantSelect.selectedIndex].text;
+
+  if (!selectedFlavourValue || selectedFlavourValue === "Loading flavours...") {
+    Swal.fire("Missing Flavour", "Please select a flavour!", "warning");
+    return;
+  }
+
+  if (!selectedVariantValue || selectedVariantValue === "Loading variants...") {
+    Swal.fire("Missing Variant", "Please select a variant!", "warning");
+    return;
+  }
+
+  const messageOption = document.querySelector('input[name="messageOption"]:checked')?.value;
+  let messageOnCake = "";
+
+  if (messageOption === "yes") {
+    const messageInput = document.getElementById("cakeMessageInput").value.trim();
+    messageOnCake = messageInput;
+  }
+
+  const priceInput = document.getElementById("cakePriceInput");
+  const selectedPrice = parseFloat(priceInput.value.replace("₹", "") || "0");
+
+  const subProductName = document.getElementById("modalCakeTitle").textContent.trim();
+  const imageUrl = document.getElementById("modalCakeImg").src;
+  const subProductId = selectedCake.subProductId;
+
+  const selectedAccessories = Array.from(
+    document.querySelectorAll('input[name="accessory"]:checked')
+  ).map((el) => ({
+    name: el.dataset.name,
+    price: parseFloat(el.dataset.price),
+  }));
+
+  const accessoryCost = selectedAccessories.reduce((sum, acc) => sum + acc.price, 0);
+  const totalPrice = selectedPrice + accessoryCost;
+
+  const data = {
+    sub_product_id: subProductId,
+    sub_productname: subProductName,
+    image: imageUrl,
+    flavour: selectedFlavourText,
+    variant: selectedVariantText,
+    v_cost: selectedPrice,
+    total_price: totalPrice,
+    quantity: 1,
+    message: messageOnCake,
+  };
+
+  // Add accessory details
+  const allAccessories = document.querySelectorAll('input[name="accessory"]');
+  for (let i = 0; i < 5; i++) {
+    const accessory = allAccessories[i];
+    const isChecked = accessory?.checked || false;
+    data[`acc_${i + 1}`] = accessory?.dataset.name || null;
+    data[`a_cost${i + 1}`] = isChecked ? parseFloat(accessory?.dataset.price) : 0;
+    data[`a_quantity${i + 1}`] = isChecked ? 1 : 0;
+  }
+
+  // ✅ FIXED: Get CSRF token
+  const csrfToken = getCsrfToken();
+
+  try {
+    const response = await fetch("/add_to_cart", {
+      method: "POST",
+      headers: { 
+        "Content-Type": "application/json",
+        "X-CSRFToken": csrfToken  // ✅ Add CSRF token header
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+
+    if (response.status === 201) {
+      Swal.fire({
+        title: "Success!",
+        text: "Item added to cart successfully!",
+        icon: "success",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+
+      // Update all cart count badges
+      const cartCountIds = ["cart-count", "cart-count-mobile", "cart-count-floating"];
+      cartCountIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          let currentCount = parseInt(el.textContent) || 0;
+          el.textContent = currentCount + 1;
+          el.style.display = "inline-block";
+        }
+      });
+
+      setTimeout(() => {
+        document.getElementById("weightModal").style.display = "none";
+      }, 2000);
+    } else if (response.status === 409) {
+      Swal.fire("Already in Cart", result.message, "info");
+    } else {
+      Swal.fire("Error", result.error || "Unknown error occurred", "error");
+    }
+  } catch (err) {
+    console.error("Fetch error:", err);
+    Swal.fire("Error", "Failed to add item to cart. Please try again.", "error");
+  }
+});
+
+                            document.addEventListener("DOMContentLoaded", () => {
+                              const cartCountEl = document.getElementById("cart-count");
+
+                              // Option A: If you're storing cart in localStorage (frontend-only)
+                              const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+                              const count = cartData.length;
+
+                              // Option B: If you're relying on backend-rendered cartitems count (Flask)
+                              // You can make an AJAX call here if needed
+
+                              if (count > 0) {
+                                cartCountEl.textContent = count;
+                                cartCountEl.style.display = "inline-block";
+                              } else {
+                                cartCountEl.style.display = "none";
+                              }
+                            });
+
+                            // // Clear saved location data on initial page load
+                            // window.addEventListener("load", () => {
+                            //   const isRefreshed =
+                            //     performance.navigation.type === performance.navigation.TYPE_RELOAD;
+
+                            //   if (!isRefreshed) {
+                            //     // User navigated here directly (not via refresh), so clear the location
+                            //     localStorage.removeItem("selectedCity");
+                            //     localStorage.removeItem("selectedOutlet");
+                            //   }
+                            // });
+
+                          window.addEventListener("load", () => {
+                           if (!sessionStorage.getItem("locationAsked")) {
+                           // Remove location only on true fresh visit
+                                sessionStorage.removeItem("selectedCity");
+                                sessionStorage.removeItem("selectedOutlet");
+                                sessionStorage.setItem("locationAsked", "true");
+                                 }
+                             });
+
+                            // Load cities when the form is shown
+                            document.addEventListener("DOMContentLoaded", function () {
+                              fetch("/get_cities")
+                                .then((res) => res.json())
+                                .then((data) => {
+                                  const citySelect = document.getElementById("customCitySelect");
+                                  data.forEach((city) => {
+                                    const option = document.createElement("option");
+                                    option.value = city;
+                                    option.textContent = city;
+                                    citySelect.appendChild(option);
+                                  });
+                                })
+                                .catch((err) => console.error("Error loading cities:", err));
+                            });
+
+                            function updateCustomOutletOptions() {
+                              const city = document.getElementById("customCitySelect").value;
+                              const outletSelect = document.getElementById("customOutletSelect");
+
+                              outletSelect.innerHTML =
+                                '<option value="">--Select Outlet--</option>';
+
+                              if (city) {
+                                fetch(`/get_outlets/${city}`)
+                                  .then((res) => res.json())
+                                  .then((data) => {
+                                    if (data.error) {
+                                      alert(data.error);
+                                      return;
+                                    }
+                                    data.forEach((outlet) => {
+                                      const option = document.createElement("option");
+                                      option.value = outlet;
+                                      option.textContent = outlet;
+                                      outletSelect.appendChild(option);
+                                    });
+                                  })
+                                  .catch((err) => console.error("Error loading outlets:", err));
+                              }
+                            }
+
+                            document.addEventListener("DOMContentLoaded", function () {
+                              fetch("/get_variants")
+                                .then((response) => response.json())
+                                .then((data) => {
+                                  const dropdown = document.getElementById("variantDropdown");
+
+                                  if (data.error) {
+                                    console.error("Error loading variants:", data.error);
+                                    return;
+                                  }
+
+                                  data.forEach((variant) => {
+                                    const option = document.createElement("option");
+                                    option.value = variant.name;
+                                    option.textContent = variant.name;
+                                    dropdown.appendChild(option);
+                                  });
+                                })
+                                .catch((err) => {
+                                  console.error("Failed to fetch variants:", err);
+                                });
+                            });
+
+                            document.addEventListener("DOMContentLoaded", function () {
+                              fetch("/get_flavours")
+                                .then((response) => response.json())
+                                .then((data) => {
+                                  const dropdown = document.getElementById("flavourDropdown");
+
+                                  if (data.error) {
+                                    console.error("Error loading flavours:", data.error);
+                                    return;
+                                  }
+
+                                  data.forEach((flavour) => {
+                                    const option = document.createElement("option");
+                                    option.value = flavour.name;
+                                    option.textContent = flavour.name;
+                                    dropdown.appendChild(option);
+                                  });
+                                })
+                                .catch((err) => {
+                                  console.error("Failed to fetch flavour:", err);
+                                });
+                            });
+
+                            document
+                              .querySelector("#custom-cake-form form")
+                              .addEventListener("submit", function (e) {
+                                const name = document.getElementById("name");
+                                const phone = document.getElementById("phone");
+                                const email = document.querySelector('input[name="email"]');
+                                const city = document.getElementById("customCitySelect");
+                                const outlet = document.getElementById("customOutletSelect");
+                                const variant = document.getElementById("variantDropdown");
+                                const flavour = document.getElementById("flavourDropdown");
+                                const date = document.querySelector('input[name="date"]');
+                                const time = document.querySelector('input[name="time"]');
+                                const address = document.querySelector('textarea[name="address"]');
+                                const checkbox = document.getElementById("orderConfirmCheckbox");
+
+                                if (name.value.trim() === "") {
+                                  alert("Please write Name");
+                                  name.focus();
+                                  e.preventDefault();
+                                  return;
+                                }
+                                if (phone.value.trim() === "") {
+                                  alert("Please enter Phone");
+                                  phone.focus();
+                                  e.preventDefault();
+                                  return;
+                                }
+                                if (email.value.trim() === "") {
+                                  alert("Please enter Email");
+                                  email.focus();
+                                  e.preventDefault();
+                                  return;
+                                }
+                                if (city.value.trim() === "") {
+                                  alert("Please select City");
+                                  city.focus();
+                                  e.preventDefault();
+                                  return;
+                                }
+                                if (outlet.value.trim() === "") {
+                                  alert("Please select Outlet");
+                                  outlet.focus();
+                                  e.preventDefault();
+                                  return;
+                                }
+                                if (variant.value.trim() === "") {
+                                  alert("Please select Variant");
+                                  variant.focus();
+                                  e.preventDefault();
+                                  return;
+                                }
+                                if (flavour.value.trim() === "") {
+                                  alert("Please Select Flavour");
+                                  flavour.focus();
+                                  e.preventDefault();
+                                  return;
+                                }
+                                if (date.value.trim() === "") {
+                                  alert("Please select Delivery Date");
+                                  date.focus();
+                                  e.preventDefault();
+                                  return;
+                                }
+                                if (time.value.trim() === "") {
+                                  alert("Please select Delivery Time");
+                                  time.focus();
+                                  e.preventDefault();
+                                  return;
+                                }
+                                if (address.value.trim() === "") {
+                                  alert("Please enter Address");
+                                  address.focus();
+                                  e.preventDefault();
+                                  return;
+                                }
+                                if (!checkbox.checked) {
+                                  alert("Please select Checkbox");
+                                  checkbox.focus();
+                                  e.preventDefault();
+                                  return;
+                                }
+                              });
+
+                            document.addEventListener("DOMContentLoaded", function () {
+                              const dateInput = document.getElementById("date");
+
+                              // Set min date (2 days from today)
+                              const today = new Date();
+                              const minDateObj = new Date(today);
+                              minDateObj.setDate(today.getDate() + 1);
+
+                              const yyyy = minDateObj.getFullYear();
+                              const mm = String(minDateObj.getMonth() + 1).padStart(2, "0");
+                              const dd = String(minDateObj.getDate()).padStart(1, "0");
+                              const minDateStr = `${yyyy}-${mm}-${dd}`;
+
+                              // Set the min attribute for the date picker
+                              dateInput.setAttribute("min", minDateStr);
+
+                              // Validate if user tries to enter a date manually or selects a wrong one
+                              function validateDate() {
+                                const selectedDate = new Date(dateInput.value);
+                                const now = new Date();
+                                now.setHours(0, 0, 0, 0);
+                                const earliestAllowed = new Date(now);
+                                earliestAllowed.setDate(now.getDate() + 1);
+
+                                if (selectedDate < earliestAllowed) {
+                                  alert(
+                                    "Please select a delivery date at least next days from today."
+                                  );
+                                  dateInput.value = ""; // Clear input
+                                  dateInput.focus(); // Bring focus back
+                                }
+                              }
+
+                              dateInput.addEventListener("change", validateDate); // handles calendar picker
+                              dateInput.addEventListener("blur", validateDate); // handles manual input
+                            });
+
+                            const urlParams = new URLSearchParams(window.location.search);
+                            const success = urlParams.get("success");
+
+                            if (success === "1") {
+                              Swal.fire({
+                                title: "Success!",
+                                text: "Your order has been placed Successfully.",
+                                icon: "success",
+                                timer: 3000, // 👈 Auto-close after 3 seconds
+                                showConfirmButton: false,
+                              });
+
+                              // Optional: remove ?success=1 from URL
+                              window.history.replaceState(null, null, window.location.pathname);
+                            }
+      </script>
+
+      <!-- Footer Start -->
+      <div
+        class="container-fluid text-light footer my-4 mb-0 py-2 wow fadeIn"
+        data-wow-delay="0.1s"
+        style="
+          background-image: linear-gradient(
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.78)
+            ),
+            url('static/img/footer.jpg');
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        "
+      >
+        <div class="container py-3">
+          <div class="row g-3">
+            <!-- About SM Bakers -->
+            <div class="col-lg-3 col-md-6">
+              <h4
+                class="mb-3"
+                style="font-size: 16px; color: white; font-family: 'Montserrat'"
+              >
+                About SM Bakers
+              </h4>
+              <p
+                style="
+                  color: white;
+                  text-align: justify;
+                  letter-spacing: normal;
+                  word-spacing: normal;
+                  text-justify: inter-word;
+                  hyphens: auto;
+                  font-family: 'Montserrat';
+                "
+              >
+                At <b>SM Bakers,</b> we create delightful cakes and confections
+                for every occasion. With our passion for baking, we ensure each
+                creation is as memorable as your special moments.
+              </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-3 col-md-6">
+              <h4
+                class="mb-3"
+                style="font-size: 16px; color: white; font-family: 'Montserrat'"
+              >
+                Quick Links
+              </h4>
+              <a class="btn btn-link" href="{{ url_for('home') }}">Home</a>
+              <a class="btn btn-link" href="{{ url_for('about') }}">About Us</a>
+              <a class="btn btn-link" href="{{ url_for('cake_variety') }}"
+                >Cake Variety</a
+              >
+              <!-- <a class="btn btn-link" href="{{ url_for('gallery') }}"
+                >Gallery</a
+              > -->
+              <a class="btn btn-link" href="{{ url_for('our_outlet') }}"
+                >Our Outlet</a
+              >
+              <a class="btn btn-link" href="{{ url_for('contact') }}"
+                >Contact Us</a
+              >
+              <a class="btn btn-link" href="{{ url_for('franchise') }}"
+                >Franchise
+              </a>
+            </div>
+
+            <!-- Services Links -->
+            <div class="col-lg-3 col-md-6">
+              <h4
+                class="mb-3"
+                style="font-size: 16px; color: white; font-family: 'Montserrat'"
+              >
+                Our Services
+              </h4>
+              <a class="btn btn-link" href="{{ url_for('cake_variety') }}"
+                >Chocolate Cakes</a
+              >
+              <a class="btn btn-link" href="{{ url_for('cake_variety') }}"
+                >Wedding Cakes</a
+              >
+              <a class="btn btn-link" href="{{ url_for('cake_variety') }}"
+                >Custom Cakes</a
+              >
+              <a class="btn btn-link" href="{{ url_for('cake_variety') }}"
+                >Anniversary Cakes</a
+              >
+              <a class="btn btn-link" href="{{ url_for('cake_variety') }}"
+                >Corporate Cakes</a
+              >
+              <a class="btn btn-link" href="{{ url_for('cake_variety', category='baby_shower_cake') }}">Baby Shower Cakes</a>
+
+            </div>
+
+
+            <!-- Address -->
+            <div class="col-lg-3 col-md-6">
+              <h4
+                class="mb-3"
+                style="font-size: 16px; color: white; font-family: 'Montserrat'"
+              >
+                Office Address
+              </h4>
+              <p class="mb-2" style="color: white; text-align: justify">
+                <i class="fa fa-map-marker-alt me-2" style="color: white"></i>
+                <a
+                  href="#"
+                  target="_blank"
+                  style="
+                    color: white;
+                    text-decoration: none;
+                    font-family: 'Montserrat';
+                  "
+                >
+                  Plot No A-1,
+                  Thane, Mumbai, Maharashtra.
+                </a>
+              </p>
+
+              <p class="mb-2" style="color: white">
+                <i class="fa fa-phone me-2" style="color: white"></i>
+               <a
+                href="tel:+911010101010"
+                style="
+                  color: white;
+                  text-decoration: none;
+                  font-family: 'Montserrat';
+                "
+                >+91 1010101010</a
+              >
+              </p>
+
+              <p class="mb-2" style="color: white">
+                <i class="fa fa-envelope me-2" style="color: white"></i>
+                <a
+                  href="mailto:sanket.mahalee@gmail.com"
+                  style="
+                    color: white;
+                    text-decoration: none;
+                    font-family: 'Montserrat';
+                  "
+                  >sanket.mahalee@gmail.com</a
+                >
+              </p>
+
+              <div class="d-flex pt-2">
+                <a
+                  class="btn btn-square btn-outline-light rounded-circle me-1"
+                  href="#"
+                  target="_blank"
+                  ><i class="fab fa-instagram" style="color: white"></i
+                ></a>
+                <a
+                  class="btn btn-square btn-outline-light rounded-circle me-0"
+                  href="#"
+                  target="_blank"
+                  ><i class="fab fa-facebook-f" style="color: white"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer End -->
+
+      <!-- Copyright Start -->
+      <div
+        class="container-fluid copyright text-light py-2 wow fadeIn"
+        data-wow-delay="0.1s"
+      >
+        <div class="container">
+          <div class="row">
+            <div
+              class="col-md-12 text-center mb-2 mb-md-0"
+              style="font-family: 'Montserrat'; font-size: 14px"
+            >
+              &copy; SM Bakers. All Rights Reserved. Powered By
+              <a
+                href="#"
+                target="_blank"
+                style="font-weight: 600; color: white"
+                >Sanket.</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Copyright End -->
+
+      <style>
+        .btm-btn {
+          position: fixed;
+          bottom: 90px;
+          right: 30px;
+          z-index: 999;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .btm-btn a {
+          width: 50px;
+          height: 50px;
+          font-size: 20px;
+          text-align: center;
+          line-height: 50px;
+        }
+      </style>
+      <!-- Back to Top -->
+      <div class="btm-btn">
+        <!-- Cart Button -->
+        <a
+          href="{{ url_for('cart') }}"
+          class="btn-about btn-lg-square rounded-circle position-relative"
+          style="background-color: #ffd1df"
+        >
+          <i class="fa fa-shopping-cart"></i>
+          <span
+            id="cart-count-floating"
+            class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle"
+          >
+            {{ cartitems|length }}
+          </span>
+        </a>
+
+        <!-- Back to Top Button -->
+        <a href="#" class="btn-about btn-lg-square rounded-circle back-to-top">
+          <i class="bi bi-arrow-up"></i>
+        </a>
+      </div>
+
+      <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cartBadges = [
+      document.getElementById("cart-count-desktop"),
+      document.getElementById("cart-count-mobile"),
+      document.getElementById("cart-count-floating"),
+    ];
+
+    const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+    const count = cartData.length;
+
+    cartBadges.forEach((badge) => {
+      if (badge) {
+        if (count > 0) {
+          badge.textContent = count;
+          badge.style.display = "inline-block";
+        } else {
+          badge.style.display = "none";
+        }
+      }
+    });
+
+  });
+</script>
+<script>
+  // Auto-filter cakes on page load based on URL parameter
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get the 'category' parameter from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+    
+    if (category) {
+      // Filter cakes based on the category
+      filterCakes(category);
+      
+      // Highlight the active filter button
+      const filterButtons = document.querySelectorAll('.filter-btns button');
+      filterButtons.forEach(btn => {
+        const btnText = btn.textContent.trim().toLowerCase().replace(/\s+/g, '_');
+        if (btnText === category) {
+          btn.style.backgroundColor = '#b32071';
+          btn.style.color = 'white';
+          btn.style.fontWeight = '600';
+        }
+      });
+    }
+  });
+
+  // Enhanced filterCakes function with scroll
+  function filterCakes(category) {
+    const cards = document.querySelectorAll(".cake-card");
+    let visibleCount = 0;
+    
+    cards.forEach((card) => {
+      if (category === "all" || card.classList.contains(category)) {
+        card.style.display = "block";
+        visibleCount++;
+      } else {
+        card.style.display = "none";
+      }
+    });
+    
+    // Scroll to the cake container smoothly
+    const cakeContainer = document.getElementById('cakeContainer');
+    if (cakeContainer && visibleCount > 0) {
+      setTimeout(() => {
+        cakeContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+    
+    // Update button styles
+    const filterButtons = document.querySelectorAll('.filter-btns button');
+    filterButtons.forEach(btn => {
+      btn.style.backgroundColor = '#ffd1df';
+      btn.style.color = '#b32071';
+      btn.style.fontWeight = '500';
+    });
+    
+    // Highlight active button
+    event?.target?.style.setProperty('background-color', '#b32071', 'important');
+    event?.target?.style.setProperty('color', 'white', 'important');
+    event?.target?.style.setProperty('font-weight', '600', 'important');
+  }
+</script>
+
+
+      <!-- JavaScript Libraries -->
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="static/lib/wow/wow.min.js"></script>
+      <script src="static/lib/easing/easing.min.js"></script>
+      <script src="static/lib/waypoints/waypoints.min.js"></script>
+      <script src="static/lib/counterup/counterup.min.js"></script>
+      <script src="static/lib/owlcarousel/owl.carousel.min.js"></script>
+
+      <!-- Template Javascript -->
+      <script src="static/js/main.js"></script>
+    </section>
+  </body>
+</html>

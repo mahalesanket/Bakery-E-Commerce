@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <title>Document</title>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBDKQW4TCQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DBDKQW4TCQ');
+</script>
+</head>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .main {
+    display: flex;
+    width: 98vw;
+    height: 93vh;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+    border-right: 2px solid #d6336c;
+    background-color: #fce8ef;
+    /* Soft background to match pink theme */
+    padding: 20px 0px;
+    position: fixed;
+    overflow: hidden;
+    overflow-y: scroll;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    /* For Firefox */
+    -ms-overflow-style: none;
+    /* For Internet Explorer and Edge */
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+    /* For Chrome, Safari, and Opera */
+  }
+
+  .left a:nth-last-child(1) {
+    margin-bottom: 50px;
+  }
+
+  .left p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d6336c;
+    margin-bottom: 10px;
+  }
+
+  .left hr {
+    width: 80%;
+    border: 1px solid #d6336c;
+    margin-bottom: 20px;
+  }
+
+  .left i {
+    margin-right: 8px;
+    /* space between icon and text */
+    color: #444;
+    /* dark gray icon color */
+    font-size: 16px;
+    /* adjust icon size */
+    vertical-align: middle;
+    /* align icon with text */
+    transition: color 0.3s;
+    /* smooth hover effect */
+  }
+
+  .left a.active i {
+    color: #ffffff;
+    /* icon color on hover */
+  }
+
+  .left a {
+    text-decoration: none;
+    color: #333;
+    margin: 7px 0;
+    font-weight: 500;
+    padding: 12px 15px;
+    width: 80%;
+    text-align: left;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .left a:hover {
+    background-color: #d6336c;
+    color: white;
+    text-decoration: none;
+  }
+
+  .left a.active {
+    background-color: #d6336c;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #d6336c;
+    box-shadow: 0 4px 10px rgba(214, 51, 108, 0.2);
+  }
+
+  .right {
+    margin-left: 20%;
+    width: 80%;
+    height: 100%;
+    padding: 20px;
+  }
+
+  /* Main Table Styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    /* border: 1px solid #a1a1a1; */
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    margin-bottom: 2rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    color: #1f2937;
+  }
+
+  thead {
+    background-color: #f3f4f6;
+  }
+
+  th,
+  td {
+    border: 1px solid #e2e8f0;
+    padding: 14px 16px;
+    text-align: left;
+  }
+
+  th {
+    font-weight: 600;
+    color: #374151;
+    border-bottom: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+  }
+
+  tr:hover {
+    background-color: #f9fbfc;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  /* Nested Table: item-table */
+  .item-table {
+    width: 100%;
+    border-collapse: collapse;
+    /* margin-top: 12px; */
+    background-color: #ffffff;
+    font-size: 13px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+  }
+
+  .item-table>thead {
+    background-color: #f1f5f9;
+  }
+
+  .item-table th,
+  .item-table td {
+    padding: 10px 12px;
+    text-align: left;
+    /* border-bottom: 1px solid #e5e7eb; */
+    color: #374151;
+  }
+
+  .item-table th {
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  .item-table tr:hover {
+    background-color: #f3f4f6;
+  }
+
+  /* .item-table tr:last-child td {
+      border-bottom: none;
+    } */
+
+  /* Scrollbar Styling */
+  .right::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .right::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+  }
+
+  .right::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+
+  .invoice-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #d6336c;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+
+  .invoice-btn:hover {
+    background-color: #b32071;
+  }
+
+.report-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff0f6;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.report-filters {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.radio-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.download-btn {
+  margin-left: auto;
+}
+
+
+</style>
+
+<body>
+  {% set current_path = request.path %}
+
+  <div class="main">
+    <div class="left">
+      <p>DASHBOARD</p>
+      <hr />
+
+      <a href="{{ url_for('admin_dashboard') }}"
+        class="{% if current_path == url_for('admin_dashboard') %}active{% endif %}">
+        <i class="fas fa-plus-square"></i> Add Product
+      </a>
+
+      <a href="{{ url_for('admin_view_product') }}"
+        class="{% if current_path == url_for('admin_view_product') %}active{% endif %}">
+        <i class="fas fa-eye"></i> View Product
+      </a>
+
+      <a href="{{ url_for('add_categories') }}"
+        class="{% if current_path == url_for('add_categories') %}active{% endif %}">
+        <i class="fas fa-tags"></i> Add Category
+      </a>
+
+      <a href="{{ url_for('add_flavour') }}" class="{% if current_path == url_for('add_flavour') %}active{% endif %}">
+        <i class="fas fa-apple-alt"></i> Add Flavour
+      </a>
+
+      <a href="{{ url_for('add_variant') }}" class="{% if current_path == url_for('add_variant') %}active{% endif %}">
+        <i class="fas fa-weight-hanging"></i> Add Variant
+      </a>
+
+      <a href="{{ url_for('add_accessory') }}"
+        class="{% if current_path == url_for('add_accessory') %}active{% endif %}">
+        <i class="fas fa-magic"></i> Add Accessories
+      </a>
+      <a href="{{ url_for('master_location') }}"
+        class="{% if current_path == url_for('master_location') %}active{% endif %}">
+        <i class="fas fa-map-marker-alt"></i> Add Master Location
+      </a>
+      
+      <a href="{{ url_for('order_history') }}"
+        class="{% if current_path == url_for('order_history') %}active{% endif %}">
+        <i class="fas fa-box"></i> View Order History
+      </a>
+
+      <a href="{{ url_for('custom_cake_order_history') }}"
+        class="{% if current_path == url_for('custom_cake_order_history') %}active{% endif %}">
+        <i class="fas fa-clipboard-list"></i> View Custom Orders
+      </a>
+     
+      <a href="{{ url_for('report_page') }}"
+        class="{% if current_path == url_for('report_page') %}active{% endif %}">
+        <i class="fas fa-chart-line"></i> Reports
+      </a>
+
+      <a href="{{ url_for('update_password') }}"
+        class="{% if current_path == url_for('update_password') %}active{% endif %}">
+        <i class="fas fa-key"></i> Update Password
+      </a>
+
+      <a href="{{ url_for('logout') }}">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </div>
+    <div class="right">
+
+<div class="report-controls">
+  <form method="POST" class="report-filters">
+    <div class="filter-group">
+      <label>Status:</label>
+      <select name="status" onchange="this.form.submit()">
+        <option value="All">All</option>
+        {% for status in ['Pending', 'Confirmed', 'Preparing', 'Ready', 'Delivered', 'Cancelled'] %}
+          <option value="{{ status }}" {% if selected_status == status %}selected{% endif %}>{{ status }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label>Date Range:</label>
+      <div class="radio-buttons">
+        {% for label in ['All', 'Today', 'Last Week', 'Last Month', 'Last Six Months', '1 Year'] %}
+          <input type="radio" name="date_filter" value="{{ label }}"
+                 {% if selected_date == label %}checked{% endif %}
+                 onchange="this.form.submit()"> {{ label }}
+        {% endfor %}
+      </div>
+    </div>
+  </form>
+
+  <div class="download-btn">
+    <form method="GET" action="{{ url_for('download_report_excel') }}">
+      <input type="hidden" name="status" value="{{ selected_status }}">
+      <input type="hidden" name="date_filter" value="{{ selected_date }}">
+      <button type="submit" class="invoice-btn">Download Excel</button>
+    </form>
+  </div>
+</div>
+
+<!-- Display entries -->
+<table>
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Customer</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Product</th>
+      <th>Variant</th>
+      <th>Cost</th>
+      <th>Accessories</th>
+ <th>Message</th>       <!-- NEW -->
+      <th>GST&nbsp;(%)</th>   <!-- NEW -->
+      <th>Total&nbsp;Price</th><!-- NEW -->
+
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for entry in entries %}
+    <tr>
+      <td>{{ entry.order_id }}</td>
+      <td>{{ entry.name }}</td>
+      <td>{{ entry.formatted_time }}</td>
+      <td>{{ entry.status }}</td>
+      <td>{{ entry.sub_productname }}</td>
+      <td>{{ entry.variant }}</td>
+      <td>{{ entry.v_cost }}</td>
+<td>
+  {% set accessories = [
+    (entry.acc_1, entry.a_quantity1, entry.a_cost1),
+    (entry.acc_2, entry.a_quantity2, entry.a_cost2),
+    (entry.acc_3, entry.a_quantity3, entry.a_cost3),
+    (entry.acc_4, entry.a_quantity4, entry.a_cost4),
+    (entry.acc_5, entry.a_quantity5, entry.a_cost5)
+  ] %}
+  <ul style="padding-left: 1em; margin: 0;">
+    {% for acc, qty, cost in accessories %}
+      {% if qty and qty > 0 %}
+        {% set line_total = (cost or 0) * qty %}
+        <li>
+          {{ acc }} (x{{ qty }}) – ₹{{ "%.2f"|format(cost) }} each =
+          <strong>₹{{ "%.2f"|format(line_total) }}</strong>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</td>
+    <td>{{ entry.message }}</td>        <!-- Message text from orderitems -->
+    <td>{{ entry.gst }}</td>            <!-- GST percentage from orders -->
+    <td>{{ "%.2f"|format(entry.grand_total) }}</td>
+
+
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+
+
+
+    </div>
+  </div>
+</body>
+
+</html>

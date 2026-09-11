@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-KyZXEAg3QhqLMpG8r+Knujsl5+5hb7/6H1Qa+zsmU5b5zE5JXZpT1ZaY1Ep6kPtbjK4e+Bc4zwDkRYe5Zp8gA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+
+    <title>Document</title>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBDKQW4TCQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DBDKQW4TCQ');
+</script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .main {
+      display: flex;
+      width: 98vw;
+      height: 93vh;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 20%;
+      height: 100%;
+      border-right: 2px solid #d6336c;
+      background-color: #fce8ef;
+      /* Soft background to match pink theme */
+      padding: 20px 0px;
+      position: fixed;
+      overflow: hidden;
+      overflow-y: scroll;
+      overflow-y: scroll;
+      scrollbar-width: none;
+      /* For Firefox */
+      -ms-overflow-style: none;
+      /* For Internet Explorer and Edge */
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+      /* For Chrome, Safari, and Opera */
+    }
+
+    .left a:nth-last-child(1) {
+      margin-bottom: 50px;
+    }
+
+    .left p {
+      font-size: 20px;
+      font-weight: bold;
+      color: #d6336c;
+      margin-bottom: 10px;
+    }
+
+    .left hr {
+      width: 80%;
+      border: 1px solid #d6336c;
+      margin-bottom: 20px;
+    }
+
+    .left i {
+      margin-right: 8px;
+      /* space between icon and text */
+      color: #444;
+      /* dark gray icon color */
+      font-size: 16px;
+      /* adjust icon size */
+      vertical-align: middle;
+      /* align icon with text */
+      transition: color 0.3s;
+      /* smooth hover effect */
+    }
+
+    .left a.active i {
+      color: #ffffff;
+      /* icon color on hover */
+    }
+
+    .left a {
+      text-decoration: none;
+      color: #333;
+      margin: 7px 0;
+      font-weight: 500;
+      padding: 12px 15px;
+      width: 80%;
+      text-align: left;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .left a:hover {
+      background-color: #d6336c;
+      color: white;
+    }
+
+    .left a.active {
+      background-color: #d6336c;
+      color: white;
+      font-weight: bold;
+      border: 2px solid #d6336c;
+      box-shadow: 0 4px 10px rgba(214, 51, 108, 0.2);
+    }
+
+    .right {
+      margin-left: 20%;
+      width: 80%;
+      height: 100%;
+      padding: 20px;
+    }
+
+    .container {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #d6336c;
+    }
+
+    h3 {
+      color: #ad184c;
+    }
+
+    form {
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid #ddd;
+      background-color: #f9f9f9;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+    }
+
+    input[type="text"],
+    input[type="file"],
+    input[type="number"],
+    select {
+      width: 97%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-top: 5px;
+    }
+
+    button {
+      background-color: #d6336c;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #ad184c;
+    }
+
+    #available_variants option,
+    #available_flavours option {
+      line-height: 1.8;
+      /* slightly increases space between lines */
+      padding: 4px 0;
+      /* sometimes works on some browsers */
+    }
+
+    small {
+      margin-top: 20px;
+    }
+  </style>
+
+  <body>
+    {% set current_path = request.path %}
+
+    <div class="main">
+      <div class="left">
+        <p>DASHBOARD</p>
+        <hr />
+
+        <a
+          href="{{ url_for('admin_dashboard') }}"
+          class="{% if current_path == url_for('admin_dashboard') %}active{% endif %}"
+        >
+          <i class="fas fa-plus-square"></i> Add Product
+        </a>
+
+        <a
+          href="{{ url_for('admin_view_product') }}"
+          class="{% if current_path == url_for('admin_view_product') %}active{% endif %}"
+        >
+          <i class="fas fa-eye"></i> View Product
+        </a>
+
+        <a
+          href="{{ url_for('add_categories') }}"
+          class="{% if current_path == url_for('add_categories') %}active{% endif %}"
+        >
+          <i class="fas fa-tags"></i> Add Category
+        </a>
+
+        <a
+          href="{{ url_for('add_flavour') }}"
+          class="{% if current_path == url_for('add_flavour') %}active{% endif %}"
+        >
+          <i class="fas fa-apple-alt"></i> Add Flavour
+        </a>
+
+        <a
+          href="{{ url_for('add_variant') }}"
+          class="{% if current_path == url_for('add_variant') %}active{% endif %}"
+        >
+          <i class="fas fa-weight-hanging"></i> Add Variant
+        </a>
+
+        <a
+          href="{{ url_for('add_accessory') }}"
+          class="{% if current_path == url_for('add_accessory') %}active{% endif %}"
+        >
+          <i class="fas fa-magic"></i> Add Accessories
+        </a>
+
+        <a
+          href="{{ url_for('master_location') }}"
+          class="{% if current_path == url_for('master_location') %}active{% endif %}"
+        >
+          <i class="fas fa-map-marker-alt"></i> Add Master Location
+        </a>
+
+        <a
+          href="{{ url_for('order_history') }}"
+          class="{% if current_path == url_for('order_history') %}active{% endif %}"
+        >
+          <i class="fas fa-box"></i> View Order History
+        </a>
+
+        <a
+          href="{{ url_for('custom_cake_order_history') }}"
+          class="{% if current_path == url_for('custom_cake_order_history') %}active{% endif %}"
+        >
+          <i class="fas fa-clipboard-list"></i> View Custom Orders
+        </a>
+        
+       <a href="{{ url_for('report_page') }}"
+        class="{% if current_path == url_for('report_page') %}active{% endif %}">
+        <i class="fas fa-chart-line"></i> Reports
+      </a>
+
+        <a
+          href="{{ url_for('update_password') }}"
+          class="{% if current_path == url_for('update_password') %}active{% endif %}"
+        >
+          <i class="fas fa-key"></i> Update Password
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+      </div>
+      <div class="right">
+        <div class="container">
+          <h1>Upload Product and Sub-Product Details</h1>
+
+          {% if message %}
+          <div
+            class="alert alert-success alert-dismissible fade show"
+            role="alert"
+          >
+            {{ message }}
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
+          {% endif %}
+
+          <form
+            action="/admin_dashboard"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <!-- Product Information -->
+            <h3>Product Information</h3>
+            <div class="form-group">
+              <label for="product_name">Product Name:</label>
+              <select
+                id="product_name"
+                name="product_name"
+                required
+                onchange="toggleFreeCakesByName(this)"
+              >
+                <option value="" disabled selected>Select a product</option>
+                {% for product in products %}
+                <option value="{{ product.id }}">{{ product.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="product_image1">Product Image 1:</label>
+              <input type="file" id="product_image1" name="product_image1" />
+            </div>
+
+            <div class="form-group">
+              <label for="product_category">Category:</label>
+              <input
+                type="text"
+                id="product_category"
+                name="product_category"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="product_type">Type:</label>
+              <input type="text" id="product_type" name="product_type" />
+            </div>
+
+            <div class="form-group">
+              <label for="product_offer">Offer:</label>
+              <input type="number" id="product_offer" name="product_offer" />
+            </div>
+
+            <div class="form-group">
+              <label for="product_youtube">YouTube Link:</label>
+              <input type="text" id="product_youtube" name="product_youtube" />
+            </div>
+
+            <div class="form-group">
+              <label for="product_description">Description:</label>
+              <input
+                type="text"
+                id="product_description"
+                name="product_description"
+              />
+            </div>
+
+            <!-- Sub-Product Information -->
+            <h3>Sub-Product Information</h3>
+            <div class="form-group">
+              <label for="subproduct_name">Sub-Product Name:</label>
+              <input
+                type="text"
+                id="subproduct_name"
+                name="subproduct_name"
+                required
+              />
+            </div>
+
+            <div
+              class="form-group"
+              id="free-cake-section"
+              style="display: none"
+            >
+              <label for="free_product">Free Cakes:</label>
+              <select id="free_product" name="free_product[]" multiple size="5">
+                {% for sub in subproducts %}
+                <option value="{{ sub.id }}">
+                  {{ sub.name }} (Category: {{ sub.product_name }})
+                </option>
+                {% endfor %}
+              </select>
+              <small style="margin-top: 6px; display: block"
+                >Hold Ctrl (Windows) or Cmd (Mac) to select multiple
+                options</small
+              >
+            </div>
+
+            <div class="form-group mb-4">
+              <label for="available_variants" class="block font-semibold mb-1"
+                >Available Variants:</label
+              >
+              <select
+                id="available_variants"
+                name="available_variants"
+                multiple
+                size="4"
+                required
+                class="w-full border rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              >
+                {% for variant in variants %}
+                <option value="{{ variant.id }}">{{ variant.name }}</option>
+                {% endfor %}
+              </select>
+              <small
+                class="text-gray-500"
+                style="margin-top: 10px; display: block"
+                >Hold Ctrl (Windows) or Cmd (Mac) to select multiple
+                variants</small
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="available_flavours">Available Flavours:</label>
+              <select
+                id="available_flavours"
+                name="available_flavours"
+                multiple
+                size="4"
+                required
+              >
+                {% for flavour in flavours %}
+                <option value="{{ flavour.id }}">{{ flavour.name }}</option>
+                {% endfor %}
+              </select>
+              <small style="margin-top: 10px; display: block"
+                >Hold Ctrl (Windows) or Cmd (Mac) to select multiple
+                flavours</small
+              >
+            </div>
+
+            <div
+              id="combination-price-section"
+              class="form-group"
+              style="margin-top: 20px"
+            >
+              <label style="margin-bottom: 10px"
+                >Set Price for Variant + Flavour Combinations:</label
+              >
+              <div id="combination-price-grid">
+                <!-- Populated dynamically via JS -->
+              </div>
+            </div>
+
+            <!-- <div class="form-group">
+            <label for="subproduct_price">Price:</label>
+            <input type="number" id="subproduct_price" name="subproduct_price" step="0.01" />
+          </div>
+
+          <div class="form-group">
+            <label for="subproduct_new_price">New Price:</label>
+            <input type="number" id="subproduct_new_price" name="subproduct_new_price" step="0.01" />
+          </div> -->
+
+            <div class="form-group">
+              <label for="subproduct_image1">Sub-Product Image 1:</label>
+              <input
+                type="file"
+                id="subproduct_image1"
+                name="subproduct_image1"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="subproduct_image2">Sub-Product Image 2:</label>
+              <input
+                type="file"
+                id="subproduct_image2"
+                name="subproduct_image2"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="subproduct_image3">Sub-Product Image 3:</label>
+              <input
+                type="file"
+                id="subproduct_image3"
+                name="subproduct_image3"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="subproduct_image4">Sub-Product Image 4:</label>
+              <input
+                type="file"
+                id="subproduct_image4"
+                name="subproduct_image4"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="subproduct_image5">Sub-Product Image 5:</label>
+              <input
+                type="file"
+                id="subproduct_image5"
+                name="subproduct_image5"
+              />
+            </div>
+
+            <!-- ✅ Sub-Product Video -->
+            <div class="form-group">
+              <label for="subproduct_video">Sub-Product Video:</label>
+              <input
+                type="file"
+                id="subproduct_video"
+                name="subproduct_video"
+                accept="video/*"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="subproduct_category">Sub-Product Category:</label>
+              <input
+                type="text"
+                id="subproduct_category"
+                name="subproduct_category"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="subproduct_type">Sub-Product Type:</label>
+              <input type="text" id="subproduct_type" name="subproduct_type" />
+            </div>
+
+            <div class="form-group">
+              <label for="subproduct_offer">Sub-Product Offer:</label>
+              <input
+                type="number"
+                id="subproduct_offer"
+                name="subproduct_offer"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="subproduct_youtube">Sub-Product YouTube Link:</label>
+              <input
+                type="text"
+                id="subproduct_youtube"
+                name="subproduct_youtube"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="subproduct_description"
+                >Sub-Product Description:</label
+              >
+              <input
+                type="text"
+                id="subproduct_description"
+                name="subproduct_description"
+              />
+            </div>
+
+            <!-- <h3>Sub-Product Variants and Costs</h3> -->
+
+            <!-- Variant 1 -->
+            <!-- <div class="form-group">
+              <label for="variant1">Variant 1 (e.g., 500gm):</label>
+              <input type="text" id="variant1" name="variant1" />
+            </div>
+            <div class="form-group">
+              <label for="cost1">Cost 1 (e.g., 120):</label>
+              <input type="number" id="cost1" name="cost1" step="0.01" />
+            </div> -->
+
+            <!-- Variant 2 -->
+            <!-- <div class="form-group">
+              <label for="variant2">Variant 2 (e.g., 1kg):</label>
+              <input type="text" id="variant2" name="variant2" />
+            </div>
+            <div class="form-group">
+              <label for="cost2">Cost 2 (e.g., 250):</label>
+              <input type="number" id="cost2" name="cost2" step="0.01" />
+            </div> -->
+
+            <!-- Variant 3 -->
+            <!-- <div class="form-group">
+              <label for="variant3">Variant 3:</label>
+              <input type="text" id="variant3" name="variant3" />
+            </div>
+            <div class="form-group">
+              <label for="cost3">Cost 3:</label>
+              <input type="number" id="cost3" name="cost3" step="0.01" />
+            </div> -->
+
+            <!-- Variant 4 -->
+            <!-- <div class="form-group">
+              <label for="variant4">Variant 4:</label>
+              <input type="text" id="variant4" name="variant4" />
+            </div>
+            <div class="form-group">
+              <label for="cost4">Cost 4:</label>
+              <input type="number" id="cost4" name="cost4" step="0.01" />
+            </div> -->
+
+            <!-- Variant 5 -->
+            <!-- <div class="form-group">
+              <label for="variant5">Variant 5:</label>
+              <input type="text" id="variant5" name="variant5" />
+            </div>
+            <div class="form-group">
+              <label for="cost5">Cost 5:</label>
+              <input type="number" id="cost5" name="cost5" step="0.01" />
+            </div> -->
+
+            <!-- Delivery Cost -->
+            <div class="form-group">
+              <label for="delivery_cost">Delivery Cost:</label>
+              <input
+                type="number"
+                id="delivery_cost"
+                name="delivery_cost"
+                step="0.01"
+              />
+            </div>
+
+            <!-- Packaging Cost -->
+            <div class="form-group">
+              <label for="packaging_cost">Packaging Cost:</label>
+              <input
+                type="number"
+                id="packaging"
+                name="packaging_cost"
+                step="0.01"
+              />
+            </div>
+
+            <button type="submit">Upload Product & Sub-Product</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function toggleFreeCakesByName(selectElement) {
+      const selectedText =
+        selectElement.options[selectElement.selectedIndex].text;
+      const showSection = selectedText
+        .toLowerCase()
+        .includes("buy 1 get 1 free");
+      document.getElementById("free-cake-section").style.display = showSection
+        ? "block"
+        : "none";
+    }
+
+    function updateCombinationPriceGrid() {
+      const variantSelect = document.getElementById("available_variants");
+      const flavourSelect = document.getElementById("available_flavours");
+      const gridContainer = document.getElementById("combination-price-grid");
+
+      const selectedVariants = Array.from(variantSelect.selectedOptions).map(
+        (opt) => ({
+          id: opt.value,
+          name: opt.text,
+        })
+      );
+
+      const selectedFlavours = Array.from(flavourSelect.selectedOptions).map(
+        (opt) => ({
+          id: opt.value,
+          name: opt.text,
+        })
+      );
+
+      // Clear old grid
+      gridContainer.innerHTML = "";
+
+      if (selectedVariants.length === 0 || selectedFlavours.length === 0) {
+        gridContainer.innerHTML =
+          "<p style='color:red'>Please select at least one variant and one flavour.</p>";
+        return;
+      }
+
+      const table = document.createElement("table");
+      table.style.borderCollapse = "collapse";
+      table.innerHTML = `
+      <tr>
+        <th style="border: 1px solid #ccc; padding: 5px;">Variant</th>
+        <th style="border: 1px solid #ccc; padding: 5px;">Flavour</th>
+        <th style="border: 1px solid #ccc; padding: 5px;">Price</th>
+      </tr>
+    `;
+
+      selectedVariants.forEach((variant) => {
+        selectedFlavours.forEach((flavour) => {
+          const row = document.createElement("tr");
+
+          row.innerHTML = `
+          <td style="border: 1px solid #ccc; padding: 5px;">${variant.name}</td>
+          <td style="border: 1px solid #ccc; padding: 5px;">${flavour.name}</td>
+          <td style="border: 1px solid #ccc; padding: 5px;">
+            <input 
+              type="number" 
+              step="0.01"
+              name="combo_price_${variant.id}_${flavour.id}" 
+              style = "width: 88%;"
+              placeholder="₹" 
+              required />
+            <input type="hidden" name="combo_variant_ids[]" value="${variant.id}">
+            <input type="hidden" name="combo_flavour_ids[]" value="${flavour.id}">
+          </td>
+        `;
+
+          table.appendChild(row);
+        });
+      });
+
+      gridContainer.appendChild(table);
+    }
+
+    document
+      .getElementById("available_variants")
+      .addEventListener("change", updateCombinationPriceGrid);
+    document
+      .getElementById("available_flavours")
+      .addEventListener("change", updateCombinationPriceGrid);
+  </script>
+</html>

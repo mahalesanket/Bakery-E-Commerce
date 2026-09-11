@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>S S BAKERS</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"> 
+<!-- Montserrat Font from Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+
+
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="static/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="static/css/style.css" rel="stylesheet">
+</head>
+<style>
+    /* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent; /* Light gray background */
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b32071; /* Gradient color */
+  border-radius: 10px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b32071;
+}
+.hover-icon:hover i {
+  color: white !important;
+}
+  </style>
+<body>
+  
+<!-- Topbar Start -->
+<div class="container-fluid top-bar bg-primary text-dark px-0 " data-wow-delay="0.1s">
+    <div class="row gx-0 align-items-center d-none d-lg-flex" style="height: 35px;"> <!-- Reduced height -->
+        <!-- Left Section (Phone & Address) -->
+        <div class="col-lg-6 px-3 text-start">
+            <ol class="breadcrumb mb-0" style="font-size: 16px;font-family:'montserrat';"> <!-- Smaller font size -->
+                <li class="breadcrumb-item mb-2"><a class="small text-white" href="tel:+91 9892000533"><i class="fa fa-phone-alt"></i> &nbsp; +91 9892000533</a></li>
+                <li class="breadcrumb-item mb-2"><a class="small text-white" href="mailto:info@ssbakers.com"><i class="fa fa-envelope"></i>&nbsp; info@ssbakers.com</a></li>
+            </ol>
+        </div>
+        <!-- Right Section (Social Icons) -->
+        <div class="col-lg-6 px-3 text-end">
+            <div class="h-100 d-inline-flex align-items-center">
+                <a class="btn-lg-square text-white border-end rounded-0" href="" style="font-size: 12px; padding: 5px 8px;"><i class="fab fa-facebook-f mb-2"></i></a>
+                <a class="btn-lg-square text-white border-end rounded-0" href="" style="font-size: 12px; padding: 5px 8px;"><i class="fab fa-twitter mb-2"></i></a>
+                <a class="btn-lg-square text-white border-end rounded-0" href="" style="font-size: 12px; padding: 5px 8px;"><i class="fab fa-linkedin-in mb-2"></i></a>
+                <a class="btn-lg-square text-white pe-0" href="" style="font-size: 12px; padding: 5px 8px;"><i class="fab fa-instagram mb-2"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
+
+<!-- Navbar Start -->
+ 
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-0 px-lg-5" style="background-color: white;">
+  <a href="{{ url_for('home') }}" class="navbar-brand ms-4 ms-lg-0">
+    <img src="static/img/SS_logo.jpg" style="height:80px;width: 80px;">
+  </a>
+  <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="navbar-nav ms-auto p-4 p-lg-0">
+      <a class="btn btn-link" href="{{ url_for('home') }}">Home</a>
+      <a class="btn btn-link" href="{{ url_for('about') }}">About Us</a>
+      <a class="btn btn-link" href="{{ url_for('cake_varity') }}">Cake Variety</a>
+      <a class="btn btn-link" href="{{ url_for('gallery') }}">Gallery</a>
+      <a class="btn btn-link" href="{{ url_for('our_outlet') }}">Our Outlet</a>
+      <a class="btn btn-link" href="{{ url_for('contact') }}">Contact Us</a>
+    </div>
+    <a class="btn-about py-2 px-3 me-3" href="{{ url_for('franchise') }}" style="font-family: 'montserrat';font-weight: 500">
+      FRANCHISE <i class="fa fa-store"></i>
+    </a>
+    <div class="d-none d-lg-flex ms-4 align-items-center">
+      <div class="d-inline-flex align-items-center me-3">
+            <div
+              class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon"
+            >
+              <a href="{{ url_for('cart') }}">
+                <i class="fa fa-shopping-cart" style="color: #b32071;"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- User Icon -->
+          <div class="d-inline-flex align-items-center me-3">
+            <div
+              class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon"
+            >
+              <a href="{{ url_for('login') }}">
+                <i class="fa fa-user" style="color: #b32071;"></i>
+              </a>
+            </div>
+          </div>
+
+      <!-- Dropdown Button -->
+      <div class="d-inline-flex align-items-center position-relative dropdown-hover">
+        <button class="btn btn-outline-primary rounded-circle btn-lg-square border border-primary" type="button" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-menu position-absolute mt-2 shadow-lg bg-white rounded">
+          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="#">Order</a>
+          <a class="dropdown-item" href="#">Logout</a>
+          <a href="{{  url_for('dashbord')}}"><i class="fas fa-sign-out-alt"></i>Dashboard</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  /* Hide dropdown by default */
+  .dropdown-menu {
+    display: none;
+    min-width: 150px;
+    z-index: 1000;
+  }
+
+  /* Show dropdown on hover of the dropdown button container */
+  .dropdown-hover:hover .dropdown-menu {
+    display: block;
+  }
+
+  /* Optional: cursor pointer on dropdown button */
+  .dropdown-hover > button {
+    cursor: pointer;
+  }
+</style>
+
+
+<!-- Optional: You can add custom CSS here -->
+<style>
+    /* Navbar background color */
+    .navbar-light {
+        background-color: white !important;
+    }
+
+    /* Change the menu link color to dark */
+    .navbar-nav .nav-link {
+        color: #333 !important; /* Dark color for the menu links */
+    }
+
+    /* Change the color of the active link */
+    .navbar-nav .nav-link.active {
+        color:#b32071 !important; /* Highlight the active menu item */
+    }
+
+    /* Add hover effect on menu links */
+    .navbar-nav .nav-link:hover {
+        color:#b32071 !important; /* Orange color on hover */
+    }
+
+
+
+</style>
+<!-- Navbar End -->
+
+<!-- Slider -->
+
+
+<!-- Carousel Start -->
+<style>
+    /* Custom Styles for Creative Carousel */
+    .carousel-heading-top {
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        text-transform: uppercase;
+        font-family: 'Great Vibes', cursive; 
+        font-size: 36px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        z-index: 2;
+    }
+  
+    .carousel-subheading {
+        font-family: 'Great Vibes', cursive; 
+        font-size: 20px;
+        color: #fff;
+        text-transform: none;
+        font-style: italic;
+        display: block;
+        margin-top: 10px;
+    }
+  
+    .carousel-heading-wrapper {
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        text-align: center;
+        width: 100%;
+        padding: 0 15px;
+    }
+  
+    .location-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin-top: 150px;
+        width: 100%;
+        padding: 30px 15px;
+        background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 1;
+    }
+  
+    .form-select,
+    .form-control {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 5px;
+        font-family: 'Montserrat', sans-serif;
+    }
+  
+    .btn-proceed {
+        background-color: #b32071;
+        color: white;
+        border: none;
+        font-weight: bold;
+        padding: 10px 25px;
+        border-radius: 5px;
+        font-family: 'Montserrat', sans-serif;
+    }
+  
+    .carousel-item img {
+        object-fit: cover;
+        width: 100%;
+        height: 70vh;
+    }
+    @media (max-width: 775px) {
+    .carousel-heading-top {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        text-align: center;
+        font-size: 16px; /* smaller font for mobile */
+        color: #fff;
+        font-family: 'Great Vibes', cursive;
+        font-weight: bold;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        margin-top: 10px;
+        z-index: 1;
+    }
+
+    .carousel-subheading {
+        display: block;
+        text-align: center;
+        font-size: 14px;
+        color: #f0f0f0;
+        margin-top: 5px;
+    }
+
+    
+  }
+  .about-img{
+            height: 500px;
+        }
+        @media only screen and (max-width:768px) {
+            .about-img{
+            height: 350px;
+         
+        }
+}
+  </style>
+  
+  <div class="container-fluid p-0 pb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="owl-carousel header-carousel position-relative">
+        <!-- Carousel Item 1 -->
+        <div class="owl-carousel-item position-relative">
+            <img class="img-fluid" src="static/img/ss_baker_slider2.jpg" alt="">
+            <!-- Heading outside overlay -->
+            <div class="carousel-heading-wrapper">
+                <h2 class="carousel-heading-top">
+                    Delicious Cakes & Pastries
+                    <span class="carousel-subheading">"A Slice of Happiness in Every Bite"</span>
+                </h2>
+            </div>
+  
+            <!-- Location Overlay -->
+            <div class="location-overlay">
+                <div class="row w-100 align-items-center" style="margin-top:100px;">
+                    <div class="col-md-4">
+                        <select class="form-select mb-3 mb-md-0">
+                            <option selected>Mumbai</option>
+                            <option value="1">Delhi</option>
+                            <option value="2">Bangalore</option>
+                            <option value="3">Chennai</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control mb-3 mb-md-0" placeholder="Enter Delivery Pincode">
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn-proceed">PROCEED</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+        <!-- Carousel Item 2 -->
+        <div class="owl-carousel-item position-relative">
+            <img class="img-fluid" src="static/img/ss_baker_slider3.jpg" alt="">
+            <!-- Heading outside overlay -->
+            <div class="carousel-heading-wrapper">
+                <h2 class="carousel-heading-top">
+                    Savor the Sweetness of Our Cakes
+                    <span class="carousel-subheading">"Perfect for Every Celebration"</span>
+                </h2>
+            </div>
+  
+            <!-- Location Overlay -->
+            <div class="location-overlay">
+                <div class="row w-100 align-items-center" style="margin-top:174px;">
+                    <div class="col-md-4">
+                        <select class="form-select mb-3 mb-md-0">
+                            <option selected>Mumbai</option>
+                            <option value="1">Delhi</option>
+                            <option value="2">Bangalore</option>
+                            <option value="3">Chennai</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control mb-3 mb-md-0" placeholder="Enter Delivery Pincode">
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn-proceed">PROCEED</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+   <!--  -->
+<!-- About Start -->
+<div class="container-xxl py-5" style="margin-top: -61px;">
+    <div class="container" >
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <div class="position-relative overflow-hidden rounded shadow about-img" >
+                  <img src="static/img/mahesh_kene.jpg" alt="Mahesh Kenee" class="w-100 h-100 object-fit-cover rounded" style="object-fit: cover; filter: brightness(100%);box-shadow: 1px 1px 2px 2px rgb(189, 187, 187);">
+        
+                  <!-- Overlay text at bottom -->
+                  <div class="position-absolute bottom-0 start-0 w-100 text-center p-3" style="background: rgba(0, 0, 0, 0.5);">
+                    <h5 class="text-white mb-0" style="font-family: 'Great Vibes', cursive; font-size: 20px;">
+                      Mahesh Kenee
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="h-100">
+                    <div class="heading-container">
+                        <p class=" text-uppercase mb-2" style="font-family: 'montserrat'; font-weight: bold;color:#322205;">ABOUT SS BAKERS</p>
+                    </div>
+                    <h1 class="display-6 mb-4" style=" font-size: 30px;font-weight: bold; text-align: left;">
+                    
+                        <span class="display-6 mb-4" style=" font-size: 25px; color: #b32071; text-align: left;font-family:'montserrat';">Where Passion Meets The Perfect Pastry</span>
+                    </h1>
+                    <br>
+                    <p class="mb-2" style="font-family: 'montserrat'; text-align: justify;margin-top: -30px;color: #b32071;">
+                        <b>SS Bakers</b> is a leading bakery, specializing in the freshest, most delicious cakes, pastries, and desserts. Our mission is to bring joy to your life with every bite.
+                        <br><br>
+                        At SS Bakers, we take pride in our commitment to quality. Using only the finest ingredients and the latest baking techniques, we ensure every product is crafted to perfection. From custom cakes for special occasions to everyday treats, our wide range of baked goods is sure to satisfy every craving.
+                        <br><br>
+                        Located in the heart of Mumbai, SS Bakers is a local favorite for all your bakery needs. Whether you are celebrating a milestone or simply indulging in something sweet, our dedicated team is here to serve you with warmth and excellence. Every product is made with love and care, ensuring that each bite is a delightful experience.
+                    </p>
+                    <br>
+                    <a class="btn-about py-2 px-3 me-3" href="about.html" style="font-family: 'montserrat';">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+ <!--  -->
+
+
+ 
+
+<!--  -->
+<style>
+   
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+     
+    }
+    .section {
+      display: flex;
+      /* background-color: #e0e0d1; */
+      padding: 40px;
+      border-radius: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .section img {
+      width: 400px;
+      height: 450px;
+      border-radius: 12px;
+    }
+    .section-content {
+      max-width: 590px;
+      line-height: 27px;
+    }
+    h2 {
+      color: #d32071;
+      font-family: 'montserrat';
+
+    }
+    p {
+      color: #b32071;
+      font-size: 16px;
+      text-align: justify;
+      font-family: 'montserrat';
+    }
+  
+    @media (max-width: 768px) {
+      .section {
+        flex-direction: column;
+        text-align: center;
+      }
+      .section img {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+</style>
+<section style=" background-color: 
+      #f6d2de;">
+    <br><br>
+    <div class="four">
+        <h4 style="color: 
+#b32071;"><span style="color:black;">Our Services</span>Discover A World Of Delightful Services <br>Crafted Just For You</h4>
+      </div>
+      
+<div class="container" >
+    <!-- Wedding Cakes Section -->
+    <div class="section">
+      <img src="static/img/ss_wed_cake.jpg" alt="Wedding Cake" class="wow fadeInLeft" data-wow-delay="0.5s"><br>
+      <div class="section-content wow fadeInRight" data-wow-delay="0.5s">
+        <h2>Wedding Cakes</h2>
+        <p>At SS Bakers, we offer a stunning range of Luxury and Premium Wedding Cakes designed to make your special day unforgettable. Our cakes are crafted with intricate designs, elegant details, and a touch of creativity that sets them apart. Choose from our exquisite collection or collaborate with us to create a bespoke masterpiece that reflects your love story.</p>
+        <a href="#" class="btn-about" style="padding: 10px;">WEDDING CAKES</a>
+      </div>
+    </div>
+
+    <!-- Custom Cakes Section -->
+    <div class="section d-flex flex-column-reverse flex-md-row">
+      <div class="section-content wow fadeInLeft" data-wow-delay="0.5s">
+        <h2>Custom Cakes</h2>
+        <p>SS Bakers specializes in a wide array of 3D cakes designed & customized for every occasion. From engagement cakes to kids' birthday cakes, anniversary cakes, and corporate event cakes, we ensure a delicious and beautiful creation. Order online for doorstep delivery.</p>
+        <a href="#" class="btn-about" style="padding: 10px;">CUSTOM CAKES</a>
+      </div>
+      <br>
+      <img src="static/img/ss_custom_cake.jpg" alt="Custom Cake" class="wow fadeInRight" data-wow-delay="0.5s">
+    </div>
+
+    <!--  -->
+    <div class="section">
+        <img src="static/img/ss_birth_cake.jpg" alt="Wedding Cake" class="wow fadeInLeft" data-wow-delay="0.5s">
+        <br>
+        <div class="section-content wow fadeInRight" data-wow-delay="0.5s">
+          <h2>Birthday Cakes </h2>
+          <p>At SS Bakers, we believe every birthday deserves a cake as special as the celebration itself. Our expertly crafted birthday cakes are designed to bring joy, laughter, and unforgettable memories to your special day.Whether you're planning a whimsical birthday party for a child, a milestone celebration, or an elegant gathering for adults, our cakes are tailored to suit every theme and preference.</p>
+          <a href="#" class="btn-about" style="padding: 10px;">BIRTHDAY CAKES</a>
+        </div>
+      </div>
+  
+      <!-- Custom Cakes Section -->
+      <div class="section d-flex flex-column-reverse flex-md-row">
+        <div class="section-content wow fadeInLeft" data-wow-delay="0.5s">
+          <h2>Anniversary Cakes</h2>
+          <p>Celebrate your special milestones with a beautifully crafted anniversary cake from SS Bakers. Whether you're marking your first year together, a silver jubilee, or a golden celebration, our cakes are designed to add sweetness to your memorable moments.
+<br><Br>
+            Our anniversary cakes come in elegant designs, ranging from classic floral patterns to luxurious metallic finishes. Personalize your cake with meaningful touches like your names, a heartfelt message, or a design that reflects your journey together.</p>
+          <a href="#" class="btn-about" style="padding: 10px;">ANNIVERSARY CAKES</a>
+        </div>
+        <br>
+        <img src="static/img/ss_ani_cake.jpg" alt="Custom Cake" class="wow fadeInRight" data-wow-delay="0.5s">
+      </div>
+      <!--  -->
+      <div class="section ">
+        <img src="static/img/ss_baby_cake.jpg" alt="Wedding Cake" class="wow fadeInLeft" data-wow-delay="0.5s">
+        <br>
+        <div class="section-content wow fadeInRight" data-wow-delay="0.5s">
+          <h2>Baby Shower Cakes</h2>
+          <p>Celebrate the joy of a new arrival with a delightful baby shower cake from SS Bakers. Our beautifully crafted cakes are designed to add a touch of sweetness to your special celebration, making every moment even more memorable.
+<bR><Br>
+            From charming pastel themes and adorable baby-inspired decorations to elegant gender reveals and personalized designs, our cakes are perfect for welcoming your little one. Whether you prefer a classic "It's a Boy!" or "It's a Girl!" design or a surprise reveal cake with a fun twist, we bring your vision to life with creativity and care.</p>
+          <a href="#" class="btn-about" style="padding: 10px;">BABY SHOWER CAKES</a>
+        </div>
+      </div>
+  
+      <!-- Custom Cakes Section -->
+      <div class="section d-flex flex-column-reverse flex-md-row">
+        <div class="section-content wow fadeInLeft" data-wow-delay="0.5s">
+          <h2>Engagement Cakes</h2>
+          <p>Celebrate the beginning of your forever with a stunning engagement cake from SS Bakers. Mark this special milestone with a cake that reflects your love story, crafted with elegance and attention to detail.
+<br><br>
+            Whether you prefer a classic romantic design, adorned with flowers and elegant gold accents, or a modern cake with minimalist charm, our cakes are made to impress. Personalize it with your initials, a special message, or decorative elements that symbolize your relationship.</p>
+          <a href="#" class="btn-about" style="padding: 10px;">ENGAEMENT CAKES</a>
+        </div>
+        <Br>
+        <img src="static/img/ss_enage_cake.jpg" alt="Custom Cake" class="wow fadeInRight" data-wow-delay="0.5s">
+      </div>
+      <div class="section">
+        <img src="static/img/ss_fastiv_cake.jpg" alt="Wedding Cake" class="wow fadeInLeft" data-wow-delay="0.5s">
+        <br>
+        <div class="section-content wow fadeInRight" data-wow-delay="0.5s">
+          <h2>Festive Cakes </h2>
+          <p>Add a touch of sweetness to your celebrations with our delightful festive cakes at SS Bakers. Whether it’s Christmas, Diwali, Eid, Raksha Bandhan, or New Year’s Eve, our cakes are designed to make every occasion extra special.
+<br><Br>
+            Our festive collection features vibrant designs, traditional motifs, and themed decorations that perfectly capture the spirit of the celebration. From elegant floral patterns and festive sparkles to colorful fondant creations, we craft cakes that become the centerpiece of your gathering.</p>
+          <a href="#" class="btn-about" style="padding: 10px;">FESTIVE CAKES</a>
+        </div>
+      </div>
+    
+      <!-- Custom Cakes Section -->
+      <div class="section d-flex flex-column-reverse flex-md-row">
+        <div class="section-content wow fadeInLeft" data-wow-delay="0.5s">
+          <h2>Corporate Cakes </h2>
+          <p>Celebrate your company's milestones and achievements with our elegant and customized corporate cakes at SS Bakers. Perfect for product launches, company anniversaries, employee appreciation events, or festive office parties, our cakes add a delicious touch to every corporate occasion.
+
+            <br><Br>
+            Choose from a variety of classic and gourmet flavors, including rich chocolate, creamy red velvet, or elegant vanilla. Every cake is made with premium ingredients to ensure it tastes as exceptional as it looks.</p>
+          <a href="#" class="btn-about" style="padding: 10px;">CORPORATE CAKES</a>
+        </div>
+        <img src="static/img/ss_corporate_cake.jpg" alt="Custom Cake" class="wow fadeInRight" data-wow-delay="0.5s">
+      </div>
+  </div>
+  <!--  -->
+ 
+</div>
+</section>
+ <!-- Product Start -->
+ <section>   
+
+  
+    <div class="container-xl  my-6 py-6 pt-0">
+       <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+           
+           <div class="four">
+            <h4 style="color: #b32071;"><span style="color:black;">Explore Our Presence</span>Discover Your Perfect Way To Experience SS Bakers</h4>
+          </div>
+       </div>
+       <div class="row g-4">
+           <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" >
+               <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100 wow fadeInUp" data-wow-delay="0.2s" style="border: 2px solid 
+#e9acc4;">
+                   <div class=" p-4">
+                       <!-- <div class="d-inline-block  px-3 mb-3"><i class="fa fa-store" style="font-size: 30px;"></i></div> -->
+                       <h3 class="mb-3 text-center" style="font-family:'montserrat';">OUTLET</h3>
+                       <span style="text-align:justify;">Physical stores offering a hands-on shopping experience with expert assistance and an extensive product display.</span>
+                   </div>
+                   <div class="position-relative mt-auto">
+                       <img class="img-fluid" src="static/img/ss_service1.jpg" alt="">
+                       <div class="product-overlay">
+                           <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-primary"></i></a>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+               <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100 wow fadeInUp" data-wow-delay="0.4s" style="border: 2px solid 
+#e9acc4;">
+                   <div class=" p-4">
+                       <!-- <div class="d-inline-block   pt-1 px-3 mb-3"><i class="fa fa-shopping-cart" style="font-size: 30px;"></i></div> -->
+                       <h3 class="mb-3 text-center" style="font-family:'montserrat';">ONLINE STORE</h3>
+                       <span style="text-align: justify;">Shop anytime, anywhere with our user-friendly online store. Enjoy seamless browsing, secure payments, and doorstep delivery.</span>
+                   </div>
+                   <div class="position-relative mt-auto">
+                       <img class="img-fluid" src="static/img/ss_service2.jpg" alt="">
+                       <div class="product-overlay">
+                           <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-primary"></i></a>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+               <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100 wow fadeInUp" data-wow-delay="0.6s" style="border: 2px solid 
+#e9acc4;">
+                   <div class=" p-4">
+                       <!-- <div class="d-inline-block pt-1 px-3 mb-3" style="display: flex; justify-content: center; align-items: center; height: 60px; width: 60px;">
+                           <i class="fa fa-handshake" style="font-size: 30px;"></i>
+                         </div>
+                          -->
+                       <h3 class="mb-3 text-center" style="font-family:'montserrat';">FRANCHISE</h3>
+                       <span>Expand your business with a proven model. Join our franchise network and grow with our brand.</span>
+                   </div>
+                   <div class="position-relative mt-auto">
+                       <img class="img-fluid" src="static/img/ss_service3.jpg" alt="">
+                       <div class="product-overlay">
+                           <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-primary"></i></a>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+</section>
+<!-- Product End -->
+ <!-- gallery -->
+ <style>
+   .parallax {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('static/img/ss_product_banner.jpg');
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto; /* or any desired height */
+}
+
+    .filter-btns button {
+      background-color:white;
+      color: #b32071;
+      border: 1px solid #b32071;
+      padding: 10px 20px;
+      margin: 5px;
+      font-weight: 500;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    .filter-btns button:hover {
+      background-color: transparent;
+      color: white;
+      border: 1px solid white;
+    }
+    .cake-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .cake-card {
+      width: 250px;
+      margin: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+    .cake-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    .cake-card h4 {
+      background-color:#b32071;
+      color: white;
+      margin: 0;
+      font-size: 17px;
+      font-family: 'montserrat';
+      padding: 10px;
+    }
+
+    
+   
+   /* === HEADING STYLE #4 === */
+   .four1 h4 {
+     text-align: center;
+     padding-bottom: 0.7em;
+     color:#603f08;
+     font-family:'montserrat';
+   font-size:28px;
+    }
+   .four1 h4 span {
+     font-weight: 500;
+     word-spacing: 3px;
+     line-height: 2em;
+     font-size: 20px;
+     padding-bottom: 0.35em;
+     color: rgba(0, 0, 0, 0.5);
+   }
+   .four1 h4:before {
+     position: absolute;
+     left: 0;
+     bottom: 0;
+     width: 60px;
+     height: 1px;
+     content: "";
+     left: 50%;
+     margin-left: -30px;
+     background-color:white;
+   }
+   
+  
+  
+  </style>
+<section class="parallax" style="margin-top: -113px;">
+    <br><br>
+    <div class="four1 wow fadeInUp" data-wow-delay="0.1s" >
+        <h4 style="color: white;"><span style="color: white;">Our Cakes</span>Cakes For Every Celebration</h4>
+      </div><br><br>
+  <div class="filter-btns text-center wow fadeInUp" data-wow-delay="0.1s">
+    <button onclick="filterCakes('special')">Our Speciality</button>
+    <button onclick="filterCakes('wedding')">Wedding Cakes</button>
+    <button onclick="filterCakes('chocolate')">Chocolate Cakes</button>
+    <button onclick="filterCakes('fruit')">Fresh Fruits Cakes</button>
+    <button onclick="filterCakes('kid')">Kids Cakes</button>
+ 
+    
+  </div>
+  
+  <div class="cake-container" id="cakeContainer">
+    <div class="cake-card kid special wow fadeInUp" data-wow-delay="0.1s">
+      <img src="static/img/ss_kid1.jpg" alt="Chocolate Cheese Cake">
+      <h4>Kids Cake</h4>
+    </div>
+    <div class="cake-card wedding special wow fadeInUp" data-wow-delay="0.3s" >
+        <img src="static/img/ss_wed3.jpg" alt="Rasmalai Cheese Cake">
+        <h4>Engagement Cake</h4>
+      </div>
+ 
+      <div class="cake-card kid special wow fadeInUp" data-wow-delay="0.5s">
+        <img src="static/img/ss_kid3.jpg" alt="Chocolate Cheese Cake">
+        <h4>Barbie Cake </h4>
+      </div>
+      
+      <div class="cake-card chocolate special wow fadeInUp" data-wow-delay="0.7s">
+        <img src="static/img/ss_chok2.jpg" alt="Pineapple Cheese Cake">
+        <h4>Chocolate Cake</h4>
+      </div>
+    
+      <div class="cake-card kid special wow fadeInUp" data-wow-delay="0.1s">
+        <img src="static/img/ss_kid4.jpg" alt="Chocolate Cheese Cake">
+        <h4>Toy Train Cake</h4>
+      </div>
+    <div class="cake-card fruit special wow fadeInUp" data-wow-delay="0.3s">
+      <img src="static/img/ss_fruit1.jpg" alt="New York Cheese Cake">
+      <h4>Mix Fruits Cake</h4>
+    </div>  
+   
+      <div class="cake-card chocolate special wow fadeInUp" data-wow-delay="0.5s">
+        <img src="static/img/ss_chok1.jpg" alt="New York Cheese Cake">
+        <h4>Chocolate Cake</h4>
+      </div>
+    
+   
+      <div class="cake-card fruit special wow fadeInUp" data-wow-delay="0.7s">
+        <img src="static/img/ss_fruit4.jpg" alt="Rasmalai Cheese Cake">
+        <h4>Mix Fruits Cake</h4>
+      </div>
+      <div class="cake-card wedding special wow fadeInUp" data-wow-delay="0.1s">
+          <img src="static/img/ss_wed1.jpg" alt="Rasmalai Cheese Cake">
+          <h4>Wedding Cake</h4>
+        </div>
+        <div class="cake-card kid special wow fadeInUp" data-wow-delay="0.3s">
+            <img src="static/img/ss_kid2.jpg" alt="Chocolate Cheese Cake">
+            <h4>Kids Rainbow Cake </h4>
+          </div>
+        <div class="cake-card wedding special wow fadeInUp" data-wow-delay="0.5s">
+            <img src="static/img/ss_wed2.jpg" alt="Rasmalai Cheese Cake">
+            <h4>Anniversary Cake</h4>
+          </div>
+          <div class="cake-card chocolate special wow fadeInUp" data-wow-delay="0.7s">
+            <img src="static/img/ss_chok3.jpg" alt="Rasmalai Cheese Cake">
+            <h4>Chocolate Cake</h4>
+          </div>
+         
+  </div>
+  <br><br>
+</section>
+  <script>
+  function filterCakes(category) {
+    const cakes = document.querySelectorAll('.cake-card');
+    cakes.forEach(cake => {
+      if (cake.classList.contains(category) || category === 'all') {
+        cake.style.display = 'block';
+      } else {
+        cake.style.display = 'none';
+      }
+    });
+  }
+  </script>
+  
+  <!--  -->
+  <!--  -->
+  
+  <style>
+    .contain {
+        width: 100%;
+        margin: 0 auto;
+        padding: 30px;
+       
+    }
+
+    .section-head h4 {
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        color: #b32071;
+        font-size: 36px;
+        margin-bottom: 40px;
+    }
+
+    .item1 {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        background-color: white;
+        transition: transform 0.3s ease;
+    }
+
+
+   
+    .carousel-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 10px 10px 0 0;
+        border: 3px solid #b32071;
+    }
+   
+  
+    .carousel-text {
+        font-size: 18px;
+        color: #b32071;
+        text-align: center;
+        font-weight: bold; 
+        border-radius: 0px 0px 10px 10px;
+         border: 3px solid #b32071;
+        padding: 15px;
+    }
+</style>
+<br>
+<div class="contain" id="projects">
+    <div class="four wow fadeInUp" data-wow-delay="0.1s">
+        <h4 style="color: #b32071;"><span style="color:black;">Our Pastry</span>Discover Our Delicious Pastries</h4>
+      </div><br><br>
+ 
+   
+    <div id="owl-carousel" class="owl-carousel owl-theme wow fadeInUp" data-wow-delay="0.1s">
+        <div class="item1">
+            <img src="static/img/ss_pastry1.jpg" alt="Pastry 1" class="carousel-image">
+            <div class="carousel-text">Chocolate Delight</div>
+        </div>
+        <div class="item1">
+            <img src="static/img/ss_pastry2.jpg" alt="Pastry 2" class="carousel-image">
+            <div class="carousel-text">Vanilla Bliss</div>
+        </div>
+        <div class="item1">
+            <img src="static/img/ss_pastry3.jpg" alt="Pastry 3" class="carousel-image">
+            <div class="carousel-text">Strawberry Heaven</div>
+        </div>
+        <div class="item1">
+            <img src="static/img/ss_pastry4.jpg" alt="Pastry 4" class="carousel-image">
+            <div class="carousel-text">Caramel Crunch</div>
+        </div>
+        <div class="item1">
+            <img src="static/img/ss_pastry5.jpg" alt="Pastry 5" class="carousel-image">
+            <div class="carousel-text">Blueberry Dream</div>
+        </div>
+    </div>
+</div>
+
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Include Owl Carousel JS and CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<!-- Initialize Owl Carousel -->
+<script>
+    $(document).ready(function(){
+        $("#owl-carousel").owlCarousel({
+            loop: true,
+            margin: 15,
+            dots:false,
+            autoplay: true,
+            autoplayTimeout: 1000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        });
+    });
+</script>
+
+
+  <!--  -->
+    <!--  -->
+    <!-- Testimonial Start -->
+     <section style="background-color: 
+#f8d7e2;margin-bottom: -100px;">
+    <div class="container-xxl  my-6 py-6 pb-0" >
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <div class="four">
+                    <h4 style="color: #b32071;"><span style="color: black;">Our Clients</span>Sweet Partnerships With Our Cherished Clients</h4>
+                  </div>
+            </div>
+            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                <div class="testimonial-item bg-white rounded p-4">
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="flex-shrink-0 rounded-circle border p-1" src="static/img/testimonial-1.jpg" alt="">
+                        <div class="ms-4">
+                            <h5 class="mb-1" style="font-family: 'montserrat';">Client Name</h5>
+                            <span style="font-family:'montserrat';">Profession</span>
+                        </div>
+                    </div>
+                    <p class="mb-0" style="font-family:'montserrat';">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                </div>
+                <div class="testimonial-item bg-white rounded p-4">
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="flex-shrink-0 rounded-circle border p-1" src="static/img/testimonial-2.jpg" alt="">
+                        <div class="ms-4">
+                            <h5 class="mb-1" style="font-family:'montserrat';">Client Name</h5>
+                            <span style="font-family:'montserrat';"> Profession</span>
+                        </div>
+                    </div>
+                    <p class="mb-0" style="font-family:'montserrat';">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                </div>
+                <div class="testimonial-item bg-white rounded p-4">
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="flex-shrink-0 rounded-circle border p-1" src="static/img/testimonial-3.jpg" alt="">
+                        <div class="ms-4">
+                            <h5 class="mb-1" style="font-family:'montserrat';">Client Name</h5>
+                            <span style="font-family:'montserrat';">Profession</span>
+                        </div>
+                    </div>
+                    <p class="mb-0" style="font-family:'montserrat';">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                </div>
+                <div class="testimonial-item bg-white rounded p-4">
+                    <div class="d-flex align-items-center mb-4">
+                        <img class="flex-shrink-0 rounded-circle border p-1" src="static/img/testimonial-4.jpg" alt="">
+                        <div class="ms-4">
+                            <h5 class="mb-1" style="font-family:'montserrat';">Client Name</h5>
+                            <span style="font-family:'montserrat';">Profession</span>
+                        </div>
+                    </div>
+                    <p class="mb-0" style="font-family:'montserrat';">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+    <br>
+</section>
+    <!-- Testimonial End -->
+
+<!-- Footer Start -->
+<div class="container-fluid  text-light footer my-6 mb-0 py-3 wow fadeIn" data-wow-delay="0.1s" style="   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('static/img/ss_footer.jpg');
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;">
+    <div class="container py-5">
+        <div class="row g-5">
+            <!-- About SS Bakers -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class=" mb-4" style="font-size:18px;color: white;font-family:'montserrat';">About SS Bakers</h4>
+                <p style="color: white;">At <b>SS Bakers,</b> we create delightful cakes and confections for every occasion. With our passion for baking, we ensure each creation is as memorable as your special moments.</p>
+            </div>
+            
+            <!-- Quick Links -->
+<div class="col-lg-3 col-md-6">
+  <h4 class="mb-4" style="font-size:18px;color: white;font-family:'montserrat';">Quick Links</h4>
+  <a class="btn btn-link" href="{{ url_for('home') }}">Home</a>
+  <a class="btn btn-link" href="{{ url_for('about') }}">About Us</a>
+  <a class="btn btn-link" href="{{ url_for('cake_varity') }}">Cake Variety</a>
+  <a class="btn btn-link" href="{{ url_for('gallery') }}">Gallery</a>
+  <a class="btn btn-link" href="{{ url_for('our_outlet') }}">Our Outlet</a>
+  <a class="btn btn-link" href="{{ url_for('contact') }}">Contact Us</a>
+</div>
+
+<!-- Services Links -->
+<div class="col-lg-3 col-md-6">
+  <h4 class="mb-4" style="font-size:18px;color: white;font-family:'montserrat';">Our Services</h4>
+  <a class="btn btn-link" href="{{ url_for('contact') }}">Chocolate Cakes</a>
+  <a class="btn btn-link" href="{{ url_for('contact') }}">Wedding Cakes</a>
+  <a class="btn btn-link" href="{{ url_for('contact') }}">Custom Cakes</a>
+  <a class="btn btn-link" href="{{ url_for('contact') }}">Anniversary Cakes</a>
+  <a class="btn btn-link" href="{{ url_for('contact') }}">Corporate Cakes</a>
+  <a class="btn btn-link" href="{{ url_for('contact') }}">Baby Shower Cakes</a>
+</div>
+
+            <!-- Address -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class=" mb-4" style="font-size:18px;color: white;font-family:'montserrat';">Office Address</h4>
+                <p class="mb-2" style="color: white; text-align: left;">
+                  <i class="fa fa-map-marker-alt me-3" style="color:white;"></i>
+                  <a href="https://www.google.com/maps?q=Plot+No+A-115,+Infinity+Business+Park,+Gala+no+305,+MIDC,+Thane,+Mumbai,+Maharashtra" target="_blank" style="color: white; text-decoration: none;">
+                    Plot No A-115, Infinity Business Park, Gala no 305 MIDC, Thane, Mumbai, Maharashtra, Mumbai.
+                  </a>
+                </p>
+                
+                <p class="mb-2" style="color: white;">
+                  <i class="fa fa-phone-alt me-3" style="color:white;"></i>
+                  <a href="tel:+9892000533" style="color: white; text-decoration: none;">+ 9892-000-533</a>
+                </p>
+                
+                <p class="mb-2" style="color:white;">
+                  <i class="fa fa-envelope me-3" style="color: white;"></i>
+                  <a href="mailto:info@ssbakers.com" style="color: white; text-decoration: none;">info@ssbakers.com</a>
+                </p>
+                
+                <div class="d-flex pt-2">
+                    <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-twitter" style="color:white;"></i></a>
+                    <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-facebook-f" style="color: white;"></i></a>
+                    <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-youtube" style="color: white;"></i></a>
+                    <a class="btn btn-square btn-outline-light rounded-circle me-0" href=""><i class="fab fa-linkedin-in" style="color:white;"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright text-light py-4 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center  mb-3 mb-md-0">
+                    &copy; <a href="#"></a> SS Bakers. All Rights Reserved. Powered By  <a href="https://sednainfosystems.com/webdev.html">Sedna.</a>
+                 
+                </div>
+              
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn-about btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="static/lib/wow/wow.min.js"></script>
+    <script src="static/lib/easing/easing.min.js"></script>
+    <script src="static/lib/waypoints/waypoints.min.js"></script>
+    <script src="static/lib/counterup/counterup.min.js"></script>
+    <script src="static/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="static/js/main.js"></script>
+</body>
+
+</html>

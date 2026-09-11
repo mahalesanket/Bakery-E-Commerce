@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Product</title>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBDKQW4TCQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DBDKQW4TCQ');
+</script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        color: #333;
+      }
+
+      h1 {
+        text-align: center;
+        color: #2196f3;
+        margin-top: 20px;
+      }
+
+      .product-container,
+      .sub-product-container {
+        max-width: 900px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        color: #333;
+        font-size: 24px;
+        border-bottom: 2px solid #2196f3;
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+      }
+
+      .product-detail,
+      .sub-product-detail {
+        margin-bottom: 20px;
+      }
+
+      .product-detail strong,
+      .sub-product-detail strong {
+        width: 120px;
+        display: inline-block;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .product-detail p,
+      .sub-product-detail p {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      a {
+        color: #2196f3;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      img {
+        max-width: 50%;
+        height: auto;
+        margin-top: 15px;
+        border-radius: 5px;
+      }
+
+      video {
+        width: 50%;
+        margin-top: 15px;
+        border-radius: 5px;
+      }
+
+      .back-btn {
+        display: block;
+        margin: 30px auto 0;
+        padding: 10px 20px;
+        background-color: #2196f3;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        text-align: center;
+      }
+
+      .back-btn:hover {
+        background-color: #1976d2;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      .product-images img,
+      .sub-product-images img {
+        max-width: 100%;
+        margin-top: 15px;
+        border-radius: 5px;
+      }
+
+      .sub-product-images img {
+        margin-right: 10px;
+        margin-bottom: 10px;
+        width: calc(20% - 10px);
+      }
+
+      .sub-product-video {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>{{ product.product_name }}</h1>
+
+    <!-- Product Details -->
+    <div class="product-container">
+      <h2>Product Details</h2>
+      <div class="product-detail">
+        <p><strong>Category:</strong> {{ product.product_category }}</p>
+        <p><strong>Type:</strong> {{ product.product_type }}</p>
+        <p><strong>Offer:</strong> {{ product.product_offer }}</p>
+        <p><strong>Description:</strong> {{ product.product_description }}</p>
+        <p>
+          <strong>YouTube:</strong>
+          <input type="text" value="{{ product.product_youtube }}" readonly />
+        </p>
+      </div>
+
+      <div class="product-images">
+        <img
+          src="{{ url_for('static', filename='uploads/' + product.product_image1) }}"
+          alt="{{ product.product_name }}"
+        />
+      </div>
+    </div>
+
+    <!-- Sub-Product Details -->
+    <div class="sub-product-container">
+      <h2>Sub-Product Details</h2>
+      <div class="sub-product-detail">
+        <p><strong>Name:</strong> {{ sub_product.sub_product_name }}</p>
+        <p><strong>Price:</strong> ₹{{ sub_product.sub_product_price }}</p>
+        <p>
+          <strong>New Price:</strong> ₹{{ sub_product.sub_product_new_price }}
+        </p>
+        <p><strong>Category:</strong> {{ sub_product.sub_product_category }}</p>
+        <p><strong>Type:</strong> {{ sub_product.sub_product_type }}</p>
+        <p><strong>Offer:</strong> {{ sub_product.sub_product_offer }}</p>
+        <p>
+          <strong>Description:</strong> {{ sub_product.sub_product_description
+          }}
+        </p>
+        <p>
+          <strong>YouTube:</strong>
+          <input
+            type="text"
+            value="{{ sub_product.sub_product_youtube }}"
+            readonly
+          />
+        </p>
+
+        <!-- Variants -->
+        {% if variants %}
+        <h3>Variants</h3>
+        <ul>
+          {% for variant in variants %}
+          <li>
+            <strong>{{ variant.variant_name }}:</strong> ₹{{
+            variant.variant_value }}
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>No variants available for this product.</p>
+        {% endif %}
+
+        <!-- Delivery Cost -->
+        {% if sub_product.delivery_cost %}
+        <p><strong>Delivery Cost:</strong> ₹{{ sub_product.delivery_cost }}</p>
+        {% else %}
+        <p><strong>Delivery Cost:</strong> Free or not specified</p>
+        {% endif %}
+      </div>
+
+      <div class="sub-product-images">
+        <img
+          src="{{ url_for('static', filename='uploads/' + sub_product.sub_product_image1) }}"
+          alt="{{ sub_product.sub_product_name }}"
+        />
+        <img
+          src="{{ url_for('static', filename='uploads/' + sub_product.sub_product_image2) }}"
+          alt="{{ sub_product.sub_product_name }}"
+        />
+        <img
+          src="{{ url_for('static', filename='uploads/' + sub_product.sub_product_image3) }}"
+          alt="{{ sub_product.sub_product_name }}"
+        />
+        <img
+          src="{{ url_for('static', filename='uploads/' + sub_product.sub_product_image4) }}"
+          alt="{{ sub_product.sub_product_name }}"
+        />
+        <img
+          src="{{ url_for('static', filename='uploads/' + sub_product.sub_product_image5) }}"
+          alt="{{ sub_product.sub_product_name }}"
+        />
+      </div>
+
+      {% if sub_product.sub_product_video %}
+      <div class="sub-product-video">
+        <video controls>
+          <source
+            src="{{ url_for('static', filename='uploads/' + sub_product.sub_product_video) }}"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      {% endif %}
+    </div>
+
+    <a href="{{ url_for('dashbord') }}" class="back-btn">Back to Dashboard</a>
+  </body>
+</html>

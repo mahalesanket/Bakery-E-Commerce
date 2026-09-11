@@ -1,0 +1,849 @@
+/********** Template CSS **********/
+:root {
+    --primary: 
+    #ffd1df;
+    --secondary: #545454;
+    --light: #FDF5EB;
+    --dark: #412910;
+}
+
+h4,
+h5,
+h6,
+.h4,
+.h5,
+.h6 {
+    font-weight: 600 !important;
+}
+
+.py-6 {
+    padding-top: 26rem;
+    padding-bottom: 6rem;
+}
+
+.my-6 {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 30px;
+    bottom: 30px;
+    z-index: 99;
+}
+
+
+/*** Spinner ***/
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/*** Button ***/
+.btn {
+    font-weight: 500;
+    transition: .5s;
+}
+
+.btn.btn-primary {
+    color: #FFFFFF;
+}
+
+.btn.btn-primary {
+    color:#ffd1df;
+}
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+
+/*** Navbar ***/
+.navbar .dropdown-toggle::after {
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+.navbar .navbar-nav .nav-link {
+    padding: 35px 15px;
+    color: var(--light);
+    outline: none;
+    font-weight: 500;
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
+    color: var(--primary);
+}
+
+.navbar.fixed-top {
+    transition: .5s;
+}
+
+@media (max-width: 991.98px) {
+    .navbar .navbar-nav {
+        margin-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, .3);
+        background:white;
+    }
+
+    .navbar .navbar-nav .nav-link {
+        padding: 10px 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        visibility: hidden;
+        top: 100%;
+        transform: rotateX(-75deg);
+        transform-origin: 0% 0%;
+        transition: .5s;
+        opacity: 0;
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        transform: rotateX(0deg);
+        visibility: visible;
+        transition: .5s;
+        opacity: 1;
+    }
+}
+
+
+/*** Header ***/
+.header-carousel .owl-carousel-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 76px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, .5);
+}
+
+@media (max-width: 768px) {
+    .header-carousel .owl-carousel-item {
+        position: relative;
+        min-height: 309px;
+    }
+
+    .header-carousel .owl-carousel-item img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .header-carousel .owl-carousel-item p {
+        font-size: 16px !important;
+    }
+}
+
+.header-carousel .owl-nav {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: -40px auto 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-carousel .owl-nav::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #FFFFFF;
+    transform: rotate(45deg);
+}
+
+.header-carousel .owl-nav .owl-prev,
+.header-carousel .owl-nav .owl-next {
+    position: relative;
+    font-size: 60px;
+    color:#b32071;
+    transition: .5s;
+    z-index: 1;
+    margin-top: 1px;
+}
+
+.header-carousel .owl-nav .owl-prev:hover,
+.header-carousel .owl-nav .owl-next:hover {
+    color: black;
+}
+
+
+/* Compact Page Header — paste near the end of style.css so it overrides earlier rules */
+.page-header {
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url(../img/banner_new_ready.jpeg) center center/cover no-repeat;
+  padding: 100px 0 !important;    /* control the banner height here */
+  margin-bottom: 3.5rem;         /* reduce default spacing if needed */
+  margin-top: 95px;              /* keep existing top margin if desired */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Inner container spacing — keep heading + breadcrumb centered and compact */
+.page-header-inner {
+  padding-top: 4px;   /* small top padding */
+  padding-bottom: 6px;/* small bottom padding */
+}
+
+/* Heading styles */
+.page-title {
+  color: #b32071;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 34px;    /* smaller than before */
+  font-weight: 700;
+  margin: 0;          /* remove default h1 margins that increase height */
+  line-height: 1.05;
+}
+
+/* Breadcrumb spacing */
+.page-header .breadcrumb {
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+
+/* Small-screen adjustments */
+@media (max-width: 768px) {
+  .page-header {
+    padding: 18px 0 !important;
+  }
+  .page-title {
+    font-size: 22px;
+  }
+}
+
+
+.breadcrumb-item+.breadcrumb-item::before {
+    color:#b32071;
+}
+
+
+/*** Facts ***/
+.fact-item {
+    transition: .5s;
+}
+
+.fact-item:hover {
+    margin-top: -10px;
+    background: #FFFFFF !important;
+    box-shadow: 0 0 45px rgba(0, 0, 0, .07);
+}
+
+
+/*** About ***/
+.img-twice::before {
+    position: absolute;
+    content: "";
+    width: 60%;
+    height: 80%;
+    top: 10%;
+    left: 20%;
+    background: var(--primary);
+    border: 25px solid var(--light);
+    border-radius: 6px;
+    z-index: -1;
+}
+
+
+/*** Product ***/
+.product-item {
+    transition: .5s;
+}
+
+.product-item:hover {
+    background: var(--primary) !important;
+}
+
+.product-item:hover * {
+    color: #b32071;
+}
+
+.product-item:hover .border-primary {
+    border-color: var(--primary) !important;
+ 
+}
+
+.product-item .product-overlay {
+    position: absolute;
+    width: 100%;
+    height: 0;
+    top: 0;
+    left: 0;
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .5);
+    overflow: hidden;
+    opacity: 0;
+    transition: .5s;
+}
+
+.product-item:hover .product-overlay {
+    height: 100%;
+    opacity: 1;
+}
+
+
+/*** Team ***/
+.team-item .team-text {
+    position: relative;
+    height: 100px;
+    overflow: hidden;
+}
+
+.team-item .team-title {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--light);
+    transition: .5s;
+}
+
+.team-item:hover .team-title {
+    top: -100px;
+}
+
+.team-item .team-social {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 100px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    transition: .5s;
+}
+
+.team-item .team-social .btn {
+    margin: 0 3px;
+}
+
+.team-item:hover .team-social {
+    top: 0;
+}
+
+
+/*** Testimonial ***/
+.testimonial-carousel .owl-item .testimonial-item img {
+    width: 60px;
+    height: 60px;
+}
+
+.testimonial-carousel .owl-item .testimonial-item,
+.testimonial-carousel .owl-item .testimonial-item * {
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-item.center .testimonial-item {
+    background: var(--primary) !important;
+}
+
+.testimonial-carousel .owl-item.center .testimonial-item * {
+    color: #b32071 !important;
+}
+
+.testimonial-carousel .owl-nav {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.testimonial-carousel .owl-nav .owl-prev,
+.testimonial-carousel .owl-nav .owl-next {
+    margin: 0 12px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    font-size: 22px;
+    color: var(--light);
+    background: var(--primary);
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-nav .owl-prev:hover,
+.testimonial-carousel .owl-nav .owl-next:hover {
+    color: var(--primary);
+    background:transparent;
+    border: 1px solid 
+    #ffd1df;
+}
+
+
+/*** Footer ***/
+.footer .btn.btn-link {
+    display: block;
+    margin-bottom: 5px;
+    padding: 0;
+    text-align: left;
+    color: var(--light);
+    font-weight: normal;
+    text-transform: capitalize;
+    transition: .3s;
+}
+
+.footer .btn.btn-link::before {
+    position: relative;
+    content: "\f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: var(--light);
+    margin-right: 10px;
+}
+
+.footer .btn.btn-link:hover {
+    color: var(--primary);
+    letter-spacing: 1px;
+    box-shadow: none;
+}
+
+.copyright {
+    background: #111111;
+}
+
+.copyright a {
+    color: var(--primary);
+}
+
+.copyright a:hover {
+    color: var(--light);
+}
+
+/* header icon */
+/* Add hover effect */
+.hover-icon {
+    transition: all 0.3s ease;
+    color: 
+    #b32071;
+    border: 1px solid #b32071; /* Smooth transition */
+}
+
+/* On hover, change background and scale up */
+.hover-icon:hover {
+    background-color: 
+    #ffd1df; /* Change background color on hover */
+    transform: scale(1.1); 
+    color: #b32071;/* Slightly scale up the icon */
+}
+
+/* Change icon color on hover */
+.hover-icon:hover i {
+    color: #b32071; /* Change icon color to white */
+}
+
+/*  */
+/* carocel */
+.location-overlay {
+    background-color: rgba(0, 0, 0, 0.326); /* Semi-transparent black background */
+    color: white;
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    height: 100%; /* Make sure it takes the full height of the carousel item */
+}
+
+.location-overlay .row {
+    width: 100%; /* Ensure the row takes up the full width */
+    max-width: 900px; /* Optionally, set a max-width for better control */
+    justify-content: center; /* Center the form fields within the row */
+}
+
+.location-overlay .form-select, .location-overlay .form-control, .location-overlay .btn-proceed {
+    background-color: white; /* Light background for inputs */
+    border: none;
+}
+
+.location-overlay .btn-proceed {
+    background-color: white;/* Custom color for the Proceed button */
+    border: 1px solid #ffd1df;;
+    color: #ffd1df;;
+    padding: 5px; 
+    border-radius: 5px;
+    width: 200px;
+    font-weight: 500;
+}
+.location-overlay .btn-proceed:hover {
+    background-color: transparent;/* Custom color for the Proceed button */
+    border: 1px solid white;
+    color: white;
+    padding: 5px; 
+    border-radius: 5px;
+    width: 200px;
+    font-weight: 500;
+}
+/*  */
+/* btn-about */
+.btn-about{
+
+   background-color: transparent;
+    color: 
+    #b32071;
+    border-radius: 5px;
+    border: 1px solid 
+    #b32071;
+}
+.btn-about:hover{
+    background-color: 
+    #ffd1df;
+    color: #b32071;
+    border-radius: 5px;
+}
+/*  */
+/* icon */
+.product-item {
+    color: #ffd1df;
+     letter-spacing: normal;
+  word-spacing: normal;
+  text-justify: inter-word;
+  hyphens: auto;
+text-align:justify;
+
+}
+.product-item:hover{
+    color: white;
+    
+}
+.product-item span{
+    color: #b32071;
+    letter-spacing: normal;
+  word-spacing: normal;
+  font-family:'montserrat';
+  text-justify: inter-word;
+  hyphens: auto;
+text-align:justify;
+}
+.product-item span:hover{
+    color: #b32071;
+}
+.product-item h3{
+    color:#b32071;
+}
+.product-item h3:hover{
+  /* font-size: 30px; */
+    color: #b32071;
+}
+/*  */
+
+/* heading */
+
+/* === HEADING STYLE #4 === */
+
+/* STYLE 6
+
+   ----------------------------- */
+
+   
+h4 {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+    color: #080808;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+  }
+  
+  h4 span {
+    display: block;
+    font-size: 1.0em;
+    line-height: 1.3;
+  }
+  h4 em {
+    font-style: normal;
+    font-weight: 600;
+  }
+  
+   
+   /* === HEADING STYLE #4 === */
+   .four h4 {
+     text-align: center;
+     padding-bottom: 1px;
+     color:#603f08;
+     font-family:'montserrat';
+   font-size:28px;
+    }
+   .four h4 span {
+     font-weight: 500;
+     word-spacing: 3px;
+     line-height: 2em;
+     font-size: 20px;
+     padding-bottom: 1px;
+     margin-top: 1px;
+     color: rgba(0, 0, 0, 0.5);
+   }
+   .four h4:before {
+     position: absolute;
+     left: 0;
+     bottom: 0;
+     width: 60px;
+     height: 1px;
+     content: "";
+     left: 50%;
+     margin-left: -30px;
+     background-color:#ffd1df;
+   }
+   
+   /* === Icon Button Base Style === */
+    .hover-icon {
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      border-radius: 50%;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+      padding: 10px; /* ensures click area is large enough */
+    }
+
+    /* === Default Icon Color === */s
+    .hover-icon i {
+      color: #b32071;
+      font-size: 18px; /* optional: adjust as needed */
+      transition: color 0.3s ease;
+    }
+
+    /* === On Hover: Background and Icon turns white === */
+    .hover-icon:hover {
+      background-color: #ffd1df !important;
+    }
+
+    .hover-icon:hover i {
+      color: #b32071 !important;
+    }
+
+    /* === Disabled Dropdown (Optional cleanup) === */
+    .options {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: white;
+      border: 1px solid #ccc;
+      z-index: 999;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      min-width: 120px;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    }
+
+    .options a,
+    .side-modal-content a {
+      display: block;
+      padding: 5px 10px;
+      color: #333;
+      text-decoration: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .options a:hover {
+      background-color: #ffd1df;
+      color: #b32071;
+    }
+
+    /* Disable hover dropdown */
+    .user-icon-wrapper:hover .options {
+      display: none;
+    }
+
+    /* === Side Modal === */
+    .side-modal {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      height: 100%;
+      width: 320px;
+      background-color: #ffd1df;
+      border-left: 1px solid #ccc;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+      transition: right 0.3s ease;
+      z-index: 1000;
+      padding:  10px;
+    }
+    .side-modal-content{
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      border: 3px double #b32071;
+    }
+
+    /* === Slide-in when open === */
+    .side-modal.open {
+      right: 0;
+    }
+
+    /* === Close Button === */
+    .side-modal .close-btn {
+      font-size: 24px;
+      cursor: pointer;
+      float: right;
+      margin-top: -10px;
+      margin-right: -10px;
+    }
+    
+    /* === Modal Links === */
+    .side-modal-content a {
+      margin: 15px 0;
+      font-weight: 500;
+      color: #b32071;
+    }
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6); /* translucent black */
+      z-index: 999; /* below modal, above everything else */
+      display: none; /* hidden by default */
+    }
+
+    /* Show the overlay */
+    .modal-overlay.active {
+      display: block;
+    }
+    /* === User Info Header === */
+    .user-header {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    .user-avatar i {
+      font-size: 48px;
+      color: #ccc;
+      margin-right: 12px;
+    }
+
+    .user-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user-name {
+      font-size: 16px;
+      font-weight: bold;
+      color: #b32071;
+    }
+
+    .user-email {
+      font-size: 14px;
+      color: black;
+    }
+
+    /* === Menu Items === */
+    .user-menu a {
+      display: flex;
+      align-items: center;
+      padding: 10px 0;
+      text-decoration: none;
+      color: #b32071;
+      border-bottom: 1px solid #f1f1f1;
+      transition: background-color 0.3s ease, padding-left 0.3s ease, border-radius 0.2s ease;
+    }
+
+    .user-menu a i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+      color: #b32071;
+    }
+
+    .user-menu a:hover {
+      background-color: #ffd1df;
+      color: #b32071;
+      border: 1px solid #b32071;
+      border-radius: 5px;
+      padding-left: 5px;
+    }
+
+    .user-menu a:hover i {
+      color: #b32071;
+    }
+
+    /* === Footer Section === */
+    .user-footer {
+      margin-top: 20px;
+      text-align: center;
+      /* border-top: 1px solid #eee; */
+      padding-top: 15px;
+    }
+
+    .logout-link {
+      display: inline-block;
+      color: #b32071;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-bottom: 10px;
+    }
+
+    .logout-link i {
+      margin-right: 6px;
+    }
+    .logout-link:hover{
+      color: #b32071;
+      background-color: #ffd1df;
+      border: 1px solid #b32071;
+    }
+
+/*  */

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Product</title>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBDKQW4TCQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DBDKQW4TCQ');
+</script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+
+      .product-container {
+        max-width: 800px;
+        margin: auto;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+      }
+
+      .product-container h2 {
+        text-align: center;
+      }
+
+      .product-detail,
+      .sub-product-detail {
+        margin-bottom: 15px;
+      }
+
+      .product-detail strong,
+      .sub-product-detail strong {
+        display: inline-block;
+        width: 150px;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      textarea,
+      input[type="file"] {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      button[type="submit"] {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      .back-btn {
+        display: block;
+        margin: 20px auto 0;
+        padding: 10px 20px;
+        background-color: #2196f3;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        text-align: center;
+      }
+
+      .product-img,
+      video {
+        max-width: 100%;
+        margin-top: 10px;
+      }
+
+      .image-block {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="product-container">
+      <h2>Edit Product</h2>
+
+      <!-- Form for Editing Product and Sub-Product -->
+      <form method="POST" enctype="multipart/form-data">
+        <!-- Product Details -->
+        <div class="product-detail">
+          <strong>Product Name:</strong>
+          <input
+            type="text"
+            name="name"
+            value="{{ product.product_name }}"
+            required
+          />
+        </div>
+
+        <div class="product-detail">
+          <strong>Category:</strong>
+          <input
+            type="text"
+            name="category"
+            value="{{ product.product_category }}"
+          />
+        </div>
+
+        <div class="product-detail">
+          <strong>Type:</strong>
+          <input type="text" name="type" value="{{ product.product_type }}" />
+        </div>
+
+        <div class="product-detail">
+          <strong>Offer:</strong>
+          <input
+            type="number"
+            name="offer"
+            value="{{ product.product_offer }}"
+          />
+        </div>
+
+        <div class="product-detail">
+          <strong>Description:</strong>
+          <textarea name="description" rows="4">
+{{ product.product_description }}</textarea
+          >
+        </div>
+
+        <div class="product-detail">
+          <strong>YouTube Video URL:</strong>
+          <input
+            type="text"
+            name="youtube"
+            value="{{ product.product_youtube }}"
+          />
+        </div>
+
+        <div class="image-block">
+          <strong>Product Image:</strong><br />
+          {% if product.product_image1 %}
+          <img
+            src="{{ url_for('static', filename='uploads/' ~ product.product_image1) }}"
+            class="product-img"
+          /><br />
+          {% endif %}
+          <input type="file" name="image1" />
+        </div>
+
+        <hr />
+
+        <!-- Sub-Product Details -->
+        <h3 style="text-align: center">Sub-Product Details</h3>
+
+        <div class="sub-product-detail">
+          <strong>Sub-Product Name:</strong>
+          <input
+            type="text"
+            name="sub_product_name"
+            value="{{ sub_product.sub_product_name }}"
+            required
+          />
+        </div>
+
+        <div class="sub-product-detail">
+          <strong>Price:</strong>
+          <input
+            type="number"
+            name="sub_product_price"
+            value="{{ sub_product.sub_product_price }}"
+          />
+        </div>
+
+        <div class="sub-product-detail">
+          <strong>New Price:</strong>
+          <input
+            type="number"
+            name="sub_product_new_price"
+            value="{{ sub_product.sub_product_new_price }}"
+          />
+        </div>
+        <div class="sub-product-detail">
+          <strong>Category:</strong>
+          <input
+            type="text"
+            name="sub_product_category"
+            value="{{ sub_product.sub_product_category }}"
+          />
+        </div>
+        <div class="sub-product-detail">
+          <strong>Type:</strong>
+          <input
+            type="text"
+            name="sub_product_type"
+            value="{{ sub_product.sub_product_type }}"
+          />
+        </div>
+        <div class="sub-product-detail">
+          <strong>Offer:</strong>
+          <input
+            type="number"
+            name="sub_product_offer"
+            value="{{ sub_product.sub_product_offer }}"
+          />
+        </div>
+        <div class="sub-product-detail">
+          <strong>Description:</strong>
+          <textarea name="sub_product_description" rows="4">
+{{ sub_product.sub_product_description }}</textarea
+          >
+        </div>
+
+        <div class="sub-product-detail">
+          <strong>YouTube Video URL:</strong>
+          <input
+            type="text"
+            name="sub_product_youtube"
+            value="{{ sub_product.sub_product_youtube }}"
+          />
+        </div>
+
+        <!-- Sub-Product Variants -->
+        <h3 style="text-align: center">Sub-Product Variants & Costs</h3>
+
+        {% for i in range(1, 6) %}
+        <div class="sub-product-detail">
+          <strong>Variant {{ i }}:</strong>
+          <input
+            type="text"
+            name="variant{{ i }}"
+            value="{{ sub_product['variant' + i|string] }}"
+          />
+        </div>
+        <div class="sub-product-detail">
+          <strong>Cost {{ i }}:</strong>
+          <input
+            type="number"
+            step="0.01"
+            name="cost{{ i }}"
+            value="{{ sub_product['cost' + i|string] }}"
+          />
+        </div>
+        {% endfor %}
+
+        <div class="sub-product-detail">
+          <strong>Delivery Cost:</strong>
+          <input
+            type="number"
+            step="0.01"
+            name="delivery_cost"
+            value="{{ sub_product.delivery_cost }}"
+          />
+        </div>
+
+        <!-- Sub-Product Images -->
+        {% for i in range(1, 6) %}
+        <div class="image-block">
+          <strong>Sub-Product Image {{ i }}:</strong><br />
+          {% set sub_img = sub_product['sub_product_image' + i|string] %} {% if
+          sub_img %}
+          <img
+            src="{{ url_for('static', filename='uploads/' ~ sub_img) }}"
+            class="product-img"
+          /><br />
+          {% endif %}
+          <input type="file" name="sub_product_image{{ i }}" />
+        </div>
+        {% endfor %}
+
+        <div class="sub-product-detail">
+          <strong>Sub-Product Video:</strong><br />
+          {% if sub_product.sub_product_video %}
+          <video controls>
+            <source
+              src="{{ url_for('static', filename='uploads/' ~ sub_product.sub_product_video) }}"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.</video
+          ><br />
+          {% else %}
+          <p>No video uploaded.</p>
+          {% endif %}
+          <input type="file" name="sub_product_video" accept="video/*" />
+        </div>
+
+        <!-- Submit Button -->
+        <div style="text-align: center; margin-top: 20px">
+          <button type="submit">Update Product</button>
+        </div>
+      </form>
+
+      <a href="{{ url_for('dashbord') }}" class="back-btn">Back to Dashboard</a>
+    </div>
+  </body>
+</html>

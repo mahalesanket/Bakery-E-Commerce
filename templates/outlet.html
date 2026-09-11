@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SM Bakers — Outlets</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <!-- Favicon -->
+  <link href="static/img/favicon.ico" rel="icon">
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"> 
+  <!-- Montserrat Font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link href="static/lib/animate/animate.min.css" rel="stylesheet">
+  <link href="static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Template Stylesheet -->
+  <link href="static/css/style.css" rel="stylesheet">
+
+  <!-- Page Styles -->
+  <style>
+    :root {
+      --accent: #b32071;
+      --accent-2: #ffd1df;
+      --card-bg: #fff;
+      --body-bg: rgba(250,241,241,0.52);
+      --text: #333;
+      --muted: #666;
+      --radius: 10px;
+      --fw-sans: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    body {
+      font-family: var(--fw-sans);
+      background: var(--body-bg);
+      margin: 0;
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: 0 auto;
+    }
+
+    h1.title {
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 6px;
+      font-size: 28px;
+      letter-spacing: 0.6px;
+    }
+
+    .lead {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    /* Controls */
+    .controls {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 18px 0 10px;
+    }
+    .search-input {
+      min-width: 260px;
+      width: clamp(220px, 40%, 420px);
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #e6d6dd;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      font-size: 15px;
+    }
+    .filter-select {
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #e6d6dd;
+      background: #fff;
+      font-size: 15px;
+    }
+    .clear-btn {
+      background: var(--accent-2);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .clear-btn:hover { opacity: .95; transform: translateY(-1px); }
+
+    .controls .count {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Location Section */
+    .location-section {
+      margin-bottom: 36px;
+    }
+
+    .location-heading {
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      color: #b32071;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      font-weight: 600;
+      padding: 12px;
+      background: linear-gradient(135deg, #ffd1df 0%, #fff 100%);
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(179, 32, 113, 0.1);
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 980px){ .grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 640px){ .grid { grid-template-columns: 1fr; } }
+
+    /* Card Styling */
+    .card {
+      background: var(--card-bg);
+      padding: 18px;
+      border-radius: var(--radius);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      transition: transform .18s ease, box-shadow .18s ease;
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #eee;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.12);
+    }
+
+    .card-top {
+      flex-grow: 1;
+      margin-bottom: 12px;
+    }
+
+    .card .name {
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-size: 16px;
+      letter-spacing: 0.3px;
+    }
+    
+    .card .address {
+      color: #444;
+      font-size: 14px;
+      line-height: 1.45;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .card .address i {
+      margin-top: 3px;
+      color: var(--accent);
+    }
+
+    .card-meta {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #f0f0f0;
+      padding-top: 12px;
+      margin-top: auto;
+    }
+
+    .card .city-tag {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      background: #f8f8f8;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .icon-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid #e0e0e0;
+      color: var(--accent);
+      background: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: all .15s ease;
+    }
+    .icon-circle:hover { 
+      background: var(--accent); 
+      color: #fff; 
+      border-color: var(--accent); 
+      transform: scale(1.05); 
+    }
+
+    /* No results message */
+    .no-results {
+      display: none;
+      background: #ffe4ec;
+      border: 1px solid #ffb8cd;
+      color: #b32071;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 16px;
+      animation: fadeIn .3s ease;
+    }
+    @keyframes fadeIn {
+      from {opacity:0; transform:translateY(-5px);}
+      to {opacity:1; transform:translateY(0);}
+    }
+
+    /* Entrance animation */
+    .card { opacity:0; transform: translateY(6px); animation: fadeUp .36s forwards; }
+    .card:nth-child(1){ animation-delay: .03s } 
+    .card:nth-child(2){ animation-delay: .06s } 
+    .card:nth-child(3){ animation-delay: .09s }
+    @keyframes fadeUp { to { opacity:1; transform:none; } }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #ffd1df;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ffd1df;
+    }
+
+    .user-icon-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Topbar Start -->
+  <div class="container-fluid top-bar bg-primary px-0" style="height: 35px;">
+    <div class="row gx-0 align-items-center" style="height: 100%;">
+      <div class="col-12 text-center">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <marquee behavior="scroll" direction="left" scrollamount="5"
+          style="font-size: 16px;font-family:'Great Vibes', cursive; font-style: italic; color: black; font-weight: 500; padding-top: 5px">
+          <i class="fas fa-birthday-cake" style="color:#B32071"></i>
+          Try Our New 70+ Flavours |
+          <i class="fas fa-store" style="color:#B32071"></i>
+          Offer Available In All Our 45+ Stores. |
+          <i class="fas fa-gift" style="color:#B32071"></i>
+          Everyday Buy 1 Cake Get 1 Free 70+ Premium |
+          <i class="fas fa-phone" style="color:#B32071"></i>
+          For Order Connect With Us: <a href="tel:+918655481522" style="color:black">+91 8655481522</a>
+        </marquee>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-0 px-lg-5" style="background-color: white;">
+    <a href="{{ url_for('home') }}" class="navbar-brand ms-4 ms-lg-0">
+      <img src="static/img/SS_logo.png" style="height:80px;width: 80px;">
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto p-4 p-lg-0 w-100 d-flex justify-content-center">
+        <a class="btn btn-link" href="{{ url_for('home') }}">Home</a>
+        <a class="btn btn-link" href="{{ url_for('about') }}">About Us</a>
+        <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Cake Variety</a>
+        <a class="btn btn-link" href="{{ url_for('our_outlet') }}">Our Outlet</a>
+        <a class="btn btn-link" href="{{ url_for('contact') }}">Contact Us</a>
+      </div>
+      <a class="btn-about py-2 px-3 me-3 d-none d-lg-block " href="{{ url_for('franchise') }}" style="font-family: 'montserrat'; font-weight: 500">
+        FRANCHISE
+      </a>
+      <div class="d-none d-lg-flex ms-4 align-items-center">
+        <a href="{{ url_for('cart') }}" class="position-relative me-3">
+          <div class="flex-shrink-0 btn-lg-square rounded-circle hover-icon">
+            <i class="fa fa-shopping-cart"></i>
+          </div>
+        </a>
+        {% if not session.get('user_id') %}
+          <div class="d-inline-flex align-items-center me-3">
+            <div class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon">
+              <a href="{{ url_for('login') }}">
+                <i class="fas fa-sign-in-alt" style="margin-top: 5px"></i>
+              </a>
+            </div>
+          </div>
+        {% else %}
+          <div class="d-inline-flex align-items-center me-3">
+            <button class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon" id="openUserModal" style="background: none; border: none">
+              <i class="fa fa-user"></i>
+            </button>
+          </div>
+          <div id="modalOverlay" class="modal-overlay"></div>
+          <div id="userSideModal" class="side-modal">
+            <div class="side-modal-content">
+              <span class="close-btn" id="closeUserModal">&times;</span>
+              <div class="user-header">
+                <div class="user-avatar">
+                  <i class="fa fa-user-circle"></i>
+                </div>
+                <div class="user-details">
+                  {% for user in users%}
+                  <div class="user-name">{{user.name}}</div>
+                  <div class="user-email">{{user.email}}</div>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="user-menu">
+                <a href="{{ url_for('personal_info') }}">
+                  <i class="fa fa-user"></i> Personal Information
+                </a>
+                <a href="{{ url_for('user_order_history') }}">
+                  <i class="fa fa-shopping-bag"></i> My Orders
+                </a>
+                <a href="{{url_for('manage_user_address')}}">
+                  <i class="fa fa-map-marker"></i> Manage Addresses
+                </a>
+              </div>
+              <div class="user-footer">
+                <a href="{{ url_for('logout') }}" class="logout-link"><i class="fa fa-sign-out-alt"></i> Logout</a>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const openBtn = document.getElementById("openUserModal");
+            const modal = document.getElementById("userSideModal");
+            const closeBtn = document.getElementById("closeUserModal");
+            const overlay = document.getElementById("modalOverlay");
+            function openModal() {
+              modal.classList.add("open");
+              overlay.classList.add("active");
+            }
+            function closeModal() {
+              modal.classList.remove("open");
+              overlay.classList.remove("active");
+            }
+            openBtn?.addEventListener("click", openModal);
+            closeBtn?.addEventListener("click", closeModal);
+            overlay?.addEventListener("click", closeModal);
+          });
+        </script>
+        <a href="#" target="_blank" class="me-3 hover-icon" style="padding:15px">
+          <i class="fab fa-instagram "></i>
+        </a>
+      </div>
+
+      <div class="d-flex d-lg-none flex-column align-items-center w-100 px-3" style="margin-top:-20px">
+        <a class="btn-about py-2 px-3 mt-3 w-80 text-center" href="{{ url_for('franchise') }}" style="font-family: 'montserrat'; font-weight: 500; background-color: #FFD1DF; color: #B32071;">
+          FRANCHISE <i class="fa fa-store"></i>
+        </a>
+        <br>
+        <div class="d-flex justify-content-center gap-3">
+          <a href="{{ url_for('cart') }}" class="position-relative">
+            <div class="flex-shrink-0 btn-lg-square rounded-circle hover-icon" style="margin-right: 10px">
+              <i class="fa fa-shopping-cart"></i>
+            </div>
+          </a>
+          {% if not session.get('user_id') %}
+            <div class="d-inline-flex align-items-center me-3">
+              <div class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon">
+                <a href="{{ url_for('login') }}">
+                  <i class="fas fa-sign-in-alt" style="margin-top: 5px"></i>
+                </a>
+              </div>
+            </div>
+          {% else %}
+            <div class="d-inline-flex align-items-center me-3">
+              <button id="openUserModalMobile" class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon" style="background: none; border: none;">
+                <i class="fa fa-user"></i>
+              </button>
+            </div>
+            <div id="modalOverlayMobile" class="modal-overlay"></div>
+            <div id="userSideModalMobile" class="side-modal">
+              <div class="side-modal-content">
+                <span class="close-btn" id="closeUserModalMobile">&times;</span>
+                <div class="user-header">
+                  <div class="user-avatar">
+                    <i class="fa fa-user-circle"></i>
+                  </div>
+                  <div class="user-details">
+                    {% for user in users %}
+                      <div class="user-name">{{ user.name }}</div>
+                      <div class="user-email">{{ user.email }}</div>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="user-menu">
+                  <a href="{{ url_for('personal_info') }}">
+                    <i class="fa fa-user"></i> Personal Information
+                  </a>
+                  <a href="{{ url_for('user_order_history') }}">
+                    <i class="fa fa-shopping-bag"></i> My Orders
+                  </a>
+                  <a href="{{ url_for('manage_user_address') }}">
+                    <i class="fa fa-map-marker"></i> Manage Addresses
+                  </a>
+                </div>
+                <div class="user-footer">
+                  <a href="{{ url_for('logout') }}" class="logout-link">
+                    <i class="fa fa-sign-out-alt"></i> Logout
+                  </a>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              const openMobile = document.getElementById("openUserModalMobile");
+              const modalMobile = document.getElementById("userSideModalMobile");
+              const closeMobile = document.getElementById("closeUserModalMobile");
+              const overlayMobile = document.getElementById("modalOverlayMobile");
+              openMobile?.addEventListener("click", () => {
+                modalMobile.classList.add("open");
+                overlayMobile.classList.add("active");
+              });
+              closeMobile?.addEventListener("click", () => {
+                modalMobile.classList.remove("open");
+                overlayMobile.classList.remove("active");
+              });
+              overlayMobile?.addEventListener("click", () => {
+                modalMobile.classList.remove("open");
+                overlayMobile.classList.remove("active");
+              });
+            });
+          </script>
+          <a href="#" target="_blank">
+            <i class="fab fa-instagram hover-icon" style="font-size: 20px;"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <style>
+    .navbar-light { background-color: white !important; }
+    .navbar-nav .nav-link { color: #333 !important; }
+    .navbar-nav .nav-link.active { color: #FFD1DF !important; }
+    .navbar-nav .nav-link:hover { color: #FFD1DF !important; }
+    @media (max-width: 991px) {
+      .navbar-nav { width: 100%; display: flex; justify-content: center; text-align: center; }
+      .navbar-nav .btn-link { margin: 0 10px; }
+      .d-flex.justify-content-center { width: 100%; display: flex; justify-content: center; }
+      .d-flex.justify-content-center a { font-size: 18px; }
+      .d-none.d-lg-flex { display: none !important; }
+      .btn-about { font-size: 16px; background-color: #FFD1DF; color: #B32071; text-align: center; }
+      .btn-about:hover { background-color: #B32071; color: white; }
+    }
+  </style>
+
+  <!-- Page Header Start -->
+  <div class="container-fluid page-header wow fadeIn" data-wow-delay="0.1s">
+    <div class="container text-center page-header-inner">
+      <h1 class="page-title">Our Outlet</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb justify-content-center mb-0">
+          <li class="breadcrumb-item"><a href="{{ url_for('home') }}">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Our Outlet</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <!-- Page Header End -->
+
+  <!-- Main Outlets Container -->
+  <div class="container">
+    <!-- Controls -->
+    <div class="controls">
+      <input id="searchInput" class="search-input" type="search" placeholder="Search outlet name, address or postcode...">
+      <select id="cityFilter" class="filter-select">
+        <option value="All">All Cities</option>
+        <option value="Ambernath">Ambernath</option>
+        <option value="Badlapur">Badlapur</option>
+        <option value="Bhiwandi">Bhiwandi</option>
+        <option value="Diva">Diva</option>
+        <option value="Dombivli">Dombivli</option>
+        <option value="Kalyan">Kalyan</option>
+        <option value="Murbad">Murbad</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Nalasopara">Nalasopara</option>
+        <option value="Shahad">Shahad</option>
+        <option value="Titwala">Titwala</option>
+        <option value="Ulhasnagar">Ulhasnagar</option>
+      </select>
+
+      <button id="clearBtn" class="clear-btn">Reset</button>
+      <div class="count" id="resultCount"></div>
+    </div>
+    <br>
+
+    <!-- Inline error message -->
+    <div id="noResults" class="no-results">⚠️ Sorry, there are no outlets matching your search.</div>
+
+    <!-- KALYAN OUTLETS -->
+    <div class="location-section" data-location="Kalyan">
+      <h2 class="location-heading">KALYAN OUTLETS</h2>
+      <div class="grid">
+        <div class="card" data-city="Kalyan">
+          <div class="card-top">
+            <div class="name">SM BAKERS DB CHOWK [W]</div>
+            <div class="address">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Shop No 1, AB Paradise, JK Chowk, Kalyan West – 421301</span>
+            </div>
+          </div>
+          <div class="card-meta">
+            <span class="city-tag">Kalyan</span>
+            <div class="actions">
+              <a class="icon-circle" href="https://maps.app.goo.gl/z8ipRXyrYfky5YhQA" target="_blank" title="Get Directions"><i class="fas fa-map-marker-alt"></i></a>
+              <a class="icon-circle" href="tel:+912020202002" title="Call Outlet"><i class="fas fa-phone-alt"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-city="Kalyan">
+          <div class="card-top">
+            <div class="name">SM BAKERS PADA [W]</div>
+            <div class="address">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Bhundere, Shop Number - 12002, Beturkar Chowk, Pada (Near School) 4223301</span>
+            </div>
+          </div>
+          <div class="card-meta">
+            <span class="city-tag">Kalyan</span>
+            <div class="actions">
+              <a class="icon-circle" href="#" target="_blank" title="Get Directions"><i class="fas fa-map-marker-alt"></i></a>
+              <a class="icon-circle" href="tel:+913030303030" title="Call Outlet"><i class="fas fa-phone-alt"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-city="Kalyan">
+          <div class="card-top">
+            <div class="name">SM BAKERS GAURIPADA [W]</div>
+            <div class="address">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Road, Devi Talav, Near Mart, Building, Kalyan West 400001</span>
+            </div>
+          </div>
+          <div class="card-meta">
+            <span class="city-tag">Kalyan</span>
+            <div class="actions">
+              <a class="icon-circle" href="#" target="_blank" title="Get Directions"><i class="fas fa-map-marker-alt"></i></a>
+              <a class="icon-circle" href="tel:+4040404040" title="Call Outlet"><i class="fas fa-phone-alt"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-city="Kalyan">
+          <div class="card-top">
+            <div class="name">SM BAKERS RAMBUG</div>
+            <div class="address">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Shop No. 7353, Commercial Building, Beside Sales, Mata Road, Kalyan 420001</span>
+            </div>
+          </div>
+          <div class="card-meta">
+            <span class="city-tag">Kalyan</span>
+            <div class="actions">
+              <a class="icon-circle" href="#" target="_blank" title="Get Directions"><i class="fas fa-map-marker-alt"></i></a>
+              <a class="icon-circle" href="tel:+732020202020" title="Call Outlet"><i class="fas fa-phone-alt"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AMBERNATH OUTLETS -->
+    <div class="location-section" data-location="Ambernath">
+      <h2 class="location-heading">AMBERNATH OUTLETS</h2>
+      <div class="grid">
+        <div class="card" data-city="Ambernath">
+          <div class="card-top">
+            <div class="name">SM BAKERS MOHAN NANO</div>
+            <div class="address">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Opp. shopping center, next to party office, X-cabin road, near station, Ambernath 423301</span>
+            </div>
+          </div>
+          <div class="card-meta">
+            <span class="city-tag">Ambernath</span>
+            <div class="actions">
+              <a class="icon-circle" href="#" target="_blank" title="Get Directions"><i class="fas fa-map-marker-alt"></i></a>
+              <a class="icon-circle" href="tel:+919650000020" title="Call Outlet"><i class="fas fa-phone-alt"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ULHASNAGAR OUTLETS -->
+    <div class="location-section" data-location="Ulhasnagar">
+      <h2 class="location-heading">ULHASNAGAR OUTLETS</h2>
+      <div class="grid">
+        <div class="card" data-city="Ulhasnagar">
+          <div class="card-top">
+            <div class="name">SM BAKERS WALDHUNI</div>
+            <div class="address">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Shop No. 3465, Niwas, Dhobi Chawl, MJ Rd, near Nagar, Kalyan, Maharashtra 425601</span>
+            </div>
+          </div>
+          <div class="card-meta">
+            <span class="city-tag">Ulhasnagar</span>
+            <div class="actions">
+              <a class="icon-circle" href="#" target="_blank" title="Get Directions"><i class="fas fa-map-marker-alt"></i></a>
+              <a class="icon-circle" href="tel:+912020202020" title="Call Outlet"><i class="fas fa-phone-alt"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NALASOPARA OUTLETS -->
+    <div class="location-section" data-location="Nalasopara">
+      <h2 class="location-heading">NALASOPARA OUTLETS</h2>
+      <div class="grid">
+        <div class="card" data-city="Nalasopara">
+          <div class="card-top">
+            <div class="name">SM BAKERS NALASOPARA</div>
+            <div class="address">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>COMPLEX, OPP.ANCHORCC PARK, BEHIND HOSPITAL, TALAV, NALASOPARA (W)-409779</span>
+            </div>
+          </div>
+          <div class="card-meta">
+            <span class="city-tag">Nalasopara</span>
+            <div class="actions">
+              <a class="icon-circle" href="#" target="_blank" title="Get Directions"><i class="fas fa-map-marker-alt"></i></a>
+              <a class="icon-circle" href="tel:+912020202020" title="Call Outlet"><i class="fas fa-phone-alt"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    (function(){
+      const searchInput = document.getElementById('searchInput');
+      const cityFilter = document.getElementById('cityFilter');
+      const clearBtn = document.getElementById('clearBtn');
+      const locationSections = Array.from(document.querySelectorAll('.location-section'));
+      const cards = Array.from(document.querySelectorAll('.card'));
+      const noResults = document.getElementById('noResults');
+      const resultCount = document.getElementById('resultCount');
+
+      function updateCount(visibleCount, total){
+        resultCount.textContent = `${visibleCount} of ${total} outlets`;
+      }
+
+      function filterOutlets(){
+        const q = searchInput.value.trim().toLowerCase();
+        const city = cityFilter.value;
+        let visible = 0;
+
+        // Hide all sections first
+        locationSections.forEach(section => {
+          section.style.display = 'none';
+        });
+
+        cards.forEach(card => {
+          const cardCity = card.getAttribute('data-city') || '';
+          const name = (card.querySelector('.name')?.textContent || '').toLowerCase();
+          const address = (card.querySelector('.address')?.textContent || '').toLowerCase();
+
+          const cityMatch = (city === 'All') || (cardCity.toLowerCase() === city.toLowerCase());
+          const queryMatch = !q || name.includes(q) || address.includes(q);
+
+          if (cityMatch && queryMatch) {
+            card.style.display = '';
+            visible++;
+            // Show the parent section
+            const parentSection = card.closest('.location-section');
+            if (parentSection) {
+              parentSection.style.display = 'block';
+            }
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        updateCount(visible, cards.length);
+
+        if (visible === 0) {
+          noResults.style.display = 'block';
+        } else {
+          noResults.style.display = 'none';
+        }
+      }
+
+      searchInput.addEventListener('input', () => {
+        clearTimeout(searchInput._deb);
+        searchInput._deb = setTimeout(filterOutlets, 120);
+      });
+
+      cityFilter.addEventListener('change', filterOutlets);
+
+      clearBtn.addEventListener('click', function(){
+        searchInput.value = '';
+        cityFilter.value = 'All';
+        filterOutlets();
+      });
+
+      // Initial display - show all
+      updateCount(cards.length, cards.length);
+      locationSections.forEach(section => {
+        section.style.display = 'block';
+      });
+    })();
+  </script>
+
+  <!-- Footer Start -->
+  <div class="container-fluid text-light footer my-4 mb-0 py-2 wow fadeIn" data-wow-delay="0.1s" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.78)), url('static/img/footer.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+      <div class="container py-3">
+          <div class="row g-3">
+              <!-- About SM Bakers -->
+              <div class="col-lg-3 col-md-6">
+                  <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">About SM Bakers</h4>
+                  <p style="color: white; text-align: justify; letter-spacing: normal; word-spacing: normal; text-justify: inter-word; hyphens: auto;font-family: 'Montserrat'">At <b>SM Bakers,</b> we create delightful cakes and confections for every occasion. With our passion for baking, we ensure each creation is as memorable as your special moments.</p>
+              </div>
+
+              <!-- Quick Links -->
+              <div class="col-lg-3 col-md-6">
+                  <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">Quick Links</h4>
+                  <a class="btn btn-link" href="{{ url_for('home') }}">Home</a>
+                  <a class="btn btn-link" href="{{ url_for('about') }}">About Us</a>
+                  <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Cake Variety</a>
+                  <a class="btn btn-link" href="{{ url_for('our_outlet') }}">Our Outlet</a>
+                  <a class="btn btn-link" href="{{ url_for('contact') }}">Contact Us</a>
+                  <a class="btn btn-link" href="{{ url_for('franchise') }}">Franchise </a>
+              </div>
+
+              <!-- Services Links -->
+              <div class="col-lg-3 col-md-6">
+                  <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">Our Services</h4>
+                  <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Chocolate Cakes</a>
+                  <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Wedding Cakes</a>
+                  <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Custom Cakes</a>
+                  <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Anniversary Cakes</a>
+                  <a class="btn btn-link" href="{{ url_for('cake_variety') }}">Corporate Cakes</a>
+                  <a class="btn btn-link" href="{{ url_for('cake_variety', category='baby_shower_cake') }}">Baby Shower Cakes</a>
+              </div>
+
+              <!-- Address -->
+              <div class="col-lg-3 col-md-6">
+                  <h4 class="mb-3" style="font-size:16px; color: white; font-family: 'Montserrat';">Office Address</h4>
+                  <p class="mb-2" style="color: white; text-align: justify;">
+                      <i class="fa fa-map-marker-alt me-2" style="color:white;"></i>
+                      <a href="#" target="_blank" style="color: white; text-decoration: none;font-family: 'Montserrat'">
+                          Plot No A-1, Thane, Mumbai, Maharashtra.
+                      </a>
+                  </p>
+
+                  <p class="mb-2" style="color: white;">
+                      <i class="fa fa-phone me-2" style="color:white;"></i>
+                      <a href="tel:+918655481522" style="color: white; text-decoration: none; font-family: 'Montserrat';">+91 8655481522</a>
+                  </p>
+
+                  <p class="mb-2" style="color:white;">
+                      <i class="fa fa-envelope me-2" style="color: white;"></i>
+                      <a href="mailto:sanket.mahalee@gmail.com" style="color: white; text-decoration: none;font-family: 'Montserrat'">sanket.mahalee@gmail.com</a>
+                  </p>
+
+                  <div class="d-flex pt-2">
+                      <a class="btn btn-square btn-outline-light rounded-circle me-1" href="https://www.instagram.com/ss_bakers_official/" target="_blank"><i class="fab fa-instagram" style="color: white;"></i></a>
+                      <a class="btn btn-square btn-outline-light rounded-circle me-0" href="https://www.facebook.com/ssbakersofficial1/" target="_blank"><i class="fab fa-facebook-f" style="color:white;"></i></a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Footer End -->
+
+  <!-- Copyright Start -->
+  <div class="container-fluid copyright text-light py-2 wow fadeIn" data-wow-delay="0.1s">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12 text-center mb-2 mb-md-0" style="font-family: 'Montserrat'; font-size: 14px;">
+                  &copy; Sm Bakers. All Rights Reserved. Powered By <a href="#" target="_blank" style="font-weight:600; color: white;">Sanket.</a>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Copyright End -->
+
+  <!-- Back to Top -->
+  <a href="#" class="btn-about btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="static/lib/wow/wow.min.js"></script>
+  <script src="static/lib/easing/easing.min.js"></script>
+  <script src="static/lib/waypoints/waypoints.min.js"></script>
+  <script src="static/lib/counterup/counterup.min.js"></script>
+  <script src="static/lib/owlcarousel/owl.carousel.min.js"></script>
+
+  <!-- Template Javascript -->
+  <script src="static/js/main.js"></script>
+</body>
+</html>

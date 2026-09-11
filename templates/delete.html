@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Delete Product</title>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DBDKQW4TCQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DBDKQW4TCQ');
+</script>
+  </head>
+  <body>
+    <h2>Delete Product</h2>
+    <form
+      action="{{ url_for('delete_product', subproduct_id=sub_product.sub_id) }}"
+      method="POST"
+      onsubmit="return confirm('Are you sure you want to delete this sub-product?');"
+    >
+      <button
+        type="submit"
+        style="
+          background-color: red;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          cursor: pointer;
+        "
+      >
+        Delete Sub-Product
+      </button>
+    </form>
+
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li style="color: green">{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+  </body>
+</html>

@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>S S BAKERS</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="static/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"> 
+<!-- Montserrat Font from Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+
+
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="static/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="static/css/style.css" rel="stylesheet">
+</head>
+<style>
+  /* Custom Scrollbar */
+::-webkit-scrollbar {
+width: 6px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+background: transparent; /* Light gray background */
+border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #b32071; /* Gradient color */
+border-radius: 10px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #b32071;
+}
+
+</style>
+<body>
+  
+<!-- Topbar Start -->
+<div class="container-fluid top-bar bg-primary text-dark px-0 " >
+    <div class="row gx-0 align-items-center d-none d-lg-flex" style="height: 35px;"> <!-- Reduced height -->
+        <!-- Left Section (Phone & Address) -->
+        <div class="col-lg-6 px-3 text-start">
+            <ol class="breadcrumb mb-0" style="font-size: 16px;font-family:'montserrat';"> <!-- Smaller font size -->
+                <li class="breadcrumb-item mb-2"><a class="small text-white" href="#"><i class="fa fa-phone-alt"></i> &nbsp; +91 9892000533</a></li>
+                <li class="breadcrumb-item mb-2"><a class="small text-white" href="#"><i class="fa fa-envelope"></i>&nbsp; info@ssbakers.com</a></li>
+            </ol>
+        </div>
+        <!-- Right Section (Social Icons) -->
+        <div class="col-lg-6 px-3 text-end">
+            <div class="h-100 d-inline-flex align-items-center">
+                <a class="btn-lg-square text-white border-end rounded-0" href="" style="font-size: 12px; padding: 5px 8px;"><i class="fab fa-facebook-f mb-2"></i></a>
+                <a class="btn-lg-square text-white border-end rounded-0" href="" style="font-size: 12px; padding: 5px 8px;"><i class="fab fa-twitter mb-2"></i></a>
+                <a class="btn-lg-square text-white border-end rounded-0" href="" style="font-size: 12px; padding: 5px 8px;"><i class="fab fa-linkedin-in mb-2"></i></a>
+                <a class="btn-lg-square text-white pe-0" href="" style="font-size: 12px; padding: 5px 8px;"><i class="fab fa-instagram mb-2"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
+
+<!-- Navbar Start -->
+ 
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-0 px-lg-5 " style="background-color: white;">
+  <a href="{{ url_for('home') }}" class="navbar-brand ms-4 ms-lg-0">
+    <img src="static/img/SS_logo.jpg" style="height:80px;width: 80px;">
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0"> <!-- Align links to the left -->
+          <a class="btn btn-link" href="{{ url_for('home') }}">Home</a>
+          <a class="btn btn-link" href="{{ url_for('about') }}">About Us</a>
+          <a class="btn btn-link" href="{{ url_for('cake_varity') }}">Cake Variety</a>
+          <a class="btn btn-link" href="{{ url_for('gallery') }}">Gallery</a>
+          <a class="btn btn-link" href="{{ url_for('our_outlet') }}">Our Outlet</a>
+          <a class="btn btn-link" href="{{ url_for('contact') }}">Contact Us</a>
+      
+           <div>
+           
+           </div> 
+
+        </div>
+        <a class="btn-about py-2 px-3 me-3" href="#" style="font-family: 'montserrat';">
+        FRANCHISE <i class="fa fa-store"></i>
+        </a>
+        
+        <!-- Add to Cart and Login Icons on the Right -->
+        <div class="d-none d-lg-flex ms-4">
+<!-- Add to Cart Icon with Counter -->
+<a href="{{ url_for('cart') }}" class="position-relative">
+  <div class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon">
+    <i class="fa fa-shopping-cart"></i>
+  </div>
+  <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    {{ cartitems|length }}
+  </span>
+</a>
+    <span id="cart-count" style="
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: #b32071;
+        color: white;
+        font-size: 12px;
+        border-radius: 50%;
+        padding: 2px 6px;
+        display: none;
+    ">0</span>
+</div>
+        
+            <!-- Login Icon -->
+            <div class="d-inline-flex align-items-center">
+                <div class="flex-shrink-0 btn-lg-square border border-primary rounded-circle hover-icon">
+                    <i class="fa fa-user"></i> <!-- Login Icon -->
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Optional: You can add custom CSS here -->
+<style>
+    /* Navbar background color */
+    .navbar-light {
+        background-color: white !important;
+    }
+
+    /* Change the menu link color to dark */
+    .navbar-nav .nav-link {
+        color: #333 !important; /* Dark color for the menu links */
+    }
+
+    /* Change the color of the active link */
+    .navbar-nav .nav-link.active {
+        color:#b32071 !important; /* Highlight the active menu item */
+    }
+
+    /* Add hover effect on menu links */
+    .navbar-nav .nav-link:hover {
+        color:#b32071 !important; /* Orange color on hover */
+    }
+</style>
+<!-- Navbar End -->
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header1 py-6 wow fadeIn" data-wow-delay="0.1s">
+      <div class="container text-center pt-5 pb-3">
+          <h1 class="display-4  animated slideInDown mb-3" style="color: #b32071;  font-family: 'Great Vibes', cursive;font-size: 35px; ">Cake Variety</h1>
+          <nav aria-label="breadcrumb animated slideInDown">
+              <ol class="breadcrumb justify-content-center mb-0">
+                  <li class="breadcrumb-item"><a class="text-primary" href="index.html" >Home</a></li>
+       
+                  <li class="breadcrumb-item text-primary active" aria-current="page">Cake Variety</li>
+              </ol>
+          </nav>
+      </div>
+  </div>
+  <!-- Page Header End -->
+
+<!-- gallery -->
+ <style>/* Parallax Section */
+  .parallax {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('static/img/ss_product_banner.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: -100px;
+    height: auto; /* or any desired height */
+  }
+  
+  /* Filter Buttons */
+  .filter-btns button {
+    background-color: white;
+    font-weight: 500;
+    color: #b32071;
+    padding: 10px 20px;
+    margin: 5px;
+    border: 1px solid #b32071;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .filter-btns button:hover {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    font-weight: 600;
+  }
+  
+  /* Cake Container */
+  .cake-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cake-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px 10px 0px 0px;
+  }
+  
+ /* Cake Info (Price + Button) */
+.cake-info {
+    padding: 10px;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
+    border-radius: 0px 0px 10px 10px;
+    background-color: white;
+}
+
+/* Cake Heading */
+.cake-info h3 {
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Cake Price and Button Wrapper */
+.cake-price-btn {
+    display: flex;
+    flex-direction: column; /* Stack price and button vertically */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px; /* Space between heading and price */
+}
+
+.cake-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #b32071;
+    font-family: 'Montserrat';
+    margin: 0;
+    margin-bottom: 10px; /* Space between price and button */
+}
+
+.add-to-cart {
+    padding: 8px 15px;
+    font-size: 14px;
+    background-color: #b32071;
+    color: white;
+    border: none;
+    font-weight: 500;
+    border-radius: 5px;
+    font-family: 'Montserrat';
+    cursor: pointer;
+}
+
+.add-to-cart:hover {
+    background-color: white;
+    color: #b32071;
+    border: 1px solid #b32071;
+}
+
+  /* Modal Background */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Modal Content */
+  .modal-content1 {
+    background-color: #fff;
+    padding: 15px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    margin: auto;
+  }
+  .modal-content {
+    background-color: #fff;
+    padding: 15px;
+    width: 80%;
+    max-width: 375px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    margin: auto;
+  }
+  
+  /* Modal Header */
+  .modal-header h3 {
+    font-size: 18px;
+    margin: 0;
+    text-align: center;
+  }
+  
+  /* Grid layout for modal */
+  .modal-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  /* Left section for cake image and name */
+  .modal-left {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+  }
+  
+  .modal-left img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .modal-left h3 {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .modal-left .price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #4c2f09;
+  }
+  
+  /* Right section for weight and accessories */
+  .modal-right {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .variant-options label,
+  .addons label {
+    display: block;
+    padding: 5px 0;
+    font-size: 14px;
+    margin: 5px 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  /* Confirm button */
+  .confirm-order {
+    margin-top: 15px;
+    background-color: #b32071;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  /* Close button */
+  .close-btn,
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #b32071;
+  }
+  
+  /* Location Modal */
+  .modal-location {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 70px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Cake Customization Modal */
+  .modal-location .modal-content,
+  .modal-location .modal-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .modal-location .location-btn,
+  .modal-location .confirm-order {
+    background: #b32071;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  .location-btn{
+    background: #b32071;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  .proceed-btn{
+    background: #b32071;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  /* Modal Body */
+  .modal-location .modal-body {
+    padding: 10px;
+  }
+  
+  /* Cake Container Styles */
+  .cake-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .cake-card {
+    width: 250px;
+    
+    border-radius: 10px 10px 0px 0px;
+    padding: 10px;
+  }
+  
+  .image-wrapper {
+    position: relative;
+  }
+  
+  /* "OR" text style */
+  .or-text {
+    text-align: center;
+    margin: 10px 0;
+    font-style: italic;
+    color: #b32071;
+  }
+   /* === HEADING STYLE #4 === */
+   .four h4 {
+     text-align: center;
+     padding-bottom: 0.7em;
+     color:#603f08;
+   font-size:28px;
+    }
+   .four h4 span {
+     font-weight: 500;
+     word-spacing: 3px;
+     line-height: 2em;
+     font-size: 20px;
+     padding-bottom: 0.35em;
+     color: rgba(0, 0, 0, 0.5);
+   }
+   .four h4:before {
+     position: absolute;
+     left: 0;
+     bottom: 0;
+     width: 60px;
+     height: 1px;
+     content: "";
+     left: 50%;
+     margin-left: -30px;
+     background-color:white;
+   }
+   
+.page-header1 {
+    margin-bottom: rem;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(static/img/ss_page_header.jpg  ) center center no-repeat;
+    background-size: cover;
+}
+
+#custom-cake-form {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  max-width: 600px;
+  margin: auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#custom-cake-form h3 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+}
+
+#custom-cake-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #444;
+}
+
+#custom-cake-form input[type="text"],
+#custom-cake-form input[type="email"],
+#custom-cake-form input[type="tel"],
+#custom-cake-form input[type="number"],
+#custom-cake-form input[type="file"],
+#custom-cake-form input[type="date"],
+#custom-cake-form input[type="time"],
+#custom-cake-form select,
+#custom-cake-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+#custom-cake-form input[type="text"]:focus,
+#custom-cake-form input[type="email"]:focus,
+#custom-cake-form input[type="tel"]:focus,
+#custom-cake-form input[type="number"]:focus,
+#custom-cake-form input[type="file"]:focus,
+#custom-cake-form input[type="date"]:focus,
+#custom-cake-form input[type="time"]:focus,
+#custom-cake-form select:focus,
+#custom-cake-form textarea:focus {
+  border-color: #ff6b81;
+  outline: none;
+}
+
+#custom-cake-form textarea {
+  resize: vertical;
+}
+
+#custom-cake-form input[type="submit"] {
+  background-color: #ff6b81;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+#custom-cake-form input[type="submit"]:hover {
+  background-color: #e65a6d;
+}
+
+  
+   </style>
+ <section class="parallax" >
+     <br><br><br>
+     <div class="four wow fadeInUp" data-wow-delay="0.1s">
+         <h4 style="color: white;"><span style="color: white;">Our Cakes</span>Cakes 
+            For Every Celebration</h4>
+       </div><br><br>
+<!-- Filter Buttons -->
+<div class="filter-btns text-center">
+  {% for product in products %}
+      <button onclick="filterCakes('{{ product.name.lower().replace(' ', '_') }}')">{{ product.name }}</button>
+  {% endfor %}
+  <button onclick="filterCakes('all')">All</button>
+  <button id="toggle-custom-cake-btn" onclick="toggleCustomCakeForm()">Custom</button>
+
+</div>
+
+<!-- Cake Cards -->
+<div class="cake-container" id="cakeContainer">
+  {% for category_name, subproducts in subproduct_categories.items() %}
+    {% for subproduct in subproducts %}
+      <div class="cake-card {{ category_name }} special">
+          <div class="image-wrapper">
+              <img src="{{ url_for('static', filename='uploads/' + subproduct.image1) }}" alt="{{ subproduct.name }}">
+          </div>
+          <div class="cake-info">
+              <h3>{{ subproduct.name }}</h3>
+              <p class="offer">Upto ₹{{ subproduct.offer }}% off</p>
+              <button class="add-to-cart" data-id="{{ subproduct.id }}">ADD TO CART</button>
+          </div>
+      </div>
+    {% endfor %}
+  {% endfor %}
+</div>
+
+<!-- Location Modal -->
+<div id="locationModal" class="modal-overlay">
+  <div class="modal-content">
+      <div class="modal-header" style="background-color:#fbdce2;">
+          <h3 style="color: #b32071;font-family:'montserrat';">Select Location</h3>
+          <span class="close-btn" onclick="closeLocationModal()">&#10005;</span>
+      </div>
+      <hr>
+      <div class="modal-body">
+          <div class="select-row">
+            <select id="citySelect" onchange="updateOutletOptions()">
+              <option value="">Select City</option>
+          </select>
+          
+              <select id="outletSelect" onchange="showOutletAddress()" >
+                  <option>Select Outlet</option>
+              </select>
+          </div>
+
+          <p class="or-text">OR</p>
+
+          <button class="location-btn" onclick="getCurrentLocation()">
+              <i class="fas fa-map-marker-alt"></i> Use Current Location
+          </button>
+
+          <div id="locationResult"></div>
+          <div id="outletAddress"></div>
+      </div>
+  </div>
+</div>
+<!------------------------------ Custom Cake Modal ------------------------------------->
+<div id="custom-cake-form" style="display: none; margin-top: 20px;">
+  <form action="{{url_for('custom_order')}}" method="POST" enctype="multipart/form-data">
+    <h3>Customize Your Cake</h3>
+
+    <label>Name:</label>
+    <input type="text" name="name" required><br>
+
+    <label>Phone:</label>
+    <input type="tel" name="phone" required><br>
+
+    <label>Email:</label>
+    <input type="email" name="email" required><br>
+
+    <label>Cake Flavor:</label>
+    <select name="flavor" required>
+      <option value="">--Select--</option>
+      <option value="chocolate">Chocolate</option>
+      <option value="vanilla">Vanilla</option>
+      <option value="red velvet">Red Velvet</option>
+      <option value="butterscotch">Butterscotch</option>
+    </select><br>
+
+    <label>Variant (eg. 250gm):</label>
+    <input type="text" name="variant" required><br>
+
+    <label>Message on Cake:</label>
+    <input type="text" name="msg"><br>
+
+    <label>Upload Design Image:</label>
+    <input type="file" name="img"><br>
+
+    <label>Delivery Date:</label>
+    <input type="date" name="date" required><br>
+
+    <label>Delivery Time:</label>
+    <input type="time" name="time" required><br>
+
+    <label>Address:</label>
+    <textarea name="address" rows="3" required></textarea><br>
+
+    <label>Special Instructions:</label>
+    <textarea name="instructions" rows="3"></textarea><br>
+
+    <input type="submit" value="Submit Custom Order">
+  </form>
+</div>
+
+<!-- Cake Customization Modal -->
+<div id="weightModal" class="modal" style="display: none;">
+  <div class="modal-content1">
+      <span class="close" onclick="document.getElementById('weightModal').style.display='none'">&times;</span>
+      <div class="modal-grid">
+          <div class="modal-left">
+              <img id="modalCakeImg" src="" alt="Cake Image">
+              <h3 id="modalCakeTitle" style="font-family:'montserrat';color: #b32071;">Cake Name</h3>
+              <p class="offer" id="modalCakeBasePrice" style="font-family:'montserrat';">Upto₹0.00 % off</p>
+          </div>
+          <div class="modal-right">
+              <h4 style="font-size: 16px; color: #4c2f09;">Variants</h4>
+              <div class="variant-options" id="variant-options"></div>
+
+              <h4 style="font-size: 16px; color: #4c2f09;">Add On Accessories</h4>
+              <div class="addons" id="addons"></div>
+
+              <button class="confirm-order"><i class="fas fa-cart-plus"></i> ADD TO CART</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+  const cartCountEl = document.getElementById('cart-count');
+
+  // Option A: If you're storing cart in localStorage (frontend-only)
+  const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+  const count = cartData.length;
+
+  // Option B: If you're relying on backend-rendered cartitems count (Flask)
+  // You can make an AJAX call here if needed
+
+  if (count > 0) {
+    cartCountEl.textContent = count;
+    cartCountEl.style.display = 'inline-block';
+  } else {
+    cartCountEl.style.display = 'none';
+  }
+});
+  // Clear saved location data on initial page load
+window.addEventListener('load', () => {
+  const isRefreshed = performance.navigation.type === performance.navigation.TYPE_RELOAD;
+
+  if (!isRefreshed) {
+    // User navigated here directly (not via refresh), so clear the location
+    localStorage.removeItem('selectedCity');
+    localStorage.removeItem('selectedOutlet');
+  }
+});
+
+let selectedCake = null;
+
+function openLocationModal() {
+  document.getElementById('locationModal').style.display = 'flex';
+}
+
+function closeLocationModal() {
+  document.getElementById('locationModal').style.display = 'none';
+}
+
+document.querySelectorAll('.add-to-cart').forEach((btn) => {
+  btn.addEventListener('click', function () {
+      const card = this.closest('.cake-card');
+      const imgSrc = card.querySelector('img').src;
+      const title = card.querySelector('img').alt;
+      const offer = card.querySelector('.offer').textContent.replace('₹', '').trim();
+      const subProductId = this.dataset.id;
+
+      selectedCake = { imgSrc, title, offer, subProductId };
+
+      const savedCity = localStorage.getItem("selectedCity");
+      const savedOutlet = localStorage.getItem("selectedOutlet");
+
+      if (savedCity && savedOutlet) {
+          // Auto skip location modal, directly open weight modal
+          document.getElementById('modalCakeImg').src = selectedCake.imgSrc;
+          document.getElementById('modalCakeTitle').textContent = `${selectedCake.title}`;
+          document.getElementById('modalCakeBasePrice').textContent = `₹${selectedCake.offer}`;
+          openWeightModal(selectedCake.subProductId);
+      } else {
+          openLocationModal();
+      }
+  });
+});
+
+function updateOutletOptions(callback) {
+  const city = document.getElementById("citySelect").value;
+  const outletSelect = document.getElementById("outletSelect");
+  outletSelect.innerHTML = "<option>Select Outlet</option>";
+
+  if (city !== "Select City" && city !== "") {
+      fetch(`/get_outlets/${city}`)
+          .then(response => response.json())
+          .then(data => {
+              if (data.error) {
+                  alert(data.error);
+                  return;
+              }
+              data.forEach(outlet => {
+                  outletSelect.innerHTML += `<option value="${outlet}">${outlet}</option>`;
+              });
+
+              if (callback) callback();  // Call callback after loading outlets
+          })
+          .catch(err => console.error("Error fetching outlets:", err));
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("/get_cities")
+        .then(response => response.json())
+        .then(data => {
+            const citySelect = document.getElementById("citySelect");
+            citySelect.innerHTML = '<option value="">Select City</option>';
+
+            data.forEach(city => {
+                const option = document.createElement("option");
+                option.value = city;
+                option.textContent = city;
+                citySelect.appendChild(option);
+            });
+
+            // Auto-select saved city and outlet, then show proceed button
+            const savedCity = localStorage.getItem("selectedCity");
+            if (savedCity) {
+                citySelect.value = savedCity;
+                updateOutletOptions(() => {
+                    const savedOutlet = localStorage.getItem("selectedOutlet");
+                    if (savedOutlet) {
+                        const outletSelect = document.getElementById("outletSelect");
+                        outletSelect.value = savedOutlet;
+                        document.getElementById("outletAddress").innerHTML =
+                            `<button class="proceed-btn" onclick="proceedToNext('${savedOutlet}')">PROCEED</button>`;
+                    }
+                });
+            }
+        })
+        .catch(error => console.error("Error loading cities:", error));
+});
+
+function showOutletAddress() {
+  const outlet = document.getElementById("outletSelect").value;
+  const addressBox = document.getElementById("outletAddress");
+
+  if (outlet !== "Select Outlet" && outlet !== "") {
+      addressBox.innerHTML = `<button class="proceed-btn" onclick="proceedToNext('${outlet}')">PROCEED</button>`;
+  } else {
+      addressBox.innerHTML = "";
+  }
+}
+
+function proceedToNext(outlet) {
+  if (!selectedCake) return;
+
+  // Save selections to localStorage
+  const city = document.getElementById("citySelect").value;
+  localStorage.setItem("selectedCity", city);
+  localStorage.setItem("selectedOutlet", outlet);
+
+  document.getElementById('modalCakeImg').src = selectedCake.imgSrc;
+  document.getElementById('modalCakeTitle').textContent = `${selectedCake.title}`;
+  document.getElementById('modalCakeBasePrice').textContent = `₹${selectedCake.offer}`;
+
+  closeLocationModal();
+  openWeightModal(selectedCake.subProductId);
+}
+
+function openWeightModal(subProductId) {
+    fetch(`/get_cake_data/${subProductId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error(data.error);
+                return;
+            }
+
+            const subProduct = data.sub_product;
+            const accessories = data.accessories;
+
+            const variantOptionsContainer = document.getElementById('variant-options');
+            variantOptionsContainer.innerHTML = '';
+
+            const variants = [];
+            for (let i = 1; i <= 5; i++) {
+                const variantKey = `variant${i}`;
+                const costKey = `cost${i}`;
+                if (subProduct[variantKey] && subProduct[costKey]) {
+                    variants.push({
+                        variant: subProduct[variantKey],
+                        cost: subProduct[costKey]
+                    });
+                }
+            }
+
+            variants.forEach(variant => {
+                const variantLabel = document.createElement('label');
+                variantLabel.innerHTML = `
+                    <input type="radio" name="variant" data-variant="${variant.variant}" data-cost="${variant.cost}" data-sub-product-id="${selectedCake.subProductId}">
+                    ${variant.variant} - ₹${variant.cost}`;
+                variantOptionsContainer.appendChild(variantLabel);
+            });
+
+            const addonsContainer = document.getElementById('addons');
+            addonsContainer.innerHTML = '';
+
+            accessories.forEach(accessory => {
+                const accessoryLabel = document.createElement('label');
+                accessoryLabel.innerHTML = `
+                    <input type="checkbox" name="accessory" data-name="${accessory.name}" data-price="${accessory.price}">
+                    ${accessory.name} - ₹${accessory.price}`;
+                addonsContainer.appendChild(accessoryLabel);
+            });
+
+            document.getElementById('weightModal').style.display = 'flex';
+        })
+        .catch(error => console.error('Error fetching data:', error));
+}
+
+function filterCakes(category) {
+  const cards = document.querySelectorAll(".cake-card");
+
+  cards.forEach(card => {
+      if (category === "all" || card.classList.contains(category)) {
+          card.style.display = "block";
+      } else {
+          card.style.display = "none";
+      }
+  });
+}
+
+function toggleCustomCakeForm() {
+  const cards = document.querySelectorAll('.cake-card');
+  const form = document.getElementById('custom-cake-form');
+
+  const isFormVisible = form.style.display === 'block';
+
+  if (isFormVisible) {
+    form.style.display = 'none';
+    cards.forEach(card => {
+      card.style.display = 'block';
+    });
+  } else {
+    form.style.display = 'block';
+    cards.forEach(card => {
+      card.style.display = 'none';
+    });
+  }
+}
+
+// Close form when clicking outside
+document.addEventListener('click', function (event) {
+  const form = document.getElementById('custom-cake-form');
+  const toggleButton = document.getElementById('toggle-custom-cake-btn'); // ID of your toggle button
+
+  const isClickInsideForm = form.contains(event.target);
+  const isClickOnButton = toggleButton && toggleButton.contains(event.target);
+
+  if (!isClickInsideForm && !isClickOnButton && form.style.display === 'block') {
+    form.style.display = 'none';
+    document.querySelectorAll('.cake-card').forEach(card => {
+      card.style.display = 'block';
+    });
+  }
+});
+
+
+
+document.querySelector('.confirm-order').addEventListener('click', async () => {
+    const variantRadio = document.querySelector('input[name="variant"]:checked');
+    if (!variantRadio) {
+        alert('Please select a variant!');
+        return;
+    }
+
+    const selectedVariant = variantRadio.dataset.variant;
+    const selectedVariantCost = parseFloat(variantRadio.dataset.cost);
+    const subProductName = document.getElementById('modalCakeTitle').textContent.trim();
+    const imageUrl = document.getElementById('modalCakeImg').src;
+    const subProductId = parseInt(variantRadio.dataset.subProductId);
+
+    const selectedAccessories = Array.from(
+        document.querySelectorAll('input[name="accessory"]:checked')
+    ).map(el => ({
+        name: el.dataset.name,
+        price: parseFloat(el.dataset.price)
+    }));
+
+    const accessoryCost = selectedAccessories.reduce((sum, acc) => sum + acc.price, 0);
+    const totalPrice = selectedVariantCost + accessoryCost;
+
+    const data = {
+        sub_product_id: subProductId,
+        sub_productname: subProductName,
+        image: imageUrl,
+        variant: selectedVariant,
+        v_cost: selectedVariantCost,
+        total_price: totalPrice,
+        quantity: 1
+    };
+
+    for (let i = 0; i < 5; i++) {
+        data[`acc_${i + 1}`] = selectedAccessories[i]?.name || null;
+        data[`a_cost${i + 1}`] = selectedAccessories[i]?.price || 0;
+    }
+
+    try {
+        const response = await fetch('/add_to_cart', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.status === 201) {
+            alert('Item added to cart successfully!');
+
+            // Update cart count
+            const cartCountEl = document.getElementById('cart-count');
+            let currentCount = parseInt(cartCountEl.textContent) || 0;
+            currentCount += 1;
+            cartCountEl.textContent = currentCount;
+            cartCountEl.style.display = 'inline-block';
+
+            setTimeout(() => {
+                const popup = document.getElementById('weightModal');
+                if (popup) popup.style.display = 'none';
+            }, 2000);
+
+        } else if (response.status === 409) {
+            alert(`The variant "${selectedVariant}" is already in the cart. Please choose another variant or update the existing item.`);
+
+            setTimeout(() => {
+                const popup = document.getElementById('weightModal');
+                if (popup) popup.style.display = 'none';
+            }, 2000);
+
+        } else {
+            alert('Error: ' + (result.error || 'Unknown error occurred'));
+        }
+
+    } catch (err) {
+        console.error('Fetch error:', err);
+        alert('Failed to add item to cart');
+    }
+});
+
+
+</script>
+          
+<!-- Footer Start -->
+<div class="container-fluid  text-light footer my-6 mb-0 py-3 wow fadeIn" data-wow-delay="0.1s" style="   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('static/img/ss_footer.jpg');
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;">
+    <div class="container py-5">
+        <div class="row g-5">
+            <!-- About SS Bakers -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class=" mb-4" style="font-size:18px;color: white;font-family:'montserrat';">About SS Bakers</h4>
+                <p style="color: white;">At <b>SS Bakers,</b> we create delightful cakes and confections for every occasion. With our passion for baking, we ensure each creation is as memorable as your special moments.</p>
+            </div>
+            
+           <!-- Quick Links -->
+<div class="col-lg-3 col-md-6">
+  <h4 class="mb-4" style="font-size:18px;color: white;font-family:'montserrat';">Quick Links</h4>
+  <a class="btn btn-link" href="{{ url_for('home') }}">Home</a>
+  <a class="btn btn-link" href="{{ url_for('about') }}">About Us</a>
+  <a class="btn btn-link" href="{{ url_for('cake_varity') }}">Cake Variety</a>
+  <a class="btn btn-link" href="{{ url_for('gallery') }}">Gallery</a>
+  <a class="btn btn-link" href="{{ url_for('our_outlet') }}">Our Outlet</a>
+  <a class="btn btn-link" href="{{ url_for('contact') }}">Contact Us</a>
+</div>
+
+<!-- Services Links -->
+<div class="col-lg-3 col-md-6">
+  <h4 class="mb-4" style="font-size:18px;color: white;font-family:'montserrat';">Our Services</h4>
+  <a class="btn btn-link" href="{{ url_for('contact') }}">Chocolate Cakes</a>
+  <a class="btn btn-link" href="{{ url_for('contact') }}">Wedding Cakes</a>
+  <a class="btn btn-link" href="{{ url_for('contact') }}">Custom Cakes</a>
+  <a class="btn btn-link" href="{{ url_for('contact') }}">Anniversary Cakes</a>
+  <a class="btn btn-link" href="{{ url_for('contact') }}">Corporate Cakes</a>
+  <a class="btn btn-link" href="{{ url_for('contact') }}">Baby Shower Cakes</a>
+</div>
+
+            <!-- Address -->
+            <div class="col-lg-3 col-md-6">
+                <h4 class=" mb-4" style="font-size:18px;color: white;font-family:'montserrat';">Office Address</h4>
+                <p class="mb-2" style="color: white; text-align: left;">
+                  <i class="fa fa-map-marker-alt me-3" style="color:white;"></i>
+                  <a href="https://www.google.com/maps?q=Plot+No+A-115,+Infinity+Business+Park,+Gala+no+305,+MIDC,+Thane,+Mumbai,+Maharashtra" target="_blank" style="color: white; text-decoration: none;">
+                    Plot No A-115, Infinity Business Park, Gala no 305 MIDC, Thane, Mumbai, Maharashtra, Mumbai.
+                  </a>
+                </p>
+                
+                <p class="mb-2" style="color: white;">
+                  <i class="fa fa-phone-alt me-3" style="color:white;"></i>
+                  <a href="tel:+9892000533" style="color: white; text-decoration: none;">+ 9892-000-533</a>
+                </p>
+                
+                <p class="mb-2" style="color:white;">
+                  <i class="fa fa-envelope me-3" style="color: white;"></i>
+                  <a href="mailto:info@ssbakers.com" style="color: white; text-decoration: none;">info@ssbakers.com</a>
+                </p>
+                
+                <div class="d-flex pt-2">
+                    <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-twitter" style="color:white;"></i></a>
+                    <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-facebook-f" style="color: white;"></i></a>
+                    <a class="btn btn-square btn-outline-light rounded-circle me-1" href=""><i class="fab fa-youtube" style="color: white;"></i></a>
+                    <a class="btn btn-square btn-outline-light rounded-circle me-0" href=""><i class="fab fa-linkedin-in" style="color:white;"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+
+
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright text-light py-4 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center  mb-3 mb-md-0">
+                    &copy; <a href="#"></a> SS Bakers. All Rights Reserved. Powered By  <a href="https://sednainfosystems.com/webdev.html">Sedna.</a>
+                 
+                </div>
+              
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn-about btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="static/lib/wow/wow.min.js"></script>
+    <script src="static/lib/easing/easing.min.js"></script>
+    <script src="static/lib/waypoints/waypoints.min.js"></script>
+    <script src="static/lib/counterup/counterup.min.js"></script>
+    <script src="static/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="static/js/main.js"></script>
+</body>
+
+</html>
